@@ -1,0 +1,25 @@
+black[jupyter]
+cachier
+defopt
+fastparquet
+statsmodels
+
+numpy
+pandas
+pyarrow
+python-dotenv
+scikit-learn
+seaborn
+tabulate
+tqdm
+
+
+
+# notebooks stuff - to make sure nbconvert works
+# https://stackoverflow.com/a/78683197
+notebook==6.4.12
+traitlets==5.9.0
+jupyter
+jupyter_contrib_nbextensions
+
+

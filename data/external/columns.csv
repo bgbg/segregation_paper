@@ -1,0 +1,18 @@
+﻿heb,eng
+שם ישוב,city_name
+סמל ישוב,city_code
+קלפי,ballot_code
+בזב,can_vote
+מצביעים,voted
+פסולים,void
+כשרים,legal
+אמת,party_avoda
+ב,party_bayit_yehudi
+ג,party_agudat_israel
+כן,party_kahol_lavan
+ל,party_israel_beitenu
+מחל,party_likud
+מרצ,party_meretz
+עם,party_raam
+פה,party_yesh_atid
+שס,party_shas
