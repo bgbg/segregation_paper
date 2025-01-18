@@ -11,7 +11,10 @@ HOMOGENIC_FRACTION_CUTOFF = 0.75
 
 # Functions
 def party_fraction(df: pd.DataFrame, parties, col_ref="legal") -> pd.Series:
-    return df[parties].sum(axis=1) / df[col_ref]
+    num = df[parties].sum(axis=1)
+    denum = df[col_ref]
+    ret = num / denum
+    return ret
 
 
 def is_homogenic(
@@ -45,6 +48,9 @@ def dissimilarity_index(
         and 1 indicates complete segregation.
     """
     total_votes = df[total_col].sum()
+    if not total_votes:
+        msg = f"Total votes as computed from {total_col} is zero"
+        raise ValueError(msg)
     fraction_a_total = df[party_a_col].sum() / total_votes
     fraction_b_total = df[party_b_col].sum() / total_votes
 

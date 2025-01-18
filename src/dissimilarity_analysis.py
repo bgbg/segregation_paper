@@ -27,17 +27,32 @@ def load_data(knesset_number: int):
         c: "str" if "code" in c or "name" in c else "int" for c in sr_columns.values()
     }
     df = pd.read_csv(fn_in, dtype=dtypes)
+    df.columns = [c.strip() for c in df.columns]
     for heb, eng in sr_columns.items():
         if heb in df.columns:
             df.rename(columns={heb: eng}, inplace=True)
         elif eng.startswith("party"):
             df[eng] = 0
         else:
-            raise ValueError(f"Column {heb} not found in data")
+            raise ValueError(
+                f"Column '{heb}' not found in data for knesset number {knesset_number}"
+            )
 
+    # normalize city codes
+    if df.city_code.isna().any():
+        codes = []
+        for _, row in df.iterrows():
+            if pd.isnull(row.city_code):
+                city_name = row.city_name
+                hsh = abs(hash(city_name)) % 10_000 + 99_000_000
+                codes.append(hsh)
+            else:
+                codes.append(int(row.city_code))
+        df["city_code"] = codes
     df.city_code = df.city_code.astype(str)
     df = df[sr_columns.values()]
     df["knesset_number"] = knesset_number
+
     return df
 
 
@@ -48,7 +63,7 @@ def simulate_dissimilarity_exceedance(
     n_party_rest,
     ballot_sizes,
     actual_dissimilarity,
-    n_simulations=1_000,
+    n_simulations=100,
     return_val="fraction",
 ):
     total_votes = n_party_a + n_party_b + n_party_rest
@@ -76,10 +91,10 @@ def simulate_dissimilarity_exceedance(
             index="ballot_box", columns="votes", aggfunc="size", fill_value=0
         )
         df_sim_wide.columns = [f"party_{c}" for c in df_sim_wide.columns]
-        df_sim_wide["total"] = df_sim_wide.sum(axis=1)
+        df_sim_wide["legal"] = df_sim_wide.sum(axis=1)
 
         sim_dissimilarity = vu.dissimilarity_index(
-            df_sim_wide, "party_0", "party_1", "total"
+            df_sim_wide, "party_0", "party_1", "legal"
         )
         simulation_results.append(sim_dissimilarity)
         if sim_dissimilarity > actual_dissimilarity:
@@ -110,7 +125,7 @@ def analyze_city_data(df, party_a, party_b, control_name=""):
             sel_relevant = vu.is_homogenic(df_city, [party_a, party_b])
             df_city_relevant = df_city[sel_relevant].copy()
 
-        if df_city_relevant["can_vote"].sum() < 500 or len(df_city_relevant) < 5:
+        if df_city_relevant["legal"].sum() < 500 or len(df_city_relevant) < 5:
             continue
 
         n_relevant_boxes = len(df_city_relevant)
@@ -122,7 +137,7 @@ def analyze_city_data(df, party_a, party_b, control_name=""):
         party_b_votes = df_city_relevant[party_b].sum()
 
         dissimilarity = vu.dissimilarity_index(
-            df_city_relevant, party_a, party_b, "can_vote"
+            df_city_relevant, party_a, party_b, "legal"
         )
         n_party_rest = df_city_relevant["legal"].sum() - party_a_votes - party_b_votes
         simulation = simulate_dissimilarity_exceedance(
@@ -167,7 +182,9 @@ def analyze_city_data(df, party_a, party_b, control_name=""):
     )
 
 
-def plot_dissimilarity_analysis(df_data: pd.DataFrame, multiyear: bool = None, ax=None):
+def plot_dissimilarity_latest_point(
+    df_data: pd.DataFrame, multiyear: bool = None, ax=None
+):
     # Determine if analysis is multiyear based on unique knesset numbers
     multiyear = (
         multiyear if multiyear is not None else len(df_data.knesset_number.unique()) > 1
@@ -186,6 +203,7 @@ def plot_dissimilarity_analysis(df_data: pd.DataFrame, multiyear: bool = None, a
     # Initialize y-axis ticks and labels
     yticks, y_ticklabels = [], []
 
+    first_time = True
     for _, row in df_data.iterrows():
         yticks.append(row.y)
         curr_city = row.city_name
@@ -195,11 +213,23 @@ def plot_dissimilarity_analysis(df_data: pd.DataFrame, multiyear: bool = None, a
         color = "C3" if "control" in curr_city.lower() else "C0"
 
         # Plot main dissimilarity point with color
-        ax.plot(row.dissimilarity, row.y, ".", color=color)
+        ax.plot(
+            row.dissimilarity,
+            row.y,
+            "o",
+            color=color,
+            label="Actual dissimilarity" if first_time else None,
+        )
 
         # Calculate percentile range and plot confidence intervals
         p5, p25, p50, p75, p95 = np.percentile(simulations, [5, 25, 50, 75, 95])
-        ax.plot([p5, p95], [row.y, row.y], color="gray", lw=1)
+        ax.plot(
+            [p5, p95],
+            [row.y, row.y],
+            color="gray",
+            lw=1,
+            label="Control (95% CI)" if first_time else None,
+        )
         ax.plot([p25, p75], [row.y, row.y], color="gray", lw=4)
 
         # Configure y-axis label for multiyear data
@@ -224,6 +254,8 @@ def plot_dissimilarity_analysis(df_data: pd.DataFrame, multiyear: bool = None, a
             y_ticklabels.append(lbl)
         else:
             y_ticklabels.append(get_display(curr_city))
+        first_time = False
+    ax.legend()
 
     # Set y-axis ticks and labels
     ax.set_yticks(yticks)
@@ -347,7 +379,11 @@ def main(knesset_numbers=None, add_controls=False):
     df_ballot_boxes = pd.concat(
         [load_data(knesset_number) for knesset_number in knesset_numbers],
     )
-    df_data = analyze_city_data(df_ballot_boxes, "party_shas", "party_agudat_israel")
+    df_data = analyze_city_data(
+        df_ballot_boxes,
+        "party_shas",
+        "party_agudat_israel",
+    )
     if add_controls:
         df_data = pd.concat(
             [
@@ -366,16 +402,23 @@ def main(knesset_numbers=None, add_controls=False):
     df_demographics = load_haredi_demographics()
     df_data = df_data.merge(df_demographics, on="city_name")
 
-    ax = plot_dissimilarity_analysis(df_data)
-    fig = ax.get_figure()
+    ax = plot_dissimilarity_latest_point(
+        df_data.loc[df_data.knesset_number == df_data.knesset_number.max()]
+    )
+    fig_latest_point = ax.get_figure()
 
     return {
         "df_data_boxes": df_ballot_boxes,
         "df_data": df_data,
-        "fig": fig,
+        "fig_latest_point": fig_latest_point,
     }
 
 
 if __name__ == "__main__":
-    main(25, add_controls=False)
+    res = main(
+        knesset_numbers=list(range(15, 26)),
+        add_controls=False,
+    )
+    df = res["df_data"]
+    print(df.knesset_number.value_counts(dropna=False))
     plt.show()
