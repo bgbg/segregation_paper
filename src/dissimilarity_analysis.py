@@ -183,7 +183,11 @@ def analyze_city_data(df, party_a, party_b, control_name=""):
 
 
 def plot_dissimilarity_latest_point(
-    df_data: pd.DataFrame, multiyear: bool = None, ax=None
+    df_data: pd.DataFrame,
+    multiyear: bool = None,
+    ax=None,
+    main_color="C0",
+    control_color="C3",
 ):
     # Determine if analysis is multiyear based on unique knesset numbers
     multiyear = (
@@ -210,7 +214,7 @@ def plot_dissimilarity_latest_point(
         simulations = row["dissimilarity_simulation"]
 
         # Determine color based on city_name content
-        color = "C3" if "control" in curr_city.lower() else "C0"
+        color = control_color if "control" in curr_city.lower() else main_color
 
         # Plot main dissimilarity point with color
         ax.plot(

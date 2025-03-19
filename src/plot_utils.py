@@ -6,7 +6,7 @@ removing spines, and disabling grids on matplotlib axes.
 from bidi.algorithm import get_display
 
 
-def hep(s):
+def heb(s):
     """
     Convert a string to its bidirectional display form.
 
@@ -16,8 +16,7 @@ def hep(s):
     Returns:
     str: The bidirectional display form of the string.
     """
-    # Example usage:
-    # hep("שלום") -> "םולש"
+    return get_display(s)
 
 
 def despine_and_remove_grid(ax):
