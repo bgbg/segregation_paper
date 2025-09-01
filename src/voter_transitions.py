@@ -282,7 +282,11 @@ def fit_model(
     return 0
 
 
-def summarize(*, pair: str, verbose: bool = False):
+def summarize(
+    *,
+    pair: str,
+    verbose: bool = False,
+):
     """Generate summary of results for a specific election pair.
 
     This command creates summary reports and visualizations:
@@ -309,5 +313,11 @@ def summarize(*, pair: str, verbose: bool = False):
 
 
 if __name__ == "__main__":
-    # defopt.run([prep_data, build_tensors, fit_model, summarize])
-    defopt.run(prep_data)
+    defopt.run(
+        [
+            prep_data,
+            build_tensors,
+            fit_model,
+            summarize,
+        ]
+    )

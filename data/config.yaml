@@ -9,7 +9,7 @@ cities:
     - elad
     - bnei brak
     - jerusalem
-    - modiin ilit
+    - modi'in illit
 
 # Data processing settings
 data:
@@ -17,7 +17,7 @@ data:
   homogenic_filtering:
     enabled: true
     threshold: 0.75  # >75% Haredi party votes (Shas + Agudat Israel)
-  
+
   # Elections to process (Knesset election numbers)
   elections:
     - 20
@@ -26,7 +26,7 @@ data:
     - 23
     - 24
     - 25
-  
+
   # Election pairs for transition analysis
   transition_pairs:
     - kn20_21
@@ -40,7 +40,7 @@ model:
   # Prior parameters for hierarchical model
   alpha_diag: 10.0              # Diagonal bias for transition matrix (inertia)
   kappa_prior_scale: 100.0      # Scale parameter for city-level pooling strength
-  
+
   # MCMC sampling parameters
   sampling:
     draws: 2000                 # Posterior samples per chain
@@ -48,7 +48,7 @@ model:
     chains: 4                   # Number of parallel chains
     target_accept: 0.9          # Target acceptance rate for NUTS
     random_seed: 42             # Reproducibility seed
-    
+
   # Convergence diagnostics thresholds
   diagnostics:
     max_rhat: 1.01             # Maximum R-hat for convergence
@@ -69,12 +69,12 @@ paths:
   interim_data: "data/interim"
   processed_data: "data/processed"
   external_data: "data/external"
-  
+
   # External mapping files
   columns_mapping: "data/external/columns.csv"
   columns_extended: "data/external/columns_extended.csv"
   cities_mapping: "data/external/israeli_cities_hebrew_english.csv"
-  
+
   # Output directories
   transitions_dir: "data/processed/transitions"
   logs_dir: "data/processed/logs"
