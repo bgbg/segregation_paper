@@ -2,7 +2,7 @@ from typing import Literal, Union
 
 import pandas as pd
 import scipy.stats as stats
-from scipy.stats import mannwhitneyu, chi2_contingency, wilcoxon
+from scipy.stats import chi2_contingency, mannwhitneyu, wilcoxon
 
 # Constants
 HAREDI_PARTIES = ["party_shas", "party_agudat_israel"]

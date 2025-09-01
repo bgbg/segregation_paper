@@ -5,48 +5,49 @@ CSV point estimates, and JSON fit summaries.
 """
 
 import json
-import pandas as pd
+from pathlib import Path
+from typing import Any, Dict, Optional, Union
+
 import arviz as az
 import numpy as np
-from pathlib import Path
-from typing import Dict, Any, Optional, Union
+import pandas as pd
 
 
 def save_inference_data(
-    trace: az.InferenceData,
-    output_path: Path,
-    scope: str = 'country'
+    trace: az.InferenceData, output_path: Path, scope: str = "country"
 ) -> None:
     """Save posterior samples to NetCDF file.
-    
+
     Args:
         trace: ArviZ InferenceData object
         output_path: Path for .nc output file
         scope: Scope of the data ('country' or city name)
     """
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    
+
     # Extract relevant variables based on scope
-    if scope == 'country':
+    if scope == "country":
         # Save country-level parameters
-        posterior_vars = ['M_country', 'kappa', 'phi']
+        posterior_vars = ["M_country", "kappa", "phi"]
     else:
         # For cities, save city-specific matrix and global parameters
-        posterior_vars = ['M_cities', 'M_country', 'kappa', 'phi']
-    
+        posterior_vars = ["M_cities", "M_country", "kappa", "phi"]
+
     # Create filtered trace with only relevant variables
-    filtered_trace = trace.sel(var=[v for v in posterior_vars if v in trace.posterior.data_vars])
-    
+    filtered_trace = trace.sel(
+        var=[v for v in posterior_vars if v in trace.posterior.data_vars]
+    )
+
     # Save to NetCDF
     filtered_trace.to_netcdf(output_path)
 
 
 def load_inference_data(input_path: Path) -> az.InferenceData:
     """Load posterior samples from NetCDF file.
-    
+
     Args:
         input_path: Path to .nc file
-        
+
     Returns:
         ArviZ InferenceData object
     """
@@ -56,12 +57,12 @@ def load_inference_data(input_path: Path) -> az.InferenceData:
 def save_point_estimates(
     trace: az.InferenceData,
     output_path: Path,
-    scope: str = 'country',
-    estimator: str = 'mean',
-    credible_interval: float = 0.95
+    scope: str = "country",
+    estimator: str = "mean",
+    credible_interval: float = 0.95,
 ) -> None:
     """Save point estimates of transition matrix to CSV.
-    
+
     Args:
         trace: Posterior samples
         output_path: Path for CSV output
@@ -70,64 +71,63 @@ def save_point_estimates(
         credible_interval: Width of credible intervals
     """
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    
+
     # Extract transition matrix
-    if scope == 'country':
-        matrix_var = 'M_country'
+    if scope == "country":
+        matrix_var = "M_country"
     else:
-        matrix_var = 'M_cities'
+        matrix_var = "M_cities"
         # For cities, we'd need to select the appropriate city index
         # This is simplified for now
-    
+
     if matrix_var not in trace.posterior:
         raise ValueError(f"Variable {matrix_var} not found in trace")
-    
+
     matrix_samples = trace.posterior[matrix_var]
-    
+
     # Compute point estimates
-    if estimator == 'mean':
-        point_est = matrix_samples.mean(dim=['chain', 'draw'])
-    elif estimator == 'median':
-        point_est = matrix_samples.median(dim=['chain', 'draw'])
+    if estimator == "mean":
+        point_est = matrix_samples.mean(dim=["chain", "draw"])
+    elif estimator == "median":
+        point_est = matrix_samples.median(dim=["chain", "draw"])
     else:
         raise ValueError(f"Unknown estimator: {estimator}")
-    
+
     # Compute credible intervals
     alpha = 1 - credible_interval
-    lower = matrix_samples.quantile(alpha/2, dim=['chain', 'draw'])
-    upper = matrix_samples.quantile(1 - alpha/2, dim=['chain', 'draw'])
-    
+    lower = matrix_samples.quantile(alpha / 2, dim=["chain", "draw"])
+    upper = matrix_samples.quantile(1 - alpha / 2, dim=["chain", "draw"])
+
     # Create DataFrame with estimates and intervals
-    categories = ['Shas', 'Agudat_Israel', 'Other', 'Abstained']
-    
+    categories = ["Shas", "Agudat_Israel", "Other", "Abstained"]
+
     # Convert to DataFrame format
     results = []
     for i, from_cat in enumerate(categories):
         for j, to_cat in enumerate(categories):
-            results.append({
-                'from_category': from_cat,
-                'to_category': to_cat,
-                'estimate': float(point_est[i, j].values),
-                'lower_ci': float(lower[i, j].values),
-                'upper_ci': float(upper[i, j].values)
-            })
-    
+            results.append(
+                {
+                    "from_category": from_cat,
+                    "to_category": to_cat,
+                    "estimate": float(point_est[i, j].values),
+                    "lower_ci": float(lower[i, j].values),
+                    "upper_ci": float(upper[i, j].values),
+                }
+            )
+
     df = pd.DataFrame(results)
     df.to_csv(output_path, index=False)
 
 
-def save_fit_summary(
-    summary: Dict[str, Any],
-    output_path: Path
-) -> None:
+def save_fit_summary(summary: Dict[str, Any], output_path: Path) -> None:
     """Save fit summary to JSON file.
-    
+
     Args:
         summary: Summary dictionary
         output_path: Path for JSON output
     """
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    
+
     # Convert numpy types to Python types for JSON serialization
     def convert_numpy(obj):
         if isinstance(obj, np.ndarray):
@@ -144,32 +144,32 @@ def save_fit_summary(
             return [convert_numpy(v) for v in obj]
         else:
             return obj
-    
+
     converted_summary = convert_numpy(summary)
-    
-    with open(output_path, 'w') as f:
+
+    with open(output_path, "w") as f:
         json.dump(converted_summary, f, indent=2)
 
 
 def load_fit_summary(input_path: Path) -> Dict[str, Any]:
     """Load fit summary from JSON file.
-    
+
     Args:
         input_path: Path to JSON file
-        
+
     Returns:
         Summary dictionary
     """
-    with open(input_path, 'r') as f:
+    with open(input_path, "r") as f:
         return json.load(f)
 
 
 def load_point_estimates(input_path: Path) -> pd.DataFrame:
     """Load point estimates from CSV file.
-    
+
     Args:
         input_path: Path to CSV file
-        
+
     Returns:
         DataFrame with estimates and credible intervals
     """

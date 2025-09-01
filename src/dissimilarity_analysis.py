@@ -1,13 +1,14 @@
 import os
 import sys
+from datetime import timedelta
+
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+import seaborn as sns
+from bidi.algorithm import get_display
 from cachier import cachier
 from tqdm.auto import tqdm
-from datetime import timedelta
-import seaborn as sns
-import matplotlib.pyplot as plt
-from bidi.algorithm import get_display
 
 sys.path.append("..")
 from src import vote_utils as vu

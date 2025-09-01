@@ -8,21 +8,20 @@ This module provides CLI commands for the complete voter transition analysis pip
 """
 
 import logging
-import sys
-import defopt
-from pathlib import Path
-from typing import Optional
 
 # Import our modules
 import sys
 from pathlib import Path
+from typing import Optional
+
+import defopt
 
 # Add project root to path to enable imports
 sys.path.append(str(Path(__file__).parent.parent))
 
 from src.data_harmonizer import harmonize_all_elections, load_config
-from src.transition_model.preprocess import prepare_transition_data
 from src.transition_model.fit import fit_transition_pair
+from src.transition_model.preprocess import prepare_transition_data
 
 
 def setup_logging(verbose: bool = False):

@@ -1,7 +1,15 @@
 {
   "permissions": {
     "allow": [
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(mkdir:*)",
+      "Bash(conda info:*)",
+      "Bash(tree:*)",
+      "Bash(python:*)",
+      "Bash(conda activate:*)",
+      "Bash(source:*)",
+      "Bash(git commit:*)",
+      "Bash(pip install pytest pyyaml)"
     ],
     "deny": [],
     "ask": []
