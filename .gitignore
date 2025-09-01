@@ -3,3 +3,4 @@ TODO*.md
 todo*.md
 .serena/
 .claude/
+*.parquet
