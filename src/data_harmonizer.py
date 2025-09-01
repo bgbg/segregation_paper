@@ -284,15 +284,12 @@ def harmonize_all_elections(config_path: str = "data/config.yaml",
     harmonized_data = {}
     
     for election_num in elections:
-        try:
-            df = harmonize_election_data(election_num, config, force)
-            if not df.empty:
-                harmonized_data[election_num] = df
-                logger.info(f"Successfully harmonized election {election_num}: {len(df)} stations")
-            else:
-                logger.warning(f"No data available for election {election_num}")
-        except Exception as e:
-            logger.error(f"Failed to harmonize election {election_num}: {e}")
+        df = harmonize_election_data(election_num, config, force)
+        if not df.empty:
+            harmonized_data[election_num] = df
+            logger.info(f"Successfully harmonized election {election_num}: {len(df)} stations")
+        else:
+            logger.warning(f"No data available for election {election_num}")
     
     logger.info(f"Harmonization complete: processed {len(harmonized_data)} elections")
     return harmonized_data
@@ -306,19 +303,15 @@ if __name__ == "__main__":
     # Test harmonization with available data
     logger.info("Testing data harmonization pipeline...")
     
-    try:
-        harmonized_data = harmonize_all_elections(force=False)
-        
-        if harmonized_data:
-            logger.info("Harmonization test successful!")
-            for election_num, df in harmonized_data.items():
-                logger.info(f"Election {election_num}: {len(df)} stations, "
-                           f"{df['A_shas'].sum():.0f} Shas, "
-                           f"{df['B_agudat'].sum():.0f} Agudat, "
-                           f"{df['Other'].sum():.0f} Other, "
-                           f"{df['Abstained'].sum():.0f} Abstained")
-        else:
-            logger.warning("No election data was harmonized - check if raw data files exist")
-            
-    except Exception as e:
-        logger.error(f"Harmonization test failed: {e}")
+    harmonized_data = harmonize_all_elections(force=False)
+    
+    if harmonized_data:
+        logger.info("Harmonization test successful!")
+        for election_num, df in harmonized_data.items():
+            logger.info(f"Election {election_num}: {len(df)} stations, "
+                       f"{df['A_shas'].sum():.0f} Shas, "
+                       f"{df['B_agudat'].sum():.0f} Agudat, "
+                       f"{df['Other'].sum():.0f} Other, "
+                       f"{df['Abstained'].sum():.0f} Abstained")
+    else:
+        logger.warning("No election data was harmonized - check if raw data files exist")
