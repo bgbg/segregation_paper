@@ -36,7 +36,7 @@ def setup_logging(verbose: bool = False):
 def prep_data(
     *,
     config_path: str = "data/config.yaml",
-    force: bool = True,
+    force: bool = False,
     verbose: bool = False,
 ):
     """Harmonize raw election data and prepare for analysis.
