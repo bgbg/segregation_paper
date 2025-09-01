@@ -13,6 +13,9 @@ seaborn
 tabulate
 tqdm
 
+pymc
+arviz
+
 
 
 # notebooks stuff - to make sure nbconvert works
