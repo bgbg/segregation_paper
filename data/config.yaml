@@ -1,0 +1,80 @@
+# Voter Transition Study Configuration
+# Central configuration for cities, data processing, and PyMC parameters
+
+# Target cities for city-level transition matrix analysis
+cities:
+  target_cities:
+    - ashdod
+    - beit shemesh
+    - elad
+    - bnei brak
+    - jerusalem
+    - modiin ilit
+
+# Data processing settings
+data:
+  # Homogenic filtering settings
+  homogenic_filtering:
+    enabled: true
+    threshold: 0.75  # >75% Haredi party votes (Shas + Agudat Israel)
+  
+  # Elections to process (Knesset election numbers)
+  elections:
+    - 20
+    - 21
+    - 22
+    - 23
+    - 24
+    - 25
+  
+  # Election pairs for transition analysis
+  transition_pairs:
+    - kn20_21
+    - kn21_22
+    - kn22_23
+    - kn23_24
+    - kn24_25
+
+# PyMC model parameters
+model:
+  # Prior parameters for hierarchical model
+  alpha_diag: 10.0              # Diagonal bias for transition matrix (inertia)
+  kappa_prior_scale: 100.0      # Scale parameter for city-level pooling strength
+  
+  # MCMC sampling parameters
+  sampling:
+    draws: 2000                 # Posterior samples per chain
+    tune: 2000                  # Tuning samples per chain
+    chains: 4                   # Number of parallel chains
+    target_accept: 0.9          # Target acceptance rate for NUTS
+    random_seed: 42             # Reproducibility seed
+    
+  # Convergence diagnostics thresholds
+  diagnostics:
+    max_rhat: 1.01             # Maximum R-hat for convergence
+    min_ess_bulk: 400          # Minimum bulk ESS
+    min_ess_tail: 400          # Minimum tail ESS
+
+# Party categories for transition modeling
+categories:
+  - shas                       # Shas party (שס)
+  - agudat_israel             # Agudat Israel (ג)
+  - other                     # All other parties combined
+  - abstained                 # Non-voters + invalid votes
+
+# File paths and naming conventions
+paths:
+  # Data directories
+  raw_data: "data/raw"
+  interim_data: "data/interim"
+  processed_data: "data/processed"
+  external_data: "data/external"
+  
+  # External mapping files
+  columns_mapping: "data/external/columns.csv"
+  columns_extended: "data/external/columns_extended.csv"
+  cities_mapping: "data/external/israeli_cities_hebrew_english.csv"
+  
+  # Output directories
+  transitions_dir: "data/processed/transitions"
+  logs_dir: "data/processed/logs"
