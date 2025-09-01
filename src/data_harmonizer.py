@@ -11,13 +11,12 @@ This module handles the complete data harmonization process:
 
 import logging
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List
 
 import numpy as np
 import pandas as pd
 import yaml
 
-from src.vote_utils import is_homogenic
 
 logger = logging.getLogger(__name__)
 
@@ -199,11 +198,10 @@ def filter_target_cities(
         if city_lower in english_to_hebrew:
             target_hebrew_cities.append(english_to_hebrew[city_lower])
         else:
-            logger.warning(f"Target city '{city}' not found in city mapping")
+            raise ValueError(f"Target city '{city}' not found in city mapping")
 
     if not target_hebrew_cities:
-        logger.warning("No target cities found in mapping - returning all cities")
-        return df
+        raise ValueError("No target cities found in mapping")
 
     # Filter for target cities
     city_mask = df["city_name"].isin(target_hebrew_cities)

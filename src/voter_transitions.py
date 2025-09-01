@@ -12,7 +12,6 @@ import logging
 # Import our modules
 import sys
 from pathlib import Path
-from typing import Optional
 
 import defopt
 
@@ -126,65 +125,57 @@ def build_tensors(
     setup_logging(verbose)
     logger = logging.getLogger(__name__)
 
-    try:
-        logger.info(f"Building tensors for transition pair: {pair}")
+    logger.info(f"Building tensors for transition pair: {pair}")
 
-        # Validate pair format
-        if not pair.startswith("kn") or "_" not in pair:
-            logger.error(f"Invalid pair format: {pair}. Expected format: 'knXX_YY'")
-            return 1
-
-        # Load configuration
-        config = load_config(config_path)
-
-        # Check if this is a valid transition pair
-        valid_pairs = config["data"]["transition_pairs"]
-        if pair not in valid_pairs:
-            logger.warning(
-                f"Pair {pair} not in configured transition pairs: {valid_pairs}"
-            )
-            logger.info("Proceeding anyway...")
-
-        # Prepare transition data
-        logger.info("Loading harmonized data and building tensors...")
-        data = prepare_transition_data(pair, config_path)
-
-        # Print data summary
-        logger.info(f"✓ Tensors built for {pair}")
-        logger.info(f"Country stations: {len(data['country']['x1'])}")
-
-        cities_with_data = [k for k in data.keys() if k != "country"]
-        logger.info(f"Cities with data: {len(cities_with_data)}")
-
-        for city in cities_with_data:
-            city_stations = len(data[city]["x1"])
-            logger.info(f"  {city}: {city_stations} stations")
-
-        # Validate tensor shapes
-        categories = config["categories"]
-        K = len(categories)
-
-        for scope, scope_data in data.items():
-            x1_shape = scope_data["x1"].shape
-            x2_shape = scope_data["x2"].shape
-
-            if x1_shape[1] != K or x2_shape[1] != K:
-                logger.error(
-                    f"Invalid tensor shapes for {scope}: "
-                    f"x1={x1_shape}, x2={x2_shape}, expected K={K}"
-                )
-                return 1
-
-            logger.debug(f"{scope}: x1={x1_shape}, x2={x2_shape}")
-
-        logger.info("✓ Tensor validation passed")
-
-    except FileNotFoundError as e:
-        logger.error(f"✗ Missing harmonized data: {e}")
-        logger.error("Run 'prep-data' command first to harmonize election data")
+    # Validate pair format
+    if not pair.startswith("kn") or "_" not in pair:
+        logger.error(f"Invalid pair format: {pair}. Expected format: 'knXX_YY'")
         return 1
 
-    # Let exceptions propagate to main handler for proper error reporting
+    # Load configuration
+    config = load_config(config_path)
+
+    # Check if this is a valid transition pair
+    valid_pairs = config["data"]["transition_pairs"]
+    if pair not in valid_pairs:
+        logger.warning(
+            f"Pair {pair} not in configured transition pairs: {valid_pairs}"
+        )
+        logger.info("Proceeding anyway...")
+
+    # Prepare transition data
+    logger.info("Loading harmonized data and building tensors...")
+    data = prepare_transition_data(pair, config_path)
+
+    # Print data summary
+    logger.info(f"✓ Tensors built for {pair}")
+    logger.info(f"Country stations: {len(data['country']['x1'])}")
+
+    cities_with_data = [k for k in data.keys() if k != "country"]
+    logger.info(f"Cities with data: {len(cities_with_data)}")
+
+    for city in cities_with_data:
+        city_stations = len(data[city]["x1"])
+        logger.info(f"  {city}: {city_stations} stations")
+
+    # Validate tensor shapes
+    categories = config["categories"]
+    K = len(categories)
+
+    for scope, scope_data in data.items():
+        x1_shape = scope_data["x1"].shape
+        x2_shape = scope_data["x2"].shape
+
+        if x1_shape[1] != K or x2_shape[1] != K:
+            logger.error(
+                f"Invalid tensor shapes for {scope}: "
+                f"x1={x1_shape}, x2={x2_shape}, expected K={K}"
+            )
+            return 1
+
+        logger.debug(f"{scope}: x1={x1_shape}, x2={x2_shape}")
+
+    logger.info("✓ Tensor validation passed")
 
     logger.info("✓ Tensor building completed successfully")
     return 0
@@ -290,9 +281,7 @@ def fit_model(
     return 0
 
 
-def summarize(
-    *, pair: str, config_path: str = "data/config.yaml", verbose: bool = False
-):
+def summarize(*, pair: str, verbose: bool = False):
     """Generate summary of results for a specific election pair.
 
     This command creates summary reports and visualizations:
@@ -303,7 +292,6 @@ def summarize(
 
     Args:
         pair: Election pair identifier (e.g., 'kn20_21')
-        config_path: Path to YAML configuration file
         verbose: Enable verbose logging
     """
     setup_logging(verbose)
