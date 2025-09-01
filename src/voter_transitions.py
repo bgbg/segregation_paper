@@ -34,7 +34,10 @@ def setup_logging(verbose: bool = False):
 
 
 def prep_data(
-    *, config_path: str = "data/config.yaml", force: bool = False, verbose: bool = False
+    *,
+    config_path: str = "data/config.yaml",
+    force: bool = True,
+    verbose: bool = False,
 ):
     """Harmonize raw election data and prepare for analysis.
 
@@ -138,9 +141,7 @@ def build_tensors(
     # Check if this is a valid transition pair
     valid_pairs = config["data"]["transition_pairs"]
     if pair not in valid_pairs:
-        logger.warning(
-            f"Pair {pair} not in configured transition pairs: {valid_pairs}"
-        )
+        logger.warning(f"Pair {pair} not in configured transition pairs: {valid_pairs}")
         logger.info("Proceeding anyway...")
 
     # Prepare transition data
@@ -308,4 +309,5 @@ def summarize(*, pair: str, verbose: bool = False):
 
 
 if __name__ == "__main__":
-    defopt.run([prep_data, build_tensors, fit_model, summarize])
+    # defopt.run([prep_data, build_tensors, fit_model, summarize])
+    defopt.run(prep_data)
