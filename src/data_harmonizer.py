@@ -243,10 +243,9 @@ def harmonize_election_data(
         )
         return pd.read_parquet(interim_path)
 
-    # Check if raw data exists
+    # Check if raw data exists - let FileNotFoundError propagate for fail-fast behavior
     if not raw_path.exists():
-        logger.warning(f"Raw data file not found: {raw_path}")
-        return pd.DataFrame()  # Return empty DataFrame
+        raise FileNotFoundError(f"Raw data file not found: {raw_path}")
 
     logger.info(f"Processing election {election_num} data...")
 
@@ -305,13 +304,10 @@ def harmonize_all_elections(
 
     for election_num in elections:
         df = harmonize_election_data(election_num, config, force)
-        if not df.empty:
-            harmonized_data[election_num] = df
-            logger.info(
-                f"Successfully harmonized election {election_num}: {len(df)} stations"
-            )
-        else:
-            logger.warning(f"No data available for election {election_num}")
+        harmonized_data[election_num] = df
+        logger.info(
+            f"Successfully harmonized election {election_num}: {len(df)} stations"
+        )
 
     logger.info(f"Harmonization complete: processed {len(harmonized_data)} elections")
     return harmonized_data
