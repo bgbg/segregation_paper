@@ -53,6 +53,8 @@ Hebrew text support and matplotlib styling utilities
 - **GitHub CLI**: Use `gh` command to interact with GitHub
 - **Pull Requests**: Don't use emojis in PR titles or descriptions
 - **Commit Messages**: Don't use emojis or sign with "created with AI" or similar
+- **Ask for message confirmation** before committing or creating a PR
+- **Follow best practices** for git commit and PR messages: start with a short description of the changes, then a list of the changes
 
 ## Dependencies
 
