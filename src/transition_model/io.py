@@ -11,6 +11,11 @@ from typing import Any, Dict, Optional, Union
 import arviz as az
 import numpy as np
 import pandas as pd
+import pymc as pm
+import logging
+
+# Set PyMC logging level to warning
+logging.getLogger("pymc").setLevel(logging.WARNING)
 
 
 def save_inference_data(
@@ -78,35 +83,39 @@ def save_point_estimates(
     if scope == "country":
         # For country-level, look for column variables
         col_vars = [
-            var for var in trace.posterior.data_vars
-            if var.startswith("M_country_col_")
+            var for var in trace.posterior.data_vars if var.startswith("M_country_col_")
         ]
         if not col_vars:
             raise ValueError("Country transition matrix variables not found in trace")
-        
+
         # Stack the columns to form the matrix
         import xarray as xr
+
         col_data = []
         for col_var in sorted(col_vars):
             col_data.append(trace.posterior[col_var])
         matrix_samples = xr.concat(col_data, dim="matrix_col")
-        
+
     else:
         # For cities, we need to extract city-specific matrices
         if city_index is None:
             raise ValueError(f"city_index is required for city scope: {scope}")
-            
+
         # Get column variables for this city
         col_vars = [
-            var for var in trace.posterior.data_vars
+            var
+            for var in trace.posterior.data_vars
             if var.startswith(f"M_city_{city_index}_col_")
         ]
-        
+
         if not col_vars:
-            raise ValueError(f"City transition matrix variables not found for city index {city_index}")
-        
+            raise ValueError(
+                f"City transition matrix variables not found for city index {city_index}"
+            )
+
         # Stack the columns to form the city matrix
         import xarray as xr
+
         col_data = []
         for col_var in sorted(col_vars):
             col_data.append(trace.posterior[col_var])
@@ -120,6 +129,39 @@ def save_point_estimates(
     else:
         raise ValueError(f"Unknown estimator: {estimator}")
 
+    # Verify diagonal elements are >= 0.65 (voter loyalty check)
+    # Extract diagonal elements from the xarray structure
+    logging.info(f"Matrix shape: {point_est.shape}, dims: {point_est.dims}")
+
+    # Extract diagonal elements directly from the xarray
+    # For a 4x4 matrix, diagonal elements are at positions (i, i)
+    # Exclude "Abstained" category (index 3) from the check
+    diagonal_values = []
+    categories = ["Shas", "Agudat_Israel", "Other", "Abstained"]
+    for i in range(3):  # Only check first 3 categories, exclude Abstained
+        # Extract the correct diagonal element from the nested structure
+        if hasattr(point_est, "dims") and "matrix_col" in point_est.dims:
+            if scope == "country":
+                element = point_est.sel(matrix_col=i).isel(
+                    **{f"M_country_col_{i}_dim_0": i}
+                )
+            else:
+                element = point_est.sel(matrix_col=i).isel(
+                    **{f"M_city_{city_index}_col_{i}_dim_0": i}
+                )
+        else:
+            element = point_est[i, i]
+        diagonal_values.append(float(element.values.flatten()[0]))
+
+    diagonal_values = np.array(diagonal_values)
+    min_diagonal = np.min(diagonal_values)
+    if min_diagonal < 0.65:
+        logging.warning(
+            f"Low voter loyalty detected in {scope} transition matrix. "
+            f"Minimum diagonal value: {min_diagonal:.3f} (should be >= 0.65). "
+            f"Diagonal values: {np.round(diagonal_values, 3)}"
+        )
+
     # Compute credible intervals
     alpha = 1 - credible_interval
     lower = matrix_samples.quantile(alpha / 2, dim=["chain", "draw"])
@@ -130,13 +172,29 @@ def save_point_estimates(
 
     # Convert to DataFrame format
     results = []
-    for i, from_cat in enumerate(categories):
-        for j, to_cat in enumerate(categories):
+    for i, to_cat in enumerate(categories):
+        for j, from_cat in enumerate(categories):
+            # The matrix is stored as columns, so we need to access it correctly
+            # Each column represents the transition probabilities from category j
+            # We need to extract the i-th element from the j-th column
+            if hasattr(point_est, "dims") and "matrix_col" in point_est.dims:
+                # Extract the correct element from the nested structure
+                if scope == "country":
+                    element = point_est.sel(matrix_col=j).isel(
+                        **{f"M_country_col_{j}_dim_0": i}
+                    )
+                else:
+                    element = point_est.sel(matrix_col=j).isel(
+                        **{f"M_city_{city_index}_col_{j}_dim_0": i}
+                    )
+            else:
+                element = point_est[i, j]
+
             results.append(
                 {
                     "from_category": from_cat,
                     "to_category": to_cat,
-                    "estimate": float(point_est[i, j].values.flatten()[0]),
+                    "estimate": float(element.values.flatten()[0]),
                     "lower_ci": float(lower[i, j].values.flatten()[0]),
                     "upper_ci": float(upper[i, j].values.flatten()[0]),
                 }
@@ -174,35 +232,39 @@ def save_vote_movements(
     if scope == "country":
         # For country-level, look for column variables
         col_vars = [
-            var for var in trace.posterior.data_vars
-            if var.startswith("M_country_col_")
+            var for var in trace.posterior.data_vars if var.startswith("M_country_col_")
         ]
         if not col_vars:
             raise ValueError("Country transition matrix variables not found in trace")
-        
+
         # Stack the columns to form the matrix
         import xarray as xr
+
         col_data = []
         for col_var in sorted(col_vars):
             col_data.append(trace.posterior[col_var])
         matrix_samples = xr.concat(col_data, dim="matrix_col")
-        
+
     else:
         # For cities, we need to extract city-specific matrices
         if city_index is None:
             raise ValueError(f"city_index is required for city scope: {scope}")
-            
+
         # Get column variables for this city
         col_vars = [
-            var for var in trace.posterior.data_vars
+            var
+            for var in trace.posterior.data_vars
             if var.startswith(f"M_city_{city_index}_col_")
         ]
-        
+
         if not col_vars:
-            raise ValueError(f"City transition matrix variables not found for city index {city_index}")
-        
+            raise ValueError(
+                f"City transition matrix variables not found for city index {city_index}"
+            )
+
         # Stack the columns to form the city matrix
         import xarray as xr
+
         col_data = []
         for col_var in sorted(col_vars):
             col_data.append(trace.posterior[col_var])
@@ -216,6 +278,39 @@ def save_vote_movements(
     else:
         raise ValueError(f"Unknown estimator: {estimator}")
 
+    # Verify diagonal elements are >= 0.65 (voter loyalty check)
+    # Extract diagonal elements from the xarray structure
+    logging.info(f"Matrix shape: {point_est.shape}, dims: {point_est.dims}")
+
+    # Extract diagonal elements directly from the xarray
+    # For a 4x4 matrix, diagonal elements are at positions (i, i)
+    # Exclude "Abstained" category (index 3) from the check
+    diagonal_values = []
+    categories = ["Shas", "Agudat_Israel", "Other", "Abstained"]
+    for i in range(3):  # Only check first 3 categories, exclude Abstained
+        # Extract the correct diagonal element from the nested structure
+        if hasattr(point_est, "dims") and "matrix_col" in point_est.dims:
+            if scope == "country":
+                element = point_est.sel(matrix_col=i).isel(
+                    **{f"M_country_col_{i}_dim_0": i}
+                )
+            else:
+                element = point_est.sel(matrix_col=i).isel(
+                    **{f"M_city_{city_index}_col_{i}_dim_0": i}
+                )
+        else:
+            element = point_est[i, i]
+        diagonal_values.append(float(element.values.flatten()[0]))
+
+    diagonal_values = np.array(diagonal_values)
+    min_diagonal = np.min(diagonal_values)
+    if min_diagonal < 0.65:
+        logging.warning(
+            f"Low voter loyalty detected in {scope} transition matrix. "
+            f"Minimum diagonal value: {min_diagonal:.3f} (should be >= 0.65). "
+            f"Diagonal values: {np.round(diagonal_values, 3)}"
+        )
+
     # Compute credible intervals
     alpha = 1 - credible_interval
     lower = matrix_samples.quantile(alpha / 2, dim=["chain", "draw"])
@@ -223,27 +318,41 @@ def save_vote_movements(
 
     # Categories and their vote totals from election t
     categories = ["Shas", "Agudat_Israel", "Other", "Abstained"]
-    
+
     # Convert to DataFrame format with vote movements
     results = []
-    for i, from_cat in enumerate(categories):
-        from_votes = vote_totals.get(from_cat, 0.0)
-        for j, to_cat in enumerate(categories):
+    for i, to_cat in enumerate(categories):
+        for j, from_cat in enumerate(categories):
+            from_votes = vote_totals.get(from_cat, 0.0)
             # Calculate vote movements: probability * total_votes_from_category
-            prob_point = float(point_est[i, j].values.flatten()[0])
+            # The matrix is stored as columns, so we need to access it correctly
+            if hasattr(point_est, "dims") and "matrix_col" in point_est.dims:
+                # Extract the correct element from the nested structure
+                if scope == "country":
+                    element = point_est.sel(matrix_col=j).isel(
+                        **{f"M_country_col_{j}_dim_0": i}
+                    )
+                else:
+                    element = point_est.sel(matrix_col=j).isel(
+                        **{f"M_city_{city_index}_col_{j}_dim_0": i}
+                    )
+            else:
+                element = point_est[i, j]
+
+            prob_point = float(element.values.flatten()[0])
             prob_lower = float(lower[i, j].values.flatten()[0])
             prob_upper = float(upper[i, j].values.flatten()[0])
-            
+
             vote_movement = prob_point * from_votes
             vote_lower = prob_lower * from_votes
             vote_upper = prob_upper * from_votes
-            
+
             # Apply minimum threshold filter
             if vote_movement < min_votes:
                 vote_movement = 0.0
                 vote_lower = 0.0
                 vote_upper = 0.0
-            
+
             results.append(
                 {
                     "from_category": from_cat,

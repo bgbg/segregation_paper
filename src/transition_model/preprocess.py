@@ -117,26 +117,44 @@ def build_station_tensors(
     df1 = df1.copy()
     df2 = df2.copy()
     # Ensure consistent string formatting by converting to int first to remove .0
-    df1["ballot_box_id"] = df1["city_code"].astype(int).astype(str) + "_" + df1["ballot_code"].astype(int).astype(str)
-    df2["ballot_box_id"] = df2["city_code"].astype(int).astype(str) + "_" + df2["ballot_code"].astype(int).astype(str)
+    df1["ballot_box_id"] = (
+        df1["city_code"].astype(int).astype(str)
+        + "_"
+        + df1["ballot_code"].astype(int).astype(str)
+    )
+    df2["ballot_box_id"] = (
+        df2["city_code"].astype(int).astype(str)
+        + "_"
+        + df2["ballot_code"].astype(int).astype(str)
+    )
 
     # Align ballot boxes between elections
     common_ballot_boxes = set(df1["ballot_box_id"]) & set(df2["ballot_box_id"])
-    
+
     # Log mismatches for transparency
     df1_only = set(df1["ballot_box_id"]) - set(df2["ballot_box_id"])
     df2_only = set(df2["ballot_box_id"]) - set(df1["ballot_box_id"])
-    
+
     if df1_only:
-        logger.warning(f"Ballot boxes present in election t but not t+1: {len(df1_only)} boxes")
-        logger.debug(f"Missing in t+1: {sorted(list(df1_only))[:10]}{'...' if len(df1_only) > 10 else ''}")
-    
+        logger.warning(
+            f"Ballot boxes present in election t but not t+1: {len(df1_only)} boxes"
+        )
+        logger.debug(
+            f"Missing in t+1: {sorted(list(df1_only))[:10]}{'...' if len(df1_only) > 10 else ''}"
+        )
+
     if df2_only:
-        logger.warning(f"Ballot boxes present in election t+1 but not t: {len(df2_only)} boxes")
-        logger.debug(f"Missing in t: {sorted(list(df2_only))[:10]}{'...' if len(df2_only) > 10 else ''}")
-    
-    logger.info(f"Using {len(common_ballot_boxes)} common ballot boxes for transition analysis")
-    
+        logger.warning(
+            f"Ballot boxes present in election t+1 but not t: {len(df2_only)} boxes"
+        )
+        logger.debug(
+            f"Missing in t: {sorted(list(df2_only))[:10]}{'...' if len(df2_only) > 10 else ''}"
+        )
+
+    logger.debug(
+        f"Using {len(common_ballot_boxes)} common ballot boxes for transition analysis"
+    )
+
     # Filter to common ballot boxes only
     df1 = df1[df1["ballot_box_id"].isin(common_ballot_boxes)]
     df2 = df2[df2["ballot_box_id"].isin(common_ballot_boxes)]
@@ -144,17 +162,17 @@ def build_station_tensors(
     # Aggregate duplicate ballot boxes by summing vote counts
     df1_agg = df1.groupby("ballot_box_id")[categories].sum().reset_index()
     df2_agg = df2.groupby("ballot_box_id")[categories].sum().reset_index()
-    
+
     # Sort by ballot_box_id for alignment
     df1_agg = df1_agg.sort_values("ballot_box_id")
     df2_agg = df2_agg.sort_values("ballot_box_id")
-    
+
     # Verify alignment
     if not df1_agg["ballot_box_id"].equals(df2_agg["ballot_box_id"]):
         raise ValueError("Ballot box alignment failed after aggregation")
-    
-    logger.info(f"Final aligned ballot boxes: {len(df1_agg)}")
-    
+
+    logger.debug(f"Final aligned ballot boxes: {len(df1_agg)}")
+
     # Use aggregated dataframes
     df1, df2 = df1_agg, df2_agg
 
@@ -169,10 +187,10 @@ def build_station_tensors(
 
 def load_city_mapping(config: Dict) -> Dict[str, str]:
     """Load Hebrew-English city name mapping.
-    
+
     Args:
         config: Configuration dictionary with paths
-        
+
     Returns:
         Dictionary mapping English city names to Hebrew names
     """
@@ -180,9 +198,9 @@ def load_city_mapping(config: Dict) -> Dict[str, str]:
     if not mapping_path.exists():
         logger.warning(f"City mapping file not found: {mapping_path}")
         return {}
-    
+
     df_mapping = pd.read_csv(mapping_path)
-    
+
     # Create mapping from English to Hebrew
     english_to_hebrew = {}
     for _, row in df_mapping.iterrows():
@@ -192,7 +210,7 @@ def load_city_mapping(config: Dict) -> Dict[str, str]:
             # Normalize English names to match config format
             english_norm = english.lower().replace("'", "")
             english_to_hebrew[english_norm] = hebrew
-    
+
     return english_to_hebrew
 
 
@@ -231,7 +249,7 @@ def prepare_hierarchical_data(
 
     # Country-wide data
     x1_country, x2_country, n1_country, n2_country = build_station_tensors(df1, df2)
-    
+
     # Calculate country-wide vote totals from election t
     country_vote_totals = {}
     for i, category in enumerate(categories):
@@ -239,7 +257,7 @@ def prepare_hierarchical_data(
             country_vote_totals[category_names[i]] = float(df1[category].sum())
         else:
             country_vote_totals[category_names[i]] = 0.0
-    
+
     data["country"] = {
         "x1": x1_country,
         "x2": x2_country,
@@ -254,45 +272,50 @@ def prepare_hierarchical_data(
         # Normalize city name and get Hebrew equivalent
         city_norm = city_eng.lower().replace("'", "").replace(" ", " ")
         hebrew_name = city_mapping.get(city_norm)
-        
+
         if not hebrew_name:
             logger.warning(f"Hebrew name not found for city: {city_eng}")
             continue
-            
-        logger.info(f"Looking for city: {city_eng} -> {hebrew_name}")
-        
+        logger.debug(f"Looking for city: {city_eng} -> {hebrew_name}")
+
         # Match by Hebrew name
         city_df1 = df1[df1.get("city_name", "") == hebrew_name]
         city_df2 = df2[df2.get("city_name", "") == hebrew_name]
 
         if len(city_df1) > 0 and len(city_df2) > 0:
-            logger.info(f"Found city data: {hebrew_name} with {len(city_df1)}/{len(city_df2)} stations")
+            logger.info(
+                f"Found city data: {hebrew_name} with {len(city_df1)}/{len(city_df2)} stations"
+            )
             cities_found += 1
-            
+
             x1_city, x2_city, n1_city, n2_city = build_station_tensors(
                 city_df1, city_df2
             )
-            
+
             # Calculate city-specific vote totals from election t
             city_vote_totals = {}
             for i, category in enumerate(categories):
                 if category in city_df1.columns:
-                    city_vote_totals[category_names[i]] = float(city_df1[category].sum())
+                    city_vote_totals[category_names[i]] = float(
+                        city_df1[category].sum()
+                    )
                 else:
                     city_vote_totals[category_names[i]] = 0.0
-            
+
             # Use English name as key for consistency with existing code
             data[city_eng] = {
-                "x1": x1_city, 
-                "x2": x2_city, 
-                "n1": n1_city, 
+                "x1": x1_city,
+                "x2": x2_city,
+                "n1": n1_city,
                 "n2": n2_city,
                 "vote_totals": city_vote_totals,
             }
         else:
             logger.warning(f"No data found for city: {hebrew_name} ({city_eng})")
 
-    logger.info(f"Successfully prepared data for {cities_found}/{len(target_cities)} cities")
+    logger.info(
+        f"Successfully prepared data for {cities_found}/{len(target_cities)} cities"
+    )
     return data
 
 

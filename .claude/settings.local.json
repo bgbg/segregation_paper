@@ -11,7 +11,14 @@
       "Bash(git commit:*)",
       "Bash(pip install pytest pyyaml)",
       "mcp__jetbrains__get_file_text_by_path",
-      "mcp__serena__*"
+      "mcp__serena__*",
+      "mcp__serena__check_onboarding_performed",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "mcp__serena__find_symbol",
+      "mcp__serena__get_symbols_overview",
+      "mcp__serena__search_for_pattern",
+      "mcp__serena__list_dir",
+      "mcp__serena__find_file"
     ],
     "deny": [],
     "ask": []
