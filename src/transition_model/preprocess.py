@@ -4,12 +4,15 @@ This module handles building A/B/Other/Abstain tensors from election data
 for use in hierarchical ecological inference models.
 """
 
+import logging
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
 import numpy as np
 import pandas as pd
 import yaml
+
+logger = logging.getLogger(__name__)
 
 
 def load_config(config_path: str = "data/config.yaml") -> Dict:
@@ -105,31 +108,55 @@ def build_station_tensors(
 
     # Filter cities if specified
     if target_cities:
-        df1 = df1[df1["city"].isin(target_cities)]
-        df2 = df2[df2["city"].isin(target_cities)]
+        # Convert city names to lowercase for matching
+        target_cities_lower = [city.lower() for city in target_cities]
+        df1 = df1[df1["city_name"].str.lower().isin(target_cities_lower)]
+        df2 = df2[df2["city_name"].str.lower().isin(target_cities_lower)]
 
-    # Determine station ID column name
-    station_col = None
-    for col in ["station_id", "ballot_code", "ballot_id"]:
-        if col in df1.columns and col in df2.columns:
-            station_col = col
-            break
+    # Create a unique ballot box identifier combining city_code and ballot_code
+    df1 = df1.copy()
+    df2 = df2.copy()
+    # Ensure consistent string formatting by converting to int first to remove .0
+    df1["ballot_box_id"] = df1["city_code"].astype(int).astype(str) + "_" + df1["ballot_code"].astype(int).astype(str)
+    df2["ballot_box_id"] = df2["city_code"].astype(int).astype(str) + "_" + df2["ballot_code"].astype(int).astype(str)
 
-    if station_col is None:
-        # If no station ID column, assume rows are already aligned
-        if len(df1) != len(df2):
-            raise ValueError(
-                "DataFrames have different lengths and no station ID column found"
-            )
-    else:
-        # Align stations between elections
-        common_stations = set(df1[station_col]) & set(df2[station_col])
-        df1 = df1[df1[station_col].isin(common_stations)]
-        df2 = df2[df2[station_col].isin(common_stations)]
+    # Align ballot boxes between elections
+    common_ballot_boxes = set(df1["ballot_box_id"]) & set(df2["ballot_box_id"])
+    
+    # Log mismatches for transparency
+    df1_only = set(df1["ballot_box_id"]) - set(df2["ballot_box_id"])
+    df2_only = set(df2["ballot_box_id"]) - set(df1["ballot_box_id"])
+    
+    if df1_only:
+        logger.warning(f"Ballot boxes present in election t but not t+1: {len(df1_only)} boxes")
+        logger.debug(f"Missing in t+1: {sorted(list(df1_only))[:10]}{'...' if len(df1_only) > 10 else ''}")
+    
+    if df2_only:
+        logger.warning(f"Ballot boxes present in election t+1 but not t: {len(df2_only)} boxes")
+        logger.debug(f"Missing in t: {sorted(list(df2_only))[:10]}{'...' if len(df2_only) > 10 else ''}")
+    
+    logger.info(f"Using {len(common_ballot_boxes)} common ballot boxes for transition analysis")
+    
+    # Filter to common ballot boxes only
+    df1 = df1[df1["ballot_box_id"].isin(common_ballot_boxes)]
+    df2 = df2[df2["ballot_box_id"].isin(common_ballot_boxes)]
 
-        # Sort by station_id for alignment
-        df1 = df1.sort_values(station_col)
-        df2 = df2.sort_values(station_col)
+    # Aggregate duplicate ballot boxes by summing vote counts
+    df1_agg = df1.groupby("ballot_box_id")[categories].sum().reset_index()
+    df2_agg = df2.groupby("ballot_box_id")[categories].sum().reset_index()
+    
+    # Sort by ballot_box_id for alignment
+    df1_agg = df1_agg.sort_values("ballot_box_id")
+    df2_agg = df2_agg.sort_values("ballot_box_id")
+    
+    # Verify alignment
+    if not df1_agg["ballot_box_id"].equals(df2_agg["ballot_box_id"]):
+        raise ValueError("Ballot box alignment failed after aggregation")
+    
+    logger.info(f"Final aligned ballot boxes: {len(df1_agg)}")
+    
+    # Use aggregated dataframes
+    df1, df2 = df1_agg, df2_agg
 
     # Build tensors
     x1 = df1[categories].values

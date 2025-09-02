@@ -9,7 +9,9 @@
       "Bash(conda activate:*)",
       "Bash(source:*)",
       "Bash(git commit:*)",
-      "Bash(pip install pytest pyyaml)"
+      "Bash(pip install pytest pyyaml)",
+      "mcp__jetbrains__get_file_text_by_path",
+      "mcp__serena__*"
     ],
     "deny": [],
     "ask": []

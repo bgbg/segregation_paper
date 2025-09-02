@@ -80,10 +80,26 @@ def save_point_estimates(
         # For cities, we'd need to select the appropriate city index
         # This is simplified for now
 
+    # Handle the case where the matrix is stored as separate columns
     if matrix_var not in trace.posterior:
-        raise ValueError(f"Variable {matrix_var} not found in trace")
+        # Look for column variables like M_country_col_0, M_country_col_1, etc.
+        col_vars = [
+            var
+            for var in trace.posterior.data_vars
+            if var.startswith(f"{matrix_var}_col_")
+        ]
+        if not col_vars:
+            raise ValueError(f"Variable {matrix_var} or its columns not found in trace")
 
-    matrix_samples = trace.posterior[matrix_var]
+        # Stack the columns to form the matrix
+        import xarray as xr
+
+        col_data = []
+        for col_var in sorted(col_vars):
+            col_data.append(trace.posterior[col_var])
+        matrix_samples = xr.concat(col_data, dim="matrix_col")
+    else:
+        matrix_samples = trace.posterior[matrix_var]
 
     # Compute point estimates
     if estimator == "mean":
@@ -109,9 +125,9 @@ def save_point_estimates(
                 {
                     "from_category": from_cat,
                     "to_category": to_cat,
-                    "estimate": float(point_est[i, j].values),
-                    "lower_ci": float(lower[i, j].values),
-                    "upper_ci": float(upper[i, j].values),
+                    "estimate": float(point_est[i, j].values.flatten()[0]),
+                    "lower_ci": float(lower[i, j].values.flatten()[0]),
+                    "upper_ci": float(upper[i, j].values.flatten()[0]),
                 }
             )
 

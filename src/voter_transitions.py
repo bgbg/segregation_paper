@@ -121,22 +121,44 @@ def build_tensors(
     - Validating data consistency
 
     Args:
-        pair: Election pair identifier (e.g., 'kn20_21')
+        pair: Election pair identifier (e.g., 'kn20_21') or 'all' for all pairs
         config_path: Path to YAML configuration file
         verbose: Enable verbose logging
     """
     setup_logging(verbose)
     logger = logging.getLogger(__name__)
 
-    logger.info(f"Building tensors for transition pair: {pair}")
+    # Load configuration
+    config = load_config(config_path)
+    valid_pairs = config["data"]["transition_pairs"]
 
+    # Handle "all" case
+    if pair == "all":
+        logger.info(f"Building tensors for all transition pairs: {valid_pairs}")
+
+        for current_pair in valid_pairs:
+            logger.info(f"\n--- Processing pair: {current_pair} ---")
+            result = _build_tensors_for_pair(current_pair, config, logger, config_path)
+            if result != 0:
+                logger.error(f"Failed to build tensors for {current_pair}")
+                return result
+
+        logger.info(f"\n✓ Completed processing all {len(valid_pairs)} pairs")
+        return 0
+
+    # Single pair processing
+    logger.info(f"Building tensors for transition pair: {pair}")
+    return _build_tensors_for_pair(pair, config, logger, config_path)
+
+
+def _build_tensors_for_pair(
+    pair: str, config: dict, logger, config_path: str = "data/config.yaml"
+) -> int:
+    """Build tensors for a single election pair."""
     # Validate pair format
     if not pair.startswith("kn") or "_" not in pair:
         logger.error(f"Invalid pair format: {pair}. Expected format: 'knXX_YY'")
         return 1
-
-    # Load configuration
-    config = load_config(config_path)
 
     # Check if this is a valid transition pair
     valid_pairs = config["data"]["transition_pairs"]
@@ -177,7 +199,6 @@ def build_tensors(
         logger.debug(f"{scope}: x1={x1_shape}, x2={x2_shape}")
 
     logger.info("✓ Tensor validation passed")
-
     logger.info("✓ Tensor building completed successfully")
     return 0
 
@@ -199,7 +220,7 @@ def fit_model(
     - Saving results (traces, point estimates, summaries)
 
     Args:
-        pair: Election pair identifier (e.g., 'kn20_21')
+        pair: Election pair identifier (e.g., 'kn20_21') or 'all' for all pairs
         config_path: Path to YAML configuration file
         force: Force refitting even if outputs exist
         verbose: Enable verbose logging
@@ -207,11 +228,31 @@ def fit_model(
     setup_logging(verbose)
     logger = logging.getLogger(__name__)
 
-    logger.info(f"Fitting transition model for pair: {pair}")
-
     # Load configuration
     config = load_config(config_path)
+    valid_pairs = config["data"]["transition_pairs"]
 
+    # Handle "all" case
+    if pair == "all":
+        logger.info(f"Fitting transition models for all pairs: {valid_pairs}")
+
+        for current_pair in valid_pairs:
+            logger.info(f"\n--- Fitting model for pair: {current_pair} ---")
+            result = _fit_model_for_pair(current_pair, config, force, logger)
+            if result != 0:
+                logger.error(f"Failed to fit model for {current_pair}")
+                return result
+
+        logger.info(f"\n✓ Completed fitting models for all {len(valid_pairs)} pairs")
+        return 0
+
+    # Single pair processing
+    logger.info(f"Fitting transition model for pair: {pair}")
+    return _fit_model_for_pair(pair, config, force, logger)
+
+
+def _fit_model_for_pair(pair: str, config: dict, force: bool, logger) -> int:
+    """Fit model for a single election pair."""
     # Extract model parameters from config
     model_params = {
         "alpha_diag": config["model"]["alpha_diag"],
@@ -221,8 +262,8 @@ def fit_model(
     sampling_params = config["model"]["sampling"]
     target_cities = config["cities"]["target_cities"]
 
-    logger.info(f"Model parameters: {model_params}")
-    logger.info(f"Sampling parameters: {sampling_params}")
+    logger.debug(f"Model parameters: {model_params}")
+    logger.debug(f"Sampling parameters: {sampling_params}")
 
     # Define paths
     output_dir = Path(config["paths"]["processed_data"]) / "transitions"
@@ -268,8 +309,8 @@ def fit_model(
         if "diagnostics" in fit_summary:
             diag = fit_summary["diagnostics"]
             logger.info(
-                f"Convergence: max_rhat={diag.get('max_rhat', 'N/A'):.3f}, "
-                f"min_ess={diag.get('min_ess', 'N/A')}"
+                f"Convergence: max_rhat={diag.get('rhat_max', 'N/A'):.3f}, "
+                f"min_ess={diag.get('ess_min', 'N/A')}"
             )
 
         n_stations = fit_summary.get("n_stations_country", 0)
@@ -285,6 +326,7 @@ def fit_model(
 def summarize(
     *,
     pair: str,
+    config_path: str = "data/config.yaml",
     verbose: bool = False,
 ):
     """Generate summary of results for a specific election pair.
@@ -296,12 +338,40 @@ def summarize(
     - Creating summary tables
 
     Args:
-        pair: Election pair identifier (e.g., 'kn20_21')
+        pair: Election pair identifier (e.g., 'kn20_21') or 'all' for all pairs
+        config_path: Path to YAML configuration file
         verbose: Enable verbose logging
     """
     setup_logging(verbose)
     logger = logging.getLogger(__name__)
 
+    # Load configuration
+    config = load_config(config_path)
+    valid_pairs = config["data"]["transition_pairs"]
+
+    # Handle "all" case
+    if pair == "all":
+        logger.info(f"Generating summaries for all pairs: {valid_pairs}")
+
+        for current_pair in valid_pairs:
+            logger.info(f"\n--- Generating summary for pair: {current_pair} ---")
+            result = _summarize_for_pair(current_pair, logger)
+            if result != 0:
+                logger.error(f"Failed to generate summary for {current_pair}")
+                return result
+
+        logger.info(
+            f"\n✓ Completed generating summaries for all {len(valid_pairs)} pairs"
+        )
+        return 0
+
+    # Single pair processing
+    logger.info(f"Generating summary for transition pair: {pair}")
+    return _summarize_for_pair(pair, logger)
+
+
+def _summarize_for_pair(pair: str, logger) -> int:
+    """Generate summary for a single election pair."""
     logger.info(f"Generating summary for transition pair: {pair}")
     logger.warning("Summary generation not yet implemented")
     logger.info("This will include:")

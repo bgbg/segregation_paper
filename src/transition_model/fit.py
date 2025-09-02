@@ -31,8 +31,8 @@ def load_election_data(
     Returns:
         Tuple of (df_t, df_t1) preprocessed DataFrames
     """
-    df_t = pd.read_csv(election_t_path)
-    df_t1 = pd.read_csv(election_t1_path)
+    df_t = pd.read_parquet(election_t_path)
+    df_t1 = pd.read_parquet(election_t1_path)
 
     # Apply category computations
     df_t = compute_categories(df_t, columns_mapping)

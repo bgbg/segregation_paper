@@ -27,25 +27,34 @@ def compute_diagnostics(trace: az.InferenceData) -> Dict[str, Any]:
 
     # R-hat statistics
     rhat = az.rhat(trace)
-    diagnostics["rhat_max"] = float(rhat.max().values)
-    diagnostics["rhat_mean"] = float(rhat.mean().values)
+    rhat_values = np.concatenate([rhat[var].values.flatten() for var in rhat.data_vars])
+    diagnostics["rhat_max"] = float(np.max(rhat_values))
+    diagnostics["rhat_mean"] = float(np.mean(rhat_values))
     diagnostics["rhat_good"] = bool(diagnostics["rhat_max"] < 1.01)
 
     # Effective sample size
     ess = az.ess(trace)
-    diagnostics["ess_min"] = float(ess.min().values)
-    diagnostics["ess_mean"] = float(ess.mean().values)
+    ess_values = np.concatenate([ess[var].values.flatten() for var in ess.data_vars])
+    diagnostics["ess_min"] = float(np.min(ess_values))
+    diagnostics["ess_mean"] = float(np.mean(ess_values))
     diagnostics["ess_good"] = bool(diagnostics["ess_min"] > 400)
 
     # Monte Carlo standard error
     mcse = az.mcse(trace)
-    diagnostics["mcse_max"] = float(mcse.max().values)
-    diagnostics["mcse_mean"] = float(mcse.mean().values)
+    mcse_values = np.concatenate([mcse[var].values.flatten() for var in mcse.data_vars])
+    diagnostics["mcse_max"] = float(np.max(mcse_values))
+    diagnostics["mcse_mean"] = float(np.mean(mcse_values))
 
     # Energy diagnostics
     if hasattr(trace, "sample_stats"):
         energy = trace.sample_stats.energy
-        diagnostics["energy_bfmi"] = float(az.bfmi(trace))
+        bfmi_result = az.bfmi(trace)
+        if hasattr(bfmi_result, "values"):
+            diagnostics["energy_bfmi"] = float(bfmi_result.values.item())
+        elif isinstance(bfmi_result, np.ndarray):
+            diagnostics["energy_bfmi"] = float(bfmi_result.mean())
+        else:
+            diagnostics["energy_bfmi"] = float(bfmi_result)
         diagnostics["energy_good"] = bool(diagnostics["energy_bfmi"] > 0.2)
 
     # Divergences
