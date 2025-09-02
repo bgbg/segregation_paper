@@ -57,7 +57,9 @@ model:
     tune: 1500                  # Tuning samples per chain
     chains: 4                   # Number of parallel chains
     target_accept: 0.98          # Target acceptance rate for NUTS
+    max_treedepth: 15
     random_seed: 42             # Reproducibility seed
+    init: "jitter+adapt_diag"
 
   # Convergence diagnostics thresholds
   diagnostics:

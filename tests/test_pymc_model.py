@@ -23,9 +23,15 @@ def test_build_hierarchical_model_structure(sample_tensor_data):
     assert len(country_cols) == 4, "Should have 4 country matrix columns"
 
     # Should have logistic-normal parameters
-    assert any("Z_country" in name for name in var_names), "Should have Z_country parameter"
-    assert any("diag_bias" in name for name in var_names), "Should have diag_bias parameter"
-    assert any("sigma_country" in name for name in var_names), "Should have sigma_country parameter"
+    assert any(
+        "Z_country" in name for name in var_names
+    ), "Should have Z_country parameter"
+    assert any(
+        "diag_bias" in name for name in var_names
+    ), "Should have diag_bias parameter"
+    assert any(
+        "sigma_country" in name for name in var_names
+    ), "Should have sigma_country parameter"
 
     # Should have overdispersion parameter (now log-parameterized)
     assert any("phi" in name for name in var_names), "Should have phi parameter"
@@ -250,5 +256,13 @@ def test_sampling_parameter_validation():
     assert isinstance(trace, az.InferenceData)
 
     # Test different valid parameter combinations
-    trace2 = sample_model(model, draws=10, tune=10, chains=2, target_accept=0.8)
+    trace2 = sample_model(
+        model,
+        draws=10,
+        tune=10,
+        chains=2,
+        target_accept=0.8,
+        max_treedepth=10,
+        init="jitter",
+    )
     assert isinstance(trace2, az.InferenceData)

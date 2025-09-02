@@ -33,6 +33,8 @@ def sample_config():
                 "tune": 100,
                 "chains": 2,
                 "target_accept": 0.98,
+                "max_treedepth": 15,
+                "init": "jitter+adapt_diag",
                 "random_seed": 42,
             },
             "diagnostics": {

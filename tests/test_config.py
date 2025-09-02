@@ -54,15 +54,31 @@ def test_config_structure_validation(sample_config):
     model_config = sample_config["model"]
     assert "logistic_normal" in model_config
     assert "sampling" in model_config
-    
+
     # Check logistic-normal parameters
     logistic_normal_config = model_config["logistic_normal"]
-    required_params = ["diag_bias_mean", "diag_bias_sigma", "sigma_country", "sigma_city", "nu_scale"]
+    required_params = [
+        "diag_bias_mean",
+        "diag_bias_sigma",
+        "sigma_country",
+        "sigma_city",
+        "nu_scale",
+    ]
     for param in required_params:
-        assert param in logistic_normal_config, f"Missing logistic_normal parameter: {param}"
+        assert (
+            param in logistic_normal_config
+        ), f"Missing logistic_normal parameter: {param}"
 
     sampling_config = model_config["sampling"]
-    sampling_keys = ["draws", "tune", "chains", "target_accept", "random_seed"]
+    sampling_keys = [
+        "draws",
+        "tune",
+        "chains",
+        "target_accept",
+        "max_treedepth",
+        "init",
+        "random_seed",
+    ]
     for key in sampling_keys:
         assert key in sampling_config, f"Missing sampling parameter: {key}"
 
@@ -98,6 +114,8 @@ def test_config_parameter_types(sample_config):
     assert isinstance(sampling["tune"], int)
     assert isinstance(sampling["chains"], int)
     assert isinstance(sampling["target_accept"], float)
+    assert isinstance(sampling["max_treedepth"], int)
+    assert isinstance(sampling["init"], str)
     assert isinstance(sampling["random_seed"], int)
 
 
@@ -123,6 +141,12 @@ def test_config_parameter_ranges(sample_config):
     assert (
         0.0 < sampling["target_accept"] < 1.0
     ), "target_accept should be between 0 and 1"
+    assert sampling["max_treedepth"] > 0, "max_treedepth should be positive"
+    assert sampling["init"] in [
+        "jitter+adapt_diag",
+        "adapt_diag",
+        "jitter",
+    ], "init should be valid initialization method"
 
 
 def test_config_yaml_encoding():

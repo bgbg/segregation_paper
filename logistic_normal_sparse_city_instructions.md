@@ -41,10 +41,10 @@ Replace the Dirichlet/κ hierarchy with a logistic-normal parameterization:
 ```python
 eyeK = pm.math.eye(K)
 
-sigma_country = pm.HalfNormal("sigma_country", sigma=1.0)
+sigma_country = pm.HalfNormal("sigma_country", sigma=0.7)
 Z_country = pm.Normal("Z_country", mu=0.0, sigma=sigma_country, shape=(K, K))
 
-diag_bias = pm.Normal("diag_bias", mu=3.0, sigma=0.5)  # encodes loyalty in mean
+diag_bias = pm.Normal("diag_bias", mu=3.0, sigma=0.3)  # encodes loyalty in mean
 
 M_country_cols = []
 for j in range(K):
@@ -56,7 +56,7 @@ M_country = pm.math.stack(M_country_cols, axis=1)
 
 ### City-level sparse (heavy-tailed) deviations on logits
 ```python
-sigma_city = pm.HalfNormal("sigma_city", sigma=0.5)
+sigma_city = pm.HalfNormal("sigma_city", sigma=0.3)
 nu_raw = pm.Exponential("nu_raw", lam=1/5.0)
 nu = pm.Deterministic("nu", nu_raw + 2.0)
 

@@ -44,17 +44,23 @@ def build_hierarchical_model(
     country_data = data["country"]
     x1_country = country_data["x1"]
     x2_country = country_data["x2"]
-    assert x1_country.shape[1] == x2_country.shape[1] == K, f"Category mismatch: x1 has {x1_country.shape[1]}, x2 has {x2_country.shape[1]}, expected {K}"
+    assert (
+        x1_country.shape[1] == x2_country.shape[1] == K
+    ), f"Category mismatch: x1 has {x1_country.shape[1]}, x2 has {x2_country.shape[1]}, expected {K}"
 
     with pm.Model() as model:
         # Country-level logistic-normal prior (robust)
         eyeK = np.eye(K)
-        
+
         sigma_country_param = pm.HalfNormal("sigma_country", sigma=sigma_country)
-        Z_country = pm.Normal("Z_country", mu=0.0, sigma=sigma_country_param, shape=(K, K))
-        
-        diag_bias = pm.Normal("diag_bias", mu=diag_bias_mean, sigma=diag_bias_sigma)  # encodes loyalty in mean
-        
+        Z_country = pm.Normal(
+            "Z_country", mu=0.0, sigma=sigma_country_param, shape=(K, K)
+        )
+
+        diag_bias = pm.Normal(
+            "diag_bias", mu=diag_bias_mean, sigma=diag_bias_sigma
+        )  # encodes loyalty in mean
+
         M_country_cols = []
         for j in range(K):
             z = Z_country[:, j] + diag_bias * eyeK[:, j]
@@ -64,12 +70,18 @@ def build_hierarchical_model(
 
         # City-level sparse (heavy-tailed) deviations on logits
         sigma_city_param = pm.HalfNormal("sigma_city", sigma=sigma_city)
-        nu_raw = pm.Exponential("nu_raw", lam=1/nu_scale)
+        nu_raw = pm.Exponential("nu_raw", lam=1 / nu_scale)
         nu = pm.Deterministic("nu", nu_raw + 2.0)
 
         M_cities = None
         if n_cities > 0:
-            Z_city = pm.StudentT("Z_city", nu=nu, mu=Z_country, sigma=sigma_city_param, shape=(n_cities, K, K))
+            Z_city = pm.StudentT(
+                "Z_city",
+                nu=nu,
+                mu=Z_country,
+                sigma=sigma_city_param,
+                shape=(n_cities, K, K),
+            )
             M_cities_list = []
             for c in range(n_cities):
                 city_cols = []
@@ -130,6 +142,8 @@ def sample_model(
     tune: int = 1000,
     chains: int = 4,
     target_accept: float = 0.98,
+    max_treedepth: int = 15,
+    init: str = "jitter+adapt_diag",
     random_seed: Optional[int] = None,
 ) -> az.InferenceData:
     """Sample from the hierarchical transition model.
@@ -140,6 +154,8 @@ def sample_model(
         tune: Number of tuning samples per chain
         chains: Number of MCMC chains
         target_accept: Target acceptance rate
+        max_treedepth: Maximum tree depth for NUTS sampler
+        init: Initialization method for chains
         random_seed: Random seed for reproducibility
 
     Returns:
@@ -152,6 +168,8 @@ def sample_model(
             tune=tune,
             chains=chains,
             target_accept=target_accept,
+            max_treedepth=max_treedepth,
+            init=init,
             random_seed=random_seed,
             return_inferencedata=True,
         )
