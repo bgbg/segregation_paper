@@ -13,14 +13,16 @@ import pymc as pm
 
 def build_hierarchical_model(
     data: Dict[str, Dict[str, np.ndarray]],
-    alpha_diag: float = 10.0,
-    kappa_prior_scale: float = 100.0,
+    alpha_diag: float = 5.0,
+    alpha_offdiag_floor: float = 1.0,
+    kappa_prior_scale: float = 10.0,
 ) -> pm.Model:
     """Build hierarchical Dirichlet-Multinomial transition model.
 
     Args:
         data: Dictionary with country and city-level data tensors
         alpha_diag: Prior strength for diagonal (inertia) elements
+        alpha_offdiag_floor: Minimum prior strength for off-diagonal elements
         kappa_prior_scale: Scale parameter for pooling strength prior
 
     Returns:
@@ -33,7 +35,7 @@ def build_hierarchical_model(
     with pm.Model() as model:
         # Country-level transition matrix (K x K, column-stochastic)
         # Prior encourages inertia (higher diagonal elements)
-        alpha_base = np.ones((K, K)) * 0.1
+        alpha_base = np.ones((K, K)) * alpha_offdiag_floor
         np.fill_diagonal(alpha_base, alpha_diag)
 
         # Country transition matrix columns (each column sums to 1)
@@ -106,10 +108,10 @@ def build_hierarchical_model(
 
 def sample_model(
     model: pm.Model,
-    draws: int = 2000,
-    tune: int = 2000,
+    draws: int = 1000,
+    tune: int = 1000,
     chains: int = 4,
-    target_accept: float = 0.9,
+    target_accept: float = 0.98,
     random_seed: Optional[int] = None,
 ) -> az.InferenceData:
     """Sample from the hierarchical transition model.

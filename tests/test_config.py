@@ -21,7 +21,7 @@ def test_load_config_success(temp_config_file, sample_config):
     # Check specific values
     assert config["cities"]["target_cities"] == sample_config["cities"]["target_cities"]
     assert config["data"]["homogenic_filtering"]["threshold"] == 0.75
-    assert config["model"]["alpha_diag"] == 10.0
+    assert config["model"]["alpha_diag"] == 5.0
 
 
 def test_load_config_missing_file():

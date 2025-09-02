@@ -41,7 +41,10 @@ def test_build_model_parameter_validation(sample_tensor_data):
     """Test model building with different parameter values."""
     # Test with custom parameters
     model = build_hierarchical_model(
-        sample_tensor_data, alpha_diag=5.0, kappa_prior_scale=50.0
+        sample_tensor_data,
+        alpha_diag=5.0,
+        alpha_offdiag_floor=1.0,
+        kappa_prior_scale=10.0,
     )
 
     # Model should build successfully
@@ -51,7 +54,7 @@ def test_build_model_parameter_validation(sample_tensor_data):
     model2 = build_hierarchical_model(sample_tensor_data, alpha_diag=1.0)
     assert isinstance(model2, pm.Model)
 
-    model3 = build_hierarchical_model(sample_tensor_data, kappa_prior_scale=200.0)
+    model3 = build_hierarchical_model(sample_tensor_data, kappa_prior_scale=20.0)
     assert isinstance(model3, pm.Model)
 
 
@@ -182,7 +185,9 @@ def test_model_parameter_interpretation():
         }
     }
 
-    model = build_hierarchical_model(test_data, alpha_diag=20.0)  # High inertia prior
+    model = build_hierarchical_model(
+        test_data, alpha_diag=20.0, alpha_offdiag_floor=1.0
+    )  # High inertia prior
 
     # Model should build successfully with realistic data
     assert isinstance(model, pm.Model)

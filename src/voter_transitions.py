@@ -256,6 +256,7 @@ def _fit_model_for_pair(pair: str, config: dict, force: bool, logger) -> int:
     # Extract model parameters from config
     model_params = {
         "alpha_diag": config["model"]["alpha_diag"],
+        "alpha_offdiag_floor": config["model"]["alpha_offdiag_floor"],
         "kappa_prior_scale": config["model"]["kappa_prior_scale"],
     }
 
@@ -296,6 +297,7 @@ def _fit_model_for_pair(pair: str, config: dict, force: bool, logger) -> int:
         columns_mapping=columns_mapping,
         model_params=model_params,
         sampling_params=sampling_params,
+        config=config,
         force=force,
     )
 

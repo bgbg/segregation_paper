@@ -38,15 +38,24 @@ data:
 # PyMC model parameters
 model:
   # Prior parameters for hierarchical model
-  alpha_diag: 10.0              # Diagonal bias (inertia). Keep in mind: off-diagonal priors are 0.1
-  kappa_prior_scale: 100.0      # Scale parameter for city-level pooling strength
+  # NOTE: Loyalty is encoded via the mean, not via tiny α. Use alpha_offdiag_floor ≥ 1.0 and moderate alpha_diag ≈ 3–5.
+  alpha_diag: 5.0              # Diagonal bias (inertia). Keep in mind: off-diagonal priors are 0.1
+  alpha_offdiag_floor: 1.0        # avoid near-zero Dirichlet α off-diagonals (prevents corner pathologies)
+
+  parameterization:
+    matrix_convention: columns_from_rows_to   # columns = "from", rows = "to"; keep q = p1 @ M.T
+    enforce_category_order: true              # validate x1/x2 category order before modeling
+    plotting_rows: to                         # when plotting heatmaps, rows=to, cols=from
+    plotting_cols: from
+
+  kappa_prior_scale: 10.0      # Scale parameter for city-level pooling strength
 
   # MCMC sampling parameters
   sampling:
     draws: 1000                 # Posterior samples per chain
     tune: 1000                  # Tuning samples per chain
     chains: 4                   # Number of parallel chains
-    target_accept: 0.95          # Target acceptance rate for NUTS
+    target_accept: 0.98          # Target acceptance rate for NUTS
     random_seed: 42             # Reproducibility seed
 
   # Convergence diagnostics thresholds

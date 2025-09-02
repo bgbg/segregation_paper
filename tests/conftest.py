@@ -21,14 +21,20 @@ def sample_config():
             "transition_pairs": ["kn20_21", "kn21_22"],
         },
         "model": {
-            "alpha_diag": 10.0,
-            "kappa_prior_scale": 100.0,
+            "alpha_diag": 5.0,
+            "alpha_offdiag_floor": 1.0,
+            "kappa_prior_scale": 10.0,
             "sampling": {
                 "draws": 100,  # Small for testing
                 "tune": 100,
                 "chains": 2,
-                "target_accept": 0.8,
+                "target_accept": 0.98,
                 "random_seed": 42,
+            },
+            "diagnostics": {
+                "max_rhat": 1.01,
+                "min_ess_bulk": 400,
+                "min_ess_tail": 400,
             },
         },
         "categories": ["shas", "agudat_israel", "other", "abstained"],

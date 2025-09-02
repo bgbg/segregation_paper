@@ -14,15 +14,24 @@ import pandas as pd
 logger = logging.getLogger(__name__)
 
 
-def compute_diagnostics(trace: az.InferenceData) -> Dict[str, Any]:
+def compute_diagnostics(trace: az.InferenceData, config: Dict = None) -> Dict[str, Any]:
     """Compute convergence diagnostics for MCMC trace.
 
     Args:
         trace: ArviZ InferenceData object
+        config: Configuration dictionary with diagnostic thresholds
 
     Returns:
         Dictionary with diagnostic statistics
     """
+    # Set default thresholds if config not provided
+    if config is None:
+        max_rhat_threshold = 1.01
+        min_ess_threshold = 400
+    else:
+        max_rhat_threshold = config["model"]["diagnostics"]["max_rhat"]
+        min_ess_threshold = config["model"]["diagnostics"]["min_ess_bulk"]
+
     diagnostics = {}
 
     # R-hat statistics
@@ -30,14 +39,14 @@ def compute_diagnostics(trace: az.InferenceData) -> Dict[str, Any]:
     rhat_values = np.concatenate([rhat[var].values.flatten() for var in rhat.data_vars])
     diagnostics["rhat_max"] = float(np.max(rhat_values))
     diagnostics["rhat_mean"] = float(np.mean(rhat_values))
-    diagnostics["rhat_good"] = bool(diagnostics["rhat_max"] < 1.01)
+    diagnostics["rhat_good"] = bool(diagnostics["rhat_max"] < max_rhat_threshold)
 
     # Effective sample size
     ess = az.ess(trace)
     ess_values = np.concatenate([ess[var].values.flatten() for var in ess.data_vars])
     diagnostics["ess_min"] = float(np.min(ess_values))
     diagnostics["ess_mean"] = float(np.mean(ess_values))
-    diagnostics["ess_good"] = bool(diagnostics["ess_min"] > 400)
+    diagnostics["ess_good"] = bool(diagnostics["ess_min"] > min_ess_threshold)
 
     # Monte Carlo standard error
     mcse = az.mcse(trace)
@@ -92,47 +101,38 @@ def run_posterior_predictive_checks(
     Returns:
         Dictionary with PPC results
     """
-    try:
-        import pymc as pm
+    import pymc as pm
 
-        with model:
-            # Generate posterior predictive samples
-            ppc = pm.sample_posterior_predictive(
-                trace, predictions=True, extend_inferencedata=False, progressbar=False
-            )
+    with model:
+        # Generate posterior predictive samples
+        ppc = pm.sample_posterior_predictive(
+            trace, predictions=True, extend_inferencedata=False, progressbar=False
+        )
 
-        ppc_results = {
-            "generated": True,
-            "n_samples": n_samples,
-            "timestamp": pd.Timestamp.now().isoformat(),
+    ppc_results = {
+        "generated": True,
+        "n_samples": n_samples,
+        "timestamp": pd.Timestamp.now().isoformat(),
+    }
+
+    # Compare observed vs predicted party totals
+    country_data = data["country"]
+    observed_totals = country_data["x2"].sum(axis=0)
+
+    # Extract predicted totals from PPC
+    if "x2_country_obs" in ppc.predictions:
+        predicted = ppc.predictions["x2_country_obs"]
+        predicted_totals = predicted.sum(axis=1).mean(
+            axis=0
+        )  # Mean across samples and stations
+
+        ppc_results["country_totals"] = {
+            "observed": observed_totals.tolist(),
+            "predicted": predicted_totals.values.tolist(),
+            "residuals": (observed_totals - predicted_totals.values).tolist(),
         }
 
-        # Compare observed vs predicted party totals
-        country_data = data["country"]
-        observed_totals = country_data["x2"].sum(axis=0)
-
-        # Extract predicted totals from PPC
-        if "x2_country_obs" in ppc.predictions:
-            predicted = ppc.predictions["x2_country_obs"]
-            predicted_totals = predicted.sum(axis=1).mean(
-                axis=0
-            )  # Mean across samples and stations
-
-            ppc_results["country_totals"] = {
-                "observed": observed_totals.tolist(),
-                "predicted": predicted_totals.tolist(),
-                "residuals": (observed_totals - predicted_totals).tolist(),
-            }
-
-        return ppc_results
-
-    except Exception as e:
-        logger.warning(f"Could not run posterior predictive checks: {e}")
-        return {
-            "generated": False,
-            "error": str(e),
-            "timestamp": pd.Timestamp.now().isoformat(),
-        }
+    return ppc_results
 
 
 def assess_stability(

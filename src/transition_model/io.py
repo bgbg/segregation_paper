@@ -131,7 +131,7 @@ def save_point_estimates(
 
     # Verify diagonal elements are >= 0.65 (voter loyalty check)
     # Extract diagonal elements from the xarray structure
-    logging.info(f"Matrix shape: {point_est.shape}, dims: {point_est.dims}")
+    logging.debug(f"Matrix shape: {point_est.shape}, dims: {point_est.dims}")
 
     # Extract diagonal elements directly from the xarray
     # For a 4x4 matrix, diagonal elements are at positions (i, i)
@@ -280,7 +280,7 @@ def save_vote_movements(
 
     # Verify diagonal elements are >= 0.65 (voter loyalty check)
     # Extract diagonal elements from the xarray structure
-    logging.info(f"Matrix shape: {point_est.shape}, dims: {point_est.dims}")
+    logging.debug(f"Matrix shape: {point_est.shape}, dims: {point_est.dims}")
 
     # Extract diagonal elements directly from the xarray
     # For a 4x4 matrix, diagonal elements are at positions (i, i)
