@@ -3,4 +3,11 @@ TODO*.md
 todo*.md
 .serena/
 .claude/
+.vscode/
+.pytest_cache/
+.idea/
+.deepval/
 *.parquet
+data/interim/
+data/processed/
+~$*.*
