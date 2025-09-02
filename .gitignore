@@ -12,3 +12,5 @@ data/interim/
 data/processed/
 ~$*.*
 tmp*.ipynb
+*.png
+*.html
