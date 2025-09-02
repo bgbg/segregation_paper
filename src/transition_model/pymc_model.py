@@ -13,17 +13,25 @@ import pymc as pm
 
 def build_hierarchical_model(
     data: Dict[str, Dict[str, np.ndarray]],
-    alpha_diag: float = 5.0,
-    alpha_offdiag_floor: float = 1.0,
-    kappa_prior_scale: float = 10.0,
+    diag_bias_mean: float = 3.0,
+    diag_bias_sigma: float = 0.5,
+    sigma_country: float = 1.0,
+    sigma_city: float = 0.5,
+    nu_scale: float = 5.0,
 ) -> pm.Model:
-    """Build hierarchical Dirichlet-Multinomial transition model.
+    """Build hierarchical logistic-normal transition model.
+
+    Uses logistic-normal parameterization with Student-t deviations for cities.
+    Country matrices use Normal priors on logits with diagonal bias for loyalty.
+    Cities deviate via heavy-tailed Student-t around country logits (sparse/outlier-friendly).
 
     Args:
         data: Dictionary with country and city-level data tensors
-        alpha_diag: Prior strength for diagonal (inertia) elements
-        alpha_offdiag_floor: Minimum prior strength for off-diagonal elements
-        kappa_prior_scale: Scale parameter for pooling strength prior
+        diag_bias_mean: Mean for diagonal bias (loyalty) parameter
+        diag_bias_sigma: Standard deviation for diagonal bias parameter
+        sigma_country: Scale for country-level logit variation
+        sigma_city: Scale for city-level logit deviations
+        nu_scale: Scale parameter for Student-t degrees of freedom
 
     Returns:
         PyMC model object
@@ -32,40 +40,50 @@ def build_hierarchical_model(
     cities = [k for k in data.keys() if k != "country"]
     n_cities = len(cities)
 
-    with pm.Model() as model:
-        # Country-level transition matrix (K x K, column-stochastic)
-        # Prior encourages inertia (higher diagonal elements)
-        alpha_base = np.ones((K, K)) * alpha_offdiag_floor
-        np.fill_diagonal(alpha_base, alpha_diag)
+    # Validate category order consistency
+    country_data = data["country"]
+    x1_country = country_data["x1"]
+    x2_country = country_data["x2"]
+    assert x1_country.shape[1] == x2_country.shape[1] == K, f"Category mismatch: x1 has {x1_country.shape[1]}, x2 has {x2_country.shape[1]}, expected {K}"
 
-        # Country transition matrix columns (each column sums to 1)
+    with pm.Model() as model:
+        # Country-level logistic-normal prior (robust)
+        eyeK = np.eye(K)
+        
+        sigma_country_param = pm.HalfNormal("sigma_country", sigma=sigma_country)
+        Z_country = pm.Normal("Z_country", mu=0.0, sigma=sigma_country_param, shape=(K, K))
+        
+        diag_bias = pm.Normal("diag_bias", mu=diag_bias_mean, sigma=diag_bias_sigma)  # encodes loyalty in mean
+        
         M_country_cols = []
         for j in range(K):
-            col = pm.Dirichlet(f"M_country_col_{j}", a=alpha_base[:, j])
+            z = Z_country[:, j] + diag_bias * eyeK[:, j]
+            col = pm.Deterministic(f"M_country_col_{j}", pm.math.softmax(z))
             M_country_cols.append(col)
+        M_country = pm.math.stack(M_country_cols, axis=1)
 
-        M_country = pm.math.stack(M_country_cols, axis=1)  # Shape: (K, K)
+        # City-level sparse (heavy-tailed) deviations on logits
+        sigma_city_param = pm.HalfNormal("sigma_city", sigma=sigma_city)
+        nu_raw = pm.Exponential("nu_raw", lam=1/nu_scale)
+        nu = pm.Deterministic("nu", nu_raw + 2.0)
 
-        # Pooling strength parameter
-        kappa = pm.Exponential("kappa", lam=1 / kappa_prior_scale)
-
-        # City-level matrices with partial pooling
+        M_cities = None
         if n_cities > 0:
+            Z_city = pm.StudentT("Z_city", nu=nu, mu=Z_country, sigma=sigma_city_param, shape=(n_cities, K, K))
             M_cities_list = []
             for c in range(n_cities):
                 city_cols = []
                 for j in range(K):
-                    city_col = pm.Dirichlet(
-                        f"M_city_{c}_col_{j}", a=kappa * M_country_cols[j]
-                    )
-                    city_cols.append(city_col)
-                M_city = pm.math.stack(city_cols, axis=1)  # Shape: (K, K)
+                    zc = Z_city[c, :, j] + diag_bias * eyeK[:, j]
+                    colc = pm.Deterministic(f"M_city_{c}_col_{j}", pm.math.softmax(zc))
+                    city_cols.append(colc)
+                M_city = pm.math.stack(city_cols, axis=1)
                 M_cities_list.append(M_city)
+            M_cities = pm.math.stack(M_cities_list, axis=0)
 
-            M_cities = pm.math.stack(M_cities_list, axis=0)  # Shape: (n_cities, K, K)
-
-        # Overdispersion parameter
-        phi = pm.Exponential("phi", lam=0.1)
+        # Overdispersion (log-parameterized)
+        log_phi = pm.Normal("log_phi", mu=0.0, sigma=1.0)
+        phi = pm.Deterministic("phi", pm.math.exp(log_phi))
 
         # Likelihood for country data
         country_data = data["country"]
@@ -91,8 +109,8 @@ def build_hierarchical_model(
             x2_city = city_data["x2"]
             n2_city = city_data["n2"]
 
-            # City-specific transition matrix
-            M_city = M_cities[i]  # Shape: (K, K)
+            # City-specific transition matrix with fallback
+            M_city = M_cities[i] if M_cities is not None else M_country
 
             # Proportions and predictions
             p1_city = x1_city / x1_city.sum(axis=1, keepdims=True)
