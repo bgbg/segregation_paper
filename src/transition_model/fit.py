@@ -11,7 +11,7 @@ from typing import Dict, List, Optional, Tuple
 import pandas as pd
 
 from .diagnostics import compute_diagnostics, run_posterior_predictive_checks
-from .io import save_fit_summary, save_inference_data, save_point_estimates
+from .io import save_fit_summary, save_inference_data, save_point_estimates, save_vote_movements
 from .preprocess import compute_categories, prepare_hierarchical_data
 from .pymc_model import build_hierarchical_model, sample_model
 
@@ -132,15 +132,45 @@ def fit_transition_pair(
             )
             save_inference_data(trace, city_trace_path, scope=city)
 
-    # Save point estimates
+    # Save point estimates (transition probabilities)
     save_point_estimates(trace, pair_output_dir / "country_map.csv", scope="country")
 
+    # Save country vote movements (actual vote counts)
+    country_vote_totals = data["country"]["vote_totals"]
+    save_vote_movements(
+        trace, 
+        pair_output_dir / "country_movements.csv", 
+        country_vote_totals,
+        scope="country"
+    )
+
+    # Save city-specific results (both probabilities and movements)
+    city_index = 0  # Cities are indexed in order they appear in target_cities
     for city in target_cities:
         if city in data:
-            city_map_path = (
-                pair_output_dir / f'city_{city.lower().replace(" ", "_")}_map.csv'
+            city_slug = city.lower().replace(" ", "_")
+            
+            # Save city transition probabilities
+            city_map_path = pair_output_dir / f'city_{city_slug}_map.csv'
+            save_point_estimates(
+                trace, 
+                city_map_path, 
+                scope=city,
+                city_index=city_index
             )
-            save_point_estimates(trace, city_map_path, scope=city)
+            
+            # Save city vote movements
+            city_movements_path = pair_output_dir / f'city_{city_slug}_movements.csv'
+            city_vote_totals = data[city]["vote_totals"]
+            save_vote_movements(
+                trace, 
+                city_movements_path, 
+                city_vote_totals,
+                scope=city,
+                city_index=city_index
+            )
+            
+            city_index += 1  # Increment index for each city with data
 
     # Save fit summary
     fit_summary = {

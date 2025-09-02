@@ -167,6 +167,35 @@ def build_station_tensors(
     return x1, x2, n1, n2
 
 
+def load_city_mapping(config: Dict) -> Dict[str, str]:
+    """Load Hebrew-English city name mapping.
+    
+    Args:
+        config: Configuration dictionary with paths
+        
+    Returns:
+        Dictionary mapping English city names to Hebrew names
+    """
+    mapping_path = Path(config["paths"]["cities_mapping"])
+    if not mapping_path.exists():
+        logger.warning(f"City mapping file not found: {mapping_path}")
+        return {}
+    
+    df_mapping = pd.read_csv(mapping_path)
+    
+    # Create mapping from English to Hebrew
+    english_to_hebrew = {}
+    for _, row in df_mapping.iterrows():
+        hebrew = row["city_name"]
+        english = row["city_name_english"]
+        if pd.notna(hebrew) and pd.notna(english):
+            # Normalize English names to match config format
+            english_norm = english.lower().replace("'", "")
+            english_to_hebrew[english_norm] = hebrew
+    
+    return english_to_hebrew
+
+
 def prepare_hierarchical_data(
     df1: pd.DataFrame,
     df2: pd.DataFrame,
@@ -182,7 +211,7 @@ def prepare_hierarchical_data(
         config: Configuration dictionary (if None, load default)
 
     Returns:
-        Dictionary with tensors organized by city
+        Dictionary with tensors organized by city, including vote totals
     """
     # Load config if not provided
     if config is None:
@@ -192,34 +221,78 @@ def prepare_hierarchical_data(
     if target_cities is None:
         target_cities = config["cities"]["target_cities"]
 
+    # Load city name mapping
+    city_mapping = load_city_mapping(config)
+    logger.info(f"Loaded city mapping for {len(city_mapping)} cities")
+
     data = {}
+    categories = ["A_shas", "B_agudat", "Other", "Abstained"]
+    category_names = ["Shas", "Agudat_Israel", "Other", "Abstained"]
 
     # Country-wide data
     x1_country, x2_country, n1_country, n2_country = build_station_tensors(df1, df2)
+    
+    # Calculate country-wide vote totals from election t
+    country_vote_totals = {}
+    for i, category in enumerate(categories):
+        if category in df1.columns:
+            country_vote_totals[category_names[i]] = float(df1[category].sum())
+        else:
+            country_vote_totals[category_names[i]] = 0.0
+    
     data["country"] = {
         "x1": x1_country,
         "x2": x2_country,
         "n1": n1_country,
         "n2": n2_country,
+        "vote_totals": country_vote_totals,
     }
 
-    # City-specific data - match by English name in lowercase
-    for city in target_cities:
-        # For harmonized data, we expect city filtering to have been applied already
-        # So we look for any city that matches (case-insensitive)
-        city_df1 = df1[
-            df1.get("city_name", "").str.lower().str.contains(city.lower(), na=False)
-        ]
-        city_df2 = df2[
-            df2.get("city_name", "").str.lower().str.contains(city.lower(), na=False)
-        ]
+    # City-specific data - use Hebrew names for matching
+    cities_found = 0
+    for city_eng in target_cities:
+        # Normalize city name and get Hebrew equivalent
+        city_norm = city_eng.lower().replace("'", "").replace(" ", " ")
+        hebrew_name = city_mapping.get(city_norm)
+        
+        if not hebrew_name:
+            logger.warning(f"Hebrew name not found for city: {city_eng}")
+            continue
+            
+        logger.info(f"Looking for city: {city_eng} -> {hebrew_name}")
+        
+        # Match by Hebrew name
+        city_df1 = df1[df1.get("city_name", "") == hebrew_name]
+        city_df2 = df2[df2.get("city_name", "") == hebrew_name]
 
         if len(city_df1) > 0 and len(city_df2) > 0:
+            logger.info(f"Found city data: {hebrew_name} with {len(city_df1)}/{len(city_df2)} stations")
+            cities_found += 1
+            
             x1_city, x2_city, n1_city, n2_city = build_station_tensors(
                 city_df1, city_df2
             )
-            data[city] = {"x1": x1_city, "x2": x2_city, "n1": n1_city, "n2": n2_city}
+            
+            # Calculate city-specific vote totals from election t
+            city_vote_totals = {}
+            for i, category in enumerate(categories):
+                if category in city_df1.columns:
+                    city_vote_totals[category_names[i]] = float(city_df1[category].sum())
+                else:
+                    city_vote_totals[category_names[i]] = 0.0
+            
+            # Use English name as key for consistency with existing code
+            data[city_eng] = {
+                "x1": x1_city, 
+                "x2": x2_city, 
+                "n1": n1_city, 
+                "n2": n2_city,
+                "vote_totals": city_vote_totals,
+            }
+        else:
+            logger.warning(f"No data found for city: {hebrew_name} ({city_eng})")
 
+    logger.info(f"Successfully prepared data for {cities_found}/{len(target_cities)} cities")
     return data
 
 

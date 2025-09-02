@@ -60,6 +60,7 @@ def save_point_estimates(
     scope: str = "country",
     estimator: str = "mean",
     credible_interval: float = 0.95,
+    city_index: int = None,
 ) -> None:
     """Save point estimates of transition matrix to CSV.
 
@@ -69,37 +70,47 @@ def save_point_estimates(
         scope: Scope ('country' or city name)
         estimator: Point estimator ('mean' or 'median')
         credible_interval: Width of credible intervals
+        city_index: Index of city in the cities array (required for city scope)
     """
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
     # Extract transition matrix
     if scope == "country":
-        matrix_var = "M_country"
-    else:
-        matrix_var = "M_cities"
-        # For cities, we'd need to select the appropriate city index
-        # This is simplified for now
-
-    # Handle the case where the matrix is stored as separate columns
-    if matrix_var not in trace.posterior:
-        # Look for column variables like M_country_col_0, M_country_col_1, etc.
+        # For country-level, look for column variables
         col_vars = [
-            var
-            for var in trace.posterior.data_vars
-            if var.startswith(f"{matrix_var}_col_")
+            var for var in trace.posterior.data_vars
+            if var.startswith("M_country_col_")
         ]
         if not col_vars:
-            raise ValueError(f"Variable {matrix_var} or its columns not found in trace")
-
+            raise ValueError("Country transition matrix variables not found in trace")
+        
         # Stack the columns to form the matrix
         import xarray as xr
-
         col_data = []
         for col_var in sorted(col_vars):
             col_data.append(trace.posterior[col_var])
         matrix_samples = xr.concat(col_data, dim="matrix_col")
+        
     else:
-        matrix_samples = trace.posterior[matrix_var]
+        # For cities, we need to extract city-specific matrices
+        if city_index is None:
+            raise ValueError(f"city_index is required for city scope: {scope}")
+            
+        # Get column variables for this city
+        col_vars = [
+            var for var in trace.posterior.data_vars
+            if var.startswith(f"M_city_{city_index}_col_")
+        ]
+        
+        if not col_vars:
+            raise ValueError(f"City transition matrix variables not found for city index {city_index}")
+        
+        # Stack the columns to form the city matrix
+        import xarray as xr
+        col_data = []
+        for col_var in sorted(col_vars):
+            col_data.append(trace.posterior[col_var])
+        matrix_samples = xr.concat(col_data, dim="matrix_col")
 
     # Compute point estimates
     if estimator == "mean":
@@ -128,6 +139,118 @@ def save_point_estimates(
                     "estimate": float(point_est[i, j].values.flatten()[0]),
                     "lower_ci": float(lower[i, j].values.flatten()[0]),
                     "upper_ci": float(upper[i, j].values.flatten()[0]),
+                }
+            )
+
+    df = pd.DataFrame(results)
+    df.to_csv(output_path, index=False)
+
+
+def save_vote_movements(
+    trace: az.InferenceData,
+    output_path: Path,
+    vote_totals: Dict[str, float],
+    scope: str = "country",
+    estimator: str = "mean",
+    credible_interval: float = 0.95,
+    min_votes: float = 5000.0,
+    city_index: int = None,
+) -> None:
+    """Save vote movements (actual vote counts) from transition matrix to CSV.
+
+    Args:
+        trace: Posterior samples
+        output_path: Path for CSV output
+        vote_totals: Dictionary with total votes by category from election t
+        scope: Scope ('country' or city name)
+        estimator: Point estimator ('mean' or 'median')
+        credible_interval: Width of credible intervals
+        min_votes: Minimum vote count threshold (movements below this are set to 0)
+        city_index: Index of city in the cities array (required for city scope)
+    """
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+
+    # Extract transition matrix
+    if scope == "country":
+        # For country-level, look for column variables
+        col_vars = [
+            var for var in trace.posterior.data_vars
+            if var.startswith("M_country_col_")
+        ]
+        if not col_vars:
+            raise ValueError("Country transition matrix variables not found in trace")
+        
+        # Stack the columns to form the matrix
+        import xarray as xr
+        col_data = []
+        for col_var in sorted(col_vars):
+            col_data.append(trace.posterior[col_var])
+        matrix_samples = xr.concat(col_data, dim="matrix_col")
+        
+    else:
+        # For cities, we need to extract city-specific matrices
+        if city_index is None:
+            raise ValueError(f"city_index is required for city scope: {scope}")
+            
+        # Get column variables for this city
+        col_vars = [
+            var for var in trace.posterior.data_vars
+            if var.startswith(f"M_city_{city_index}_col_")
+        ]
+        
+        if not col_vars:
+            raise ValueError(f"City transition matrix variables not found for city index {city_index}")
+        
+        # Stack the columns to form the city matrix
+        import xarray as xr
+        col_data = []
+        for col_var in sorted(col_vars):
+            col_data.append(trace.posterior[col_var])
+        matrix_samples = xr.concat(col_data, dim="matrix_col")
+
+    # Compute point estimates
+    if estimator == "mean":
+        point_est = matrix_samples.mean(dim=["chain", "draw"])
+    elif estimator == "median":
+        point_est = matrix_samples.median(dim=["chain", "draw"])
+    else:
+        raise ValueError(f"Unknown estimator: {estimator}")
+
+    # Compute credible intervals
+    alpha = 1 - credible_interval
+    lower = matrix_samples.quantile(alpha / 2, dim=["chain", "draw"])
+    upper = matrix_samples.quantile(1 - alpha / 2, dim=["chain", "draw"])
+
+    # Categories and their vote totals from election t
+    categories = ["Shas", "Agudat_Israel", "Other", "Abstained"]
+    
+    # Convert to DataFrame format with vote movements
+    results = []
+    for i, from_cat in enumerate(categories):
+        from_votes = vote_totals.get(from_cat, 0.0)
+        for j, to_cat in enumerate(categories):
+            # Calculate vote movements: probability * total_votes_from_category
+            prob_point = float(point_est[i, j].values.flatten()[0])
+            prob_lower = float(lower[i, j].values.flatten()[0])
+            prob_upper = float(upper[i, j].values.flatten()[0])
+            
+            vote_movement = prob_point * from_votes
+            vote_lower = prob_lower * from_votes
+            vote_upper = prob_upper * from_votes
+            
+            # Apply minimum threshold filter
+            if vote_movement < min_votes:
+                vote_movement = 0.0
+                vote_lower = 0.0
+                vote_upper = 0.0
+            
+            results.append(
+                {
+                    "from_category": from_cat,
+                    "to_category": to_cat,
+                    "vote_count": vote_movement,
+                    "lower_ci_votes": vote_lower,
+                    "upper_ci_votes": vote_upper,
                 }
             )
 
