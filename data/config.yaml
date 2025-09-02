@@ -37,10 +37,13 @@ data:
 
 # PyMC model parameters
 model:
-  # Prior parameters for hierarchical model
-  # NOTE: Loyalty is encoded via the mean, not via tiny α. Use alpha_offdiag_floor ≥ 1.0 and moderate alpha_diag ≈ 3–5.
-  alpha_diag: 5.0              # Diagonal bias (inertia). Keep in mind: off-diagonal priors are 0.1
-  alpha_offdiag_floor: 1.0        # avoid near-zero Dirichlet α off-diagonals (prevents corner pathologies)
+  # Prior parameters for logistic-normal hierarchical model
+  logistic_normal:
+    diag_bias_mean: 3.0        # Mean for diagonal bias (loyalty) parameter
+    diag_bias_sigma: 0.5       # Standard deviation for diagonal bias parameter
+    sigma_country: 1.0         # Scale for country-level logit variation
+    sigma_city: 0.5           # Scale for city-level logit deviations
+    nu_scale: 5.0             # Scale parameter for Student-t degrees of freedom
 
   parameterization:
     matrix_convention: columns_from_rows_to   # columns = "from", rows = "to"; keep q = p1 @ M.T
@@ -48,12 +51,10 @@ model:
     plotting_rows: to                         # when plotting heatmaps, rows=to, cols=from
     plotting_cols: from
 
-  kappa_prior_scale: 10.0      # Scale parameter for city-level pooling strength
-
   # MCMC sampling parameters
   sampling:
-    draws: 1000                 # Posterior samples per chain
-    tune: 1000                  # Tuning samples per chain
+    draws: 1500                 # Posterior samples per chain
+    tune: 1500                  # Tuning samples per chain
     chains: 4                   # Number of parallel chains
     target_accept: 0.98          # Target acceptance rate for NUTS
     random_seed: 42             # Reproducibility seed

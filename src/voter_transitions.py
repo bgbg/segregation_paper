@@ -254,10 +254,13 @@ def fit_model(
 def _fit_model_for_pair(pair: str, config: dict, force: bool, logger) -> int:
     """Fit model for a single election pair."""
     # Extract model parameters from config
+    logistic_normal_params = config["model"]["logistic_normal"]
     model_params = {
-        "alpha_diag": config["model"]["alpha_diag"],
-        "alpha_offdiag_floor": config["model"]["alpha_offdiag_floor"],
-        "kappa_prior_scale": config["model"]["kappa_prior_scale"],
+        "diag_bias_mean": logistic_normal_params["diag_bias_mean"],
+        "diag_bias_sigma": logistic_normal_params["diag_bias_sigma"],
+        "sigma_country": logistic_normal_params["sigma_country"],
+        "sigma_city": logistic_normal_params["sigma_city"],
+        "nu_scale": logistic_normal_params["nu_scale"],
     }
 
     sampling_params = config["model"]["sampling"]
