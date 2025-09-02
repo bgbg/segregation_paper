@@ -12,6 +12,7 @@ scikit-learn
 seaborn
 tabulate
 tqdm
+python-bidi
 
 pymc
 arviz
@@ -19,8 +20,8 @@ netcdf4
 graphviz
 pyyaml
 pytest
-
-
+plotly
+kaleido
 
 # notebooks stuff - to make sure nbconvert works
 # https://stackoverflow.com/a/78683197
