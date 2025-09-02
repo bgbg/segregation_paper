@@ -21,7 +21,7 @@ def test_load_config_success(temp_config_file, sample_config):
     # Check specific values
     assert config["cities"]["target_cities"] == sample_config["cities"]["target_cities"]
     assert config["data"]["homogenic_filtering"]["threshold"] == 0.75
-    assert config["model"]["alpha_diag"] == 5.0
+    assert config["model"]["logistic_normal"]["diag_bias_mean"] == 3.0
 
 
 def test_load_config_missing_file():
@@ -52,9 +52,14 @@ def test_config_structure_validation(sample_config):
 
     # Required model config
     model_config = sample_config["model"]
-    assert "alpha_diag" in model_config
-    assert "kappa_prior_scale" in model_config
+    assert "logistic_normal" in model_config
     assert "sampling" in model_config
+    
+    # Check logistic-normal parameters
+    logistic_normal_config = model_config["logistic_normal"]
+    required_params = ["diag_bias_mean", "diag_bias_sigma", "sigma_country", "sigma_city", "nu_scale"]
+    for param in required_params:
+        assert param in logistic_normal_config, f"Missing logistic_normal parameter: {param}"
 
     sampling_config = model_config["sampling"]
     sampling_keys = ["draws", "tune", "chains", "target_accept", "random_seed"]
@@ -79,9 +84,13 @@ def test_config_parameter_types(sample_config):
     assert isinstance(elections, list)
     assert all(isinstance(election, int) for election in elections)
 
-    # Model parameters should be numeric
-    assert isinstance(sample_config["model"]["alpha_diag"], (int, float))
-    assert isinstance(sample_config["model"]["kappa_prior_scale"], (int, float))
+    # Logistic-normal parameters should be numeric
+    logistic_normal = sample_config["model"]["logistic_normal"]
+    assert isinstance(logistic_normal["diag_bias_mean"], (int, float))
+    assert isinstance(logistic_normal["diag_bias_sigma"], (int, float))
+    assert isinstance(logistic_normal["sigma_country"], (int, float))
+    assert isinstance(logistic_normal["sigma_city"], (int, float))
+    assert isinstance(logistic_normal["nu_scale"], (int, float))
 
     # Sampling parameters
     sampling = sample_config["model"]["sampling"]
@@ -98,11 +107,13 @@ def test_config_parameter_ranges(sample_config):
     threshold = sample_config["data"]["homogenic_filtering"]["threshold"]
     assert 0.0 < threshold <= 1.0, "Homogenic threshold should be between 0 and 1"
 
-    # Model parameters should be positive
-    assert sample_config["model"]["alpha_diag"] > 0, "alpha_diag should be positive"
-    assert (
-        sample_config["model"]["kappa_prior_scale"] > 0
-    ), "kappa_prior_scale should be positive"
+    # Logistic-normal parameters should be positive
+    logistic_normal = sample_config["model"]["logistic_normal"]
+    assert logistic_normal["diag_bias_mean"] > 0, "diag_bias_mean should be positive"
+    assert logistic_normal["diag_bias_sigma"] > 0, "diag_bias_sigma should be positive"
+    assert logistic_normal["sigma_country"] > 0, "sigma_country should be positive"
+    assert logistic_normal["sigma_city"] > 0, "sigma_city should be positive"
+    assert logistic_normal["nu_scale"] > 0, "nu_scale should be positive"
 
     # Sampling parameters
     sampling = sample_config["model"]["sampling"]

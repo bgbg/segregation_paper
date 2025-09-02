@@ -22,11 +22,14 @@ def test_build_hierarchical_model_structure(sample_tensor_data):
     country_cols = [name for name in var_names if "M_country_col_" in name]
     assert len(country_cols) == 4, "Should have 4 country matrix columns"
 
-    # Should have pooling parameter
-    assert any("kappa" in name for name in var_names), "Should have kappa parameter"
+    # Should have logistic-normal parameters
+    assert any("Z_country" in name for name in var_names), "Should have Z_country parameter"
+    assert any("diag_bias" in name for name in var_names), "Should have diag_bias parameter"
+    assert any("sigma_country" in name for name in var_names), "Should have sigma_country parameter"
 
-    # Should have overdispersion parameter
+    # Should have overdispersion parameter (now log-parameterized)
     assert any("phi" in name for name in var_names), "Should have phi parameter"
+    assert any("log_phi" in name for name in var_names), "Should have log_phi parameter"
 
     # Should have city-level matrices if cities are present
     city_vars = [name for name in var_names if "M_city_" in name]
@@ -42,19 +45,21 @@ def test_build_model_parameter_validation(sample_tensor_data):
     # Test with custom parameters
     model = build_hierarchical_model(
         sample_tensor_data,
-        alpha_diag=5.0,
-        alpha_offdiag_floor=1.0,
-        kappa_prior_scale=10.0,
+        diag_bias_mean=3.0,
+        diag_bias_sigma=0.5,
+        sigma_country=1.0,
+        sigma_city=0.5,
+        nu_scale=5.0,
     )
 
     # Model should build successfully
     assert isinstance(model, pm.Model)
 
     # Test with different valid parameter values
-    model2 = build_hierarchical_model(sample_tensor_data, alpha_diag=1.0)
+    model2 = build_hierarchical_model(sample_tensor_data, diag_bias_mean=1.0)
     assert isinstance(model2, pm.Model)
 
-    model3 = build_hierarchical_model(sample_tensor_data, kappa_prior_scale=20.0)
+    model3 = build_hierarchical_model(sample_tensor_data, nu_scale=10.0)
     assert isinstance(model3, pm.Model)
 
 
@@ -186,7 +191,7 @@ def test_model_parameter_interpretation():
     }
 
     model = build_hierarchical_model(
-        test_data, alpha_diag=20.0, alpha_offdiag_floor=1.0
+        test_data, diag_bias_mean=5.0, diag_bias_sigma=0.3
     )  # High inertia prior
 
     # Model should build successfully with realistic data

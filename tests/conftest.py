@@ -21,9 +21,13 @@ def sample_config():
             "transition_pairs": ["kn20_21", "kn21_22"],
         },
         "model": {
-            "alpha_diag": 5.0,
-            "alpha_offdiag_floor": 1.0,
-            "kappa_prior_scale": 10.0,
+            "logistic_normal": {
+                "diag_bias_mean": 3.0,
+                "diag_bias_sigma": 0.5,
+                "sigma_country": 1.0,
+                "sigma_city": 0.5,
+                "nu_scale": 5.0,
+            },
             "sampling": {
                 "draws": 100,  # Small for testing
                 "tune": 100,
