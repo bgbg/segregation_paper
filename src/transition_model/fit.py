@@ -9,6 +9,7 @@ from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
 import pandas as pd
+import pymc as pm
 
 from .diagnostics import compute_diagnostics, run_posterior_predictive_checks
 from .io import (
@@ -21,6 +22,30 @@ from .preprocess import compute_categories, prepare_hierarchical_data
 from .pymc_model import build_hierarchical_model, sample_model
 
 logger = logging.getLogger(__name__)
+
+
+def save_model_visualization(model: pm.Model, output_path: Path) -> None:
+    """Save PyMC model structure as PNG visualization.
+
+    Args:
+        model: PyMC model object
+        output_path: Path for PNG output file
+    """
+    try:
+        # Generate model graph using PyMC's graphviz integration
+        graph = pm.model_to_graphviz(model)
+
+        # Save as PNG
+        graph.render(str(output_path.with_suffix("")), format="png", cleanup=True)
+
+        logger.info(f"Model visualization saved as {output_path}")
+
+    except Exception as e:
+        logger.warning(f"Failed to save model visualization: {e}")
+        logger.info("Make sure graphviz is installed: pip install graphviz")
+        logger.info(
+            "And system graphviz: brew install graphviz (macOS) or apt-get install graphviz (Linux)"
+        )
 
 
 def load_election_data(
@@ -77,9 +102,11 @@ def fit_transition_pair(
     # Set default parameters
     if model_params is None:
         model_params = {
-            "alpha_diag": 5.0,
-            "alpha_offdiag_floor": 1.0,
-            "kappa_prior_scale": 10.0,
+            "diag_bias_mean": 3.0,
+            "diag_bias_sigma": 0.5,
+            "sigma_country": 1.0,
+            "sigma_city": 0.5,
+            "nu_scale": 5.0,
         }
 
     if sampling_params is None:
@@ -116,6 +143,11 @@ def fit_transition_pair(
     # Build model
     logger.info("Building PyMC model...")
     model = build_hierarchical_model(data, **model_params)
+
+    # Save model visualization
+    logger.info("Saving model visualization...")
+    model_viz_path = pair_output_dir / "model.png"
+    save_model_visualization(model, model_viz_path)
 
     # Sample posterior
     logger.info("Sampling posterior...")
