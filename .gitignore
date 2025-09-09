@@ -14,3 +14,4 @@ data/processed/
 tmp*.ipynb
 *.png
 *.html
+.cursor/
