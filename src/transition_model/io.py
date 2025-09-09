@@ -190,13 +190,33 @@ def save_point_estimates(
             else:
                 element = point_est[i, j]
 
+            # Extract confidence intervals using the same indexing as point estimates
+            if hasattr(lower, "dims") and "matrix_col" in lower.dims:
+                if scope == "country":
+                    lower_element = lower.sel(matrix_col=j).isel(
+                        **{f"M_country_col_{j}_dim_0": i}
+                    )
+                    upper_element = upper.sel(matrix_col=j).isel(
+                        **{f"M_country_col_{j}_dim_0": i}
+                    )
+                else:
+                    lower_element = lower.sel(matrix_col=j).isel(
+                        **{f"M_city_{city_index}_col_{j}_dim_0": i}
+                    )
+                    upper_element = upper.sel(matrix_col=j).isel(
+                        **{f"M_city_{city_index}_col_{j}_dim_0": i}
+                    )
+            else:
+                lower_element = lower[i, j]
+                upper_element = upper[i, j]
+
             results.append(
                 {
                     "from_category": from_cat,
                     "to_category": to_cat,
                     "estimate": float(element.values.flatten()[0]),
-                    "lower_ci": float(lower[i, j].values.flatten()[0]),
-                    "upper_ci": float(upper[i, j].values.flatten()[0]),
+                    "lower_ci": float(lower_element.values.flatten()[0]),
+                    "upper_ci": float(upper_element.values.flatten()[0]),
                 }
             )
 
@@ -339,9 +359,29 @@ def save_vote_movements(
             else:
                 element = point_est[i, j]
 
+            # Extract confidence intervals using the same indexing as point estimates
+            if hasattr(lower, "dims") and "matrix_col" in lower.dims:
+                if scope == "country":
+                    lower_element = lower.sel(matrix_col=j).isel(
+                        **{f"M_country_col_{j}_dim_0": i}
+                    )
+                    upper_element = upper.sel(matrix_col=j).isel(
+                        **{f"M_country_col_{j}_dim_0": i}
+                    )
+                else:
+                    lower_element = lower.sel(matrix_col=j).isel(
+                        **{f"M_city_{city_index}_col_{j}_dim_0": i}
+                    )
+                    upper_element = upper.sel(matrix_col=j).isel(
+                        **{f"M_city_{city_index}_col_{j}_dim_0": i}
+                    )
+            else:
+                lower_element = lower[i, j]
+                upper_element = upper[i, j]
+
             prob_point = float(element.values.flatten()[0])
-            prob_lower = float(lower[i, j].values.flatten()[0])
-            prob_upper = float(upper[i, j].values.flatten()[0])
+            prob_lower = float(lower_element.values.flatten()[0])
+            prob_upper = float(upper_element.values.flatten()[0])
 
             vote_movement = prob_point * from_votes
             vote_lower = prob_lower * from_votes

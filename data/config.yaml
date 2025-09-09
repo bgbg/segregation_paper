@@ -5,11 +5,11 @@
 cities:
   target_cities:
     - ashdod
-    # - beit shemesh
-    # - elad
-    # - bnei brak
-    # - jerusalem
-    # - modi'in illit
+    - beit shemesh
+    - elad
+    - bnei brak
+    - jerusalem
+    - modi'in illit
 
 # Data processing settings
 data:
