@@ -144,9 +144,30 @@ x2_country_obs ~ DirichletMultinomial(n2_country, phi * q_country)
 - **Negative deviations**: Cities with weaker transitions than national average
 - **Student-t distribution**: Allows for outlier cities with extreme behavior
 
+#### City Deviation Analysis
+
+The model saves detailed city deviation metrics in `city_deviations.csv`:
+
+- **Element-wise deviations**: For each transition probability (i,j), shows how much city differs from country average
+- **Credible intervals**: Uncertainty quantification for each deviation
+- **Interpretation**:
+  - Large positive deviations: City has stronger transition than national average
+  - Large negative deviations: City has weaker transition than national average
+  - Credible intervals excluding zero: Statistically significant city effects
+
+
 ### Overdispersion (φ)
 
 The overdispersion parameter `phi` controls how much extra variation exists beyond what a standard multinomial distribution would predict. This is crucial for realistic modeling of political data.
+
+#### What is Overdispersion?
+
+**Overdispersion** occurs when observed data shows more variation than a standard probability model predicts. In political voting, this happens because:
+
+- **Neighborhood effects**: Similar voters cluster geographically
+- **Social influence**: People influence each other's voting decisions
+- **Unobserved demographics**: Age, income, education affect voting but aren't in our model
+- **Campaign effects**: Local campaigning varies by area
 
 #### Mathematical Role
 
@@ -160,17 +181,25 @@ Where:
 - `q` = expected proportions (from transition matrix)
 - `phi` = overdispersion parameter
 
+The variance scales as:
+```python
+# Standard multinomial variance
+var_standard = n × p × (1-p)
+
+# DirichletMultinomial variance with overdispersion
+var_dm = n × p × (1-p) × (1 + phi)
+```
+
 #### Practical Interpretations
 
 **φ > 1 (Most Common)**: Extra variation beyond multinomial
 - **Typical range**: 1.5 - 10.0 for political data
 - **Meaning**: Voters are more clustered/heterogeneous than random
 - **Example**: If φ = 3.0, ballot boxes show 3× more variation than expected
-- **Why it happens**:
-  - Neighborhood effects (similar voters cluster geographically)
-  - Unobserved demographic factors
-  - Social influence within communities
-  - Measurement errors in vote counting
+- **Real-world impact**:
+  - φ = 2: 95% credible intervals are ~1.4× wider
+  - φ = 5: 95% credible intervals are ~2.4× wider
+  - φ = 10: 95% credible intervals are ~3.3× wider
 
 **φ ≈ 1**: Standard multinomial variation
 - **Meaning**: Voters behave as independent random draws
@@ -200,6 +229,52 @@ phi = exp(log_phi)      # Always positive
 ```
 
 This ensures φ > 0 while allowing flexible estimation. The Normal(0,1) prior is weakly informative, letting the data determine the appropriate level of overdispersion.
+
+## Temporal Priors (Sequential Transitions)
+
+For sequences of elections (e.g., kn19→20, kn20→21, ...), the model supports using the previous transition's posterior as the prior for the next transition.
+
+### What Carries Over
+- `Z_country`: country-level logits per column
+- `diag_bias`: diagonal loyalty bias
+- `log_phi`: overdispersion on log-scale
+- `Z_city` (optional): per-city logits when available
+
+These centers become the means of the corresponding priors for the next transition, with configurable innovation (standard deviation) controlling how tightly the prior constrains the new fit.
+
+### Prior Formulation
+- `Z_country ~ Normal(mu=Z_country_prev, sigma=innovation.Z_country_sigma)`
+- `diag_bias ~ Normal(mu=diag_bias_prev, sigma=innovation.diag_bias_sigma)`
+- `Z_city[c] ~ StudentT(nu, mu=Z_country + delta_c_prev, sigma=innovation.Z_city_sigma)` when available
+- `log_phi ~ Normal(mu=log_phi_prev, sigma=innovation.log_phi_sigma)`
+
+Centers are computed from the previous posterior (`mean` by default, `median` optional). If a city prior is missing, the model falls back to the country-centered prior for that city.
+
+### Configuration
+In `data/config.yaml` under `model.temporal_priors`:
+
+```yaml
+model:
+  temporal_priors:
+    enabled: true
+    center: mean            # mean|median
+    innovation:
+      diag_bias_sigma: 0.5
+      Z_country_sigma: 1.0
+      Z_city_sigma: 0.7
+      log_phi_sigma: 1.0
+    carryover_city_level: true
+```
+
+### Pipeline Behavior
+- First transition in the list uses default priors.
+- Each subsequent transition attempts to load `priors.json` from the previous transition's output directory and uses it to center the priors.
+- If priors are missing, the model falls back to default priors and logs a warning.
+
+### Practical Implications
+- Encourages temporal smoothness while allowing changes via innovation scales.
+- Reduces sampling time and improves stability when elections are similar.
+- City-level priors can capture persistent local structure but are optional.
 
 ## Data Processing Pipeline
 

@@ -20,6 +20,7 @@ data:
 
   # Elections to process (Knesset election numbers)
   elections:
+    - 19
     - 20
     - 21
     - 22
@@ -29,6 +30,7 @@ data:
 
   # Election pairs for transition analysis
   transition_pairs:
+    - kn19_20
     - kn20_21
     - kn21_22
     - kn22_23
@@ -45,6 +47,18 @@ model:
     sigma_city: 0.5           # Scale for city-level logit deviations
     nu_scale: 5.0             # Scale parameter for Student-t degrees of freedom
 
+  # Temporal priors configuration (use previous transition as prior)
+  temporal_priors:
+    enabled: true                 # If true, use previous pair's posterior as prior
+    center: mean                  # mean|median centers for priors
+    # Innovation scales for how tightly to trust previous estimates
+    innovation:
+      diag_bias_sigma: 0.5        # Prior sd around previous diag_bias
+      Z_country_sigma: 1.0        # Prior sd for Z_country logits
+      Z_city_sigma: 0.7           # Prior sd for city logits (if available)
+      log_phi_sigma: 1.0          # Prior sd for log_phi
+    carryover_city_level: true    # If true, carry city-level priors when available
+
   parameterization:
     matrix_convention: columns_from_rows_to   # columns = "from", rows = "to"; keep q = p1 @ M.T
     enforce_category_order: true              # validate x1/x2 category order before modeling
@@ -53,8 +67,8 @@ model:
 
   # MCMC sampling parameters
   sampling:
-    draws: 150 # 0                 # Posterior samples per chain
-    tune: 150 # 0                  # Tuning samples per chain
+    draws: 1500                 # Posterior samples per chain
+    tune: 1500                  # Tuning samples per chain
     chains: 4                   # Number of parallel chains
     target_accept: 0.98          # Target acceptance rate for NUTS
     max_treedepth: 15

@@ -16,6 +16,8 @@ from pathlib import Path
 from typing import Dict, List, Optional
 
 import defopt
+import shutil
+from colorama import Fore, Back, Style, init
 
 # Add project root to path for imports
 sys.path.append(str(Path(__file__).parent))
@@ -23,6 +25,7 @@ sys.path.append(str(Path(__file__).parent))
 # Import pipeline modules
 from src.data_harmonizer import harmonize_all_elections, load_config
 from src.transition_model.fit import fit_transition_pair
+from src.transition_model.priors import load_priors
 from src.transition_model.preprocess import (
     prepare_hierarchical_data,
     load_harmonized_data,
@@ -32,14 +35,51 @@ from src.transition_model.diagnostics import compute_diagnostics
 from src.transition_model.pymc_model import build_hierarchical_model, sample_model
 
 
+class ColoredFormatter(logging.Formatter):
+    """Custom formatter with colors for different log levels."""
+
+    # Color mapping
+    COLORS = {
+        "DEBUG": Fore.LIGHTBLACK_EX,  # Light gray
+        "INFO": Fore.WHITE,  # Gray/white
+        "WARNING": Fore.YELLOW,  # Yellow
+        "ERROR": Fore.RED,  # Red
+        "CRITICAL": Fore.RED + Style.BRIGHT,  # Bright red
+    }
+
+    def format(self, record):
+        # Get the original formatted message
+        log_message = super().format(record)
+
+        # Add color based on log level
+        color = self.COLORS.get(record.levelname, "")
+        if color:
+            log_message = f"{color}{log_message}{Style.RESET_ALL}"
+
+        return log_message
+
+
 def setup_logging(verbose: bool = False) -> logging.Logger:
-    """Setup logging configuration."""
+    """Setup logging configuration with colors."""
+    # Initialize colorama for cross-platform color support
+    init(autoreset=True)
+
     level = logging.DEBUG if verbose else logging.INFO
-    logging.basicConfig(
-        level=level,
-        format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+
+    # Create a custom handler with colored formatter
+    handler = logging.StreamHandler(sys.stdout)
+    formatter = ColoredFormatter(
+        "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
         datefmt="%Y-%m-%d %H:%M:%S",
     )
+    handler.setFormatter(formatter)
+
+    # Configure root logger
+    root_logger = logging.getLogger()
+    root_logger.setLevel(level)
+    root_logger.handlers.clear()  # Remove any existing handlers
+    root_logger.addHandler(handler)
+
     return logging.getLogger(__name__)
 
 
@@ -113,6 +153,8 @@ def step2_model_fitting(
     # Extract model parameters from config
     model_params = config["model"]["logistic_normal"]
     sampling_params = config["model"]["sampling"]
+    temporal_cfg = config["model"].get("temporal_priors", {"enabled": False})
+    innovation = temporal_cfg.get("innovation", {})
 
     logger.info(f"Fitting models for {len(transition_pairs)} transition pairs")
     logger.info(f"Model parameters: {model_params}")
@@ -120,7 +162,7 @@ def step2_model_fitting(
 
     fit_summaries = {}
 
-    for pair_tag in transition_pairs:
+    for idx, pair_tag in enumerate(transition_pairs):
         logger.info(f"\n--- Fitting model for pair: {pair_tag} ---")
 
         # Parse election numbers from pair tag
@@ -150,28 +192,36 @@ def step2_model_fitting(
             )
             continue
 
-        try:
-            # Fit the model
-            fit_summary = fit_transition_pair(
-                pair_tag=pair_tag,
-                election_t_path=election_t_path,
-                election_t1_path=election_t1_path,
-                output_dir=output_dir,
-                target_cities=target_cities,
-                columns_mapping=columns_mapping,
-                model_params=model_params,
-                sampling_params=sampling_params,
-                config=config,
-                force=force,
-            )
+        # Load priors from previous pair if enabled and not the first pair
+        priors_payload = None
+        if temporal_cfg.get("enabled", False) and idx > 0:
+            prev_pair = transition_pairs[idx - 1]
+            prev_priors_path = output_dir / prev_pair / "priors.json"
+            priors_payload = load_priors(prev_priors_path)
+            if priors_payload is None:
+                logger.warning(
+                    f"Temporal priors enabled but missing for {prev_pair} (Knesset {election_t}-{election_t1}); using default priors."
+                )
 
-            fit_summaries[pair_tag] = fit_summary
+        # Fit the model
+        fit_summary = fit_transition_pair(
+            pair_tag=pair_tag,
+            election_t_path=election_t_path,
+            election_t1_path=election_t1_path,
+            output_dir=output_dir,
+            target_cities=target_cities,
+            columns_mapping=columns_mapping,
+            model_params=model_params,
+            sampling_params=sampling_params,
+            config=config,
+            force=force,
+            priors=priors_payload,
+            innovation=innovation,
+        )
 
-            logger.info(f"✓ Successfully fitted model for {pair_tag}")
+        fit_summaries[pair_tag] = fit_summary
 
-        except Exception as e:
-            logger.error(f"✗ Failed to fit model for {pair_tag}: {e}")
-            raise
+        logger.info(f"✓ Successfully fitted model for {pair_tag}")
 
     logger.info(f"\n✓ Model fitting complete: {len(fit_summaries)} pairs processed")
 
@@ -269,6 +319,7 @@ def run_pipeline(
     force: bool = True,
     verbose: bool = False,
     skip_visualization: bool = False,
+    clear_all: bool = False,
 ) -> int:
     """Run complete voter transition analysis pipeline.
 
@@ -282,6 +333,7 @@ def run_pipeline(
         force: Force reprocessing even if outputs exist
         verbose: Enable verbose logging
         skip_visualization: Skip visualization step
+        clear_all: Clear all interim files before running
 
     Returns:
         Exit code (0 for success, 1 for failure)
@@ -295,6 +347,20 @@ def run_pipeline(
 
     # Load configuration
     config = load_config(config_path)
+
+    # Optionally clear interim files before anything else
+    if clear_all:
+        logger.info("Clearing interim files as requested (--clear-all)...")
+        interim_dir = Path(config["paths"]["interim_data"]).resolve()
+        if interim_dir.exists():
+            try:
+                shutil.rmtree(interim_dir)
+                logger.info(f"Removed {interim_dir}")
+            except Exception as e:
+                logger.error(f"Failed clearing interim directory {interim_dir}: {e}")
+                raise
+        interim_dir.mkdir(parents=True, exist_ok=True)
+        logger.info("Interim directory recreated.")
 
     # Step 1: Data harmonization
     harmonized_data = step1_data_harmonization(config, force, logger)

@@ -12,11 +12,14 @@ import pandas as pd
 import pymc as pm
 
 from .diagnostics import compute_diagnostics, run_posterior_predictive_checks
+from .priors import build_priors_from_trace, save_priors
 from .io import (
     save_fit_summary,
     save_inference_data,
     save_point_estimates,
     save_vote_movements,
+    save_city_deviations,
+    save_dissimilarity_index,
 )
 from .preprocess import compute_categories, prepare_hierarchical_data
 from .pymc_model import build_hierarchical_model, sample_model
@@ -82,6 +85,8 @@ def fit_transition_pair(
     sampling_params: Optional[Dict] = None,
     config: Optional[Dict] = None,
     force: bool = False,
+    priors: Optional[Dict] = None,
+    innovation: Optional[Dict[str, float]] = None,
 ) -> Dict:
     """Fit transition model for a single election pair.
 
@@ -142,7 +147,12 @@ def fit_transition_pair(
 
     # Build model
     logger.info("Building PyMC model...")
-    model = build_hierarchical_model(data, **model_params)
+    model = build_hierarchical_model(
+        data,
+        **model_params,
+        priors=priors,
+        innovation=innovation,
+    )
 
     # Save model visualization
     logger.info("Saving model visualization...")
@@ -175,7 +185,9 @@ def fit_transition_pair(
             save_inference_data(trace, city_trace_path, scope=city)
 
     # Save point estimates (transition probabilities)
-    save_point_estimates(trace, pair_output_dir / "country_map.csv", scope="country")
+    save_point_estimates(
+        trace, pair_output_dir / "country_map.csv", scope="country", pair_tag=pair_tag
+    )
 
     # Save country vote movements (actual vote counts)
     country_vote_totals = data["country"]["vote_totals"]
@@ -184,6 +196,7 @@ def fit_transition_pair(
         pair_output_dir / "country_movements.csv",
         country_vote_totals,
         scope="country",
+        pair_tag=pair_tag,
     )
 
     # Save city-specific results (both probabilities and movements)
@@ -195,7 +208,11 @@ def fit_transition_pair(
             # Save city transition probabilities
             city_map_path = pair_output_dir / f"city_{city_slug}_map.csv"
             save_point_estimates(
-                trace, city_map_path, scope=city, city_index=city_index
+                trace,
+                city_map_path,
+                scope=city,
+                city_index=city_index,
+                pair_tag=pair_tag,
             )
 
             # Save city vote movements
@@ -207,9 +224,24 @@ def fit_transition_pair(
                 city_vote_totals,
                 scope=city,
                 city_index=city_index,
+                pair_tag=pair_tag,
             )
 
             city_index += 1  # Increment index for each city with data
+
+    # Save city deviations from country average
+    # deviations_path = pair_output_dir / "city_deviations.csv"
+    # save_city_deviations(trace, deviations_path, target_cities, pair_tag)
+
+    # Save dissimilarity indices
+    # dissimilarity_path = pair_output_dir / "city_dissimilarity.csv"
+    # save_dissimilarity_index(trace, dissimilarity_path, target_cities, data, pair_tag)
+
+    # Save priors for next transition
+    priors_output_dir = pair_output_dir
+    priors_output_dir.mkdir(exist_ok=True)
+    priors_payload = build_priors_from_trace(trace, data)
+    save_priors(priors_payload, priors_output_dir / "priors.json")
 
     # Save fit summary
     fit_summary = {

@@ -18,6 +18,9 @@ def build_hierarchical_model(
     sigma_country: float = 1.0,
     sigma_city: float = 0.5,
     nu_scale: float = 5.0,
+    *,
+    priors: Optional[Dict] = None,
+    innovation: Optional[Dict[str, float]] = None,
 ) -> pm.Model:
     """Build hierarchical logistic-normal transition model.
 
@@ -53,13 +56,25 @@ def build_hierarchical_model(
         eyeK = np.eye(K)
 
         sigma_country_param = pm.HalfNormal("sigma_country", sigma=sigma_country)
-        Z_country = pm.Normal(
-            "Z_country", mu=0.0, sigma=sigma_country_param, shape=(K, K)
-        )
 
-        diag_bias = pm.Normal(
-            "diag_bias", mu=diag_bias_mean, sigma=diag_bias_sigma
-        )  # encodes loyalty in mean
+        # Use temporal priors if provided
+        if priors and "Z_country" in priors:
+            zc_mu = np.array(priors["Z_country"], dtype=float)
+            zc_sigma = (innovation or {}).get("Z_country_sigma", sigma_country)
+            Z_country = pm.Normal("Z_country", mu=zc_mu, sigma=zc_sigma, shape=(K, K))
+        else:
+            Z_country = pm.Normal(
+                "Z_country", mu=0.0, sigma=sigma_country_param, shape=(K, K)
+            )
+
+        if priors and "diag_bias" in priors:
+            diag_mu = float(priors["diag_bias"])  # previous estimate
+            diag_sd = (innovation or {}).get("diag_bias_sigma", diag_bias_sigma)
+            diag_bias = pm.Normal("diag_bias", mu=diag_mu, sigma=diag_sd)
+        else:
+            diag_bias = pm.Normal(
+                "diag_bias", mu=diag_bias_mean, sigma=diag_bias_sigma
+            )  # encodes loyalty in mean
 
         M_country_cols = []
         for j in range(K):
@@ -75,13 +90,33 @@ def build_hierarchical_model(
 
         M_cities = None
         if n_cities > 0:
-            Z_city = pm.StudentT(
-                "Z_city",
-                nu=nu,
-                mu=Z_country,
-                sigma=sigma_city_param,
-                shape=(n_cities, K, K),
-            )
+            # If city-level priors exist and carryover is desired, center by city
+            if priors and "Z_city" in priors:
+                # Build per-city means; fallback to Z_country when missing
+                z_city_mu = np.zeros((n_cities, K, K), dtype=float)
+                for idx, city in enumerate(cities):
+                    if city in priors["Z_city"]:
+                        z_city_mu[idx] = np.array(priors["Z_city"][city], dtype=float)
+                    else:
+                        z_city_mu[idx] = 0.0  # relative to Z_country baseline
+                z_city_sigma = (innovation or {}).get("Z_city_sigma", sigma_city)
+                Z_city = pm.StudentT(
+                    "Z_city",
+                    nu=nu,
+                    mu=Z_country
+                    + z_city_mu
+                    - 0.0,  # shift around previous if available
+                    sigma=z_city_sigma,
+                    shape=(n_cities, K, K),
+                )
+            else:
+                Z_city = pm.StudentT(
+                    "Z_city",
+                    nu=nu,
+                    mu=Z_country,
+                    sigma=sigma_city_param,
+                    shape=(n_cities, K, K),
+                )
             M_cities_list = []
             for c in range(n_cities):
                 city_cols = []
@@ -94,7 +129,12 @@ def build_hierarchical_model(
             M_cities = pm.math.stack(M_cities_list, axis=0)
 
         # Overdispersion (log-parameterized)
-        log_phi = pm.Normal("log_phi", mu=0.0, sigma=1.0)
+        if priors and "log_phi" in priors:
+            lp_mu = float(priors["log_phi"])  # previous estimate
+            lp_sd = (innovation or {}).get("log_phi_sigma", 1.0)
+            log_phi = pm.Normal("log_phi", mu=lp_mu, sigma=lp_sd)
+        else:
+            log_phi = pm.Normal("log_phi", mu=0.0, sigma=1.0)
         phi = pm.Deterministic("phi", pm.math.exp(log_phi))
 
         # Likelihood for country data

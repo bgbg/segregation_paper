@@ -6,7 +6,7 @@ CSV point estimates, and JSON fit summaries.
 
 import json
 from pathlib import Path
-from typing import Any, Dict, Optional, Union
+from typing import Any, Dict, List, Optional, Union
 
 import arviz as az
 import numpy as np
@@ -66,6 +66,7 @@ def save_point_estimates(
     estimator: str = "mean",
     credible_interval: float = 0.95,
     city_index: int = None,
+    pair_tag: str = None,
 ) -> None:
     """Save point estimates of transition matrix to CSV.
 
@@ -76,6 +77,7 @@ def save_point_estimates(
         estimator: Point estimator ('mean' or 'median')
         credible_interval: Width of credible intervals
         city_index: Index of city in the cities array (required for city scope)
+        pair_tag: Election pair tag (e.g., 'kn19_20') for logging context
     """
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
@@ -156,8 +158,9 @@ def save_point_estimates(
     diagonal_values = np.array(diagonal_values)
     min_diagonal = np.min(diagonal_values)
     if min_diagonal < 0.65:
+        pair_info = f" ({pair_tag})" if pair_tag else ""
         logging.warning(
-            f"Low voter loyalty detected in {scope} transition matrix. "
+            f"Low voter loyalty detected in {scope} transition matrix{pair_info}. "
             f"Minimum diagonal value: {min_diagonal:.3f} (should be >= 0.65). "
             f"Diagonal values: {np.round(diagonal_values, 3)}"
         )
@@ -233,6 +236,7 @@ def save_vote_movements(
     credible_interval: float = 0.95,
     min_votes: float = 5000.0,
     city_index: int = None,
+    pair_tag: str = None,
 ) -> None:
     """Save vote movements (actual vote counts) from transition matrix to CSV.
 
@@ -325,8 +329,9 @@ def save_vote_movements(
     diagonal_values = np.array(diagonal_values)
     min_diagonal = np.min(diagonal_values)
     if min_diagonal < 0.65:
+        pair_info = f" ({pair_tag})" if pair_tag else ""
         logging.warning(
-            f"Low voter loyalty detected in {scope} transition matrix. "
+            f"Low voter loyalty detected in {scope} transition matrix{pair_info}. "
             f"Minimum diagonal value: {min_diagonal:.3f} (should be >= 0.65). "
             f"Diagonal values: {np.round(diagonal_values, 3)}"
         )
@@ -462,3 +467,180 @@ def load_point_estimates(input_path: Path) -> pd.DataFrame:
         DataFrame with estimates and credible intervals
     """
     return pd.read_csv(input_path)
+
+
+def save_city_deviations(
+    trace: az.InferenceData,
+    output_path: Path,
+    target_cities: List[str],
+    pair_tag: str = None,
+) -> None:
+    """Save city deviations from country average with credible intervals.
+
+    Args:
+        trace: Posterior samples
+        output_path: Path for CSV output
+        target_cities: List of target city names
+        pair_tag: Election pair tag for logging context
+    """
+    import numpy as np
+    import pandas as pd
+    import xarray as xr
+
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+
+    # Extract country transition matrix
+    col_vars = [
+        var for var in trace.posterior.data_vars if var.startswith("M_country_col_")
+    ]
+    if not col_vars:
+        raise ValueError("Country transition matrix variables not found in trace")
+
+    col_data = []
+    for col_var in sorted(col_vars):
+        col_data.append(trace.posterior[col_var])
+    country_matrix_samples = xr.concat(col_data, dim="matrix_col")
+
+    # Calculate country mean matrix
+    country_mean = country_matrix_samples.mean(dim=["chain", "draw"])
+
+    deviations_data = []
+
+    for city_idx, city_name in enumerate(target_cities):
+        # Extract city transition matrix
+        city_col_vars = [
+            var
+            for var in trace.posterior.data_vars
+            if var.startswith(f"M_city_{city_idx}_col_")
+        ]
+
+        if not city_col_vars:
+            continue  # Skip cities without data
+
+        city_col_data = []
+        for col_var in sorted(city_col_vars):
+            city_col_data.append(trace.posterior[col_var])
+        city_matrix_samples = xr.concat(city_col_data, dim="matrix_col")
+
+        # Calculate deviations (city - country) for each sample
+        deviations_samples = city_matrix_samples - country_matrix_samples
+
+        # Calculate summary statistics
+        deviation_mean = deviations_samples.mean(dim=["chain", "draw"])
+        deviation_std = deviations_samples.std(dim=["chain", "draw"])
+        deviation_q025 = deviations_samples.quantile(0.025, dim=["chain", "draw"])
+        deviation_q975 = deviations_samples.quantile(0.975, dim=["chain", "draw"])
+
+        # Flatten matrices and create rows
+        # Convert to numpy arrays for easier indexing
+        deviation_mean_np = deviation_mean.values
+        deviation_std_np = deviation_std.values
+        deviation_q025_np = deviation_q025.values
+        deviation_q975_np = deviation_q975.values
+
+        # Debug: print shapes
+        print(f"City {city_name}: deviation_mean_np.shape = {deviation_mean_np.shape}")
+
+        for i in range(4):  # 4x4 matrix
+            for j in range(4):
+                row = {
+                    "city": city_name,
+                    "from_category": j,
+                    "to_category": i,
+                    "deviation_mean": float(deviation_mean_np[city_idx, i, j]),
+                    "deviation_std": float(deviation_std_np[city_idx, i, j]),
+                    "deviation_q025": float(deviation_q025_np[city_idx, i, j]),
+                    "deviation_q975": float(deviation_q975_np[city_idx, i, j]),
+                }
+                deviations_data.append(row)
+
+    # Save to CSV
+    df_deviations = pd.DataFrame(deviations_data)
+    df_deviations.to_csv(output_path, index=False)
+
+    logging.info(f"Saved city deviations to {output_path}")
+
+
+def save_dissimilarity_index(
+    trace: az.InferenceData,
+    output_path: Path,
+    target_cities: List[str],
+    data: Dict,
+    pair_tag: str = None,
+) -> None:
+    """Calculate and save spatial dissimilarity index for each city.
+
+    Uses the existing duncan_2_dissimilarity_index function from vote_utils.py
+    to calculate the Duncan & Duncan Index of Dissimilarity between Shas and
+    Agudat Israel parties across ballot boxes within each city.
+
+    Args:
+        trace: Posterior samples
+        output_path: Path for CSV output
+        target_cities: List of target city names
+        data: Hierarchical data dictionary containing vote counts
+        pair_tag: Election pair tag for logging context
+    """
+    import numpy as np
+    import pandas as pd
+    from src.vote_utils import duncan_2_dissimilarity_index
+
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+
+    dissimilarity_data = []
+
+    for city_idx, city_name in enumerate(target_cities):
+        if city_name not in data:
+            continue  # Skip cities without data
+
+        # Get vote counts for this city
+        city_data = data[city_name]
+        vote_counts_t = city_data["vote_counts"]  # Shape: (n_stations, 4)
+
+        # Extract Shas (index 0) and Agudat Israel (index 1) votes
+        shas_votes = vote_counts_t[:, 0]  # Shas votes per station
+        agudat_votes = vote_counts_t[:, 1]  # Agudat Israel votes per station
+
+        # Calculate totals
+        total_shas = np.sum(shas_votes)
+        total_agudat = np.sum(agudat_votes)
+
+        if total_shas > 0 and total_agudat > 0:
+            # Create DataFrame for the existing dissimilarity function
+            df_city = pd.DataFrame({"shas": shas_votes, "agudat": agudat_votes})
+
+            # Use existing Duncan & Duncan dissimilarity function
+            dissimilarity = duncan_2_dissimilarity_index(
+                df_city, party_a_col="shas", party_b_col="agudat", ignored=None
+            )
+
+            row = {
+                "city": city_name,
+                "dissimilarity_mean": dissimilarity,
+                "dissimilarity_std": 0.0,  # No uncertainty for observed data
+                "dissimilarity_q025": dissimilarity,
+                "dissimilarity_q975": dissimilarity,
+                "total_shas_votes": int(total_shas),
+                "total_agudat_votes": int(total_agudat),
+                "n_stations": len(shas_votes),
+            }
+            dissimilarity_data.append(row)
+        else:
+            # Handle case where one group has no votes
+            row = {
+                "city": city_name,
+                "dissimilarity_mean": np.nan,
+                "dissimilarity_std": np.nan,
+                "dissimilarity_q025": np.nan,
+                "dissimilarity_q975": np.nan,
+                "total_shas_votes": int(total_shas),
+                "total_agudat_votes": int(total_agudat),
+                "n_stations": len(shas_votes),
+            }
+            dissimilarity_data.append(row)
+
+    # Save to CSV
+    df_dissimilarity = pd.DataFrame(dissimilarity_data)
+    df_dissimilarity.to_csv(output_path, index=False)
+
+    logging.info(f"Saved spatial dissimilarity indices to {output_path}")
