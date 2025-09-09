@@ -90,33 +90,16 @@ def build_hierarchical_model(
 
         M_cities = None
         if n_cities > 0:
-            # If city-level priors exist and carryover is desired, center by city
-            if priors and "Z_city" in priors:
-                # Build per-city means; fallback to Z_country when missing
-                z_city_mu = np.zeros((n_cities, K, K), dtype=float)
-                for idx, city in enumerate(cities):
-                    if city in priors["Z_city"]:
-                        z_city_mu[idx] = np.array(priors["Z_city"][city], dtype=float)
-                    else:
-                        z_city_mu[idx] = 0.0  # relative to Z_country baseline
-                z_city_sigma = (innovation or {}).get("Z_city_sigma", sigma_city)
-                Z_city = pm.StudentT(
-                    "Z_city",
-                    nu=nu,
-                    mu=Z_country
-                    + z_city_mu
-                    - 0.0,  # shift around previous if available
-                    sigma=z_city_sigma,
-                    shape=(n_cities, K, K),
-                )
-            else:
-                Z_city = pm.StudentT(
-                    "Z_city",
-                    nu=nu,
-                    mu=Z_country,
-                    sigma=sigma_city_param,
-                    shape=(n_cities, K, K),
-                )
+            # IMPORTANT: City-level temporal priors are intentionally NOT carried over.
+            # We always center city logits on the current Z_country only, to avoid
+            # accumulation of alignment/aggregation errors across elections.
+            Z_city = pm.StudentT(
+                "Z_city",
+                nu=nu,
+                mu=Z_country,
+                sigma=sigma_city_param,
+                shape=(n_cities, K, K),
+            )
             M_cities_list = []
             for c in range(n_cities):
                 city_cols = []

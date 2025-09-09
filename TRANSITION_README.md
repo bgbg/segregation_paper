@@ -238,17 +238,15 @@ For sequences of elections (e.g., kn19→20, kn20→21, ...), the model supports
 - `Z_country`: country-level logits per column
 - `diag_bias`: diagonal loyalty bias
 - `log_phi`: overdispersion on log-scale
-- `Z_city` (optional): per-city logits when available
 
-These centers become the means of the corresponding priors for the next transition, with configurable innovation (standard deviation) controlling how tightly the prior constrains the new fit.
+City-level priors are not carried over. Each city's logits are re-initialized each election and centered on the current `Z_country` to avoid error accumulation from ballot-box alignment and aggregation drift.
 
 ### Prior Formulation
 - `Z_country ~ Normal(mu=Z_country_prev, sigma=innovation.Z_country_sigma)`
 - `diag_bias ~ Normal(mu=diag_bias_prev, sigma=innovation.diag_bias_sigma)`
-- `Z_city[c] ~ StudentT(nu, mu=Z_country + delta_c_prev, sigma=innovation.Z_city_sigma)` when available
 - `log_phi ~ Normal(mu=log_phi_prev, sigma=innovation.log_phi_sigma)`
 
-Centers are computed from the previous posterior (`mean` by default, `median` optional). If a city prior is missing, the model falls back to the country-centered prior for that city.
+Centers are computed from the previous posterior (`mean` by default, `median` optional). City-level priors are reset each election; no city carryover is used.
 
 ### Configuration
 In `data/config.yaml` under `model.temporal_priors`:
@@ -261,9 +259,8 @@ model:
     innovation:
       diag_bias_sigma: 0.5
       Z_country_sigma: 1.0
-      Z_city_sigma: 0.7
       log_phi_sigma: 1.0
-    carryover_city_level: true
+    # Note: City-level priors are not carried over; cities reset each election
 ```
 
 ### Pipeline Behavior
@@ -272,9 +269,9 @@ model:
 - If priors are missing, the model falls back to default priors and logs a warning.
 
 ### Practical Implications
-- Encourages temporal smoothness while allowing changes via innovation scales.
+- Encourages temporal smoothness in national patterns while allowing changes via innovation scales.
 - Reduces sampling time and improves stability when elections are similar.
-- City-level priors can capture persistent local structure but are optional.
+- Avoids accumulated errors from ballot-box alignment by resetting city-level priors; city estimates rely on current-election data plus hierarchical pooling to `Z_country`.
 
 ## Data Processing Pipeline
 
