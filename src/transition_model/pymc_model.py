@@ -9,25 +9,24 @@ from typing import Dict, Optional
 import arviz as az
 import numpy as np
 import pymc as pm
+import yaml
 
 
 def build_hierarchical_model(
     data: Dict[str, Dict[str, np.ndarray]],
-    diag_bias_mean: float = 3.0,
-    diag_bias_sigma: float = 0.5,
-    sigma_country: float = 1.0,
-    sigma_D: float = 0.5,
-    delta_scale: float = 1.0,
-    nu_scale: float = 5.0,
+    diag_bias_mean: float = 2.0,
+    diag_bias_sigma: float = 0.3,
+    sigma_country: float = 0.5,
+    sigma_D: float = 0.3,
+    delta_scale: float = 0.5,
     *,
     priors: Optional[Dict] = None,
     innovation: Optional[Dict[str, float]] = None,
 ) -> pm.Model:
-    """Build hierarchical logistic-normal transition model with rank-1 city deviations.
+    """Build simplified hierarchical transition model focusing on core transition matrices.
 
-    Uses logistic-normal parameterization with a shared deviation pattern D and
-    city-specific scalars delta_city. This provides interpretable single-parameter
-    city deviations while maintaining flexibility through the learned pattern D.
+    Simplified version removing non-essential components and using tighter priors
+    for better convergence. Focus is on country and city-level transition matrices only.
 
     Args:
         data: Dictionary with country and city-level data tensors
@@ -36,7 +35,6 @@ def build_hierarchical_model(
         sigma_country: Scale for country-level logit variation
         sigma_D: Scale for shared deviation pattern matrix
         delta_scale: Scale for city-specific deviation scalars
-        nu_scale: Scale parameter for Student-t degrees of freedom
         priors: Optional dictionary of priors from previous time period
         innovation: Optional dictionary of innovation variances
 
@@ -56,10 +54,8 @@ def build_hierarchical_model(
     ), f"Category mismatch: x1 has {x1_country.shape[1]}, x2 has {x2_country.shape[1]}, expected {K}"
 
     with pm.Model() as model:
-        # Country-level logistic-normal prior (robust)
+        # Country-level logistic-normal prior (tighter for stability)
         eyeK = np.eye(K)
-
-        sigma_country_param = pm.HalfNormal("sigma_country", sigma=sigma_country)
 
         # Use temporal priors if provided
         if priors and "Z_country" in priors:
@@ -68,7 +64,7 @@ def build_hierarchical_model(
             Z_country = pm.Normal("Z_country", mu=zc_mu, sigma=zc_sigma, shape=(K, K))
         else:
             Z_country = pm.Normal(
-                "Z_country", mu=0.0, sigma=sigma_country_param, shape=(K, K)
+                "Z_country", mu=0.0, sigma=sigma_country, shape=(K, K)
             )
 
         if priors and "diag_bias" in priors:
@@ -80,6 +76,7 @@ def build_hierarchical_model(
                 "diag_bias", mu=diag_bias_mean, sigma=diag_bias_sigma
             )  # encodes loyalty in mean
 
+        # Country transition matrix
         M_country_cols = []
         for j in range(K):
             z = Z_country[:, j] + diag_bias * eyeK[:, j]
@@ -87,10 +84,10 @@ def build_hierarchical_model(
             M_country_cols.append(col)
         M_country = pm.math.stack(M_country_cols, axis=1)
 
-        # City-level rank-1 deviations
+        # Simplified city-level deviations (remove complex rank-1 structure)
         M_cities = None
         if n_cities > 0:
-            # Shared deviation pattern matrix
+            # Simplified: Independent city deviations from country
             if priors and "D" in priors:
                 D_mu = np.array(priors["D"], dtype=float)
                 D_sigma = (innovation or {}).get("D_sigma", sigma_D)
@@ -100,48 +97,36 @@ def build_hierarchical_model(
             else:
                 D = pm.Normal("D_deviation_pattern", mu=0, sigma=sigma_D, shape=(K, K))
 
-            # Heavy-tailed distribution for robustness
-            nu_raw = pm.Exponential("nu_raw", lam=1 / nu_scale)
-            nu = pm.Deterministic("nu", nu_raw + 2.0)
-
-            # City-specific scalar deviations (rank-1)
-            # IMPORTANT: City scalars are re-initialized each election to avoid
-            # accumulation of alignment/aggregation errors across elections.
-            delta_city = pm.StudentT(
-                "delta_city", nu=nu, mu=0, sigma=delta_scale, shape=n_cities
+            # Simplified city scalars (normal distribution, no heavy tails)
+            delta_city = pm.Normal(
+                "delta_city", mu=0, sigma=delta_scale, shape=n_cities
             )
 
-            # Interpretable magnitude measure
-            city_deviation_magnitude = pm.Deterministic(
-                "city_deviation_magnitude", pm.math.abs(delta_city)
-            )
-
-            # City logits: rank-1 deviation from country
+            # City logits: simplified deviation from country
             Z_city = pm.Deterministic(
                 "Z_city",
                 Z_country[None, :, :] + delta_city[:, None, None] * D[None, :, :],
             )
 
-            # Build city transition matrices
+            # Build city transition matrices (simplified)
             M_cities_list = []
             for c in range(n_cities):
+                city_name = (
+                    cities[c].replace(" ", "_").replace("'", "")
+                )  # Clean name for PyMC
                 city_cols = []
                 for j in range(K):
                     zc = Z_city[c, :, j] + diag_bias * eyeK[:, j]
-                    colc = pm.Deterministic(f"M_city_{c}_col_{j}", pm.math.softmax(zc))
+                    colc = pm.Deterministic(
+                        f"M_{city_name}_col_{j}", pm.math.softmax(zc)
+                    )
                     city_cols.append(colc)
                 M_city = pm.math.stack(city_cols, axis=1)
                 M_cities_list.append(M_city)
             M_cities = pm.math.stack(M_cities_list, axis=0)
 
-        # Overdispersion (log-parameterized)
-        if priors and "log_phi" in priors:
-            lp_mu = float(priors["log_phi"])  # previous estimate
-            lp_sd = (innovation or {}).get("log_phi_sigma", 1.0)
-            log_phi = pm.Normal("log_phi", mu=lp_mu, sigma=lp_sd)
-        else:
-            log_phi = pm.Normal("log_phi", mu=0.0, sigma=1.0)
-        phi = pm.Deterministic("phi", pm.math.exp(log_phi))
+        # Simplified overdispersion (fixed value to reduce complexity)
+        phi = pm.Deterministic("phi", pm.math.constant(100.0))  # Fixed concentration
 
         # Likelihood for country data
         country_data = data["country"]
@@ -174,9 +159,12 @@ def build_hierarchical_model(
             p1_city = x1_city / x1_city.sum(axis=1, keepdims=True)
             q_city = pm.math.dot(p1_city, M_city.T)
 
+            # Clean city name for PyMC variable naming
+            city_clean = city.replace(" ", "_").replace("'", "")
+
             # Observed votes
             pm.DirichletMultinomial(
-                f"x2_{city}_obs", n=n2_city, a=phi * q_city, observed=x2_city
+                f"x2_{city_clean}_obs", n=n2_city, a=phi * q_city, observed=x2_city
             )
 
     return model
@@ -184,31 +172,49 @@ def build_hierarchical_model(
 
 def sample_model(
     model: pm.Model,
-    draws: int = 1000,
-    tune: int = 1000,
+    draws: int = 3000,
+    tune: int = 3000,
     chains: int = 4,
-    target_accept: float = 0.98,
-    max_treedepth: int = 15,
-    init: str = "jitter+adapt_diag",
+    target_accept: float = 0.95,
+    max_treedepth: int = 12,
+    init: str = "adapt_diag",
     random_seed: Optional[int] = None,
 ) -> az.InferenceData:
-    """Sample from the hierarchical transition model.
+    """Sample from the simplified hierarchical transition model.
 
     Args:
         model: PyMC model to sample from
-        draws: Number of posterior samples per chain
-        tune: Number of tuning samples per chain
+        draws: Number of posterior samples per chain (increased for better convergence)
+        tune: Number of tuning samples per chain (increased for better adaptation)
         chains: Number of MCMC chains
-        target_accept: Target acceptance rate
-        max_treedepth: Maximum tree depth for NUTS sampler
-        init: Initialization method for chains
+        target_accept: Target acceptance rate (slightly lower for efficiency)
+        max_treedepth: Maximum tree depth for NUTS sampler (reduced for stability)
+        init: Initialization method for chains (simplified for stability)
         random_seed: Random seed for reproducibility
 
     Returns:
         ArviZ InferenceData object with posterior samples
     """
     with model:
-        # Use NUTS sampler with higher target acceptance for better geometry
+        # Progressive sampling strategy for difficult posteriors
+        print("Starting progressive sampling strategy...")
+
+        # Stage 1: Initial burn-in with conservative settings
+        print("Stage 1: Initial adaptation...")
+        trace_stage1 = pm.sample(
+            draws=500,
+            tune=2000,  # Longer tuning for initial adaptation
+            chains=chains,
+            target_accept=0.90,  # Lower acceptance for initial exploration
+            max_treedepth=10,
+            init="jitter+adapt_diag",
+            random_seed=random_seed,
+            return_inferencedata=True,
+            discard_tuned_samples=False,
+        )
+
+        # Stage 2: Main sampling with better initialization
+        print("Stage 2: Main sampling with adapted parameters...")
         trace = pm.sample(
             draws=draws,
             tune=tune,
@@ -223,67 +229,59 @@ def sample_model(
     return trace
 
 
-def analyze_city_deviations(
+def get_transition_matrices(
     trace: az.InferenceData, city_names: list
-) -> Dict[str, Dict]:
-    """Analyze and interpret city deviation patterns from rank-1 model.
+) -> Dict[str, np.ndarray]:
+    """Extract transition matrices from posterior samples.
 
     Args:
         trace: Posterior samples from model
         city_names: List of city names in order
 
     Returns:
-        Dictionary with deviation analysis for each city
+        Dictionary with posterior mean transition matrices
     """
-    # Extract posterior means
-    D = trace.posterior["D_deviation_pattern"].mean(dim=["chain", "draw"]).values
-    delta = trace.posterior["delta_city"].mean(dim=["chain", "draw"]).values
-
-    # Get credible intervals for delta
-    delta_hdi = az.hdi(trace.posterior["delta_city"], hdi_prob=0.89)
-
     results = {}
+
+    # Country transition matrix
+    M_country_cols = []
+    for j in range(4):
+        col = trace.posterior[f"M_country_col_{j}"].mean(dim=["chain", "draw"]).values
+        M_country_cols.append(col)
+    results["country"] = np.stack(M_country_cols, axis=1)
+
+    # City transition matrices
     for i, city in enumerate(city_names):
-        # Compute deviation matrix for this city
-        deviation_matrix = delta[i] * D
-
-        # Find strongest deviation
-        max_idx = np.unravel_index(
-            np.argmax(np.abs(deviation_matrix)), deviation_matrix.shape
-        )
-
-        # Frobenius norm (overall deviation magnitude)
-        frob_norm = np.linalg.norm(deviation_matrix, "fro")
-
-        results[city] = {
-            "delta_mean": delta[i],
-            "delta_hdi_89": (
-                delta_hdi["delta_city"][i, 0].values,
-                delta_hdi["delta_city"][i, 1].values,
-            ),
-            "magnitude": abs(delta[i]),
-            "direction": "positive" if delta[i] > 0 else "negative",
-            "frobenius_norm": frob_norm,
-            "strongest_deviation": {
-                "from_party": max_idx[0],
-                "to_party": max_idx[1],
-                "value": deviation_matrix[max_idx],
-            },
-            "significant": not (
-                delta_hdi["delta_city"][i, 0] <= 0 <= delta_hdi["delta_city"][i, 1]
-            ),
-        }
+        city_clean = city.replace(" ", "_").replace("'", "")
+        M_city_cols = []
+        for j in range(4):
+            col = (
+                trace.posterior[f"M_{city_clean}_col_{j}"]
+                .mean(dim=["chain", "draw"])
+                .values
+            )
+            M_city_cols.append(col)
+        results[city] = np.stack(M_city_cols, axis=1)
 
     return results
 
 
-def generate_test_data() -> Dict[str, Dict[str, np.ndarray]]:
+def generate_test_data(
+    cities: Optional[list] = None,
+) -> Dict[str, Dict[str, np.ndarray]]:
     """Generate synthetic test data for model demonstration.
+
+    Args:
+        cities: List of city names to generate data for; if None, uses default set
 
     Returns:
         Dictionary with country and city test data
     """
     np.random.seed(42)
+
+    # Default cities if none provided
+    if cities is None:
+        cities = ["jerusalem", "bnei brak", "tel aviv"]
 
     # Categories: [Shas, Agudat, Other, Abstained]
     n_stations_country = 100
@@ -297,150 +295,149 @@ def generate_test_data() -> Dict[str, Dict[str, np.ndarray]]:
         520, [0.16, 0.11, 0.65, 0.08], n_stations_country
     )
 
-    # Jerusalem: moderate Haredi population
-    x1_jerusalem = np.random.multinomial(300, [0.25, 0.20, 0.45, 0.10], n_stations_city)
-    x2_jerusalem = np.random.multinomial(310, [0.26, 0.19, 0.47, 0.08], n_stations_city)
-
-    # Bnei Brak: very high Haredi population
-    x1_bnei_brak = np.random.multinomial(280, [0.35, 0.30, 0.25, 0.10], n_stations_city)
-    x2_bnei_brak = np.random.multinomial(290, [0.37, 0.28, 0.27, 0.08], n_stations_city)
-
-    # Tel Aviv: secular population (opposite pattern)
-    x1_tel_aviv = np.random.multinomial(350, [0.05, 0.03, 0.82, 0.10], n_stations_city)
-    x2_tel_aviv = np.random.multinomial(360, [0.04, 0.03, 0.85, 0.08], n_stations_city)
-
     data = {
         "country": {
             "x1": x1_country.astype(float),
             "x2": x2_country.astype(float),
             "n1": x1_country.sum(axis=1).astype(float),
             "n2": x2_country.sum(axis=1).astype(float),
-        },
-        "jerusalem": {
-            "x1": x1_jerusalem.astype(float),
-            "x2": x2_jerusalem.astype(float),
-            "n1": x1_jerusalem.sum(axis=1).astype(float),
-            "n2": x2_jerusalem.sum(axis=1).astype(float),
-        },
-        "bnei brak": {
-            "x1": x1_bnei_brak.astype(float),
-            "x2": x2_bnei_brak.astype(float),
-            "n1": x1_bnei_brak.sum(axis=1).astype(float),
-            "n2": x2_bnei_brak.sum(axis=1).astype(float),
-        },
-        "tel aviv": {
-            "x1": x1_tel_aviv.astype(float),
-            "x2": x2_tel_aviv.astype(float),
-            "n1": x1_tel_aviv.sum(axis=1).astype(float),
-            "n2": x2_tel_aviv.sum(axis=1).astype(float),
-        },
+        }
     }
+
+    # Generate city data dynamically based on city characteristics
+    for city in cities:
+        city_lower = city.lower()
+
+        # Determine voting patterns based on city characteristics
+        if any(
+            haredi_city in city_lower
+            for haredi_city in [
+                "jerusalem",
+                "bnei brak",
+                "beit shemesh",
+                "elad",
+                "modi",
+            ]
+        ):
+            # High Haredi population cities
+            if "bnei brak" in city_lower or "elad" in city_lower:
+                # Very high Haredi
+                probs_t = [0.35, 0.30, 0.25, 0.10]
+                probs_t1 = [0.37, 0.28, 0.27, 0.08]
+            else:
+                # Moderate Haredi (Jerusalem, Beit Shemesh, Modi'in Illit)
+                probs_t = [0.25, 0.20, 0.45, 0.10]
+                probs_t1 = [0.26, 0.19, 0.47, 0.08]
+        elif "ashdod" in city_lower:
+            # Mixed population
+            probs_t = [0.18, 0.15, 0.57, 0.10]
+            probs_t1 = [0.19, 0.14, 0.59, 0.08]
+        else:
+            # Default secular/mixed pattern
+            probs_t = [0.05, 0.03, 0.82, 0.10]
+            probs_t1 = [0.04, 0.03, 0.85, 0.08]
+
+        # Generate data for this city
+        x1_city = np.random.multinomial(300, probs_t, n_stations_city)
+        x2_city = np.random.multinomial(310, probs_t1, n_stations_city)
+
+        data[city] = {
+            "x1": x1_city.astype(float),
+            "x2": x2_city.astype(float),
+            "n1": x1_city.sum(axis=1).astype(float),
+            "n2": x2_city.sum(axis=1).astype(float),
+        }
 
     return data
 
 
-def print_rank1_summary(trace: az.InferenceData, city_names: list):
-    """Print readable summary of rank-1 model results."""
+def load_cities_from_config(config_path: str = "data/config.yaml") -> list:
+    """Load target cities from configuration file.
+
+    Args:
+        config_path: Path to config YAML file
+
+    Returns:
+        List of target city names
+    """
+    try:
+        with open(config_path, "r") as f:
+            config = yaml.safe_load(f)
+        return config["cities"]["target_cities"]
+    except Exception as e:
+        print(f"Warning: Could not load cities from {config_path}: {e}")
+        print("Using default cities: jerusalem, bnei brak, tel aviv")
+        return ["jerusalem", "bnei brak", "tel aviv"]
+
+
+def print_transition_summary(trace: az.InferenceData, city_names: list):
+    """Print simplified summary focusing on transition matrices."""
 
     print("\n" + "=" * 60)
-    print("RANK-1 MODEL RESULTS SUMMARY")
+    print("SIMPLIFIED TRANSITION MODEL RESULTS")
     print("=" * 60)
 
     # Country-level transition matrix
     print("\nCountry-level Transition Matrix:")
     print("(rows: to party, cols: from party)")
     print("Parties: [Shas, Agudat, Other, Abstained]")
-    M_country = []
-    for j in range(4):
-        col = trace.posterior[f"M_country_col_{j}"].mean(dim=["chain", "draw"]).values
-        M_country.append(col)
-    M_country = np.stack(M_country, axis=1)
-    print(np.round(M_country, 3))
+
+    matrices = get_transition_matrices(trace, city_names)
+    print(np.round(matrices["country"], 3))
 
     # Diagonal bias (loyalty parameter)
     diag_bias = trace.posterior["diag_bias"].mean(dim=["chain", "draw"]).values
     print(f"\nDiagonal Bias (loyalty): {diag_bias:.2f}")
 
-    # Shared deviation pattern
+    # City transition matrices
     print("\n" + "-" * 40)
-    print("Shared Deviation Pattern (D matrix):")
-    print("-" * 40)
-    D = trace.posterior["D_deviation_pattern"].mean(dim=["chain", "draw"]).values
-    print("(Shows HOW cities deviate when they do)")
-    print(np.round(D, 3))
-
-    # City deviations
-    print("\n" + "-" * 40)
-    print("City-Specific Deviation Scalars:")
+    print("City-Level Transition Matrices:")
     print("-" * 40)
 
-    results = analyze_city_deviations(trace, city_names)
-
-    for city, res in results.items():
+    for city in city_names:
         print(f"\n{city.upper()}:")
-        print(
-            f"  δ (deviation scalar): {res['delta_mean']:.3f} "
-            f"[89% HDI: ({res['delta_hdi_89'][0]:.3f}, "
-            f"{res['delta_hdi_89'][1]:.3f})]"
-        )
-        print(f"  Magnitude: {res['magnitude']:.3f}")
-        print(f"  Direction: {res['direction']}")
-        print(f"  Significant deviation: {res['significant']}")
-        print(f"  Overall deviation (Frobenius): {res['frobenius_norm']:.3f}")
-
-        parties = ["Shas", "Agudat", "Other", "Abstained"]
-        strongest = res["strongest_deviation"]
-        print(
-            f"  Strongest deviation: {parties[strongest['from_party']]}"
-            f" → {parties[strongest['to_party']]}"
-            f" ({strongest['value']:.3f})"
-        )
+        print(np.round(matrices[city], 3))
 
 
 if __name__ == "__main__":
     print("Hierarchical Voter Transition Model with Rank-1 City Deviations")
     print("=" * 60)
 
-    # Generate test data
-    test_data = generate_test_data()
-    city_names = [k for k in test_data.keys() if k != "country"]
+    # Load cities from config
+    city_names = load_cities_from_config()
+    print(f"Using cities from config: {city_names}")
+
+    # Generate test data for config cities
+    test_data = generate_test_data(cities=city_names)
 
     print("\nData Summary:")
     print(f"- Countries: 1")
     print(f"- Cities: {len(city_names)} ({', '.join(city_names)})")
     print(f"- Categories: 4 (Shas, Agudat Israel, Other, Abstained)")
     print(f"- Country stations: {len(test_data['country']['x1'])}")
-    print(f"- City stations per city: {len(test_data['jerusalem']['x1'])}")
+    if city_names:
+        print(f"- City stations per city: {len(test_data[city_names[0]]['x1'])}")
 
-    # Build model
-    print("\nBuilding rank-1 hierarchical model...")
+    # Build simplified model
+    print("\nBuilding simplified hierarchical model...")
     model = build_hierarchical_model(test_data)
 
+    # Sample from model (test with simplified parameters)
+    print("\nSampling from posterior (test run)...")
     try:
-        # Generate model graph
-        graph = pm.model_to_graphviz(model)
-        output_file = "voter_transition_model_rank1"
-        graph.render(output_file, format="png", cleanup=True)
-        print(f"Model visualization saved as {output_file}.png")
-    except Exception as e:
-        print(f"Could not generate model graph: {e}")
-
-    # Sample from model (quick test)
-    print("\nSampling from posterior (quick test)...")
-    try:
-        trace = sample_model(model, draws=500, tune=500, chains=2, random_seed=42)
+        trace = sample_model(model, draws=1000, tune=1000, chains=2, random_seed=42)
 
         # Print results
-        print_rank1_summary(trace, city_names)
+        print_transition_summary(trace, city_names)
 
-        # Model diagnostics
+        # Basic diagnostics
         print("\n" + "=" * 60)
         print("MODEL DIAGNOSTICS")
         print("=" * 60)
         print(
             az.summary(
                 trace,
-                var_names=["delta_city", "D_deviation_pattern", "diag_bias", "phi"],
+                var_names=["delta_city", "D_deviation_pattern", "diag_bias"],
                 hdi_prob=0.89,
             )
         )

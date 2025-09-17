@@ -20,6 +20,7 @@ data:
 
   # Elections to process (Knesset election numbers)
   elections:
+    - 18
     - 19
     - 20
     - 21
@@ -30,6 +31,7 @@ data:
 
   # Election pairs for transition analysis
   transition_pairs:
+    - kn18_19
     - kn19_20
     - kn20_21
     - kn21_22
@@ -39,25 +41,23 @@ data:
 
 # PyMC model parameters
 model:
-  # Prior parameters for logistic-normal hierarchical model with rank-1 city deviations
+  # Prior parameters for simplified hierarchical model (tighter priors for stability)
   logistic_normal:
-    diag_bias_mean: 3.0        # Mean for diagonal bias (loyalty) parameter
-    diag_bias_sigma: 0.5       # Standard deviation for diagonal bias parameter
-    sigma_country: 1.0         # Scale for country-level logit variation
-    sigma_D: 0.5              # Scale for shared deviation pattern matrix
-    delta_scale: 1.0          # Scale for city-specific deviation scalars
-    nu_scale: 5.0             # Scale parameter for Student-t degrees of freedom
+    diag_bias_mean: 2.0        # Mean for diagonal bias (loyalty) parameter
+    diag_bias_sigma: 0.3       # Standard deviation for diagonal bias parameter
+    sigma_country: 0.5         # Scale for country-level logit variation (tighter)
+    sigma_D: 0.3              # Scale for shared deviation pattern matrix (tighter)
+    delta_scale: 0.5          # Scale for city-specific deviation scalars (tighter)
 
   # Temporal priors configuration (use previous transition as prior)
   temporal_priors:
     enabled: true                 # If true, use previous pair's posterior as prior
     center: mean                  # mean|median centers for priors
-    # Innovation scales for how tightly to trust previous estimates
+    # Innovation scales for how tightly to trust previous estimates (tighter)
     innovation:
-      diag_bias_sigma: 0.5        # Prior sd around previous diag_bias
-      Z_country_sigma: 1.0        # Prior sd for Z_country logits
-      D_sigma: 0.5               # Prior sd for deviation pattern D (optional carryover)
-      log_phi_sigma: 1.0          # Prior sd for log_phi
+      diag_bias_sigma: 0.3        # Prior sd around previous diag_bias (tighter)
+      Z_country_sigma: 0.5        # Prior sd for Z_country logits (tighter)
+      D_sigma: 0.3               # Prior sd for deviation pattern D (tighter)
     carryover_city_level: false   # City scalars (delta_city) are re-initialized each election
 
   parameterization:
@@ -66,15 +66,14 @@ model:
     plotting_rows: to                         # when plotting heatmaps, rows=to, cols=from
     plotting_cols: from
 
-  # MCMC sampling parameters
+  # MCMC sampling parameters (improved for convergence)
   sampling:
-    draws: 1500                 # Posterior samples per chain
-    tune: 1500                  # Tuning samples per chain
+    draws: 3000                 # Posterior samples per chain (increased)
+    tune: 3000                  # Tuning samples per chain (increased)
     chains: 4                   # Number of parallel chains
-    target_accept: 0.98          # Target acceptance rate for NUTS
-    max_treedepth: 15
-    random_seed: 42             # Reproducibility seed
-    init: "jitter+adapt_diag"
+    target_accept: 0.95         # Target acceptance rate for NUTS (slightly lower)
+    max_treedepth: 12           # Reduced for stability
+    init: "adapt_diag"          # Simplified initialization
 
   # Convergence diagnostics thresholds
   diagnostics:

@@ -107,12 +107,12 @@ def save_point_estimates(
         col_vars = [
             var
             for var in trace.posterior.data_vars
-            if var.startswith(f"M_city_{city_index}_col_")
+            if var.startswith(f"M_{scope.replace(' ', '_').replace(chr(39), '')}_col_")
         ]
 
         if not col_vars:
             raise ValueError(
-                f"City transition matrix variables not found for city index {city_index}"
+                f"City transition matrix variables not found for city '{scope}'"
             )
 
         # Stack the columns to form the city matrix
@@ -149,7 +149,9 @@ def save_point_estimates(
                 )
             else:
                 element = point_est.sel(matrix_col=i).isel(
-                    **{f"M_city_{city_index}_col_{i}_dim_0": i}
+                    **{
+                        f"M_{scope.replace(' ', '_').replace(chr(39), '')}_col_{i}_dim_0": i
+                    }
                 )
         else:
             element = point_est[i, i]
@@ -188,7 +190,9 @@ def save_point_estimates(
                     )
                 else:
                     element = point_est.sel(matrix_col=j).isel(
-                        **{f"M_city_{city_index}_col_{j}_dim_0": i}
+                        **{
+                            f"M_{scope.replace(' ', '_').replace(chr(39), '')}_col_{j}_dim_0": i
+                        }
                     )
             else:
                 element = point_est[i, j]
@@ -204,10 +208,14 @@ def save_point_estimates(
                     )
                 else:
                     lower_element = lower.sel(matrix_col=j).isel(
-                        **{f"M_city_{city_index}_col_{j}_dim_0": i}
+                        **{
+                            f"M_{scope.replace(' ', '_').replace(chr(39), '')}_col_{j}_dim_0": i
+                        }
                     )
                     upper_element = upper.sel(matrix_col=j).isel(
-                        **{f"M_city_{city_index}_col_{j}_dim_0": i}
+                        **{
+                            f"M_{scope.replace(' ', '_').replace(chr(39), '')}_col_{j}_dim_0": i
+                        }
                     )
             else:
                 lower_element = lower[i, j]
@@ -278,12 +286,12 @@ def save_vote_movements(
         col_vars = [
             var
             for var in trace.posterior.data_vars
-            if var.startswith(f"M_city_{city_index}_col_")
+            if var.startswith(f"M_{scope.replace(' ', '_').replace(chr(39), '')}_col_")
         ]
 
         if not col_vars:
             raise ValueError(
-                f"City transition matrix variables not found for city index {city_index}"
+                f"City transition matrix variables not found for city '{scope}'"
             )
 
         # Stack the columns to form the city matrix
@@ -320,7 +328,9 @@ def save_vote_movements(
                 )
             else:
                 element = point_est.sel(matrix_col=i).isel(
-                    **{f"M_city_{city_index}_col_{i}_dim_0": i}
+                    **{
+                        f"M_{scope.replace(' ', '_').replace(chr(39), '')}_col_{i}_dim_0": i
+                    }
                 )
         else:
             element = point_est[i, i]
@@ -359,7 +369,9 @@ def save_vote_movements(
                     )
                 else:
                     element = point_est.sel(matrix_col=j).isel(
-                        **{f"M_city_{city_index}_col_{j}_dim_0": i}
+                        **{
+                            f"M_{scope.replace(' ', '_').replace(chr(39), '')}_col_{j}_dim_0": i
+                        }
                     )
             else:
                 element = point_est[i, j]
@@ -375,10 +387,14 @@ def save_vote_movements(
                     )
                 else:
                     lower_element = lower.sel(matrix_col=j).isel(
-                        **{f"M_city_{city_index}_col_{j}_dim_0": i}
+                        **{
+                            f"M_{scope.replace(' ', '_').replace(chr(39), '')}_col_{j}_dim_0": i
+                        }
                     )
                     upper_element = upper.sel(matrix_col=j).isel(
-                        **{f"M_city_{city_index}_col_{j}_dim_0": i}
+                        **{
+                            f"M_{scope.replace(' ', '_').replace(chr(39), '')}_col_{j}_dim_0": i
+                        }
                     )
             else:
                 lower_element = lower[i, j]
