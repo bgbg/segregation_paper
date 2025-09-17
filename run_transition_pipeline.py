@@ -302,8 +302,8 @@ def step4_visualization(config: Dict, logger: logging.Logger) -> None:
 
         logger.info("Generating transition matrix visualizations...")
 
-        # Run visualization (this will process all available transition pairs)
-        visualize_main()
+        # Run comprehensive visualization (country + cities + deviations)
+        visualize_main(plot_all=True)
 
         logger.info("✓ Visualization complete")
 
@@ -316,7 +316,7 @@ def step4_visualization(config: Dict, logger: logging.Logger) -> None:
 def run_pipeline(
     *,
     config_path: str = "data/config.yaml",
-    force: bool = True,
+    force: bool = False,
     verbose: bool = False,
     skip_visualization: bool = False,
     clear_all: bool = False,

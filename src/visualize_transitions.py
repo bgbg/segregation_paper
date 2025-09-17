@@ -725,134 +725,57 @@ def plot_city_deviation_time_series(
     return ax
 
 
-def plot_city_deviations_grid(
-    df_deviations: pd.DataFrame,
-    city_name: str,
-    *,
-    pairs_to_show: Optional[List[str]] = None,
-    show_ci: bool = False,
-    figsize: Tuple[float, float] = (18, 12),
-    suptitle: Optional[str] = None,
-    save_path: Optional[str] = None,
-) -> Tuple[plt.Figure, np.ndarray]:
-    """Plot 4x4 grid of city deviation time series.
-
-    Args:
-        df_deviations: DataFrame with city deviation data
-        city_name: Name of the city
-        pairs_to_show: Subset of pairs to show; others masked
-        show_ci: Whether to show credible intervals
-        figsize: Figure size tuple (wider for 3:2 aspect ratio subplots)
-        suptitle: Super title for the figure
-        save_path: Path to save figure; if None, doesn't save
-
-    Returns:
-        Tuple of (figure, axes_array)
-    """
-    # Create 4x4 subplot grid with 3:2 aspect ratio
-    fig, axes = plt.subplots(4, 4, figsize=figsize, sharex=False)
-
-    # Plot each transition deviation
-    for i, to_cat in enumerate(CATEGORY_ORDER):
-        for j, from_cat in enumerate(CATEGORY_ORDER):
-            ax = axes[i, j]
-
-            # Determine color
-            if from_cat == to_cat:
-                color = DIAGONAL_COLORS[from_cat]
-            else:
-                color = COLOR_OFF_DIAGONAL
-
-            try:
-                plot_city_deviation_time_series(
-                    df_deviations=df_deviations,
-                    from_category=from_cat,
-                    to_category=to_cat,
-                    pairs_to_show=pairs_to_show,
-                    color=color,
-                    show_ci=show_ci,
-                    ax=ax,
-                )
-
-                # Remove x-axis label from all subplots initially
-                ax.set_xlabel("")
-
-                # Only add x-axis label to bottom row (i == 3)
-                if i == 3:  # Bottom row
-                    set_xlabel(ax)
-
-            except ValueError as e:
-                # Handle missing transitions gracefully
-                warnings.warn(
-                    f"Skipping {from_cat}->{to_cat} deviation for {city_name}: {e}"
-                )
-                ax.text(
-                    0.5,
-                    0.5,
-                    "No data",
-                    ha="center",
-                    va="center",
-                    transform=ax.transAxes,
-                )
-
-                # Still set x-axis properties for consistency
-                if i == 3:
-                    set_xlabel(ax)
-
-                # Remove spines for consistency
-                ax.spines["top"].set_visible(False)
-                ax.spines["right"].set_visible(False)
-
-    # Set super title if provided
-    if suptitle:
-        fig.suptitle(suptitle, fontsize=14)
-
-    # Adjust layout
-    plt.tight_layout()
-
-    # Save if requested
-    if save_path:
-        plt.savefig(save_path, dpi=150, bbox_inches="tight")
-        print(f"Saved city deviation plot to {save_path}")
-
-    return fig, axes
+# Removed plot_city_deviations_grid function - 4x4 deviation plots no longer needed
 
 
-def plot_all_cities_aggregate_deviation(
+def plot_all_cities_aggregate_deviation_subplots(
     target_cities: List[str],
     transitions_dir: str = "data/processed/transitions",
     transition_pairs: Optional[List[str]] = None,
     metric: str = "mean_abs_deviation",
     *,
     pairs_to_show: Optional[List[str]] = None,
-    figsize: Tuple[float, float] = (14, 8),
+    figsize: Optional[Tuple[float, float]] = None,
     save_path: Optional[str] = None,
-) -> Tuple[plt.Figure, plt.Axes]:
-    """Plot aggregate deviation comparison across all cities.
+) -> Tuple[plt.Figure, np.ndarray]:
+    """Plot MAD time series with separate subplot for each city.
 
     Args:
-        target_cities: List of cities to compare
+        target_cities: List of cities to plot
         transitions_dir: Directory with transition data
         transition_pairs: List of transition pairs to analyze
         metric: Which aggregate metric to plot
         pairs_to_show: Subset of pairs to show
-        figsize: Figure size tuple
+        figsize: Figure size tuple; if None, calculated based on number of cities
         save_path: Path to save figure
 
     Returns:
-        Tuple of (figure, axes)
+        Tuple of (figure, axes_array)
     """
+    n_cities = len(target_cities)
+
+    # Calculate figure size if not provided
+    if figsize is None:
+        # One column, N_CITIES rows - make each subplot reasonable size
+        width = 10  # Fixed width for consistency
+        height = 3 * n_cities  # 3 inches per city subplot
+        figsize = (width, height)
+
     # Load country data once
     df_country = collect_transition_estimates(
         transitions_dir, transition_pairs, level="country"
     )
 
-    fig, ax = plt.subplots(figsize=figsize)
+    # Create subplots: 1 column, n_cities rows
+    fig, axes = plt.subplots(n_cities, 1, figsize=figsize, sharex=True, sharey=False)
 
-    # Color palette for cities
-    colors = plt.cm.Set1(np.linspace(0, 1, len(target_cities)))
+    # Handle single city case (axes won't be an array)
+    if n_cities == 1:
+        axes = [axes]
 
     for i, city in enumerate(target_cities):
+        ax = axes[i]
+
         try:
             # Load city data and compute deviations
             df_city = collect_transition_estimates(
@@ -871,32 +794,87 @@ def plot_all_cities_aggregate_deviation(
                 mask = ~df_plot["pair_tag"].isin(pairs_to_show)
                 df_plot.loc[mask, metric] = np.nan
 
-            # Plot line
+            # Plot line for this city (black color for all)
             ax.plot(
                 df_plot["kn_location"],
                 df_plot[metric],
                 "-o",
-                color=colors[i],
-                label=city.title(),
+                color="black",
                 markersize=4,
                 linewidth=2,
             )
 
+            # Set city title
+            ax.set_title(city.title(), fontsize=12)
+
+            # Set y-axis label with horizontal orientation and line break
+            ax.set_ylabel(
+                "Deviation\n(pp)", fontsize=10, rotation=0, ha="right", va="center"
+            )
+
+            # Set manual y-axis limits
+            ax.set_ylim(-0.1, 10.1)
+
+            # Set sparse y-tick labels using min, max, mean for this city
+            valid_values = df_plot[metric].dropna()
+            if not valid_values.empty:
+                data_min = round(valid_values.min(), 1)
+                data_max = round(valid_values.max(), 1)
+                data_mean = round(valid_values.mean(), 1)
+
+                # Use min, mean, max as ticks with minimum 0.5pp spacing
+                tick_candidates = [data_min, data_mean, data_max]
+                tick_candidates = sorted(
+                    list(set(tick_candidates))
+                )  # Remove duplicates and sort
+
+                # Filter ticks to ensure minimum 0.5pp spacing
+                filtered_ticks = []
+                for tick in tick_candidates:
+                    # Check if this tick is at least 0.5pp away from all existing filtered ticks
+                    if all(abs(tick - existing) >= 0.5 for existing in filtered_ticks):
+                        filtered_ticks.append(tick)
+
+                # Ensure we have at least min and max if they're far enough apart
+                if len(filtered_ticks) < 2 and abs(data_max - data_min) >= 0.5:
+                    filtered_ticks = [data_min, data_max]
+                elif len(filtered_ticks) == 0:
+                    # If all values are too close, just show one tick (the mean or middle value)
+                    filtered_ticks = [data_mean]
+
+                ax.set_yticks(filtered_ticks)
+                ax.set_yticklabels([f"{t:.1f}pp" for t in filtered_ticks])
+
+            # Remove top and right spines
+            ax.spines["top"].set_visible(False)
+            ax.spines["right"].set_visible(False)
+
         except Exception as e:
-            print(f"⚠ Error processing {city} for aggregate plot: {e}")
+            print(f"⚠ Error processing {city} for subplot: {e}")
+            ax.text(
+                0.5,
+                0.5,
+                f"Error: {city}",
+                ha="center",
+                va="center",
+                transform=ax.transAxes,
+            )
             continue
 
-    # Set x-axis with Knesset numbers
+    # Set x-axis properties (shared across all subplots)
     if transition_pairs:
         kn_min = min(int(p.split("_")[0][2:]) for p in transition_pairs)
         kn_max = max(int(p.split("_")[1]) for p in transition_pairs)
-        ax.set_xticks(np.arange(kn_min, kn_max + 1))
-        ax.set_xlim(kn_min - 0.5, kn_max + 0.5)
 
-    # Format y-axis
-    ax.set_ylabel("Deviation (pp)", fontsize=12)
+        # Set x-axis limits and ticks for all subplots
+        for ax in axes:
+            ax.set_xticks(np.arange(kn_min, kn_max + 1))
+            ax.set_xlim(kn_min - 0.5, kn_max + 0.5)
 
-    # Set title and labels
+    # Add Hebrew x-label only to bottom subplot
+    set_xlabel(axes[-1])
+
+    # Set overall title
     metric_names = {
         "mean_abs_deviation": "Mean Absolute Deviation from Country",
         "rms_deviation": "RMS Deviation from Country",
@@ -904,29 +882,18 @@ def plot_all_cities_aggregate_deviation(
         "std_deviation": "Deviation Variability",
         "sum_abs_deviation": "Total Deviation from Country",
     }
-
     metric_display = metric_names.get(metric, metric.replace("_", " ").title())
-    ax.set_title(f"City Comparison: {metric_display}", fontsize=14)
+    fig.suptitle(f"City-by-City: {metric_display}", fontsize=14)
 
-    # Add legend
-    ax.legend(bbox_to_anchor=(1.05, 1), loc="upper left")
-
-    # Add Hebrew x-label only at bottom
-    set_xlabel(ax)
-
-    # Remove top and right spines
-    ax.spines["top"].set_visible(False)
-    ax.spines["right"].set_visible(False)
-
-    # Adjust layout to accommodate legend
+    # Adjust layout
     plt.tight_layout()
 
     # Save if requested
     if save_path:
         plt.savefig(save_path, dpi=150, bbox_inches="tight")
-        print(f"Saved aggregate deviation comparison to {save_path}")
+        print(f"Saved city-by-city deviation plot to {save_path}")
 
-    return fig, ax
+    return fig, axes
 
 
 def plot_all_transitions(
@@ -1036,69 +1003,30 @@ def plot_all_transitions(
             print(f"⚠ Error processing {city}: {e}")
             continue
 
-    # 3. Generate city deviation plots
+    # 3. Skip individual city deviation plots (4x4 grids removed)
+
+    # 4. Generate aggregate deviation comparison plot (city-by-city subplots)
     print("\n" + "=" * 60)
-    print("GENERATING CITY DEVIATION PLOTS")
-    print("=" * 60)
-
-    for city in target_cities:
-        print(f"\nProcessing deviations for city: {city}")
-
-        try:
-            df_city = collect_transition_estimates(
-                transitions_dir, transition_pairs, level="city", city=city
-            )
-
-            # Compute deviations from country
-            df_deviations = compute_city_deviations(df_country, df_city, city)
-            print(
-                f"Computed {city} deviations: {len(df_deviations)} transition comparisons"
-            )
-
-            # Create safe filename
-            city_slug_file = city.lower().replace(" ", "_").replace("'", "")
-            deviation_save_path = (
-                output_path / f"city_{city_slug_file}_deviations_over_elections.png"
-            )
-
-            fig, axes = plot_city_deviations_grid(
-                df_deviations=df_deviations,
-                city_name=city.title(),
-                pairs_to_show=pairs_subset,
-                show_ci=show_ci,
-                figsize=(18, 12),  # Wider for 3:2 aspect ratio subplots
-                suptitle=f"{city.title()} - Deviations from Country-wide Patterns",
-                save_path=str(deviation_save_path),
-            )
-            plt.close(fig)  # Close to free memory
-
-        except Exception as e:
-            print(f"⚠ Error processing {city} deviations: {e}")
-            continue
-
-    # 4. Generate aggregate deviation comparison plot
-    print("\n" + "=" * 60)
-    print("GENERATING AGGREGATE DEVIATION COMPARISON")
+    print("GENERATING CITY-BY-CITY MAD PLOTS")
     print("=" * 60)
 
     try:
         comparison_save_path = output_path / "cities_aggregate_deviation_comparison.png"
 
-        fig, ax = plot_all_cities_aggregate_deviation(
+        fig, axes = plot_all_cities_aggregate_deviation_subplots(
             target_cities=target_cities,
             transitions_dir=transitions_dir,
             transition_pairs=transition_pairs,
             metric="mean_abs_deviation",
             pairs_to_show=pairs_subset,
-            figsize=(14, 8),
             save_path=str(comparison_save_path),
         )
         plt.close(fig)  # Close to free memory
 
-        print(f"✓ Generated aggregate deviation comparison plot")
+        print(f"✓ Generated city-by-city MAD subplot comparison")
 
     except Exception as e:
-        print(f"⚠ Error generating aggregate comparison plot: {e}")
+        print(f"⚠ Error generating city-by-city comparison plot: {e}")
 
     print("\n" + "=" * 60)
     print("VISUALIZATION COMPLETE")
@@ -1115,19 +1043,10 @@ def plot_all_transitions(
         if city_path.exists():
             print(f"  - {city.title()}: {city_path}")
 
-    print("\n✓ City deviation plots:")
-    for city in target_cities:
-        city_slug_file = city.lower().replace(" ", "_").replace("'", "")
-        deviation_path = (
-            output_path / f"city_{city_slug_file}_deviations_over_elections.png"
-        )
-        if deviation_path.exists():
-            print(f"  - {city.title()}: {deviation_path}")
-
-    print("\n✓ Aggregate deviation comparison:")
+    print("\n✓ City-by-city MAD comparison:")
     comparison_path = output_path / "cities_aggregate_deviation_comparison.png"
     if comparison_path.exists():
-        print(f"  - All cities: {comparison_path}")
+        print(f"  - MAD subplots: {comparison_path}")
 
     if pairs_subset:
         print(f"✓ Displayed {len(pairs_subset)} of {len(transition_pairs)} pairs")
