@@ -298,7 +298,7 @@ def step4_visualization(config: Dict, logger: logging.Logger) -> None:
 
     try:
         # Import visualization modules
-        from visualize_transitions import main as visualize_main
+        from src.visualize_transitions import main as visualize_main
 
         logger.info("Generating transition matrix visualizations...")
 
