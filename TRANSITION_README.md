@@ -8,11 +8,13 @@ The Voter Transition Model is a Bayesian hierarchical ecological inference model
 
 ### Hierarchical Structure
 
-The model uses a **logistic-normal parameterization** with a hierarchical structure:
+The model uses a **logistic-normal parameterization** with a hierarchical structure. We adopt a
+rank‑1 formulation for city deviations for interpretability and regularization:
 
 1. **Country Level**: Base transition matrix estimated from national data
-2. **City Level**: City-specific deviations from the country-level matrix
-3. **Station Level**: Individual ballot box observations within each city
+2. **Shared Deviation Pattern (D)**: A global K×K matrix describing how cities typically differ
+3. **City Scalar (δ[c])**: A single scalar per city that scales the shared pattern
+4. **Station Level**: Individual ballot box observations within each city
 
 ### Voter Categories
 
@@ -53,17 +55,21 @@ for j in range(4):
     M_country_col_j = softmax(z_j)
 ```
 
-#### City-Level Deviations
+#### City-Level Deviations (Rank‑1)
 
-Cities deviate from the country-level matrix using **heavy-tailed Student-t distributions**:
+Cities deviate from the country using a shared pattern D scaled by a city‑specific scalar δ[c]:
 
 ```python
-# Degrees of freedom for Student-t (allows for outliers)
+# Shared deviation pattern (learned)
+D ~ Normal(0, σ_D)                # Shape: (4, 4)
+
+# Heavy‑tailed city scalars (robust to outliers)
 nu_raw ~ Exponential(1/5.0)
 nu = nu_raw + 2.0
+delta_city ~ StudentT(nu, 0, delta_scale)   # Shape: (n_cities,)
 
-# City-specific logit deviations
-Z_city ~ StudentT(nu, Z_country, σ_city)  # Shape: (n_cities, 4, 4)
+# City logits: rank‑1 deviation from country
+Z_city[c, :, :] = Z_country + delta_city[c] * D
 
 # City transition matrices
 for c in range(n_cities):
@@ -102,8 +108,9 @@ x2_country_obs ~ DirichletMultinomial(n2_country, phi * q_country)
 | `diag_bias_mean` | 3.0 | Mean diagonal bias | Controls voter loyalty strength |
 | `diag_bias_sigma` | 0.5 | Diagonal bias std dev | Uncertainty in loyalty estimates |
 | `sigma_country` | 1.0 | Country logit scale | Base transition variability |
-| `sigma_city` | 0.5 | City deviation scale | City-specific variation |
-| `nu_scale` | 5.0 | Student-t scale | Controls outlier sensitivity |
+| `sigma_D` | 0.5 | Deviation pattern scale | Prior scale for shared pattern D |
+| `delta_scale` | 1.0 | City scalar scale | Prior scale for |δ[c]| magnitudes |
+| `nu_scale` | 5.0 | Student‑t scale | Heavy‑tail for δ[c] (robustness) |
 
 ### Estimated Parameters
 
@@ -111,9 +118,10 @@ x2_country_obs ~ DirichletMultinomial(n2_country, phi * q_country)
 |-----------|-------|-------------|----------------|
 | `Z_country` | (4,4) | Country logits | Base transition tendencies |
 | `diag_bias` | scalar | Diagonal bias | Voter loyalty strength |
-| `Z_city` | (n_cities,4,4) | City logit deviations | City-specific differences |
-| `nu` | scalar | Student-t degrees of freedom | Outlier sensitivity |
-| `phi` | scalar | Overdispersion | Extra-multinomial variation |
+| `D` | (4,4) | Shared deviation pattern | How cities deviate when they do |
+| `delta_city` | (n_cities,) | City scalars | Magnitude and sign of deviation |
+| `nu` | scalar | Student‑t degrees of freedom | Outlier sensitivity across cities |
+| `phi` | scalar | Overdispersion | Extra‑multinomial variation |
 
 ### Derived Quantities
 
@@ -140,9 +148,12 @@ x2_country_obs ~ DirichletMultinomial(n2_country, phi * q_country)
 
 ### City-Level Deviations
 
-- **Positive deviations**: Cities with stronger transitions than national average
-- **Negative deviations**: Cities with weaker transitions than national average
-- **Student-t distribution**: Allows for outlier cities with extreme behavior
+- **Shared pattern (D)**: Encodes the typical direction of city deviations
+- **City scalar (δ[c])**: Magnitude and direction of city c's deviation along D
+- **Interpretation**:
+  - δ[c] ≈ 0: city follows national patterns closely
+  - |δ[c]| large: strong deviation (sign indicates direction along D)
+  - D[i,j] large: transition (i→j) is a common locus of deviation across cities
 
 #### City Deviation Analysis
 
