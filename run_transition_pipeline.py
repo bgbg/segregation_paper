@@ -190,6 +190,8 @@ def step2_model_fitting(
             logger.info(
                 f"Outputs for {pair_tag} already exist, skipping (use --force to overwrite)"
             )
+            # Add a placeholder summary to indicate this was skipped, not failed
+            fit_summaries[pair_tag] = {"status": "skipped", "converged": True}
             continue
 
         # Load priors from previous pair if enabled and not the first pair
@@ -285,32 +287,50 @@ def step3_results_summary(
     logger.info(f"  - Visualization: Run 'python visualize_transitions.py' for plots")
 
 
-def step4_visualization(config: Dict, logger: logging.Logger) -> None:
-    """Step 4: Generate visualizations (optional).
+def step4_visualization(config: Dict, force: bool, logger: logging.Logger) -> None:
+    """Step 4: Generate visualizations and Markdown report (optional).
 
     Args:
         config: Configuration dictionary
+        force: Force regeneration even if outputs exist
         logger: Logger instance
     """
     logger.info("=" * 60)
-    logger.info("STEP 4: VISUALIZATION")
+    logger.info("STEP 4: VISUALIZATION & REPORT")
     logger.info("=" * 60)
 
+    # Check if outputs already exist
+    reports_dir = Path("data/processed/reports")
+    plots_dir = Path("data/processed/transitions/plots")
+    md_report_path = reports_dir / "summary.md"
+    country_plot_path = plots_dir / "country_transition_matrix_over_elections.png"
+
+    if not force and md_report_path.exists() and country_plot_path.exists():
+        logger.info(
+            f"Visualization outputs already exist, skipping (use --force to regenerate)"
+        )
+        logger.info(f"  - Report: {md_report_path}")
+        logger.info(f"  - Country plot: {country_plot_path}")
+        return
+
     try:
-        # Import visualization modules
-        from src.visualize_transitions import main as visualize_main
+        # Unified entrypoint for plots + report
+        from src.reporting import generate_all_outputs
 
-        logger.info("Generating transition matrix visualizations...")
+        logger.info("Generating all plots and Markdown report...")
 
-        # Run comprehensive visualization (country + cities + deviations)
-        visualize_main(plot_all=True)
+        md_path = generate_all_outputs(
+            config_path="data/config.yaml",
+            pairs_to_show=None,
+            save_dir="data/processed",
+        )
 
-        logger.info("✓ Visualization complete")
+        logger.info(f"✓ Visualization and report complete: {md_path}")
 
     except ImportError as e:
-        logger.warning(f"Visualization module not available: {e}")
+        logger.warning(f"Reporting module not available: {e}")
     except Exception as e:
-        logger.error(f"Visualization failed: {e}")
+        logger.error(f"Visualization/Report generation failed: {e}")
 
 
 def run_pipeline(
@@ -381,7 +401,7 @@ def run_pipeline(
 
     # Step 4: Visualization (optional)
     if not skip_visualization:
-        step4_visualization(config, logger)
+        step4_visualization(config, force, logger)
 
     logger.info("=" * 60)
     logger.info("PIPELINE COMPLETE")
