@@ -301,7 +301,7 @@ def step4_visualization(config: Dict, force: bool, logger: logging.Logger) -> No
 
     # Check if outputs already exist
     reports_dir = Path("data/processed/reports")
-    plots_dir = Path("data/processed/transitions/plots")
+    plots_dir = reports_dir / "plots"
     md_report_path = reports_dir / "summary.md"
     country_plot_path = plots_dir / "country_transition_matrix_over_elections.png"
 
@@ -411,7 +411,7 @@ def run_pipeline(
     logger.info(f"✓ Fitted {len(fit_summaries)} transition models")
     logger.info("\nNext steps:")
     logger.info("  - Review comprehensive report: data/processed/reports/summary.md")
-    logger.info("  - Examine plots: data/processed/transitions/plots/")
+    logger.info("  - Examine plots: data/processed/reports/plots/")
     logger.info("  - Review diagnostics: data/processed/logs/")
     logger.info("  - Examine transition matrices: data/processed/transitions/")
 

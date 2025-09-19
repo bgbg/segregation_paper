@@ -214,7 +214,7 @@ def generate_all_outputs(
     cfg = _load_config(config_path)
     paths = ReportPaths(
         transitions_dir=Path(cfg["paths"]["transitions_dir"]).resolve(),
-        plots_dir=(Path(save_dir) / "transitions" / "plots").resolve(),
+        plots_dir=(Path(save_dir) / "reports" / "plots").resolve(),
         reports_dir=(Path(save_dir) / "reports").resolve(),
         logs_dir=Path(cfg["paths"]["logs_dir"]).resolve(),
     )
