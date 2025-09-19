@@ -156,29 +156,56 @@ def _save_diagnostic_plots(trace_path: Path, out_dir: Path, prefix: str) -> List
         idata = az.from_netcdf(trace_path)
     except Exception:
         return paths
-    # Rank plots
-    p1 = out_dir / f"{prefix}_rank.png"
-    az.plot_rank(idata)
     import matplotlib.pyplot as plt
-
+    import warnings
+    
+    # Temporarily increase max subplots and suppress warnings
+    original_max_subplots = plt.rcParams.get('figure.max_open_warning', 20)
+    plt.rcParams['figure.max_open_warning'] = 100
+    
+    # Rank plots - limit to key variables to reduce complexity
+    p1 = out_dir / f"{prefix}_rank.png"
+    # Only plot key variables (country matrix and first few city parameters)
+    key_vars = [v for v in idata.posterior.data_vars 
+                if v.startswith('M_country') or 
+                   (v.startswith('M_city') and any(f'city_{i}_' in v for i in range(2)))][:15]
+    
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore", UserWarning)
+        if key_vars:
+            az.plot_rank(idata, var_names=key_vars)
+        else:
+            az.plot_rank(idata)
     plt.tight_layout()
     plt.savefig(p1, dpi=150, bbox_inches="tight")
     plt.close()
     paths.append(p1)
+    
     # Energy plot
     p2 = out_dir / f"{prefix}_energy.png"
-    az.plot_energy(idata)
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore", UserWarning)
+        az.plot_energy(idata)
     plt.tight_layout()
     plt.savefig(p2, dpi=150, bbox_inches="tight")
     plt.close()
     paths.append(p2)
-    # Autocorr plot (thin)
+    
+    # Autocorr plot - limit variables and max_lag
     p3 = out_dir / f"{prefix}_autocorr.png"
-    az.plot_autocorr(idata, max_lag=100)
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore", UserWarning)
+        if key_vars:
+            az.plot_autocorr(idata, var_names=key_vars[:10], max_lag=50)
+        else:
+            az.plot_autocorr(idata, max_lag=50)
     plt.tight_layout()
     plt.savefig(p3, dpi=150, bbox_inches="tight")
     plt.close()
     paths.append(p3)
+    
+    # Restore original rcParams
+    plt.rcParams['figure.max_open_warning'] = original_max_subplots
     return paths
 
 
