@@ -149,6 +149,44 @@ def _short_diagnostic_text(d: Dict) -> str:
     return ", ".join(parts)
 
 
+def _interpret_diagnostics(df_diag: pd.DataFrame) -> str:
+    """Generate interpretation text for sampling diagnostics."""
+    lines = []
+    lines.append("**Interpretation:**")
+    lines.append("")
+    
+    # Count convergence issues by checking R-hat values
+    good_rhat = 0
+    total_pairs = 0
+    for _, row in df_diag.iterrows():
+        summary = row.get("summary", "")
+        if "R-hat max:" in summary:
+            total_pairs += 1
+            # Extract R-hat value
+            import re
+            rhat_match = re.search(r"R-hat max: ([\d.]+)", summary)
+            if rhat_match:
+                rhat_val = float(rhat_match.group(1))
+                if rhat_val <= 1.01:
+                    good_rhat += 1
+    
+    if total_pairs > 0:
+        lines.append(f"- **Convergence**: {good_rhat}/{total_pairs} pairs have R-hat ≤ 1.01 (good)")
+        
+        if good_rhat < total_pairs:
+            lines.append("- **R-hat > 1.01**: Chains haven't mixed well; model needs more tuning")
+            lines.append("- **Low ESS**: Effective sample size insufficient; increase draws")
+            lines.append("- **Divergences > 0**: Problematic posterior geometry; check model")
+            lines.append("- **Low BFMI < 0.3**: Poor energy transitions; review parameterization")
+        else:
+            lines.append("- All models show excellent convergence (R-hat ≤ 1.01)")
+    
+    lines.append("")
+    lines.append("**Thresholds**: R-hat ≤ 1.01, ESS > 400, Divergences = 0, BFMI > 0.3")
+    
+    return "\n".join(lines)
+
+
 def _save_diagnostic_plots(trace_path: Path, out_dir: Path, prefix: str) -> List[Path]:
     out_dir.mkdir(parents=True, exist_ok=True)
     paths: List[Path] = []
@@ -158,18 +196,21 @@ def _save_diagnostic_plots(trace_path: Path, out_dir: Path, prefix: str) -> List
         return paths
     import matplotlib.pyplot as plt
     import warnings
-    
+
     # Temporarily increase max subplots and suppress warnings
-    original_max_subplots = plt.rcParams.get('figure.max_open_warning', 20)
-    plt.rcParams['figure.max_open_warning'] = 100
-    
+    original_max_subplots = plt.rcParams.get("figure.max_open_warning", 20)
+    plt.rcParams["figure.max_open_warning"] = 100
+
     # Rank plots - limit to key variables to reduce complexity
     p1 = out_dir / f"{prefix}_rank.png"
     # Only plot key variables (country matrix and first few city parameters)
-    key_vars = [v for v in idata.posterior.data_vars 
-                if v.startswith('M_country') or 
-                   (v.startswith('M_city') and any(f'city_{i}_' in v for i in range(2)))][:15]
-    
+    key_vars = [
+        v
+        for v in idata.posterior.data_vars
+        if v.startswith("M_country")
+        or (v.startswith("M_city") and any(f"city_{i}_" in v for i in range(2)))
+    ][:15]
+
     with warnings.catch_warnings():
         warnings.simplefilter("ignore", UserWarning)
         if key_vars:
@@ -180,7 +221,7 @@ def _save_diagnostic_plots(trace_path: Path, out_dir: Path, prefix: str) -> List
     plt.savefig(p1, dpi=150, bbox_inches="tight")
     plt.close()
     paths.append(p1)
-    
+
     # Energy plot
     p2 = out_dir / f"{prefix}_energy.png"
     with warnings.catch_warnings():
@@ -190,7 +231,7 @@ def _save_diagnostic_plots(trace_path: Path, out_dir: Path, prefix: str) -> List
     plt.savefig(p2, dpi=150, bbox_inches="tight")
     plt.close()
     paths.append(p2)
-    
+
     # Autocorr plot - limit variables and max_lag
     p3 = out_dir / f"{prefix}_autocorr.png"
     with warnings.catch_warnings():
@@ -203,9 +244,9 @@ def _save_diagnostic_plots(trace_path: Path, out_dir: Path, prefix: str) -> List
     plt.savefig(p3, dpi=150, bbox_inches="tight")
     plt.close()
     paths.append(p3)
-    
+
     # Restore original rcParams
-    plt.rcParams['figure.max_open_warning'] = original_max_subplots
+    plt.rcParams["figure.max_open_warning"] = original_max_subplots
     return paths
 
 
@@ -224,6 +265,72 @@ def _df_to_markdown(df: pd.DataFrame) -> str:
                 vals.append(str(v))
         buf.append("| " + " | ".join(vals) + " |")
     return "\n".join(buf)
+
+
+def _create_mad_bar_plots(
+    per_pair_mad: pd.DataFrame, 
+    transition_pairs: List[str], 
+    plots_dir: Path
+) -> List[Path]:
+    """Create horizontal bar plots of MAD by year, one plot per year."""
+    import matplotlib.pyplot as plt
+    
+    # Map transition pairs to years (kn18_19 -> 2019, etc.)
+    pair_to_year = {}
+    for pair in transition_pairs:
+        year_end = int(pair.split('_')[1])
+        actual_year = 2000 + year_end
+        pair_to_year[pair] = actual_year
+    
+    plot_paths = []
+    
+    for pair in transition_pairs:
+        year = pair_to_year[pair]
+        
+        # Filter data for this year
+        year_data = per_pair_mad[per_pair_mad['pair_tag'] == pair].copy()
+        if year_data.empty:
+            continue
+            
+        # Sort by MAD value (largest to smallest)
+        year_data = year_data.sort_values('mean_abs_deviation_pp', ascending=True)  # ascending for horizontal bars
+        
+        # Create horizontal bar plot
+        fig, ax = plt.subplots(figsize=(8, len(year_data) * 0.5 + 1))
+        
+        cities = year_data['city'].tolist()
+        mad_values = year_data['mean_abs_deviation_pp'].tolist()
+        
+        bars = ax.barh(cities, mad_values, color='black')
+        
+        # Add value labels to the right of each bar
+        for i, (bar, value) in enumerate(zip(bars, mad_values)):
+            ax.text(bar.get_width() + 0.1, bar.get_y() + bar.get_height()/2, 
+                   f'{value:.1f}', ha='left', va='center', fontsize=10)
+        
+        # Set x-axis limits and ticks
+        max_mad = max(mad_values) if mad_values else 10
+        ax.set_xlim(0, 11)
+        ax.set_xticks([0, max_mad])
+        ax.set_xticklabels([0, f'{max_mad:.1f}'])
+        
+        # Labels and title
+        ax.set_xlabel('Mean Absolute Deviation (pp)')
+        ax.set_title(f'City MAD Rankings - {year}', fontsize=12, pad=20)
+        
+        # Clean up appearance
+        ax.spines['top'].set_visible(False)
+        ax.spines['right'].set_visible(False)
+        
+        plt.tight_layout()
+        
+        # Save plot
+        plot_path = plots_dir / f'mad_bars_{year}.png'
+        plt.savefig(plot_path, dpi=150, bbox_inches='tight')
+        plt.close()
+        plot_paths.append(plot_path)
+    
+    return plot_paths
 
 
 def generate_all_outputs(
@@ -314,7 +421,10 @@ def generate_all_outputs(
         save_path=str(mad_plot_path),
     )
 
-    # 4) Diagnostics per pair
+    # 4) MAD bar plots by year
+    mad_bar_plots = _create_mad_bar_plots(per_pair_mad, transition_pairs, paths.plots_dir)
+
+    # 5) Diagnostics per pair
     diag_rows = []
     diag_images: Dict[str, List[Path]] = {}
     for pair in transition_pairs:
@@ -372,8 +482,21 @@ def generate_all_outputs(
     rel_mad = os.path.relpath(mad_plot_path, start=paths.reports_dir)
     lines.append(f"![City MAD subplots]({rel_mad})")
     lines.append("")
+    
+    # Add MAD bar plots by year
+    lines.append("#### MAD Rankings by Year")
+    for bar_plot in mad_bar_plots:
+        year = bar_plot.stem.replace('mad_bars_', '')
+        rel_bar = os.path.relpath(bar_plot, start=paths.reports_dir)
+        lines.append(f"![MAD Rankings {year}]({rel_bar})")
+        lines.append("")
+    
     lines.append("### Sampling Diagnostics")
     lines.append(_df_to_markdown(df_diag))
+    lines.append("")
+    lines.append(_interpret_diagnostics(df_diag))
+    lines.append("")
+    
     for pair, imgs in diag_images.items():
         if not imgs:
             continue
