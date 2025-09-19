@@ -267,70 +267,94 @@ def _df_to_markdown(df: pd.DataFrame) -> str:
     return "\n".join(buf)
 
 
-def _create_mad_bar_plots(
+def _create_mad_table_lens(
     per_pair_mad: pd.DataFrame, 
     transition_pairs: List[str], 
     plots_dir: Path
-) -> List[Path]:
-    """Create horizontal bar plots of MAD by year, one plot per year."""
+) -> Path:
+    """Create table lens visualization with all MAD bar plots as subplots."""
     import matplotlib.pyplot as plt
     
-    # Map transition pairs to years (kn18_19 -> 2019, etc.)
-    pair_to_year = {}
-    for pair in transition_pairs:
-        year_end = int(pair.split('_')[1])
-        actual_year = 2000 + year_end
-        pair_to_year[pair] = actual_year
+    if per_pair_mad.empty:
+        return None
     
-    plot_paths = []
+    # Get the last pair to determine sorting order
+    last_pair = transition_pairs[-1]
+    last_pair_data = per_pair_mad[per_pair_mad['pair_tag'] == last_pair].copy()
     
-    for pair in transition_pairs:
-        year = pair_to_year[pair]
+    if last_pair_data.empty:
+        # Fallback to overall sorting if last pair has no data
+        city_order = per_pair_mad.groupby('city')['mean_abs_deviation_pp'].mean().sort_values(ascending=False).index.tolist()
+    else:
+        # Sort cities by MAD in the last pair (largest to smallest)
+        last_pair_data = last_pair_data.sort_values('mean_abs_deviation_pp', ascending=False)
+        city_order = last_pair_data['city'].tolist()
+    
+    # Create subplots - one row per transition pair
+    n_pairs = len(transition_pairs)
+    fig, axes = plt.subplots(n_pairs, 1, figsize=(10, n_pairs * 1.5), sharex=True)
+    
+    # Handle single subplot case
+    if n_pairs == 1:
+        axes = [axes]
+    
+    for i, pair in enumerate(transition_pairs):
+        ax = axes[i]
         
-        # Filter data for this year
-        year_data = per_pair_mad[per_pair_mad['pair_tag'] == pair].copy()
-        if year_data.empty:
+        # Filter data for this pair
+        pair_data = per_pair_mad[per_pair_mad['pair_tag'] == pair].copy()
+        
+        if pair_data.empty:
+            ax.text(0.5, 0.5, f'No data for {pair}', ha='center', va='center', transform=ax.transAxes)
+            ax.set_title(pair, fontsize=10)
             continue
-            
-        # Sort by MAD value (largest to smallest)
-        year_data = year_data.sort_values('mean_abs_deviation_pp', ascending=True)  # ascending for horizontal bars
         
-        # Create horizontal bar plot
-        fig, ax = plt.subplots(figsize=(8, len(year_data) * 0.5 + 1))
+        # Reorder cities according to the last pair's sorting
+        pair_data = pair_data.set_index('city').reindex(city_order).reset_index()
+        pair_data = pair_data.dropna(subset=['mean_abs_deviation_pp'])
         
-        cities = year_data['city'].tolist()
-        mad_values = year_data['mean_abs_deviation_pp'].tolist()
+        if pair_data.empty:
+            ax.text(0.5, 0.5, f'No data for {pair}', ha='center', va='center', transform=ax.transAxes)
+            ax.set_title(pair, fontsize=10)
+            continue
         
-        bars = ax.barh(cities, mad_values, color='black')
+        cities = pair_data['city'].tolist()
+        mad_values = pair_data['mean_abs_deviation_pp'].tolist()
+        
+        # Create horizontal bars
+        bars = ax.barh(cities, mad_values, color='black', height=0.6)
         
         # Add value labels to the right of each bar
-        for i, (bar, value) in enumerate(zip(bars, mad_values)):
+        for bar, value in zip(bars, mad_values):
             ax.text(bar.get_width() + 0.1, bar.get_y() + bar.get_height()/2, 
-                   f'{value:.1f}', ha='left', va='center', fontsize=10)
+                   f'{value:.1f}', ha='left', va='center', fontsize=9)
         
         # Set x-axis limits and ticks
         max_mad = max(mad_values) if mad_values else 10
         ax.set_xlim(0, 11)
         ax.set_xticks([0, max_mad])
-        ax.set_xticklabels([0, f'{max_mad:.1f}'])
+        ax.set_xticklabels([0, f'{max_mad:.1f}'], fontsize=9)
         
-        # Labels and title
-        ax.set_xlabel('Mean Absolute Deviation (pp)')
-        ax.set_title(f'City MAD Rankings - {year}', fontsize=12, pad=20)
+        # Set title (keep original Knesset pair notation)
+        ax.set_title(pair, fontsize=10, pad=5)
         
         # Clean up appearance
         ax.spines['top'].set_visible(False)
         ax.spines['right'].set_visible(False)
+        ax.tick_params(axis='y', labelsize=9)
         
-        plt.tight_layout()
-        
-        # Save plot
-        plot_path = plots_dir / f'mad_bars_{year}.png'
-        plt.savefig(plot_path, dpi=150, bbox_inches='tight')
-        plt.close()
-        plot_paths.append(plot_path)
+        # Only show x-axis label on bottom subplot
+        if i == len(transition_pairs) - 1:
+            ax.set_xlabel('Mean Absolute Deviation (pp)', fontsize=10)
     
-    return plot_paths
+    plt.tight_layout()
+    
+    # Save plot
+    plot_path = plots_dir / 'mad_table_lens.png'
+    plt.savefig(plot_path, dpi=150, bbox_inches='tight')
+    plt.close()
+    
+    return plot_path
 
 
 def generate_all_outputs(
@@ -421,8 +445,8 @@ def generate_all_outputs(
         save_path=str(mad_plot_path),
     )
 
-    # 4) MAD bar plots by year
-    mad_bar_plots = _create_mad_bar_plots(per_pair_mad, transition_pairs, paths.plots_dir)
+    # 4) MAD table lens plot
+    mad_table_lens = _create_mad_table_lens(per_pair_mad, transition_pairs, paths.plots_dir)
 
     # 5) Diagnostics per pair
     diag_rows = []
@@ -483,12 +507,11 @@ def generate_all_outputs(
     lines.append(f"![City MAD subplots]({rel_mad})")
     lines.append("")
     
-    # Add MAD bar plots by year
-    lines.append("#### MAD Rankings by Year")
-    for bar_plot in mad_bar_plots:
-        year = bar_plot.stem.replace('mad_bars_', '')
-        rel_bar = os.path.relpath(bar_plot, start=paths.reports_dir)
-        lines.append(f"![MAD Rankings {year}]({rel_bar})")
+    # Add MAD table lens plot
+    if mad_table_lens:
+        lines.append("#### MAD Rankings by Knesset Pair")
+        rel_table_lens = os.path.relpath(mad_table_lens, start=paths.reports_dir)
+        lines.append(f"![MAD Table Lens]({rel_table_lens})")
         lines.append("")
     
     lines.append("### Sampling Diagnostics")
