@@ -284,7 +284,7 @@ def step3_results_summary(
     logger.info("\nOutput files generated:")
     logger.info(f"  - Transition matrices: {config['paths']['transitions_dir']}")
     logger.info(f"  - Model diagnostics: {config['paths']['logs_dir']}")
-    logger.info(f"  - Visualization: Run 'python visualize_transitions.py' for plots")
+    logger.info(f"  - Visualizations and report: Generated in step 4 (if not skipped)")
 
 
 def step4_visualization(config: Dict, force: bool, logger: logging.Logger) -> None:
@@ -410,9 +410,10 @@ def run_pipeline(
     logger.info(f"✓ Processed {len(harmonized_data)} elections")
     logger.info(f"✓ Fitted {len(fit_summaries)} transition models")
     logger.info("\nNext steps:")
-    logger.info("  - Review diagnostics in data/processed/logs/")
-    logger.info("  - Examine transition matrices in data/processed/transitions/")
-    logger.info("  - Run 'python visualize_transitions.py' for plots")
+    logger.info("  - Review comprehensive report: data/processed/reports/summary.md")
+    logger.info("  - Examine plots: data/processed/transitions/plots/")
+    logger.info("  - Review diagnostics: data/processed/logs/")
+    logger.info("  - Examine transition matrices: data/processed/transitions/")
 
     return 0
 
