@@ -154,7 +154,7 @@ def _interpret_diagnostics(df_diag: pd.DataFrame) -> str:
     lines = []
     lines.append("**Interpretation:**")
     lines.append("")
-    
+
     # Count convergence issues by checking R-hat values
     good_rhat = 0
     total_pairs = 0
@@ -164,26 +164,37 @@ def _interpret_diagnostics(df_diag: pd.DataFrame) -> str:
             total_pairs += 1
             # Extract R-hat value
             import re
+
             rhat_match = re.search(r"R-hat max: ([\d.]+)", summary)
             if rhat_match:
                 rhat_val = float(rhat_match.group(1))
                 if rhat_val <= 1.01:
                     good_rhat += 1
-    
+
     if total_pairs > 0:
-        lines.append(f"- **Convergence**: {good_rhat}/{total_pairs} pairs have R-hat ≤ 1.01 (good)")
-        
+        lines.append(
+            f"- **Convergence**: {good_rhat}/{total_pairs} pairs have R-hat ≤ 1.01 (good)"
+        )
+
         if good_rhat < total_pairs:
-            lines.append("- **R-hat > 1.01**: Chains haven't mixed well; model needs more tuning")
-            lines.append("- **Low ESS**: Effective sample size insufficient; increase draws")
-            lines.append("- **Divergences > 0**: Problematic posterior geometry; check model")
-            lines.append("- **Low BFMI < 0.3**: Poor energy transitions; review parameterization")
+            lines.append(
+                "- **R-hat > 1.01**: Chains haven't mixed well; model needs more tuning"
+            )
+            lines.append(
+                "- **Low ESS**: Effective sample size insufficient; increase draws"
+            )
+            lines.append(
+                "- **Divergences > 0**: Problematic posterior geometry; check model"
+            )
+            lines.append(
+                "- **Low BFMI < 0.3**: Poor energy transitions; review parameterization"
+            )
         else:
             lines.append("- All models show excellent convergence (R-hat ≤ 1.01)")
-    
+
     lines.append("")
     lines.append("**Thresholds**: R-hat ≤ 1.01, ESS > 400, Divergences = 0, BFMI > 0.3")
-    
+
     return "\n".join(lines)
 
 
@@ -268,92 +279,120 @@ def _df_to_markdown(df: pd.DataFrame) -> str:
 
 
 def _create_mad_table_lens(
-    per_pair_mad: pd.DataFrame, 
-    transition_pairs: List[str], 
-    plots_dir: Path
+    per_pair_mad: pd.DataFrame, transition_pairs: List[str], plots_dir: Path
 ) -> Path:
     """Create table lens visualization with all MAD bar plots as subplots."""
     import matplotlib.pyplot as plt
-    
+
     if per_pair_mad.empty:
         return None
+
+    # Get all cities from the data
+    all_cities = per_pair_mad["city"].unique().tolist()
     
     # Get the last pair to determine sorting order
     last_pair = transition_pairs[-1]
-    last_pair_data = per_pair_mad[per_pair_mad['pair_tag'] == last_pair].copy()
-    
+    last_pair_data = per_pair_mad[per_pair_mad["pair_tag"] == last_pair].copy()
+
     if last_pair_data.empty:
         # Fallback to overall sorting if last pair has no data
-        city_order = per_pair_mad.groupby('city')['mean_abs_deviation_pp'].mean().sort_values(ascending=False).index.tolist()
+        city_order = (
+            per_pair_mad.groupby("city")["mean_abs_deviation_pp"]
+            .mean()
+            .sort_values(ascending=False)
+            .index.tolist()
+        )
     else:
         # Sort cities by MAD in the last pair (largest to smallest)
-        last_pair_data = last_pair_data.sort_values('mean_abs_deviation_pp', ascending=False)
-        city_order = last_pair_data['city'].tolist()
-    
-    # Create subplots - one row per transition pair
+        last_pair_data = last_pair_data.sort_values(
+            "mean_abs_deviation_pp", ascending=False
+        )
+        city_order = last_pair_data["city"].tolist()
+        
+        # Add any missing cities to the end
+        for city in all_cities:
+            if city not in city_order:
+                city_order.append(city)
+
+    # Create subplots - one column per transition pair
     n_pairs = len(transition_pairs)
-    fig, axes = plt.subplots(n_pairs, 1, figsize=(10, n_pairs * 1.5), sharex=True)
-    
+    fig, axes = plt.subplots(1, n_pairs, figsize=(n_pairs * 3, 8), sharey=True)
+
     # Handle single subplot case
     if n_pairs == 1:
         axes = [axes]
-    
+
     for i, pair in enumerate(transition_pairs):
         ax = axes[i]
-        
+
         # Filter data for this pair
-        pair_data = per_pair_mad[per_pair_mad['pair_tag'] == pair].copy()
-        
+        pair_data = per_pair_mad[per_pair_mad["pair_tag"] == pair].copy()
+
         if pair_data.empty:
-            ax.text(0.5, 0.5, f'No data for {pair}', ha='center', va='center', transform=ax.transAxes)
+            ax.text(
+                0.5,
+                0.5,
+                f"No data for {pair}",
+                ha="center",
+                va="center",
+                transform=ax.transAxes,
+            )
             ax.set_title(pair, fontsize=10)
             continue
+
+        # Create a complete dataset with all cities (fill missing with 0 or NaN)
+        complete_data = pd.DataFrame({"city": city_order})
+        complete_data = complete_data.merge(pair_data, on="city", how="left")
+        complete_data["mean_abs_deviation_pp"] = complete_data["mean_abs_deviation_pp"].fillna(0)
         
-        # Reorder cities according to the last pair's sorting
-        pair_data = pair_data.set_index('city').reindex(city_order).reset_index()
-        pair_data = pair_data.dropna(subset=['mean_abs_deviation_pp'])
+        cities = complete_data["city"].tolist()
+        mad_values = complete_data["mean_abs_deviation_pp"].tolist()
         
-        if pair_data.empty:
-            ax.text(0.5, 0.5, f'No data for {pair}', ha='center', va='center', transform=ax.transAxes)
-            ax.set_title(pair, fontsize=10)
-            continue
-        
-        cities = pair_data['city'].tolist()
-        mad_values = pair_data['mean_abs_deviation_pp'].tolist()
-        
+        # Reverse the order for horizontal bars (highest at top)
+        cities.reverse()
+        mad_values.reverse()
+
         # Create horizontal bars
-        bars = ax.barh(cities, mad_values, color='black', height=0.6)
-        
+        bars = ax.barh(cities, mad_values, color="black", height=0.6)
+
         # Add value labels to the right of each bar
         for bar, value in zip(bars, mad_values):
-            ax.text(bar.get_width() + 0.1, bar.get_y() + bar.get_height()/2, 
-                   f'{value:.1f}', ha='left', va='center', fontsize=9)
-        
+            ax.text(
+                bar.get_width() + 0.1,
+                bar.get_y() + bar.get_height() / 2,
+                f"{value:.1f}",
+                ha="left",
+                va="center",
+                fontsize=9,
+            )
+
         # Set x-axis limits and ticks
         max_mad = max(mad_values) if mad_values else 10
         ax.set_xlim(0, 11)
         ax.set_xticks([0, max_mad])
-        ax.set_xticklabels([0, f'{max_mad:.1f}'], fontsize=9)
-        
+        ax.set_xticklabels([0, f"{max_mad:.1f}"], fontsize=9)
+
         # Set title (keep original Knesset pair notation)
         ax.set_title(pair, fontsize=10, pad=5)
-        
+
         # Clean up appearance
-        ax.spines['top'].set_visible(False)
-        ax.spines['right'].set_visible(False)
-        ax.tick_params(axis='y', labelsize=9)
-        
-        # Only show x-axis label on bottom subplot
-        if i == len(transition_pairs) - 1:
-            ax.set_xlabel('Mean Absolute Deviation (pp)', fontsize=10)
-    
+        ax.spines["top"].set_visible(False)
+        ax.spines["right"].set_visible(False)
+        ax.tick_params(axis="y", labelsize=9)
+        ax.tick_params(axis="x", labelsize=9)
+
+        # Only show x-axis label on bottom and y-axis labels on leftmost subplot
+        ax.set_xlabel("MAD (pp)", fontsize=9)
+        if i > 0:  # Hide y-axis labels for all but leftmost subplot
+            ax.set_yticklabels([])
+
     plt.tight_layout()
-    
+
     # Save plot
-    plot_path = plots_dir / 'mad_table_lens.png'
-    plt.savefig(plot_path, dpi=150, bbox_inches='tight')
+    plot_path = plots_dir / "mad_table_lens.png"
+    plt.savefig(plot_path, dpi=150, bbox_inches="tight")
     plt.close()
-    
+
     return plot_path
 
 
@@ -446,7 +485,9 @@ def generate_all_outputs(
     )
 
     # 4) MAD table lens plot
-    mad_table_lens = _create_mad_table_lens(per_pair_mad, transition_pairs, paths.plots_dir)
+    mad_table_lens = _create_mad_table_lens(
+        per_pair_mad, transition_pairs, paths.plots_dir
+    )
 
     # 5) Diagnostics per pair
     diag_rows = []
@@ -506,20 +547,20 @@ def generate_all_outputs(
     rel_mad = os.path.relpath(mad_plot_path, start=paths.reports_dir)
     lines.append(f"![City MAD subplots]({rel_mad})")
     lines.append("")
-    
+
     # Add MAD table lens plot
     if mad_table_lens:
         lines.append("#### MAD Rankings by Knesset Pair")
         rel_table_lens = os.path.relpath(mad_table_lens, start=paths.reports_dir)
         lines.append(f"![MAD Table Lens]({rel_table_lens})")
         lines.append("")
-    
+
     lines.append("### Sampling Diagnostics")
     lines.append(_df_to_markdown(df_diag))
     lines.append("")
     lines.append(_interpret_diagnostics(df_diag))
     lines.append("")
-    
+
     for pair, imgs in diag_images.items():
         if not imgs:
             continue
