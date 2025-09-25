@@ -289,7 +289,7 @@ def _create_mad_table_lens(
 
     # Get all cities from the data
     all_cities = per_pair_mad["city"].unique().tolist()
-    
+
     # Get the last pair to determine sorting order
     last_pair = transition_pairs[-1]
     last_pair_data = per_pair_mad[per_pair_mad["pair_tag"] == last_pair].copy()
@@ -308,7 +308,7 @@ def _create_mad_table_lens(
             "mean_abs_deviation_pp", ascending=False
         )
         city_order = last_pair_data["city"].tolist()
-        
+
         # Add any missing cities to the end
         for city in all_cities:
             if city not in city_order:
@@ -316,7 +316,12 @@ def _create_mad_table_lens(
 
     # Create subplots - one column per transition pair
     n_pairs = len(transition_pairs)
-    fig, axes = plt.subplots(1, n_pairs, figsize=(n_pairs * 3, 8), sharey=True)
+    fig, axes = plt.subplots(
+        nrows=1,
+        ncols=n_pairs,
+        figsize=(n_pairs * 4, 4),
+        sharey=True,
+    )
 
     # Handle single subplot case
     if n_pairs == 1:
@@ -343,11 +348,13 @@ def _create_mad_table_lens(
         # Create a complete dataset with all cities (fill missing with 0 or NaN)
         complete_data = pd.DataFrame({"city": city_order})
         complete_data = complete_data.merge(pair_data, on="city", how="left")
-        complete_data["mean_abs_deviation_pp"] = complete_data["mean_abs_deviation_pp"].fillna(0)
-        
+        complete_data["mean_abs_deviation_pp"] = complete_data[
+            "mean_abs_deviation_pp"
+        ].fillna(0)
+
         cities = complete_data["city"].tolist()
         mad_values = complete_data["mean_abs_deviation_pp"].tolist()
-        
+
         # Reverse the order for horizontal bars (highest at top)
         cities.reverse()
         mad_values.reverse()

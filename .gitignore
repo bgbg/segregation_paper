@@ -15,3 +15,4 @@ tmp*.ipynb
 *.png
 *.html
 .cursor/
+*.pdf

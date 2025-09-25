@@ -4,10 +4,28 @@
 This script orchestrates the entire voter transition model pipeline:
 1. Data harmonization (raw CSV → harmonized parquet)
 2. Model fitting for all transition pairs
-3. Results visualization and summarization
+3. Visualization generation and comprehensive reporting
+4. Markdown report with tables, plots, and diagnostics
+
+The pipeline generates:
+- Country and city-level transition matrices
+- Mean Absolute Deviation (MAD) analysis plots
+- Bayesian diagnostics with interpretation
+- Comprehensive markdown report (data/processed/reports/summary.md)
+- All visualizations in data/processed/reports/plots/
 
 Usage:
     python run_transition_pipeline.py [--config-path CONFIG_PATH] [--force] [--verbose] [--skip-visualization]
+
+Output:
+    - Comprehensive report: data/processed/reports/summary.md
+    - All plots: data/processed/reports/plots/
+    - Raw transition data: data/processed/transitions/
+    - Model diagnostics: data/processed/logs/
+
+PDF Generation:
+    To convert the markdown report to PDF with images:
+    cd data/processed/reports && pandoc summary.md -o summary.pdf --pdf-engine=xelatex -V geometry:margin=1in
 """
 
 import logging
@@ -288,7 +306,21 @@ def step3_results_summary(
 
 
 def step4_visualization(config: Dict, force: bool, logger: logging.Logger) -> None:
-    """Step 4: Generate visualizations and Markdown report (optional).
+    """Step 4: Generate visualizations and comprehensive Markdown report.
+
+    This step creates:
+    - Country and city transition matrix plots (4x4 grids over time)
+    - MAD time series plots (city deviations from country patterns)
+    - MAD table lens visualization (horizontal bars by Knesset pair)
+    - Bayesian diagnostic plots (rank, energy, autocorr) per transition pair
+    - Comprehensive markdown report with formatted tables and interpretations
+
+    Output files:
+    - data/processed/reports/summary.md: Main report with tables and plot references
+    - data/processed/reports/plots/: All visualization files
+    - Transition matrices: country + city plots over elections
+    - MAD analysis: time series + table lens (columns by Knesset pair)
+    - Diagnostics: convergence metrics with interpretation + diagnostic plots
 
     Args:
         config: Configuration dictionary

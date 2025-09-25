@@ -272,6 +272,78 @@ For each transition pair (e.g., `kn20_21`):
 - `fit_summary_{pair}.json`: Model diagnostics and convergence metrics
 - `model.png`: PyMC model visualization
 
+## Comprehensive Reporting System
+
+The pipeline includes an integrated reporting system that generates publication-ready outputs:
+
+### Markdown Report (`data/processed/reports/summary.md`)
+
+The comprehensive report includes:
+
+1. **Country-level Transition Matrices**
+   - Formatted tables with 1 decimal precision (percentages)
+   - Time series plots showing evolution across elections
+
+2. **City-level Transition Matrices**
+   - Individual tables and plots for each target city
+   - Same format as country-level for easy comparison
+
+3. **Mean Absolute Deviation (MAD) Analysis**
+   - Overall and per-pair summary tables
+   - Time series subplots (one per city)
+   - **Table lens visualization**: Horizontal bar charts arranged in columns by Knesset pair
+     - Cities sorted by MAD values from last election (highest to lowest)
+     - All cities included in each subplot for complete comparison
+
+4. **Bayesian Diagnostics with Interpretation**
+   - Convergence metrics table (R-hat, ESS, divergences, BFMI)
+   - **Automated interpretation**: Explains what the diagnostics mean
+   - Diagnostic plots per transition pair (rank, energy, autocorr)
+   - Actionable recommendations for model improvement
+
+### Visualization Files (`data/processed/reports/plots/`)
+
+All plots are saved as high-resolution PNG files:
+
+- **Transition matrices**: `country_transition_matrix_over_elections.png`, `city_{name}_transition_matrix_over_elections.png`
+- **MAD analysis**: `cities_aggregate_deviation_comparison.png` (time series), `mad_table_lens.png` (table lens)
+- **Diagnostics**: `diag_{pair}_{type}.png` (rank, energy, autocorr plots per pair)
+
+### PDF Generation
+
+Convert the markdown report to PDF with all images included:
+
+```bash
+# Navigate to reports directory (required for image paths)
+cd data/processed/reports
+
+# Generate PDF with proper formatting
+pandoc summary.md -o summary.pdf --pdf-engine=xelatex -V geometry:margin=1in
+```
+
+**Requirements**: Install `pandoc` and `xelatex` (via TeXLive or MikTeX)
+
+### Academic Paper Integration
+
+The reporting system is designed for academic use:
+
+- **Formatted tables**: Ready for copy-paste into papers
+- **High-quality figures**: 150 DPI publication-ready plots
+- **Comprehensive diagnostics**: Full convergence assessment with interpretation
+- **Standardized metrics**: All values properly formatted (1 decimal precision for percentages)
+- **Clear interpretations**: Non-technical explanations of Bayesian diagnostics
+
+### Report Generation Options
+
+```python
+# Generate comprehensive report only (fastest for testing changes)
+from src.reporting import generate_all_outputs
+generate_all_outputs(config_path='data/config.yaml', save_dir='data/processed')
+
+# Or run full pipeline (includes model fitting if needed)
+python run_transition_pipeline.py --config-path data/config.yaml
+```
+
 ## Model Validation
 
 ### Convergence Diagnostics
@@ -294,6 +366,32 @@ The model includes automatic checks for realistic voter loyalty:
 - Warnings issued if loyalty appears unrealistically low
 
 ## Usage Examples
+
+### Complete Pipeline (Recommended)
+
+```bash
+# Run the complete pipeline with reporting
+python run_transition_pipeline.py --config-path data/config.yaml
+
+# Force regeneration of all outputs
+python run_transition_pipeline.py --config-path data/config.yaml --force
+
+# Skip visualization/reporting step
+python run_transition_pipeline.py --config-path data/config.yaml --skip-visualization
+```
+
+### Direct Report Generation
+
+```python
+# Generate only the comprehensive report and visualizations
+from src.reporting import generate_all_outputs
+
+md_path = generate_all_outputs(
+    config_path='data/config.yaml',
+    save_dir='data/processed'
+)
+print(f"Report generated: {md_path}")
+```
 
 ### Basic Model Fitting
 
@@ -321,13 +419,6 @@ transitions = load_point_estimates("data/processed/transitions/kn20_21/country_m
 
 # Load model diagnostics
 diagnostics = load_fit_summary("data/processed/logs/fit_summary_kn20_21.json")
-```
-
-### Visualization
-
-```python
-# Use the visualization script
-python visualize_transitions.py
 ```
 
 ## Model Advantages (Simplified Version)
