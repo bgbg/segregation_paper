@@ -5,7 +5,7 @@ into a single cohesive paper with proper formatting, cross-references, and
 image path handling. It can generate both markdown and PDF/Word outputs.
 
 Usage:
-    python combine_paper.py [--output-format FORMAT] [--output-dir DIR] [--verbose]
+    python combine_paper.py [--output-format FORMAT] [--output-dir DIR] [--title TITLE] [--verbose]
 
 Output formats:
     - markdown: Single combined .md file
@@ -26,7 +26,7 @@ import re
 import subprocess
 import sys
 from pathlib import Path
-from typing import Dict, List, Optional
+from typing import Dict, List, Literal, Optional
 
 import defopt
 
@@ -54,7 +54,7 @@ def load_markdown_file(file_path: Path) -> str:
 
 
 def adjust_image_paths(content: str, base_dir: Path) -> str:
-    """Adjust image paths to be relative to the output directory."""
+    """Adjust image paths to be relative to the markdown file location."""
     # Pattern to match markdown image syntax: ![alt](path)
     image_pattern = r"!\[([^\]]*)\]\(([^)]+)\)"
 
@@ -66,16 +66,17 @@ def adjust_image_paths(content: str, base_dir: Path) -> str:
         if image_path.startswith("plots/"):
             return f"![{alt_text}]({image_path})"
 
-        # If it's an absolute path or different relative path, adjust it
+        # If it's an absolute path, convert to relative from the markdown file location
         if os.path.isabs(image_path):
-            # Convert absolute path to relative
             try:
+                # Make relative to the base_dir (where the markdown file will be)
                 rel_path = os.path.relpath(image_path, base_dir)
                 return f"![{alt_text}]({rel_path})"
             except ValueError:
                 # If we can't make it relative, keep original
                 return match.group(0)
 
+        # For other relative paths, ensure they're relative to the markdown file
         return f"![{alt_text}]({image_path})"
 
     return re.sub(image_pattern, replace_image_path, content)
@@ -106,12 +107,13 @@ def generate_table_of_contents(content: str) -> str:
 
 
 def combine_markdown_files(
-    input_files: List[Path], output_path: Path, base_dir: Path
+    input_files: List[Path], output_path: Path, base_dir: Path, title: str
 ) -> str:
     """Combine multiple markdown files into a single document."""
     logger = logging.getLogger(__name__)
 
     combined_content = []
+    title_added = False
     toc_added = False
 
     for file_path in input_files:
@@ -119,10 +121,16 @@ def combine_markdown_files(
 
         content = load_markdown_file(file_path)
 
-        # Add table of contents after the first file (Introduction)
-        if not toc_added and file_path.name.startswith("01_"):
+        # Add title and table of contents after the first file (Introduction)
+        if not title_added and file_path.name.startswith("01_"):
+            # Add the title at the beginning
+            combined_content.append(f"# {title}")
+            combined_content.append("")
+
+            # Generate and add table of contents
             toc = generate_table_of_contents(content)
             combined_content.append(toc)
+            title_added = True
             toc_added = True
 
         # Adjust image paths
@@ -163,11 +171,15 @@ def convert_to_pdf(markdown_path: Path, output_path: Path) -> None:
         pdf_engine = "xelatex"
 
     # Build pandoc command
+    # Use relative paths since we'll run pandoc from the markdown directory
+    markdown_rel = markdown_path.name
+    output_rel = output_path.relative_to(markdown_path.parent)
+
     cmd = [
         "pandoc",
-        str(markdown_path),
+        markdown_rel,
         "-o",
-        str(output_path),
+        str(output_rel),
         f"--pdf-engine={pdf_engine}",
         "-V",
         "geometry:margin=1in",
@@ -193,7 +205,11 @@ def convert_to_pdf(markdown_path: Path, output_path: Path) -> None:
 
     try:
         logger.info(f"Converting to PDF using {pdf_engine}...")
-        result = subprocess.run(cmd, capture_output=True, text=True, check=True)
+        # Run pandoc from the directory containing the markdown file
+        # This ensures that relative image paths are resolved correctly
+        result = subprocess.run(
+            cmd, capture_output=True, text=True, check=True, cwd=markdown_path.parent
+        )
         logger.info(f"PDF generated: {output_path}")
     except subprocess.CalledProcessError as e:
         logger.error(f"PDF conversion failed: {e}")
@@ -212,11 +228,15 @@ def convert_to_word(markdown_path: Path, output_path: Path) -> None:
         raise RuntimeError("pandoc is not installed or not available in PATH")
 
     # Build pandoc command for Word
+    # Use relative paths since we'll run pandoc from the markdown directory
+    markdown_rel = markdown_path.name
+    output_rel = output_path.relative_to(markdown_path.parent)
+
     cmd = [
         "pandoc",
-        str(markdown_path),
+        markdown_rel,
         "-o",
-        str(output_path),
+        str(output_rel),
         "--toc",  # Generate table of contents
         "--toc-depth=3",  # Include up to level 3 headers
         "--number-sections",  # Number sections
@@ -225,7 +245,11 @@ def convert_to_word(markdown_path: Path, output_path: Path) -> None:
 
     try:
         logger.info("Converting to Word document...")
-        result = subprocess.run(cmd, capture_output=True, text=True, check=True)
+        # Run pandoc from the directory containing the markdown file
+        # This ensures that relative image paths are resolved correctly
+        result = subprocess.run(
+            cmd, capture_output=True, text=True, check=True, cwd=markdown_path.parent
+        )
         logger.info(f"Word document generated: {output_path}")
     except subprocess.CalledProcessError as e:
         logger.error(f"Word conversion failed: {e}")
@@ -235,8 +259,9 @@ def convert_to_word(markdown_path: Path, output_path: Path) -> None:
 
 def main(
     *,
-    output_format: str = "markdown",
+    output_format: Literal["markdown", "pdf", "word", "all"] = "all",
     output_dir: str = "data/processed/reports",
+    title: str = "From Separation to Transition: Tracking Electoral Flows in Israel's Ultra-Orthodox Sector",
     verbose: bool = False,
 ) -> int:
     """Combine markdown files into a single academic paper.
@@ -244,6 +269,7 @@ def main(
     Args:
         output_format: Output format ('markdown', 'pdf', 'word', or 'all')
         output_dir: Directory for output files
+        title: Title of the paper
         verbose: Enable verbose logging
 
     Returns:
@@ -279,7 +305,7 @@ def main(
         markdown_path = output_dir_path / f"{base_filename}.md"
         logger.info("Combining markdown files...")
 
-        combine_markdown_files(input_files, markdown_path, output_dir_path)
+        combine_markdown_files(input_files, markdown_path, output_dir_path, title)
 
         # Generate additional formats based on request
         if output_format in ["pdf", "all"]:
@@ -299,4 +325,12 @@ def main(
 
 
 if __name__ == "__main__":
-    defopt.run(main)
+    defopt.run(
+        main,
+        short={
+            "output-format": "f",
+            "output-dir": "d",
+            "title": "t",
+            "verbose": "v",
+        },
+    )
