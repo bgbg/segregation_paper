@@ -2,8 +2,8 @@
 
 This repository contains the code and analysis used in the paper:
 
-**Ethnic Divisions Within Unity: Insights into Intra-Group Segregation from Israel's Ultra-Orthodox Society**  
-Published in Social Sciences, 2025, 14(3), 169  
+**Ethnic Divisions Within Unity: Insights into Intra-Group Segregation from Israel's Ultra-Orthodox Society**
+Published in Social Sciences, 2025, 14(3), 169
 https://doi.org/10.3390/socsci14030169
 
 ## Project Overview
@@ -63,6 +63,34 @@ jupyter
 
 A complete list of dependencies is available in the `requirements.txt` file.
 
+## Document Generation
+
+The project includes a script to combine multiple markdown files into a single academic paper:
+
+```bash
+# Generate markdown only
+python combine_paper.py --output-format markdown
+
+# Generate PDF
+python combine_paper.py --output-format pdf
+
+# Generate Word document
+python combine_paper.py --output-format word
+
+# Generate all formats
+python combine_paper.py --output-format all
+```
+
+**Requirements:**
+- `pandoc` for PDF/Word conversion
+- `xelatex` or `pdflatex` for PDF generation (optional: `pandoc-crossref` for cross-references)
+
+The script automatically:
+- Combines files in the correct order (Introduction → Methods → Results → Appendix → References)
+- Generates a table of contents
+- Adjusts image paths for proper rendering
+- Handles academic formatting and citations
+
 ## Setup and Usage
 
 1. Clone the repository
@@ -101,4 +129,4 @@ Gorelik, B. (2025). Ethnic Divisions Within Unity: Insights into Intra-Group Seg
 
 See the [LICENSE](LICENSE) file for details.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

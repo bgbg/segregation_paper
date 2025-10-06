@@ -70,6 +70,34 @@ Hebrew text support and matplotlib styling utilities
 - `tqdm`: Progress bars
 - `bidi`: Bidirectional text support
 
+## Document Generation Tools
+
+### Paper Assembly
+
+#### `combine_paper.py`
+Combines multiple markdown files into a single academic paper with:
+- Automatic table of contents generation
+- Cross-reference handling
+- Image path adjustment
+- Multiple output formats (markdown, PDF, Word)
+- Academic formatting with proper citations
+
+**Usage:**
+```bash
+# Generate markdown only
+python combine_paper.py --output-format markdown
+
+# Generate PDF
+python combine_paper.py --output-format pdf
+
+# Generate all formats
+python combine_paper.py --output-format all
+```
+
+**Requirements:**
+- `pandoc` for PDF/Word conversion
+- `xelatex` or `pdflatex` for PDF generation
+
 ## Data Processing Pipeline
 
 1. **Data Loading**: Raw CSV files → Cleaned DataFrames
@@ -77,4 +105,5 @@ Hebrew text support and matplotlib styling utilities
 3. **Analysis**: Segregation calculations, statistical tests
 4. **Visualization**: Maps, charts, statistical plots
 5. **Export**: Results to various formats
+6. **Documentation**: Combined academic papers from markdown sources
 

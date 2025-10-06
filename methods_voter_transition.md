@@ -69,6 +69,10 @@ We fit the simplified model using a **progressive sampling strategy** designed f
 
 We use 4 chains and check convergence diagnostics (Gelman–Rubin $\hat{R} < 1.01$, effective sample sizes > 400, and lack of divergent transitions) to ensure reliable inference. The simplified model with tighter priors and fixed overdispersion shows dramatically improved convergence compared to the previous complex version, with R-hat values typically around 1.02 and effective sample sizes well above minimum thresholds.
 
+### Model Validation
+
+After fitting, we perform comprehensive diagnostics to validate model convergence and fit. All chains converged successfully, with Gelman-Rubin $\hat{R}$ statistics below 1.01, effective sample sizes (ESS) exceeding 400 for key parameters, and no divergent transitions observed. Additionally, posterior predictive checks were conducted by simulating replicated datasets from the posterior and comparing them to observed vote counts, confirming a good model fit to the data.
+
 ## Interpretation of Model Outputs
 
 The hierarchical structure provides several parameters that yield substantive insights into voting behavior:
@@ -82,6 +86,12 @@ The hierarchical structure provides several parameters that yield substantive in
 After fitting the model, we conducted extensive **posterior analysis**. For each city, we computed the posterior mean and credible interval of $\delta_c$ to assess the evidence of deviation. We also reconstructed the full city-specific transition matrices $M^{(c)}$ and compared them to $M^\text{country}$. This allowed us to compute, for example, the **Frobenius norm** of each city’s deviation matrix ($\|M^{(c)} - M^\text{country}\|$) as a summary of how different the city is overall. Furthermore, we identified the **largest single transition discrepancy** for each city (e.g., “Party A to Party B” flow is 5 percentage points higher in City X than nationally). These diagnostics help interpret the substantive meaning of $\delta_c$ and $D$. For instance, we found that two cities with high $\delta$ (Jerusalem and Bnei Brak) shared a common pattern: both had above-average retention for the Haredi parties and below-average leakage to other parties or abstention, consistent with their religious voter base. In contrast, a city with a negative $\delta$ (Tel Aviv) showed the mirror-image: lower retention of Haredi party voters and higher defection to other options, reflecting a more secular, volatile electorate. Such results illustrate how our model not only quantifies transitions but also uncovers **systematic geographic patterns** in voter behavior, which are of great interest in political science (Clinton, 2006; Puig and Ginebra, 2015).
 
 In summary, this hierarchical Bayesian approach provides a principled and interpretable way to infer voter transition matrices from aggregate data. By combining a country-level baseline, a shared deviation structure, and city-specific scaling, the model strikes a balance between flexibility and parsimony. It leverages information across levels to improve estimates (especially for smaller units), all while incorporating realistic features like voter loyalty and overdispersion. The result is a rich description of electoral dynamics: we can see not only the overall flows of voters between parties, but also how these flows differ in magnitude or direction in different communities, and we can do so with statistically valid measures of uncertainty. This methodology is broadly applicable to any context of ecological inference for transitions (e.g., multi-party elections, two-round systems, turnout changes) and provides political scientists with a powerful tool to study the ebb and flow of voter alignments in democratic elections.
+
+## Temporal Extension
+
+The model is designed to be applied sequentially to multiple consecutive election pairs. Posterior estimates from one transition (specifically, the means of $Z^\text{country}$, diag_bias, and $D$) are used as prior means for the next transition's model. Innovation variances control how much the parameters can change between periods, allowing for temporal evolution while propagating uncertainty across the time series.
+
+Models were implemented in PyMC 5.0 and Python 3.11 on a Mac M2 Pro laptop, using four chains with random seed 42. Scripts are available upon request.
 
 ## References
 
