@@ -283,6 +283,7 @@ def main(
         reports_dir / "01_intro.md",
         reports_dir / "02_methods.md",
         reports_dir / "03_results.md",
+        reports_dir / "04_conclusions.md",
         reports_dir / "09_appendix.md",
         reports_dir / "references.md",
     ]
