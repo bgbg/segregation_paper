@@ -16,14 +16,17 @@ from src import vote_utils as vu
 # Directory and file paths
 dir_data = "../data/"
 dir_external = os.path.abspath(os.path.join(dir_data, "external"))
+dir_raw = os.path.abspath(os.path.join(dir_data, "raw"))
 
 
 # Utility functions
 def load_data(knesset_number: int):
-    fn_in = os.path.join(dir_external, f"results_{knesset_number}.csv")
+    fn_in = os.path.join(dir_raw, f"results_{knesset_number}.csv")
     fn_columns = os.path.join(dir_external, "columns.csv")
 
-    sr_columns = pd.read_csv(fn_columns).set_index("heb")["eng"].to_dict()
+    df_columns = pd.read_csv(fn_columns)
+    df_columns["heb"] = df_columns["heb"].str.strip()
+    sr_columns = df_columns.set_index("heb")["eng"].to_dict()
     dtypes = {
         c: "str" if "code" in c or "name" in c else "int" for c in sr_columns.values()
     }
