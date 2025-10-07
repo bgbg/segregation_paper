@@ -496,7 +496,19 @@ def generate_all_outputs(
         per_pair_mad, transition_pairs, paths.plots_dir
     )
 
-    # 5) Diagnostics per pair
+    # 5) Shas→Shas city comparison plot
+    shas_shas_plot_path = paths.plots_dir / "shas_shas_city_comparison.png"
+    from src.visualize_transitions import plot_shas_shas_city_comparison
+
+    plot_shas_shas_city_comparison(
+        target_cities=target_cities,
+        transitions_dir=str(paths.transitions_dir),
+        transition_pairs=transition_pairs,
+        pairs_to_show=pairs_to_show,
+        save_path=str(shas_shas_plot_path),
+    )
+
+    # 6) Diagnostics per pair
     diag_rows = []
     diag_images: Dict[str, List[Path]] = {}
     for pair in transition_pairs:
@@ -561,6 +573,17 @@ def generate_all_outputs(
         rel_table_lens = os.path.relpath(mad_table_lens, start=paths.reports_dir)
         lines.append(f"![MAD Table Lens]({rel_table_lens})")
         lines.append("")
+
+    # Add Shas→Shas city comparison plot
+    lines.append("### Shas→Shas City Transitions")
+    lines.append("")
+    lines.append(
+        "This plot shows the Shas→Shas transition probabilities for all target cities over time, allowing comparison of loyalty patterns across different cities."
+    )
+    lines.append("")
+    rel_shas_shas = os.path.relpath(shas_shas_plot_path, start=paths.reports_dir)
+    lines.append(f"![Shas to Shas City Comparison]({rel_shas_shas})")
+    lines.append("")
 
     lines.append("### Sampling Diagnostics")
     lines.append(_df_to_markdown(df_diag))

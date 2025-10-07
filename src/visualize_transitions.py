@@ -48,6 +48,22 @@ DIAGONAL_COLORS = {
 }
 
 
+def load_election_dates() -> Dict[int, str]:
+    """Load election dates from CSV and return formatted date strings.
+
+    Returns:
+        Dictionary mapping knesset_number to formatted date string (e.g., "Jan 2013")
+    """
+    try:
+        df_dates = pd.read_csv("data/external/election_dates.csv")
+        df_dates["election_date"] = pd.to_datetime(df_dates["election_date"])
+        df_dates["formatted_date"] = df_dates["election_date"].dt.strftime("%b %Y")
+        return df_dates.set_index("knesset_number")["formatted_date"].to_dict()
+    except Exception:
+        # Fallback if file not found
+        return {}
+
+
 def collect_transition_estimates(
     transitions_dir: str = "data/processed/transitions",
     pairs: Optional[List[str]] = None,
@@ -141,25 +157,25 @@ def collect_transition_estimates(
 
 
 def get_transition_string(from_category: str, to_category: str) -> str:
-    """Generate Hebrew transition string for plot titles."""
-    # Mapping to Hebrew names
-    heb_names = {
-        "Shas": "ש״ס",
-        "Agudat_Israel": "אגודת ישראל",
-        "Other": "אחרים",
-        "Abstained": "נמנעו",
+    """Generate English transition string for plot titles."""
+    # Mapping to English names
+    eng_names = {
+        "Shas": "Shas",
+        "Agudat_Israel": "UTJ",
+        "Other": "Other",
+        "Abstained": "Abstained",
     }
 
-    from_heb = heb_names.get(from_category, from_category)
-    to_heb = heb_names.get(to_category, to_category)
+    from_eng = eng_names.get(from_category, from_category)
+    to_eng = eng_names.get(to_category, to_category)
 
-    return heb(f"{from_heb} ← {to_heb}")
+    return f"{from_eng} → {to_eng}"
 
 
 def set_xlabel(ax: plt.Axes, label: str = None) -> None:
-    """Set Hebrew x-axis label with proper alignment."""
+    """Set English x-axis label with proper alignment."""
     if label is None:
-        label = heb("כנסת מספר")
+        label = "Knesset Number"
     ax.set_xlabel(label, rotation=0, ha="right", va="top", x=1)
 
 
@@ -362,6 +378,46 @@ def plot_transition_matrix_over_elections(
                 # Still need to set x-axis properties for consistency
                 if i == 3:  # Bottom row
                     set_xlabel(ax)
+
+    # Add Knesset labels above upper row
+    election_dates = load_election_dates()
+
+    # Get unique knesset numbers from the data
+    unique_kn_locations = sorted(df_all["kn_location"].unique())
+
+    for j, from_cat in enumerate(CATEGORY_ORDER):
+        ax = axes[0, j]  # Top row
+
+        # Get the x-axis limits of this subplot
+        xlim = ax.get_xlim()
+
+        # Add labels for each knesset number in the data range
+        for kn_location in unique_kn_locations:
+            # Convert kn_location back to knesset numbers
+            kn_start = int(np.floor(kn_location))
+            kn_end = int(np.ceil(kn_location))
+
+            # Get dates for both knesset numbers
+            date_start = election_dates.get(kn_start, f"Kn{kn_start}")
+            date_end = election_dates.get(kn_end, f"Kn{kn_end}")
+
+            # Position label at the kn_location
+            x_pos = kn_location
+
+            # Position label above the subplot
+            y_pos = 1.05  # Above the subplot
+
+            # Add the label
+            ax.text(
+                x_pos,
+                y_pos,
+                f"#{kn_start}-{kn_end}\n{date_start}",
+                ha="center",
+                va="bottom",
+                fontsize=10,
+                transform=ax.get_xaxis_transform(),
+                color="black",
+            )
 
     # Set super title if provided
     if suptitle:
@@ -1052,6 +1108,163 @@ def plot_all_transitions(
         print(f"✓ Displayed {len(pairs_subset)} of {len(transition_pairs)} pairs")
     else:
         print(f"✓ Displayed all {len(transition_pairs)} pairs")
+
+
+def plot_shas_shas_city_comparison(
+    target_cities: List[str],
+    transitions_dir: str,
+    transition_pairs: List[str],
+    *,
+    pairs_to_show: Optional[List[str]] = None,
+    save_path: Optional[str] = None,
+) -> None:
+    """Plot Shas→Shas transition probabilities for all cities on single axes.
+
+    Args:
+        target_cities: List of city names to plot
+        transitions_dir: Directory containing transition data
+        transition_pairs: List of transition pair tags
+        pairs_to_show: Subset of pairs to show; others masked
+        save_path: Path to save figure; if None, doesn't save
+    """
+    fig, ax = plt.subplots(figsize=(18, 9))
+
+    # Load election dates for labeling
+    election_dates = load_election_dates()
+
+    # Collect data for each city
+    city_data = {}
+    for city in target_cities:
+        try:
+            df_city = collect_transition_estimates(
+                transitions_dir=transitions_dir,
+                pairs=transition_pairs,
+                level="city",
+                city=city,
+            )
+            # Filter for Shas→Shas transitions
+            df_shas = df_city[
+                (df_city.from_category == "Shas") & (df_city.to_category == "Shas")
+            ].copy()
+            if not df_shas.empty:
+                city_data[city] = df_shas
+        except Exception as e:
+            print(f"Warning: Could not load data for {city}: {e}")
+            continue
+
+    if not city_data:
+        print("No city data available for Shas→Shas transitions")
+        return
+
+    # Plot each city
+    for i, (city_name, df_city) in enumerate(city_data.items()):
+        # Sort by kn_location for proper time ordering
+        df_city = df_city.sort_values("kn_location").reset_index(drop=True)
+
+        # Apply pairs_to_show masking
+        if pairs_to_show is not None:
+            mask = ~df_city["pair_tag"].isin(pairs_to_show)
+            df_city.loc[mask, ["estimate", "lower_ci", "upper_ci"]] = np.nan
+
+        # Use different color for each city
+        color = f"C{i}"
+
+        # Plot line with markers
+        ax.plot(
+            df_city["kn_location"],
+            df_city["estimate"],
+            "-o",
+            color=color,
+            label=city_name,
+            markersize=5,
+            linewidth=1.5,
+        )
+
+        # Add city name label on the left
+        if not df_city.empty:
+            x_pos = df_city["kn_location"].min() - 0.3
+            y_pos = df_city["estimate"].iloc[0]
+            ax.text(
+                x_pos,
+                y_pos,
+                f"{city_name} ",
+                color=color,
+                ha="right",
+                va="center",
+                fontsize=12,
+            )
+
+    # Add Knesset labels at top
+    if city_data:
+        # Get all unique knesset locations from all cities
+        all_kn_locations = set()
+        for df_city in city_data.values():
+            all_kn_locations.update(df_city["kn_location"].unique())
+
+        y_max = ax.get_ylim()[-1]
+
+        for kn_location in sorted(all_kn_locations):
+            # Convert kn_location back to knesset numbers
+            kn_start = int(np.floor(kn_location))
+            kn_end = int(np.ceil(kn_location))
+
+            # Get date for the start knesset
+            date_start = election_dates.get(kn_start, f"Kn{kn_start}")
+
+            # Position label at the kn_location
+            x_pos = kn_location
+
+            # Add the label
+            ax.text(
+                x_pos,
+                y_max,
+                f"#{kn_start}-{kn_end}\n{date_start}",
+                ha="center",
+                va="bottom",
+                fontsize=12,
+                color="black",
+            )
+
+    # Set aesthetics
+    sns.despine(ax=ax)
+    ax.grid(False)
+
+    # Set axis labels
+    ax.set_ylabel(
+        "Shas→Shas\nTransition Probability",
+        ha="right",
+        ma="left",
+        rotation=0,
+        y=1,
+        va="top",
+    )
+    ax.set_xlabel("Knesset Number", ha="right", va="top", x=1)
+
+    # Set axis limits
+    if city_data:
+        all_kn_locations = []
+        for df_city in city_data.values():
+            all_kn_locations.extend(df_city["kn_location"].tolist())
+
+        kn_min = min(all_kn_locations)
+        kn_max = max(all_kn_locations)
+        ax.set_xlim(kn_min - 0.5, kn_max + 0.5)
+
+        # Set y-axis limits
+        ax.set_ylim(0, 1)
+
+    # Set title
+    ax.set_title("Shas→Shas Transition Probabilities by City", fontsize=14, pad=20)
+
+    # Adjust layout
+    plt.tight_layout()
+
+    # Save if requested
+    if save_path:
+        plt.savefig(save_path, dpi=300, bbox_inches="tight")
+        print(f"Saved Shas→Shas city comparison plot to {save_path}")
+
+    return fig, ax
 
 
 def main(
