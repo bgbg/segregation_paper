@@ -1,0 +1,3 @@
+[submodule ".cursor/commands"]
+	path = .cursor/commands
+	url = git@github.com:bgbg/cursor_commands.git
