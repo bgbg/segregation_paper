@@ -278,14 +278,14 @@ def main(
     logger = setup_logging(verbose)
 
     # Define input files in order
-    reports_dir = Path("data/processed/reports")
+    reports_dir = Path("transition_paper")
     input_files = [
         reports_dir / "01_intro.md",
         reports_dir / "02_methods.md",
         reports_dir / "03_results.md",
         reports_dir / "04_conclusions.md",
+        reports_dir / "10_references.md",
         reports_dir / "09_appendix.md",
-        reports_dir / "references.md",
     ]
 
     # Verify all input files exist

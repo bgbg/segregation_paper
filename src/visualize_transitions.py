@@ -13,6 +13,7 @@ import warnings
 
 import defopt
 import matplotlib.pyplot as plt
+import matplotlib.ticker as ticker
 import numpy as np
 import pandas as pd
 import seaborn as sns
@@ -1156,7 +1157,8 @@ def plot_shas_shas_city_comparison(
         print("No city data available for Shas→Shas transitions")
         return
 
-    # Plot each city
+    # Plot each city and collect label positions
+    label_positions = []
     for i, (city_name, df_city) in enumerate(city_data.items()):
         # Sort by kn_location for proper time ordering
         df_city = df_city.sort_values("kn_location").reset_index(drop=True)
@@ -1180,19 +1182,48 @@ def plot_shas_shas_city_comparison(
             linewidth=1.5,
         )
 
-        # Add city name label on the left
+        # Store label info for positioning later
         if not df_city.empty:
-            x_pos = df_city["kn_location"].min() - 0.3
-            y_pos = df_city["estimate"].iloc[0]
-            ax.text(
-                x_pos,
-                y_pos,
-                f"{city_name} ",
-                color=color,
-                ha="right",
-                va="center",
-                fontsize=12,
+            label_positions.append(
+                {
+                    "city_name": city_name.title(),  # Capitalize properly
+                    "y_pos": df_city["estimate"].iloc[0],
+                    "x_min": df_city["kn_location"].min(),
+                    "x_max": df_city["kn_location"].max(),
+                    "color": color,
+                    "index": i,
+                }
             )
+
+    # Add city name labels with smart positioning to avoid overlap
+    # Sort by y_pos to process from bottom to top
+    label_positions.sort(key=lambda x: x["y_pos"])
+
+    # Adjust y-positions to avoid overlap with very tight spacing
+    min_spacing = 0.01  # Very tight minimum vertical spacing between labels
+    for i in range(1, len(label_positions)):
+        prev_y = label_positions[i - 1]["y_pos"]
+        curr_y = label_positions[i]["y_pos"]
+        if curr_y - prev_y < min_spacing:
+            label_positions[i]["y_pos"] = prev_y + min_spacing
+
+    # Place all labels on the left side, balanced distance from axis
+    for label_info in label_positions:
+        x_pos = (
+            label_info["x_min"] - 0.1
+        )  # Balanced distance - not too close, not too far
+        ha = "right"
+        text = f"{label_info['city_name']} "
+
+        ax.text(
+            x_pos,
+            label_info["y_pos"],
+            text,
+            color=label_info["color"],
+            ha=ha,
+            va="center",
+            fontsize=12,
+        )
 
     # Add Knesset labels at top
     if city_data:
@@ -1248,13 +1279,19 @@ def plot_shas_shas_city_comparison(
 
         kn_min = min(all_kn_locations)
         kn_max = max(all_kn_locations)
-        ax.set_xlim(kn_min - 0.5, kn_max + 0.5)
+        ax.set_xlim(kn_min - 0.8, kn_max + 0.7)  # Balanced left margin for labels
 
         # Set y-axis limits
-        ax.set_ylim(0, 1)
+        ax.set_ylim(0.6, 1.0)
+
+        # Set y-axis ticks to reduce label density
+        ax.yaxis.set_major_locator(ticker.MultipleLocator(0.1))  # Every 0.1
+        ax.yaxis.set_minor_locator(
+            ticker.MultipleLocator(0.05)
+        )  # Every 0.05 as minor ticks
 
     # Set title
-    ax.set_title("Shas→Shas Transition Probabilities by City", fontsize=14, pad=20)
+    ax.set_title("Shas→Shas Transition Probabilities by City", fontsize=14, pad=40)
 
     # Adjust layout
     plt.tight_layout()
