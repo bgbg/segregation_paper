@@ -82,6 +82,42 @@ def adjust_image_paths(content: str, base_dir: Path) -> str:
     return re.sub(image_pattern, replace_image_path, content)
 
 
+def format_figure_captions(content: str) -> str:
+    """Convert figure captions to proper format for Word documents.
+    
+    Converts:
+    ![alt](path) *Figure X: description*
+    
+    To:
+    ![alt](path){#fig:label}
+    
+    Figure X: description
+    """
+    # Pattern to match image followed by italic figure caption
+    # This handles multi-line captions that start with *Figure and end with *
+    fig_pattern = r'(!\[[^\]]*\]\([^)]+\))\s*\*((?:Figure\s+\d+:[^*]+(?:\n[^*]*)*?)\*)\s*\n'
+    
+    def replace_figure(match):
+        image_markdown = match.group(1)
+        caption_text = match.group(2)
+        
+        # Extract figure number for label
+        fig_match = re.search(r'Figure\s+(\d+)', caption_text)
+        if fig_match:
+            fig_num = fig_match.group(1)
+            fig_label = f"fig:{fig_num}"
+        else:
+            fig_label = "fig:figure"
+        
+        # Clean up caption text (remove the * markers)
+        clean_caption = caption_text.strip()
+        
+        # Format as proper figure with caption
+        return f"{image_markdown}{{#fig:{fig_label}}}\n\n{clean_caption}\n"
+    
+    return re.sub(fig_pattern, replace_figure, content, flags=re.MULTILINE | re.DOTALL)
+
+
 def generate_table_of_contents(content: str) -> str:
     """Generate a table of contents from markdown headers."""
     lines = content.split("\n")
@@ -135,6 +171,9 @@ def combine_markdown_files(
 
         # Adjust image paths
         content = adjust_image_paths(content, base_dir)
+        
+        # Format figure captions for proper Word formatting
+        content = format_figure_captions(content)
 
         # Add content with section separator
         combined_content.append(content)
@@ -241,7 +280,11 @@ def convert_to_word(markdown_path: Path, output_path: Path) -> None:
         "--toc-depth=3",  # Include up to level 3 headers
         "--number-sections",  # Number sections
         "--citeproc",  # Process citations
+        "--reference-doc=reference.docx" if (markdown_path.parent / "reference.docx").exists() else None,
     ]
+    
+    # Remove None values
+    cmd = [arg for arg in cmd if arg is not None]
 
     try:
         logger.info("Converting to Word document...")
