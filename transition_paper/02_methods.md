@@ -51,10 +51,7 @@ aggregate data (Robinson 1950).
 
 For each election pair $(t, t+1)$, the model infers the probability that a voter from category i at election t votes for
 category j at election t+1. Individual transitions are unobserved, but aggregate vote counts provide marginal
-constraints. Prior research has developed various strategies for this problem, from Goodman's linear ecological
-regression (Goodman 1953) to more complex Bayesian models (King 1997; Rosen et al. 2001). We build on this literature by
-addressing several key challenges: unobserved individual transitions, spatial heterogeneity in voting patterns, high
-dimensionality of transition matrices, and overdispersion in vote counts (Wakefield 2004; Forcina and Pellegrino 2019).
+constraints. Building on Goodman's (1953) ecological regression framework and subsequent Bayesian extensions (King 1997; Rosen et al. 2001), we model voter transitions probabilistically using a hierarchical Bayesian approach that generalizes the linear model to address several key challenges: unobserved individual transitions, spatial heterogeneity in voting patterns, high dimensionality of transition matrices, and overdispersion in vote counts (Wakefield 2004; Forcina and Pellegrino 2019).
 
 Each election pair is modeled using three levels of hierarchy: 1. National transition matrix ($M^{country}$)  baseline
 transition probabilities for the entire electorate.  2. Shared deviation pattern ($D$)  a low-rank structure capturing

@@ -31,6 +31,10 @@ possibility of hidden volatility in "solid" voting blocs. Similar patterns of pa
 electorates have been documented elsewhere. Simas and Lothamer (2025) find that even strong party identifiers may
 temporarily defect following intraparty conflict, revealing that perceived unity can mask underlying volatility.
 
+Recent survey evidence documents internal differentiation in religiosity and political self-placement among
+Orthodox–traditional Israelis (Inbari and Bumin 2024). While outside the Haredi sector per se, such heterogeneity is
+consistent with occasional voter transitions at the margins, which this study quantifies using ballot-box transitions.
+
 An important analytical challenge in studying Haredi voting behavior is the heterogeneous composition of the political
 parties that represent this sector. The ultra-Orthodox camp in Israel is internally divided along ethnic and ideological
 lines, reflecting broader social cleavages that influence party choice and persist despite electoral reforms (Andersen

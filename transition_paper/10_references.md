@@ -59,7 +59,7 @@ Multi-Party Systems." *Electoral Studies* 80: 102542. https://doi.org/10.1016/j.
 Glynn, Adam N., and Jon Wakefield. 2010. "Ecological Inference in the Social Sciences." *Statistical Methodology* 7 (3):
 307322.
 
-Goodman. 1953. XXXXXX MISSING REFERENCE XXXX
+Goodman, Leo A. 1953. "Ecological Regressions and the Behavior of Individuals." *American Sociological Review* 18, no. 6 (December): 663–664. https://doi.org/10.2307/2088111.
 
 Goodwin, Matthew J., Eric Kaufmann, and Erik G. Larsen. 2022. "Asymmetric Realignment: Immigration and Right Party
 Voting." *Electoral Studies* 80: 102551. https://doi.org/10.1016/j.electstud.2022.102551.
@@ -70,6 +70,10 @@ Society." *Social Sciences* 14 (x): xx.
 Greiner, James, and Kevin Quinn. 2010. "RC Ecological Inference: Bounds, Correlations, Flexibility and Transparency of
 Assumptions." *Journal of the Royal Statistical Society: Series A (Statistics in Society)* 173 (1): 5581.
 https://doi.org/10.1111/j.1467-985X.2009.00606.x.
+
+Inbari, Motti, and Kirill M. Bumin. 2024. "Israeli Jewish Attitudes toward Core Religious Beliefs in God, the Election
+of Israel, Eschatology, and the Temple Mount—Statistical Analysis." *Religions* 15 (9): 1076.
+https://doi.org/10.3390/rel15091076.
 
 Jrv, Olle, Anu Masso, Siiri Silm, and Rein Ahas. 2021. "The Link Between Ethnic Segregation and SocioEconomic Status: An
 Activity Space Approach." *Tijdschrift voor Economische en Sociale Geografie* 112 (3): 31935.
