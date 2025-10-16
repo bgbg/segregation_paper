@@ -78,7 +78,7 @@ https://doi.org/10.1111/tesg.12465.
 Johnston, R. J., and A. M. Hay. 1983. "On the Measurement of Electoral Variability: A Comment." *Political Studies* 31
 (3): 512521.
 
-KerenKratz, Menachem. 2025. "The Turnaround in Israel's Haredi Society in the Late 20th Century: A DataBased Analysis."
+Keren-Kratz, Menachem. 2025. "The Turnaround in Israel's Haredi Society in the Late 20th Century: A DataBased Analysis."
 *Religions* 16 (2): 145. https://doi.org/10.3390/rel16020145.
 
 King, Gary. 1997. *A Solution to the Ecological Inference Problem: Reconstructing Individual Behavior from Aggregate

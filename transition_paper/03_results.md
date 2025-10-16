@@ -36,8 +36,11 @@ broader electoral turbulence.
 **Table 1: Election Dates and Intervals**
 
 | Knesset | Election Date | Days Since Previous | Months Since Previous |
-|---------|--------------|---------------------|----------------------| | 22 | September 17, 2019 |  |  | | 23 | March
-2, 2020 | 167 | 5.5 | | 24 | March 23, 2021 | 386 | 12.7 | | 25 | November 1, 2022 | 588 | 19.3 |
+|---------|---------------|---------------------|----------------------|
+| 22 | September 17, 2019 | | |
+| 23 | March 2, 2020 | 167 | 5.5 |
+| 24 | March 23, 2021 | 386 | 12.7 |
+| 25 | November 1, 2022 | 588 | 19.3 |
 
 ![Country transitions](plots/country_transition_matrix_over_elections.png) *Figure 2: Country-level transition matrices
 across election pairs*

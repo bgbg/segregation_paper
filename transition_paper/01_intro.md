@@ -1,6 +1,6 @@
 # Introduction
 
-Across many democracies, certain communities exhibit cohesive voting patterns that resemble durable "voting blocs"
+Across many democracies, communities exhibit cohesive voting patterns that resemble durable "voting blocs"
 anchored in strong group identities. Classic cleavage theories and the literature on ethnoreligious mobilization argue
 that such identities can cement stable partisan alignments over long periods (Lipset & Rokkan, 1967). This backdrop
 raises a central question for political behavior: are these loyal voting blocs truly immobile, or can hidden currents of
@@ -42,6 +42,8 @@ modern-Orthodox Mizrahim rather than Haredi per se. In other words, while most S
 significant share of Shas's voters are not themselves Haredi. This demographic reality has been noted by demographers
 and political analysts for decades. As Cincotta (2013) observed, *"the vast majority of Shas's electoral support has
 come from nonultra-Orthodox Sephardim and Mizrahim,"* reflecting the party's broad appeal beyond the Haredi core.
+Recent analysis of Haredi society's transformation in the late 20th century further supports this understanding of Shas's
+mixed electorate (Keren-Kratz 2025).
 Sociologically, Sephardi ultra-Orthodoxy has been characterized as a "soft" ultra-Orthodoxy, adhering to strict
 religious ideology yet maintaining a more permeable, less insular social identity (Leon 2014). Leon (2014) describes
 Mizrahi Haredi identity as *"strict ideology, liquid identity,"* suggesting that the boundaries of this group are more
