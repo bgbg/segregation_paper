@@ -6,7 +6,7 @@ that such identities can cement stable partisan alignments over long periods (Li
 raises a central question for political behavior: are these loyal voting blocs truly immobile, or can hidden currents of
 change exist beneath an outwardly stable surface?
 
-Israel's ultra-Orthodox (*Haredi*) Jews provide a compelling case study. The Haredi sector is widely portrayed as one of
+Israel's ultra-Orthodox (*Haredi*, plural *Haredim*) Jews provide a compelling case study. The Haredi sector is widely portrayed as one of
 the most disciplined electoral blocs in Israel, with community members casting ballots in line with sectoral leadership
 and longstanding religious-ethnic alignments (Friedman 1991; Curiel & Zeedan 2024). Media narratives often depict the
 electorate as voting "in lockstep" with rabbinic guidance, and early scholarship emphasized the obligation of
@@ -38,16 +38,19 @@ consistent with occasional voter transitions at the margins, which this study qu
 An important analytical challenge in studying Haredi voting behavior is the heterogeneous composition of the political
 parties that represent this sector. The ultra-Orthodox camp in Israel is internally divided along ethnic and ideological
 lines, reflecting broader social cleavages that influence party choice and persist despite electoral reforms (Andersen
-and Yaish 2003). Ashkenazi (European-origin) Haredim are represented by the United Torah Judaism alliance (Agudat
-Yisrael/Degel HaTorah), and indeed UTJ's electorate is almost entirely ultra-Orthodox Ashkenazi. In contrast, the
+and Yaish 2003). Ashkenazi (European-origin) Haredim are represented by the United Torah Judaism (*UTJ*) alliance,
+and indeed UTJ's electorate is almost entirely ultra-Orthodox Ashkenazi. In contrast, the
 Sephardi/Mizrahi Haredim rally behind the Shas party  but Shas's voter base extends well beyond the strictly
-ultra-Orthodox community. Social surveys indicate that a large portion of Shas supporters are *masorti* (traditional) or
-modern-Orthodox Mizrahim rather than Haredi per se. In other words, while most Sephardi Haredim vote for Shas, a
+ultra-Orthodox community. In other words, while most Sephardi Haredim vote for Shas, a
 significant share of Shas's voters are not themselves Haredi. This demographic reality has been noted by demographers
 and political analysts for decades. As Cincotta (2013) observed, *"the vast majority of Shas's electoral support has
 come from nonultra-Orthodox Sephardim and Mizrahim,"* reflecting the party's broad appeal beyond the Haredi core.
 Recent analysis of Haredi society's transformation in the late 20th century further supports this understanding of Shas's
 mixed electorate (Keren-Kratz 2025).
+
+
+**TODO**: Do we need the paragraph below? Is it repeating the message of the previous paragraph?
+
 Sociologically, Sephardi ultra-Orthodoxy has been characterized as a "soft" ultra-Orthodoxy, adhering to strict
 religious ideology yet maintaining a more permeable, less insular social identity (Leon 2014). Leon (2014) describes
 Mizrahi Haredi identity as *"strict ideology, liquid identity,"* suggesting that the boundaries of this group are more
@@ -71,10 +74,14 @@ being compelled to treat voters as a constituency to engage, rather than simply 
 grassroots pressures are mounting. All these developments point to the possibility that even in a community famous for
 its disciplined voting, hidden currents of change may be at work beneath the surface consensus.
 
+
+
+**TODO** in the paragraph below, mention that the political instability of years 2021-24 (?) provided a good natural experiment
+
 A recent finding from my previous study provided an unexpected clue to this hidden volatility. That study examined
 Haredi residential patterns using segregation indices and documented persistent intra-Haredi ethnic separation (between
-Ashkenazi and Sephardi ultra-Orthodox) in cities across Israel. However, it also identified an anomalous and sudden drop
-in the index of dissimilarity in Ashdod around the time of the March 2021 election (Gorelik 2025). In all other major
+Ashkenazi and Sephardi ultra-Orthodox) Haredi residential hubs across Israel. However, it also identified an anomalous and sudden drop
+in the index of dissimilarity in Ashdod, a city in Southern Israel, around the time of the March 2021 election (Gorelik 2025). In all other major
 Haredi population centers, segregation levels remained relatively stable, making Ashdod's abrupt integration indicator
 highly puzzling. Figure 1 illustrates this striking pattern: while most cities show relatively stable or gradually
 changing segregation levels across elections, Ashdod exhibits a sharp drop between Knesset 23 (March 2020) and Knesset
@@ -89,16 +96,20 @@ momentarily blurred the usual geographic divide between Shas and UTJ strongholds
 index. This intriguing possibility motivated the present study: if such a hidden voting shift did occur in one city,
 might it be part of a larger, under-the-radar pattern of voter transitions in the ultra-Orthodox sector?
 
-![Dissimilarity Index Dynamics](plots/dissimilarity_dynamics_kn.png) *Figure 1: Dissimilarity index dynamics across
-Knesset elections for major Haredi cities. Ashdod shows a distinctive sharp drop between Knesset 23 and 24 (marked by
+![Dissimilarity Index Dynamics](plots/dissimilarity_dynamics_kn.png)
+
+**TODO** make the captoin "conclusion first"
+
+*Figure 1: Dissimilarity index dynamics across Knesset elections for major Haredi cities.
+Ashdod shows a distinctive sharp drop between Knesset 23 and 24 (marked by
 the vertical position), which coincides with the period of voter transition disruption analyzed in this study. The index
 measures spatial segregation between Ashkenazi and Sephardi Haredi populations within each city, with higher values
-indicating greater residential separation.*
+indicating greater residential separation. Reconstructed from data in Gorelik, 2025*
 
 The present study addresses this puzzle by analyzing voter transition matrices for the Haredi electorate across
 successive national elections. Using pollingstation results and a hierarchical Bayesian ecological inference framework
 (King 1997; Greiner & Quinn 2010), I estimate transition probabilities among four categories of votes: (1) votes for
-Shas, (2) votes for United Torah Judaism (UTJ/Agudat Yisrael), (3) votes for all other parties, and (4) abstention
+Shas, (2) votes for UTJ, (3) votes for all other parties, and (4) abstention
 (including null/spoiled ballots). To ensure the analysis focuses on Haredi behavior (given Shas's mixed electorate
 discussed above), I restrict the dataset to polling stations that are at least 75% Haredi in composition, following the
 approach of Gorelik (2025). This filtering isolates the ballot boxes in Haredi population hubs, so that the transition
@@ -107,6 +118,9 @@ matrices between every pair of consecutive Knesset elections from 2009 to 2022, 
 cities with large Haredi populations (Jerusalem, Bnei Brak, Beit Shemesh, Ashdod, etc.). The modeling yields estimates
 of loyalty (the probability of a voter staying with the same party bloc) versus switching (probabilities of shifting to
 a different party or to abstention) from one election to the next.
+
+
+**TODO** Does the following paragraph belong to Intro or Methods?
 
 Three empirical findings emerge from the analysis. First, the sharp timing of Ashdod's segregation drop in 2021 (visible
 in Figure 1) coincides with a nationwide collapse in Shas-to-Shas voter loyalty in the 20202021 election cycle. In
@@ -132,6 +146,8 @@ the political turmoil of that time. These city disparities suggest that local so
 ethnic mixing, the presence of competing rabbinic influences, and day-to-day exposure to non-Haredi society  mediate the
 strength of Haredi voting discipline and the channels through which change can occur.
 
+
+
 Overall, these results connect the segregation anomaly to electoral dynamics and, more generally, challenge the notion
 of Haredi political immobility. Even while outward election results for the ultra-Orthodox parties appeared stable
 (indeed, Shas and UTJ collectively held roughly the same number of Knesset seats throughout the decade), a fine-grained
@@ -149,13 +165,12 @@ Methodologically, the study showcases the value of integrating aspatial segregat
 analyses. While indices like the dissimilarity index capture the *structure* of group separation at a snapshot in time,
 they cannot reveal the *dynamics* of how individuals move between groups or parties. By pairing the segregation measure
 with transition matrices, I am able to explain how a seemingly "fast" social change in Ashdod's index could occur
-without any rapid physical relocation  the electoral realignment provided the missing mechanism. More broadly, the
-city-level comparisons indicate that local institutional ecologies  such as schools, synagogues, yeshivas, political
-patronage networks, and varying degrees of integration into broader society  play a crucial role in modulating the
-strength of the ultra-Orthodox voting bloc. For example, a city with multiple Haredi sub-groups and weaker centralized
-authority may experience more cross-party leakage than a monolithic Haredi town where social sanctions for deviance are
-strong. Understanding these spatial and institutional moderators can enrich our conception of when and how "hidden"
+without any rapid physical relocation  the electoral realignment provided the missing mechanism.
+Understanding these spatial and institutional moderators can enrich our conception of when and how "hidden"
 volatility emerges in otherwise cohesive groups.
+
+**TODO** - look at the paragraph above. Does the last sentence really conclude the paragraph?
+
 
 In sum, the contributions of this study are twofold. Substantively, I provide evidence that Haredi voting, while highly
 cohesive in aggregate, is not uniformly immobile: loyalty can weaken quickly under certain conditions, and local context
@@ -169,3 +184,6 @@ importance of looking beneath the surface of bloc vote totals to discover the su
 traditional analyses may overlook. Such an approach reveals that even the most unified voting blocs contain latent
 dynamics  a finding with implications not only for Haredi Israeli politics, but for any democracy featuring strong
 identity-based voting.
+
+
+**TODO** - look at the paragraph above. Consider restating it in a more reader-centric way.
