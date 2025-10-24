@@ -1,6 +1,10 @@
 # Conclusions
 
-## Summary of Main Findings
+**TODO** Make sure to mention the following: the previous study (Gorelik 2025) used votes for two specific parties as a proxy for ethnicity measure. This current study demonstrated that the votes are exactly that: a proxy, and that the validity of this proxy may change over time.
+
+
+
+**TODO** The Results sections ends with a summary of main findginds. The paragraph below also summarizes the findings. However, keep in mind that it comes directly after the last paragraph of Results. Having two summaries one after another is excessive. Solve this abundancy or provide arguemnts in favor of the current version.
 
 This study examined voting transitions between Israel's two main ultra-Orthodox (Haredi) political partiesShas
 (predominantly Sephardic) and United Torah Judaism (predominantly Ashkenazi)across seven consecutive Knesset elections
@@ -10,56 +14,72 @@ temporary disruption under extraordinary circumstances.
 
 ### High Baseline Stability with Rare Disruptions
 
-The dominant pattern across the study period is one of exceptionally high intra-party loyalty. Shas voters retained
-their party allegiance at rates exceeding 90% in most election pairs, while UTJ voters demonstrated even stronger
-loyalty, typically above 95%. Cross-party transitions between Shas and UTJthe primary focus for understanding ethnic
-permeability within the Haredi sectorremained negligible across most elections, rarely exceeding 2-3% in either
-direction.
 
-However, this rigid structure experienced a dramatic temporary collapse during the March 2020 to March 2021 transition
-(Knesset 2324). National-level Shas-to-Shas loyalty plummeted from 98.9% to 72.8%, while the Shas-to-UTJ switching rate
-surged from near zero to 12.3%. UTJ voters similarly experienced reduced loyalty (dropping from 97.6% to 87.9%), with
-12.3% switching to Shas. This represents the only substantive cross-party flow observed across all election pairs
-studied.
+**TODO** The paragraph below is broken: some of the sentences are unclear. Fix it.
 
-Critically, this disruption proved temporary. By the subsequent November 2022 election (Knesset 2425), loyalty rates
-recovered fully to pre-crisis levels (Shas: 98.6%, UTJ: 96.7%), indicating that the underlying ethnic-political
-boundaries remained intact despite the temporary shock. The pattern is one of **rigidity with occasional stress
-fractures**, not fluid or liquid identity.
+The dominant pattern across the study period is one of exceptionally high intra-party loyalty.
+Shas voters retained their party allegiance at rates exceeding 90% in most elections,
+while UTJ voters demonstrated even stronger loyalty, typically above 95%.
+Cross-party transitions between Shas and UTJ, the primary focus for understanding ethnic
+permeability within the Haredi sectorremained negligible across most elections, rarely exceeding 2-3% in either direction.
+
+However, this rigid structure experienced a dramatic temporary collapse during
+the March 2020 to March 2021 transition (Knesset 23-24).
+National-level Shas-to-Shas loyalty plummeted from 98.9% to 72.8%, while the
+Shas-to-UTJ switching rate surged from near zero to 12.3%.
+UTJ voters similarly experienced reduced loyalty (dropping from 97.6% to 87.9%),
+with 12.3% switching to Shas. This represents the only substantive cross-party
+flow observed across all elections studied.
+
+
+**TODO** In the paragraph below, keep in mind that return to higher loyalty does not indicate return of voters. Mention that return of voters was not observed. Review the part after "indicating that..."
+
+Critically, this disruption proved temporary. By the subsequent November 2022 election (Knesset 24-25), loyalty rates recovered fully to pre-change levels (Shas: 98.6%, UTJ: 96.7%), indicating that the underlying ethnic-political boundaries remained intact despite the temporary shock. The pattern is one of **rigidity with occasional stress fractures**, not fluid or liquid identity.
 
 ### Geographic Variation in Disruption Magnitude
 
-While the 2324 disruption affected all cities with significant Haredi populations, its magnitude varied substantially
-across localities. Ashdod exhibited the most extreme deviation, with Shas loyalty dropping to just 64.5% and Shas-to-UTJ
-switching reaching 21.3%nearly double the national rate. Bnei Brak and Beit Shemesh showed similarly sharp but somewhat
-more moderate disruptions. Jerusalem and Modi'in Illit demonstrated greater resilience, though even these strongholds
+While the 23-24 disruption affected all the Haredi population hubs, its magnitude varied substantially across localities.
+Ashdod exhibited the most extreme deviation, with Shas loyalty dropping to just 64.5% and Shas-to-UTJ
+switching reaching 21.3%, nearly double the national rate.
+Bnei Brak and Beit Shemesh showed similarly sharp but somewhat more moderate disruptions.
+Jerusalem and Modi'in Illit demonstrated greater resilience, though even these strongholds
 experienced measurable volatility.
 
-This geographic variation suggests that local demographic composition and social integration between Sephardic and
-Ashkenazi Haredi communities modulate the boundaries of permissible political switching. Cities with more integrated
-populations showed larger cross-flows during the crisis period, while more homogeneous communities maintained stronger
-ethnic-political boundaries even under stress. However, the consistency of the temporal patternsharp disruption followed
-by full recoveryacross all cities points to a centralized or system-wide shock rather than city-specific factors.
+**TODO** The claim in the sentence starting with `Cities with more integrated` is too strong, and is not fully corraborated by data. More specifically, there is no any quantification of "integrated population". Fix the paragraph below accordingly
+
+This geographic variation suggests that local demographic composition and social
+integration between Sephardic and Ashkenazi Haredi communities modulate the boundaries of permissible political switching.
+Cities with more integrated populations showed larger cross-flows during the crisis period,
+while more homogeneous communities maintained stronger ethnic-political boundaries even under stress.
+However, the consistency of the temporal pattern sharp disruption followed
+by full recovery across all cities points to a centralized or system-wide
+shock rather than city-specific factors.
 
 ### Temporal Dynamics and Demographic Interpretations
 
 The short intervals between elections during the study periodparticularly the 5.5-month gap between Knesset 22 and 23,
-and the 12.7-month gap between 23 and 24strongly suggest that observed transitions reflect genuine voter switching
-rather than demographic change through migration or generational replacement. Residential mobility and population
-turnover are unlikely to account for the dramatic shifts in voting patterns over such brief periods, especially given
-the subsequent rapid recovery.
+and the 12.7-month gap between 23 and 24, strongly suggest that observed transitions
+reflect genuine voter switching rather than demographic change through migration
+or generational replacement.
+Residential mobility and population turnover are unlikely to account for the dramatic
+shifts in voting patterns over such brief periods, especially given the subsequent rapid recovery.
 
-This finding has important implications for interpreting electoral volatility in highly cohesive communities. The data
-demonstrate that even populations characterized by strong institutional discipline and rabbinic authority can experience
-rapid political realignments when subjected to sufficient external pressure. The equally rapid recovery, however,
-indicates that such disruptions do not necessarily signal permanent weakening of ethnic-political boundaries.
+
+**TODO** In the paragraph below, the last sentence needs to convey the following message. According to the gossips that cannot be cited here, some of the transition is made due to the order of various Rabbis to their community to ditch the traditional ethnic based votes and vote to the "other side". Edit the paragraph below, add this explanation as one of the possible explanations, without mentioning external sources or gossips.
+
+This finding has important implications for interpreting electoral volatility in highly cohesive communities.
+The data demonstrates that even populations characterized by strong institutional
+discipline and rabbinic authority can experience rapid political realignments.
+The equally rapid recovery in intertia, however, indicates that such disruptions do not necessarily signal permanent weakening of ethnic-political boundaries. It may also indicate XXXX
+
+
 
 ## Connecting Spatial and Political Boundaries
 
-This study was designed to complement my previous analysis of residential segregation within Haredi communities
+This study was sparked by my previous analysis of residential segregation within Haredi communities
 (Gorelik, 2025), which documented persistent spatial clustering of Ashkenazi and Sephardic Haredim within the same
 cities. Together, these studies reveal how ethnic boundaries operate across multiple domainsresidential, institutional,
-and politicalto maintain internal differentiation within a religiously unified population.
+and political, to maintain internal differentiation within a religiously unified population.
 
 The relationship between spatial and political boundaries is more complex than initially hypothesized. Rather than
 operating independently, the two systems appear to reinforce each other under normal conditions: high residential
@@ -68,7 +88,7 @@ boundaries responded to stress during the 2020-2021 period, though with differen
 
 ### Methodological Revelation: The Confounding of Political and Residential Measures
 
-The dramatic Shas-to-UTJ switching in Ashdod during the 2324 transition provides a compelling explanation for an anomaly
+The dramatic Shas-to-UTJ switching in Ashdod during the 23-24 transition provides a compelling explanation for an anomaly
 observed in my previous study: the sudden, unexplained drop in Ashdod's residential segregation index (dissimilarity)
 around the 2021 election (shown in Figure 1). That study used voting patterns as a proxy for residential distribution,
 operating under the assumption that ballot boxes voting heavily for Shas indicated Sephardic neighborhoods, while
@@ -89,21 +109,25 @@ strongly with political behavior must account for the possibility that political
 residential integration. Geographic Information System (GIS) data on actual residential locations would be necessary to
 separate spatial patterns from electoral behavior.
 
-## What Caused the 2324 Disruption?
+## What Caused the 23-24 Disruption?
 
 The timing of the disruption coincided with a period of extraordinary political and social stress in Israel, including
-heightened political polarization during repeated elections from 2019 to 2021 (Gidron, Sheffer, and Mor 2022): -
-Unprecedented political instability, with three national elections in 18 months (April 2019, September 2019, March 2020)
-- The onset and first year of the COVID-19 pandemic - Intense coalition negotiations and governmental instability -
-Potential tensions within Haredi leadership over political strategy
+heightened political polarization during repeated elections from 2019 to 2021 (Gidron, Sheffer, and Mor 2022):
+
+- Unprecedented political instability, with three national elections in 18 months (April 2019, September 2019, March 2020)
+- The onset and first year of the COVID-19 pandemic
+- Intense coalition negotiations and governmental instability
+- Potential tensions within Haredi leadership over political strategy
 
 However, this study cannot definitively identify which factoror combination of factorstriggered the voting disruptions.
 The data document the phenomenon but do not illuminate its underlying causes. Understanding whether the disruption
-resulted from: - Top-down rabbinic directives permitting temporary cross-party voting - Bottom-up dissatisfaction with
-party leadership - Strategic coalition-building considerations - Pandemic-related social and institutional disruptions -
-Generational shifts in political identity
-
-...would require qualitative research, including interviews with community leaders, analysis of rabbinic pronouncements, and surveys of voters' motivations.
+resulted from:
+- Top-down rabbinic directives permitting temporary cross-party voting
+- Bottom-up dissatisfaction with party leadership
+- Strategic coalition-building considerations
+- Generational shifts in political identity would require qualitative research,
+including interviews with community leaders, analysis of rabbinic pronouncements,
+and surveys of voters' motivations.
 
 ## Theoretical Implications
 
@@ -126,7 +150,7 @@ diversity.
 ### Stability, Disruption, and Recovery in Ethnic Voting Blocs
 
 The temporal pattern observedhigh stability, temporary collapse, rapid recoveryoffers insights into the resilience of
-ethnic-political boundaries. The 2324 disruption did not trigger a permanent realignment, suggesting that:
+ethnic-political boundaries. The 23-24 disruption did not trigger a permanent realignment, suggesting that:
 
 1. **Institutional mechanisms for restoring boundaries remain strong.** Rabbinic authority structures, communal
 institutions, and social networks were able to re-establish traditional voting patterns once the triggering crisis
@@ -157,10 +181,30 @@ to baseline loyalty argues against a simple integration-drives-switching model. 
 group weakened political boundaries, we would expect gradual convergence over time, not temporary spikes followed by
 full restoration.
 
-Instead, the data suggest that demographic integration creates **potential** for cross-party switching that remains
+Instead, the data suggests that demographic integration creates potential for cross-party switching that remains
 latent under normal conditions but can be activated during crisis periods. Integrated cities like Ashdod serve as
 bellwethers of broader volatility precisely because their mixed populations make the boundaries more permeable when
 system-wide shocks occurnot because integration itself drives ongoing political fluidity.
+
+
+STOPPED HERE STOPPED HERE STOPPED HERE
+
+    STOPPED HERE STOPPED HERE STOPPED HERE
+
+STOPPED HERE STOPPED HERE STOPPED HERE
+
+    STOPPED HERE STOPPED HERE STOPPED HERE
+
+STOPPED HERE STOPPED HERE STOPPED HERE
+
+    STOPPED HERE STOPPED HERE STOPPED HERE
+    STOPPED HERE STOPPED HERE STOPPED HERE
+    STOPPED HERE STOPPED HERE STOPPED HERE
+    STOPPED HERE STOPPED HERE STOPPED HERE
+    STOPPED HERE STOPPED HERE STOPPED HERE
+    STOPPED HERE STOPPED HERE STOPPED HERE
+
+
 
 ## Methodological Contributions
 
@@ -253,3 +297,10 @@ mischaracterize the dynamics of ethnic voting in cohesive religious communities.
 entrenched boundaries that can temporarily yield under extraordinary pressure, then rapidly reconstitute. Understanding
 this pattern requires moving beyond static measures of separation to dynamic analyses of transition, recovery, and
 resilience.
+
+
+
+**TODO** Review the entire file: Analyze it for excessive information, abundance, and repetitive statements. Propose ways to shorten the file, while improving readability, and retaining clarity, validity, and scientific integrity. Also pay attention to bullet lists and numbered lists: do we need all of them? Can we unify the approach?
+
+
+**TODO** Treat `data` as singular through the entire manuscript
