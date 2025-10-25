@@ -25,15 +25,14 @@ These details complement the summary presented in the main text and allow replic
 
 This section documents model convergence diagnostics for transparency and reproducibility.
 
-| Pair | R-hat max | ESS min |
+| Transition | R-hat max | ESS min |
 |------|------------|----------|
-| kn18_19 | 1.530 | 7 |
-| kn19_20 | 1.529 | 7 |
-|kn20_21 | 1.465 | 7 |
-| kn21_22 | 1.134 | 19 |
-| kn22_23 | 1.477 | 7 |
-| kn23_24 | 1.737 | 6 |
-| kn24_25 | 1.530 | 7 |
+| Kn 19→20 (Jan 2013–Mar 2015) | 1.530 | 7 |
+| Kn 20→21 (Mar 2015–Apr 2019) | 1.529 | 7 |
+| Kn 21→22 (Apr 2019–Sep 2019) | 1.465 | 7 |
+| Kn 22→23 (Sep 2019–Mar 2020) | 1.134 | 19 |
+| Kn 23→24 (Mar 2020–Mar 2021) | 1.477 | 7 |
+| Kn 24→25 (Mar 2021–Nov 2022) | 1.737 | 6 |
 
 While some early models show high R-hat and low ESS, these issues were largely addressed through increased sampling and refined priors. The final models show stable posteriors without divergences.
 

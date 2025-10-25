@@ -84,8 +84,7 @@ Ashkenazi and Sephardi ultra-Orthodox) Haredi residential hubs across Israel. Ho
 in the index of dissimilarity in Ashdod, a city in Southern Israel, around the time of the March 2021 election (Gorelik 2025). In all other major
 Haredi population centers, segregation levels remained relatively stable, making Ashdod's abrupt integration indicator
 highly puzzling. Figure 1 illustrates this striking pattern: while most cities show relatively stable or gradually
-changing segregation levels across elections, Ashdod exhibits a sharp drop between Knesset 23 (March 2020) and Knesset
-24 (March 2021), followed by a rapid recovery. Crucially, no major demographic relocation or institutional change was
+changing segregation levels across elections, Ashdod exhibits a sharp drop between the March 2020 and March 2021 elections (Knesset 23→24), followed by a rapid recovery. Crucially, no major demographic relocation or institutional change was
 known to have occurred in that period to explain a rapid mixing of Ashkenazi and Sephardi communities. This anomaly
 raised a broader question: if people did not physically move, what changed so quickly in Ashdod? One plausible answer is
 politics. Residential segregation is a slow-changing structural attribute, but voting behavior can change quickly. A
@@ -101,7 +100,7 @@ might it be part of a larger, under-the-radar pattern of voter transitions in th
 **TODO** make the captoin "conclusion first"
 
 *Figure 1: Dissimilarity index dynamics across Knesset elections for major Haredi cities.
-Ashdod shows a distinctive sharp drop between Knesset 23 and 24 (marked by
+Ashdod shows a distinctive sharp drop between the March 2020 and March 2021 elections (Knesset 23→24, marked by
 the vertical position), which coincides with the period of voter transition disruption analyzed in this study. The index
 measures spatial segregation between Ashkenazi and Sephardi Haredi populations within each city, with higher values
 indicating greater residential separation. Reconstructed from data in Gorelik, 2025*
@@ -114,7 +113,7 @@ Shas, (2) votes for UTJ, (3) votes for all other parties, and (4) abstention
 discussed above), I restrict the dataset to polling stations that are at least 75% Haredi in composition, following the
 approach of Gorelik (2025). This filtering isolates the ballot boxes in Haredi population hubs, so that the transition
 estimates truly reflect dynamics *within* the Haredi sector rather than broader societal trends. I construct transition
-matrices between every pair of consecutive Knesset elections from 2009 to 2022, both at the national level and for key
+matrices between every pair of consecutive Knesset elections from the January 2013 election (Knesset 19) through the November 2022 election (Knesset 25), both at the national level and for key
 cities with large Haredi populations (Jerusalem, Bnei Brak, Beit Shemesh, Ashdod, etc.). The modeling yields estimates
 of loyalty (the probability of a voter staying with the same party bloc) versus switching (probabilities of shifting to
 a different party or to abstention) from one election to the next.
@@ -123,15 +122,15 @@ a different party or to abstention) from one election to the next.
 **TODO** Does the following paragraph belong to Intro or Methods?
 
 Three empirical findings emerge from the analysis. First, the sharp timing of Ashdod's segregation drop in 2021 (visible
-in Figure 1) coincides with a nationwide collapse in Shas-to-Shas voter loyalty in the 20202021 election cycle. In
+in Figure 1) coincides with a nationwide collapse in Shas-to-Shas voter loyalty in the March 2020–March 2021 transition (Knesset 23→24). In
 general, Haredi parties tend to retain the vast majority of their voters from one election to the next; however, in this
-particular cycle the estimated retention rate for Shas voters plummeted across the country, and especially in Ashdod. In
-other words, a large share of those who voted Shas in 2020 did *not* stick with Shas in the 2021 repeat election  an
+particular transition the estimated retention rate for Shas voters plummeted across the country, and especially in Ashdod. In
+other words, a large share of those who voted Shas in March 2020 did *not* stick with Shas in the March 2021 election  an
 unprecedented defection wave for this party. This sudden loyalty dip aligns temporally with the unexplained segregation
 decline in Ashdod, strengthening the interpretation that electoral cross-over was the mechanism behind the Ashdod
 anomaly. Second, beyond this one-off shock, I observe occasional loyalty dips and cross-pressures throughout the study
 period, indicating that even a highly disciplined electorate experiences episodic slippage. For instance, there were
-smaller but noticeable drops in intra-bloc loyalty in the 2013 and 2015 election transitions as well, suggesting that
+smaller but noticeable drops in intra-bloc loyalty in the 2013–2015 transition (Knesset 19→20) as well, suggesting that
 internal rifts or discontent can surface intermittently (for example, during periods of leadership disputes or social
 crises). These were usually not large enough to alter the allocation of Knesset seats, but they show up as subtle
 reductions in voter retention probabilities  the "hidden turbulence" beneath a calm outcome. Third, the city-level
@@ -140,7 +139,7 @@ Haredi strongholds like Bnei Brak (a largely homogeneous, established ultra-Orth
 ideal of bloc stability  voter transitions here are minimal, with most voters reliably repeating their past choice. By
 contrast, mixed and rapidly growing communities such as Ashdod and Beit Shemesh display much greater fluidity. In these
 locales, I detect significant cross-flows between Shas and UTJ voters and higher movement into abstention or
-non-sectoral parties at the margins. For example, Ashdod in 2021 saw not only the Shas-to-UTJ shift that explains the
+non-sectoral parties at the margins. For example, Ashdod during the March 2020–March 2021 transition saw not only the Shas-to-UTJ shift that explains the
 segregation anomaly, but also an uptick in ultra-Orthodox voters not voting at all (or voting for general parties) amid
 the political turmoil of that time. These city disparities suggest that local social environments  e.g. the degree of
 ethnic mixing, the presence of competing rabbinic influences, and day-to-day exposure to non-Haredi society  mediate the

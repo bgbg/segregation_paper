@@ -7,7 +7,7 @@ as defined by the selection method!
 ## Data Sources and Scope
 
 This study uses official election results from the Central Elections Committee of Israel for Knesset elections 19
-through 25, held between January 22, 2013 and November 1, 2022. These datasets provide polling-stationlevel counts of
+through 25, spanning from the January 2013 election (Knesset 19) through the November 2022 election (Knesset 25). These datasets provide polling-stationlevel counts of
 registered voters, valid votes, and votes for each political party. The analysis focuses on cities and towns with a
 significant ultra-Orthodox (Haredi) presence, following the same selection framework as in my previous study on
 intra-Haredi ethnic segregation (Gorelik, 2025).
@@ -125,9 +125,7 @@ distributed random draws but exhibit correlated behavior due to social networks 
 
 ### Temporal Extension
 
-**TODO** add dates
-
-The model is applied sequentially across subsequent election pairs (For 19-th Knesset in XXXXX through 25th Knesset in XXX).
+The model is applied sequentially across subsequent election pairs from the January 2013 election (Knesset 19) through the November 2022 election (Knesset 25).
 Posterior means of $Z^{country}$, $D$, and
 $B$ from one transition are used as prior means for the next, allowing gradual temporal evolution while maintaining
 continuity across election cycles.
