@@ -120,30 +120,18 @@ across all locations.
 
 ## Summary of Findings
 
-**TODO** 1. Add a short intro sentence to this subsection. Consider ways to improve the readability of this section. In doing so, prefer shortening than expanding.
+The analysis yields six key findings about Haredi voter transition patterns:
 
-1. **Dominant pattern of high stability:** Across most election pairs, Shas and UTJ maintained loyalty rates above 95%,
-confirming the general portrait of Haredi voting as highly disciplined and predictable.
+1. **Dominant pattern of high stability:** Across most election pairs, Shas and UTJ maintained loyalty rates above 95%, confirming the general portrait of Haredi voting as highly disciplined and predictable.
 
-2. **Sharp temporary disruption in the March 2020–March 2021 transition (23→24):** This transition showed unprecedented cross-party
-switching. Shas loyalty dropped to 72.8% nationally (64.5% in Ashdod), with 12.3% of Shas voters switching to UTJ (21.3%
-in Ashdod). UTJ also experienced reduced loyalty (87.9%), with substantial flows to Shas.
+2. **Sharp temporary disruption in the March 2020–March 2021 transition (23→24):** Shas loyalty dropped to 72.8% nationally (64.5% in Ashdod), with 12.3% switching to UTJ (21.3% in Ashdod). UTJ loyalty also fell to 87.9%, with substantial flows to Shas.
 
-3. **Full recovery in the March 2021–November 2022 transition (24→25):** Loyalty patterns returned to pre-crisis levels by the November 2022 election, indicating
-the disruption was temporary rather than a permanent realignment.
+3. **Full recovery in the March 2021–November 2022 transition (24→25):** Loyalty patterns returned to pre-crisis levels, indicating the disruption was temporary rather than a permanent realignment.
 
-4. **Geographic variation in disruption magnitude:** The March 2020–March 2021 (23→24) shock affected all cities but varied in intensity. Ashdod
-showed the largest deviations, followed by Bnei Brak and Beit Shemesh, suggesting that local demographic integration
-modulates electoral volatility.
+4. **Geographic variation in disruption magnitude:** The 23→24 shock affected all cities but varied in intensity. Ashdod showed the largest deviations, followed by Bnei Brak and Beit Shemesh, suggesting that local demographic integration modulates electoral volatility.
 
-5. **Temporal proximity rules out demographic explanations:** The short intervals between elections (5.5–19 months) make
-it unlikely that migration or generational turnover caused the observed transitions. The patterns reflect genuine voter
-switching.
+5. **Temporal proximity rules out demographic explanations:** The short intervals between elections (5.5–19 months) indicate genuine voter switching rather than migration or generational turnover.
 
-6. **Stable abstention rates:** Haredi participation remained resilient throughout, even during the March 2020–March 2021 (23→24) disruption.
-Abstention flows remained minimal, contrasting with the significant inter-party switching.
+6. **Stable abstention rates:** Haredi participation remained resilient throughout, even during the 23→24 disruption, with minimal abstention flows contrasting with significant inter-party switching.
 
-These findings reveal that even highly cohesive voting blocs can experience rapid, system-wide disruptions in loyalty
-patternsbut that such disruptions may be reversible when triggering conditions resolve. The consistency across cities
-points to centralized political dynamics, while the variation in magnitude highlights how local social integration
-shapes the boundaries of permissible switching.
+These findings reveal that even highly cohesive voting blocs can experience rapid, system-wide disruptions in loyalty patterns—but that such disruptions may be reversible when triggering conditions resolve. The consistency across cities points to centralized political dynamics, while the variation in magnitude highlights how local social integration shapes the boundaries of permissible switching.
