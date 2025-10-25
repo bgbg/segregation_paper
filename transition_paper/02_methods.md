@@ -13,17 +13,15 @@ significant ultra-Orthodox (Haredi) presence, following the same selection frame
 intra-Haredi ethnic segregation (Gorelik, 2025).
 
 
-**TODO** Make sure the following two paragraphs are not a verbatim copy of my previous work.
-
-Each Israeli citizen votes in a polling station determined by their residential address. Polling stations may include
-one or more ballot boxes, each typically serving between 536 and 650 registered voters (25th75th percentiles, based on
-recent elections). A Haredi voting box is defined as one where at least 75% of the votes are cast for the Haredi parties
-Shas and UTJ, indicating predominantly Haredi voters. Cities with fewer than five such boxes were
-excluded from the analysis to ensure stable estimation.
+Voters are assigned to polling stations by residential address. Most ballot boxes contain 536–650 registered voters
+(interquartile range from recent elections). We identify Haredi ballot boxes using a 75% threshold: boxes where
+combined votes for Shas and UTJ exceed three-quarters of all votes cast. This operational definition isolates
+predominantly Haredi neighborhoods while maintaining consistency with the selection framework established in Gorelik
+(2025). To ensure reliable statistical estimation, we include only cities with at least five qualifying boxes.
 
 Data were obtained directly from the Central Elections Committee's official online repository, supplemented by
 previously digitized archives for earlier elections (via Dr. Keren-Kratz, 2024). The resulting dataset includes
-polling-stationlevel results for all eligible cities, with a focus on those exhibiting consistent Haredi voting
+polling-station–level results for all eligible cities, with a focus on those exhibiting consistent Haredi voting
 patterns.
 
 ### Ballot-Box Alignment and Preprocessing
