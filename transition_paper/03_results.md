@@ -81,11 +81,9 @@ The present analysis reveals a possible mechanism: the 21.3% of Shas voters who 
 vote, precisely what the segregation index measures. This occurred without physical residential movement; rather, voters
 crossed ethnic-political boundaries at the ballot box. The subsequent recovery of both Shas loyalty (to 99.2% in the March 2021–November 2022 transition, 24→25)
 and the segregation index to previous levels confirms that this was a temporary electoral realignment rather than a
-permanent demographic shift. This finding demonstrates that electoral transitions can manifest as apparent "integration"
-in segregation indices even when residential patterns remain stable.
+permanent demographic shift.
 
-
-**TODO**: In the Conclusion section, I will mention the following: the previous study (Gorelik 2025) used votes for two specific parties as a proxy for ethnicity measure. This current study demonstrated that the votes are exactly that: a proxy, and that the validity of this proxy may change over time. However, make a short note in this direction here too.
+This finding demonstrates that electoral transitions can manifest as apparent "integration" in segregation indices even when residential patterns remain stable. More fundamentally, it reveals a critical limitation of the methodology employed in Gorelik (2025): using party votes as a proxy for ethnicity assumes stable voter loyalty. The present study shows that this proxy's validity is temporally contingent—it works well when ethnic-political boundaries are rigid but breaks down during periods of voter transition. This insight will be explored further in the Discussion section.
 
 ## Other Notable Disruptions Beyond The March 2020–March 2021 Transition
 
