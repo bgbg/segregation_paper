@@ -87,45 +87,11 @@ This finding demonstrates that electoral transitions can manifest as apparent "i
 
 ## Other Notable Disruptions Beyond The March 2020–March 2021 Transition
 
-**TODO** Reconsider the need in this subsection. If it indeed adds value to the paper, edit it for readability, normalize the way we mention knesset numbers and dates, correct mistakes.
+While the March 2020–March 2021 transition (23→24) represents the most dramatic disruption, the data reveal episodic deviations from typical loyalty patterns. At the national level, the January 2013–March 2015 transition (19→20) showed Shas-to-Shas loyalty dropping to 85.0%, with 13.8% defecting to the "Other" category (comprising numerous non-Haredi parties)—an early instance of Shas voters exploring options outside the Haredi sectoral bloc, possibly reflecting dissatisfaction with party leadership during that period.
 
-While the March 2020–March 2021 transition (23→24) represents the most dramatic disruption, several other election pairs exhibited noteworthy
-volatility at both national and city levels, indicating that hidden voter switching occurs periodically even in this
-highly cohesive electorate.
+More significantly, Ashdod exhibited early signs of instability in the transitions immediately preceding the 23→24 collapse. Shas loyalty in Ashdod declined from 91.8% in the April 2019–September 2019 transition (21→22) to 83.6% in the September 2019–March 2020 transition (22→23), well before the system-wide shock. This suggests that Ashdod's Sephardic Haredi population was already experiencing political flux, making the city particularly vulnerable to the subsequent disruption.
 
-**Country-level disruptions:**
-
-- **January 2013–March 2015 transition (Knesset 19→20):** Shas-to-Shas loyalty dropped from 91.8% to 85.0%, with 13.8%
-defecting to "Other" parties. This represents an early instance of Shas voters exploring non-Haredi options, possibly
-reflecting dissatisfaction with sectoral leadership during that period.
-
-- **March 2015–April 2019 transition (Knesset 20→21):** A dramatic collapse in
-"Other-to-Other" loyalty from 90.7% to 57.8%, with substantial flows toward both Haredi parties (13.2% to Shas, 28.7% to
-UTJ). This suggests non-Haredi voters in predominantly Haredi ballot boxes increasingly aligned with sectoral parties,
-possibly reflecting neighborhood demographic changes or political realignment.
-
-- **March 2020–March 2021 transition (Knesset 23→24):** Beyond the
-Shas-UTJ cross-flows, this transition also showed unusual mobilization patterns, with 10.0% of previous abstainers voting for Shas, suggesting either turnout efforts or new voter registration in Shas strongholds during this turbulent
-period.
-
-**Ashdod-specific disruptions:**
-
-- **April 2019–September 2019 and September 2019–March 2020 transitions (Knesset 21→22 and 22→23):** Shas loyalty in Ashdod showed early volatility, dropping from
-91.8% (21→22) to 83.6% (22→23), foreshadowing the more dramatic March 2020–March 2021 (23→24) collapse. This suggests Ashdod's Sephardic Haredi
-population was already experiencing political flux before the system-wide shock.
-
-- **March 2015–April 2019 transition (Knesset 20→21):** A striking collapse in
-"Other-to-Other" retention to just 48.7% (compared to 57.8% nationally), with 41.7% of
-"Other" voters switching to UTJ—an unprecedented cross-sectoral flow.
-This spike from near-zero to over 40% indicates either non-Haredi residents in mixed
-neighborhoods adopting Haredi political allegiances, or measurement artifacts
-from changing ballot box compositions.
-
-These patterns reveal that voter transitions in the Haredi sector are not confined to singular
-crisis moments but occur episodically, with certain cities (particularly Ashdod)
-serving as bellwethers of broader instability.
-The combination of national and local disruptions suggests both system-wide
-political shocks and city-specific social dynamics shape voting volatility.
+These patterns indicate that voter transitions in the Haredi sector are not confined to singular crisis moments but occur episodically, with certain cities—particularly Ashdod—serving as bellwethers of broader instability.
 
 ## Quantifying Permeability
 
