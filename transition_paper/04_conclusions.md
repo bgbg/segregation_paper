@@ -1,16 +1,7 @@
 # Conclusions
 
-**TODO** Make sure to mention the following: the previous study (Gorelik 2025) used votes for two specific parties as a proxy for ethnicity measure. This current study demonstrated that the votes are exactly that: a proxy, and that the validity of this proxy may change over time.
 
-
-
-**TODO** The Results sections ends with a summary of main findginds. The paragraph below also summarizes the findings. However, keep in mind that it comes directly after the last paragraph of Results. Having two summaries one after another is excessive. Solve this abundancy or provide arguemnts in favor of the current version.
-
-This study examined voting transitions between Israel's two main ultra-Orthodox (Haredi) political parties—Shas
-(predominantly Sephardic) and United Torah Judaism (predominantly Ashkenazi)—across seven consecutive Knesset elections
-from the January 2013 election (Knesset 19) through the November 2022 election (Knesset 25). Using hierarchical Bayesian ecological inference to analyze ballot-box-level data, the analysis
-reveals both the remarkable stability of ethnic-political boundaries within the Haredi sector and their vulnerability to
-temporary disruption under extraordinary circumstances.
+The preceding analysis documented six key empirical findings about Haredi voter transitions. This Conclusions section interprets these findings in theoretical and methodological context, exploring what they reveal about ethnic boundary maintenance, the conditions under which rigid voting blocs experience disruption, and the implications for measuring residential segregation through electoral proxies.
 
 ### High Baseline Stability with Rare Disruptions
 
