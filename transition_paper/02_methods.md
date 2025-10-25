@@ -73,6 +73,8 @@ For each election pair $(t, t+1)$, the model infers the probability that a voter
 category j at election t+1. Individual transitions are unobserved, but aggregate vote counts provide marginal
 constraints. Building on Goodman's (1953) ecological regression framework and subsequent Bayesian extensions (King 1997; Rosen et al. 2001), we model voter transitions probabilistically using a hierarchical Bayesian approach that generalizes the linear model to address several key challenges: unobserved individual transitions, spatial heterogeneity in voting patterns, high dimensionality of transition matrices, and overdispersion in vote counts (Wakefield 2004; Forcina and Pellegrino 2019).
 
+**Important conceptual distinction:** The transition probabilities estimated by this model represent the *probability of voting behavior* at each election, not the *movement of individual voters* between parties. When we observe that a party's "retention rate" increases from one election pair to the next, this indicates that voters who supported that party in the first election were more likely to support it again in the second election. However, this does not necessarily mean that any voters returned to the party. Rather, it reflects that the "leak" of voters from that party to other parties stopped—what we might call a return to a new steady state rather than the literal return of specific voters.
+
 Each election pair is modeled using three levels of hierarchy: 1. National transition matrix ($M^{country}$) represents the baseline
 transition probabilities for the entire electorate.  2. Shared deviation pattern ($D$)  a low-rank structure capturing
 how cities collectively deviate from national trends.  3. City-specific scalar ($\delta_c$)  a single latent variable

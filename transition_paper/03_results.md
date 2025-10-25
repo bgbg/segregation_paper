@@ -27,7 +27,9 @@ particularly among Shas voters. As shown in Figure 2, Shas-to-Shas loyalty plumm
 to just 72.8% in the 2324 transition. Simultaneously, the probability of Shas voters switching to UTJ jumped from near
 zero to 12.3%. UTJ voters also experienced reduced loyaltydropping from 97.6% to 87.9% with 12.3% of UTJ voters defecting
 to Shas. This cross-flow pattern represents an unprecedented disruption in the typically stable Haredi voting bloc.
-Notably, this disruption was temporary: in the subsequent 24-25 transition, loyalty rates recovered to pre-crisis levels (Shas: 98.6%, UTJ: 96.7%). Note, however, that this increase in retention probability does not indicate the return of "strayed" voters to Shas. This return is indicated by the off-diagonal elements in the transition matrix.
+Notably, this disruption was temporary: in the subsequent 24-25 transition, loyalty rates recovered to pre-crisis levels (Shas: 98.6%, UTJ: 96.7%).
+
+**Important clarification:** This recovery in retention probabilities does not indicate that individual voters who had "strayed" from Shas returned to the party. Rather, it reflects that the "leak" of voters from Shas to other parties stopped. The actual voter movements are captured by the off-diagonal elements of the transition matrix—the flows between parties—not by the diagonal retention rates themselves.
 
 The timing of these elections is crucial for interpretation. As shown in Table 1, this period was marked by political
 instability with elections occurring in rapid succession: only 5.5 months separated Knesset 22 (September 2019) and 23
