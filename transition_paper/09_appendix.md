@@ -43,9 +43,15 @@ These supplement the summary analysis presented in the main text, particularly t
 
 
 
-## Appendix B  Model Diagnostics
+## Appendix B  Model Validation and Diagnostics
 
-This section documents model convergence diagnostics for transparency and reproducibility.
+This section documents model validation through posterior predictive checks and convergence diagnostics for transparency and reproducibility.
+
+### Model Validation
+
+Posterior predictive checks confirm that the model adequately reproduces empirical vote counts across all elections. Most chains converged successfully, with effective sample sizes (ESS) exceeding 400 for key parameters and R-hat values approaching 1.01 in later runs. Minor convergence issues in earlier election pairs (January 2013–March 2015 transition, Knesset 19→20) were resolved by increasing the number of draws and adopting non-centered parameterization.
+
+### Convergence Diagnostics
 
 | Transition | R-hat max | ESS min |
 |------|------------|----------|

@@ -5,7 +5,7 @@ stability. While the overall pattern confirms high loyalty rates within both Sha
 temporal and geographic variation in voter transitions. Most strikingly, the analysis identifies a dramatic but temporary
 disruption in the March 2020–March 2021 transition (Knesset 23→24) that affected all major Haredi cities, followed by a complete recovery. These
 findings demonstrate that even the most disciplined voting blocs can experience rapid, system-wide changes in loyalty
-patterns.
+patterns. Model convergence diagnostics and posterior predictive checks confirming adequate model fit are provided in Appendix B.
 
 **Note on notation:** Throughout this paper, election transitions are denoted using the arrow notation (→) to indicate the direction from one election to the next. For example, "23→24" refers to the transition from the March 2020 election (Knesset 23) to the March 2021 election (Knesset 24). This notation emphasizes that we are examining voter flows between consecutive elections rather than the elections themselves in isolation.
 
@@ -113,15 +113,6 @@ Illit), suggesting differing degrees of internal cohesion. These differences lik
 institutional affiliations, and rabbinic leadership structures rather than socioeconomic variation. Figure 8 shows the
 temporal pattern of MAD values across cities and election pairs, highlighting the March 2020–March 2021 (23→24) disruption as a clear outlier
 across all locations.
-
-## Model Validation
-
-**TODO** Is this the right place for `Model Validation`? Maybe move to the beginning of `Results`
-
-Posterior predictive checks confirm that the model adequately reproduces empirical vote counts across all elections.
-Most chains converged successfully, with effective sample sizes (ESS) exceeding 400 for key parameters and R-hat values
-approaching 1.01 in later runs. Minor convergence issues in earlier election pairs (January 2013–March 2015 transition, Knesset 19→20) were resolved by
-increasing the number of draws and adopting non-centered parameterization.
 
 ![MAD Table Lens](plots/mad_table_lens.png)
 
