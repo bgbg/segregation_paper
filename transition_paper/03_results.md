@@ -1,14 +1,15 @@
 # Results
 
 
-**TODO** the Results section contains an explanation about how transitions from lower to higher retention probability over the time does not reflect the return of voters, but rather indicate return to a new steady state. Consider the best way to convey this message: should it be left in its current position in the text? Moved earlier to the Results sections, or even adding an explanation in the Methods section? (or a combination)
 
 
-**TODO** In theory, having an overview is a good idea. Firs, read the Introduction and the Methods. Then, edit the intro paragraph and make it more readable, accurate and relevant. Refrain from being repetative.
 
-This section presents the results of the Bayesian ecological model estimating voter transitions among the two main
-Haredi parties  *Shas* and *United Torah Judaism (UTJ)*  and between these parties, other political groups, and
-abstention. The results cover transitions between consecutive Knesset elections from the 19th (2013) to the 25th (2022).
+The analysis reveals a complex portrait of Haredi electoral behavior that challenges conventional assumptions about bloc
+stability. While the overall pattern confirms high loyalty rates within both Shas and UTJ, the results uncover significant
+temporal and geographic variation in voter transitions. Most strikingly, the analysis identifies a dramatic but temporary
+disruption in the 2020-2021 period that affected all major Haredi cities, followed by a complete recovery. These
+findings demonstrate that even the most disciplined voting blocs can experience rapid, system-wide changes in loyalty
+patterns.
 
 **TODO** What is the best way to normalize how we refer to elections, especially in this sections:
 Electoin dates, Knesset numbers, combination of these? Keep in mind, that the reader is not necesserely versed in Israeli politics.
