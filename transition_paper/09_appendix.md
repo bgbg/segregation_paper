@@ -2,22 +2,44 @@
 
 ## Appendix A  City-Level Transition Matrices
 
-The following tables and figures provide full transition matrices for all analyzed cities across consecutive elections.
-These details complement the summary presented in the main text and allow replication of city-specific patterns.
+The following figures provide detailed transition matrices for all analyzed cities across consecutive elections.
+These supplement the summary analysis presented in the main text, particularly the condensed discussion in the City-Level Variation section.
 
-### Full Matrices and Plots
+### Ashdod
 
 ![ashdod transitions](plots/city_ashdod_transition_matrix_over_elections.png)
 
+*Ashdod exhibited the most extreme disruption during the March 2020–March 2021 transition (23→24), with Shas loyalty dropping to 64.5% and 21.3% switching to UTJ.*
+
+### Beit Shemesh
+
 ![beit shemesh transitions](plots/city_beit_shemesh_transition_matrix_over_elections.png)
+
+*Beit Shemesh showed moderate disruption with Shas loyalty falling to 75.2% during the 23→24 transition.*
+
+### Elad
 
 ![elad transitions](plots/city_elad_transition_matrix_over_elections.png)
 
+*Elad transition patterns across all election pairs.*
+
+### Bnei Brak
+
 ![bnei brak transitions](plots/city_bnei_brak_transition_matrix_over_elections.png)
+
+*Bnei Brak, despite being predominantly Ashkenazi, experienced a sharp Shas loyalty drop to 69.5% during the 23→24 transition.*
+
+### Jerusalem
 
 ![jerusalem transitions](plots/city_jerusalem_transition_matrix_over_elections.png)
 
+*Jerusalem transition patterns across all election pairs.*
+
+### Modi'in Illit
+
 ![modi'in illit transitions](plots/city_modiin_illit_transition_matrix_over_elections.png)
+
+*Modi'in Illit transition patterns across all election pairs.*
 
 
 
