@@ -33,11 +33,10 @@ and Shas-to-UTJ switching reaching 19.3%, more than 50% higher than the national
 similarly sharp but somewhat more moderate disruptions. Jerusalem and Modi'in Illit demonstrated greater resilience,
 though even these strongholds experienced measurable volatility.
 
-This geographic variation suggests that local demographic composition and social integration between Sephardic and
-Ashkenazi Haredi communities modulate the boundaries of permissible political switching. Different cities showed
-different disruption magnitudes, with Ashdod showing the largest. However, the consistency of the temporal patternsharp
-disruption followed by recovery across all citiespoints to a centralized or system-wide shock rather than city-specific
-factors.
+This geographic variation reflects differences in local contexts, though the specific mechanisms require further
+investigation. Different cities showed different disruption magnitudes, with Ashdod showing the largest. However, the
+consistency of the temporal patternsharp disruption followed by recovery across all citiespoints to a centralized or
+system-wide shock rather than city-specific factors.
 
 ### Temporal Dynamics and Demographic Interpretations
 

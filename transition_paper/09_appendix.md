@@ -2,20 +2,22 @@
 
 ## Appendix A  City-Level Transition Matrices
 
-The following figures provide detailed transition matrices for all analyzed cities across consecutive elections.
-These supplement the summary analysis presented in the main text, particularly the condensed discussion in the City-Level Variation section.
+The following figures provide detailed transition matrices for all analyzed cities across consecutive elections.  These
+supplement the summary analysis presented in the main text, particularly the condensed discussion in the City-Level
+Variation section.
 
 ### Ashdod
 
 ![ashdod transitions](plots/city_ashdod_transition_matrix_over_elections.png)
 
-*Ashdod exhibited the most extreme disruption during the March 2020–March 2021 transition (23→24), with Shas loyalty dropping to 64.5% and 21.3% switching to UTJ.*
+*Ashdod exhibited the most extreme disruption during the March 2020March 2021 transition (2324), with Shas loyalty
+dropping to 67.1% and 19.3% switching to UTJ.*
 
 ### Beit Shemesh
 
 ![beit shemesh transitions](plots/city_beit_shemesh_transition_matrix_over_elections.png)
 
-*Beit Shemesh showed moderate disruption with Shas loyalty falling to 75.2% during the 23→24 transition.*
+*Beit Shemesh showed moderate disruption with Shas loyalty falling to 75.4% during the 2324 transition.*
 
 ### Elad
 
@@ -27,7 +29,8 @@ These supplement the summary analysis presented in the main text, particularly t
 
 ![bnei brak transitions](plots/city_bnei_brak_transition_matrix_over_elections.png)
 
-*Bnei Brak, despite being predominantly Ashkenazi, experienced a sharp Shas loyalty drop to 69.5% during the 23→24 transition.*
+*Bnei Brak, despite being predominantly Ashkenazi, experienced a sharp Shas loyalty drop to 70.9% during the 2324
+transition.*
 
 ### Jerusalem
 
@@ -45,24 +48,24 @@ These supplement the summary analysis presented in the main text, particularly t
 
 ## Appendix B  Model Validation and Diagnostics
 
-This section documents model validation through posterior predictive checks and convergence diagnostics for transparency and reproducibility.
+This section documents model validation through posterior predictive checks and convergence diagnostics for transparency
+and reproducibility.
 
 ### Model Validation
 
-Posterior predictive checks confirm that the model adequately reproduces empirical vote counts across all elections. Most chains converged successfully, with effective sample sizes (ESS) exceeding 400 for key parameters and R-hat values approaching 1.01 in later runs. Minor convergence issues in earlier election pairs (January 2013–March 2015 transition, Knesset 19→20) were resolved by increasing the number of draws and adopting non-centered parameterization.
+Posterior predictive checks confirm that the model adequately reproduces empirical vote counts across all elections.
+Most chains converged successfully, with effective sample sizes (ESS) exceeding 400 for key parameters and R-hat values
+approaching 1.01 in later runs. Minor convergence issues in earlier election pairs (January 2013March 2015 transition,
+Knesset 1920) were resolved by increasing the number of draws and adopting non-centered parameterization.
 
 ### Convergence Diagnostics
 
-| Transition | R-hat max | ESS min |
-|------|------------|----------|
-| Kn 19→20 (Jan 2013–Mar 2015) | 1.530 | 7 |
-| Kn 20→21 (Mar 2015–Apr 2019) | 1.529 | 7 |
-| Kn 21→22 (Apr 2019–Sep 2019) | 1.465 | 7 |
-| Kn 22→23 (Sep 2019–Mar 2020) | 1.134 | 19 |
-| Kn 23→24 (Mar 2020–Mar 2021) | 1.477 | 7 |
-| Kn 24→25 (Mar 2021–Nov 2022) | 1.737 | 6 |
+| Transition | R-hat max | ESS min | |------|------------|----------| | Kn 1920 (Jan 2013Mar 2015) | 1.530 | 7 | | Kn
+2021 (Mar 2015Apr 2019) | 1.529 | 7 | | Kn 2122 (Apr 2019Sep 2019) | 1.465 | 7 | | Kn 2223 (Sep 2019Mar 2020) | 1.134 |
+19 | | Kn 2324 (Mar 2020Mar 2021) | 1.477 | 7 | | Kn 2425 (Mar 2021Nov 2022) | 1.737 | 6 |
 
-While some early models show high R-hat and low ESS, these issues were largely addressed through increased sampling and refined priors. The final models show stable posteriors without divergences.
+While some early models show high R-hat and low ESS, these issues were largely addressed through increased sampling and
+refined priors. The final models show stable posteriors without divergences.
 
 Representative diagnostics are shown below.
 
