@@ -24,19 +24,28 @@ of "within-bloc permeability"  voters shifting between Shas and UTJ  varied nota
 
 
 The March 2020–March 2021 transition (Knesset 23→24) showed an unusual and dramatic decline in intra-Haredi loyalty,
-particularly among Shas voters. As shown in Figure 2, Shas-to-Shas loyalty plummeted from 98.9% (in the September
-2019–March 2020 transition, Knesset 22→23)
-to just 73.5% in the 23→24 transition. Simultaneously, the probability of Shas voters switching to UTJ jumped from near
-zero to 12.3%. UTJ voters also experienced reduced loyalty—dropping from 96.6% to 87.9%, with 4.6% of UTJ voters
-defecting
-to Shas. This cross-flow pattern represents an unprecedented disruption in the typically stable Haredi voting bloc.
-Notably, this disruption was temporary: in the subsequent March 2021–November 2022 transition (Knesset 24→25), loyalty
-rates recovered substantially (Shas: 96.9%, UTJ: 95.5%).
+particularly among Shas voters. At the country level (Figure 2), Shas-to-Shas loyalty plummeted from 98.9% (in the
+September 2019–March 2020 transition, Knesset 22→23) to just 73.5% in the 23→24 transition. Simultaneously, the
+probability of Shas voters switching to UTJ jumped from near zero to 12.3%. UTJ voters also experienced reduced
+loyalty—dropping from 96.6% to 87.9%, with 4.6% of UTJ voters defecting to Shas. This cross-flow pattern represents an
+unprecedented disruption in the typically stable Haredi voting bloc. Critically, this disruption was observed across
+multiple geographic scales: both at the national level (Figure 2) and across individual cities (Figure 3), indicating a
+system-wide rather than localized phenomenon. Notably, this disruption was temporary: in the subsequent March
+2021–November 2022 transition (Knesset 24→25), loyalty rates recovered substantially (Shas: 96.9%, UTJ: 95.5%).
 
 **Important clarification:** This recovery in retention probabilities does not indicate that individual voters who had
 "strayed" from Shas returned to the party. Rather, it reflects that the "leak" of voters from Shas to other parties
 stopped. The actual voter movements are captured by the off-diagonal elements of the transition matrix—the flows between
-parties—not by the diagonal retention rates themselves.
+parties—not by the diagonal retention rates themselves. Critically, none of the off-diagonal transitions into Shas
+(UTJ→Shas, Other→Shas, Abstain→Shas) showed unusual spikes in the March 2021–November 2022 transition (Knesset 24→25),
+confirming that voters who left Shas in the 23→24 disruption did not return.
+
+Paradoxically, despite losing voters in the 23→24 transition and not recovering them in 24→25, Shas's overall national
+vote share increased from 7.17% in Knesset 24 to 8.25% in Knesset 25, translating to an increase from 9 to 11 Knesset
+seats. Since the transition matrices in Haredi population hubs show no corresponding influx of new Shas voters, this
+growth must have originated primarily from voters residing outside the major Haredi redidential hubs. This pattern
+demonstrates that aggregate vote-share growth can mask complex internal dynamics: Shas simultaneously lost voters within
+its core Haredi base (who defected to UTJ in 23→24) while gaining new supporters from peripheral populations.
 
 The timing of these elections is crucial for interpretation. As shown in Table 1, this period was marked by political
 instability with elections occurring in rapid succession: only 5.5 months separated the September 2019 (Knesset 22) and

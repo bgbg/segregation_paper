@@ -19,11 +19,16 @@ surged from near zero to 12.3%.  UTJ voters similarly experienced reduced loyalt
 12.3% switching to Shas. This represents the only substantive cross-party flow observed across all elections studied.
 
 
-Critically, this disruption proved temporary. By the subsequent March 2021November 2022 transition (Knesset 2425),
-loyalty rates recovered substantially (Shas: 96.9%, UTJ: 95.5%)meaning that voters who supported these parties in the
-2425 transition remained loyal, not that 2324 defectors returned. The recovery indicates that leakage stopped, not that
-voters reversed course. The underlying ethnic-political boundaries remained intact despite the temporary shock. The
-pattern is one of **rigidity with occasional stress fractures**, not fluid or liquid identity.
+Critically, this disruption proved temporary. By the subsequent March 2021–November 2022 transition (Knesset 24→25),
+loyalty rates recovered substantially (Shas: 96.9%, UTJ: 95.5%)—meaning that voters who supported these parties in the
+24→25 transition remained loyal, not that 23→24 defectors returned. The recovery indicates that leakage stopped, not
+that voters reversed course. This interpretation is confirmed by the absence of unusual spikes in off-diagonal
+transitions into Shas (UTJ→Shas, Other→Shas, Abstain→Shas) during the 24→25 transition, demonstrating that voters who
+left did not return. Indeed, despite Shas's increased national vote share from 7.17% (Knesset 24) to 8.25% (Knesset 25),
+the growth originated outside the Haredi population hubs analyzed here, suggesting Shas gained new supporters from
+traditional Sephardic voters in peripheral communities while simultaneously losing core ultra-Orthodox voters to UTJ. The
+underlying ethnic-political boundaries remained intact despite the temporary shock. The pattern is one of **rigidity
+with occasional stress fractures**, not fluid or liquid identity.
 
 ### Geographic Variation in Disruption Magnitude
 
@@ -88,10 +93,21 @@ loyalty is unstable. The dissimilarity index calculated in the previous study ca
 clustering and political party loyalty, confounding two distinct phenomena. Any future voting disruptions will similarly
 manifest as apparent "integration" in segregation indices, even when residential patterns remain unchanged.
 
-**Implication:** Future research seeking to measure residential segregation in contexts where ethnic identity correlates
-strongly with political behavior must account for the possibility that political volatility can masquerade as
-residential integration. Geographic Information System (GIS) data on actual residential locations would be necessary to
-separate spatial patterns from electoral behavior.
+### Why Only Ashdod Showed Segregation Index Changes
+
+While the voter transition disruption was universal across all major Haredi cities, only Ashdod exhibited a dramatic
+drop in residential segregation indices (Gorelik 2025). The most plausible explanation combines Ashdod's exceptionally
+high baseline residential segregation with spatial compactness: when a large community switches parties (19.3%
+Shas-to-UTJ) and lives in spatially compact neighborhoods, the change becomes visible in the segregation index. Other
+cities with more dispersed residential patterns may have experienced meaningful voter switching without detectable
+segregation changes.
+
+This fortunate coincidence—that the city with both the most extreme voter switching and the most compact residential
+segregation happened to be the same city where segregation indices were carefully tracked—allowed identification of a
+fundamental measurement issue that might otherwise have remained hidden. The finding underscores that the visibility of
+political-residential confounding depends on both the magnitude of voter transitions and the underlying spatial
+structure of communities.
+
 
 ## What Caused the 23-24 Disruption?
 
@@ -168,20 +184,6 @@ volatility precisely because their mixed populations make the boundaries more pe
 because integration itself drives ongoing political fluidity.
 
 
-STOPPED HERE STOPPED HERE STOPPED HERE
-
-    STOPPED HERE STOPPED HERE STOPPED HERE
-
-STOPPED HERE STOPPED HERE STOPPED HERE
-
-    STOPPED HERE STOPPED HERE STOPPED HERE
-
-STOPPED HERE STOPPED HERE STOPPED HERE
-
-    STOPPED HERE STOPPED HERE STOPPED HERE STOPPED HERE STOPPED HERE STOPPED HERE STOPPED HERE STOPPED HERE STOPPED HERE
-    STOPPED HERE STOPPED HERE STOPPED HERE STOPPED HERE STOPPED HERE STOPPED HERE STOPPED HERE STOPPED HERE STOPPED HERE
-
-
 
 ## Methodological Contributions
 
@@ -209,47 +211,7 @@ region, religious denominations within a shared faith tradition, or linguistic m
 allegiances. The framework provides a way to quantify both the degree of separation and the rate of exchange between
 subgroups.
 
-## Limitations and Future Directions
 
-### Data Limitations
-
-1. **Aggregate inference limitations:** Ecological inference models cannot perfectly recover individual-level
-transitions from aggregate data. While the Bayesian framework appropriately quantifies uncertainty, some
-individual-level patterns may remain obscured or mischaracterized.
-
-2. **Confounding of Haredi and non-Haredi voters:** While the focus on homogeneous Haredi ballot boxes (75% Shas+UTJ)
-minimizes this concern, some boxes may include non-Haredi voters, particularly Shas voters who are traditional rather
-than ultra-Orthodox. This could introduce noise in the transition estimates.
-
-3. **Lack of individual-level covariates:** The model cannot incorporate individual characteristics (age, education,
-income, religious stringency) that might predict switching behavior. Survey data linking demographic attributes to
-voting transitions would substantially enrich understanding of who switches and why.
-
-4. **Limited causal identification:** The study documents temporal patterns but cannot definitively establish causation.
-Distinguishing between competing explanations for the March 2020March 2021 (2324) disruptionrabbinic directives,
-grassroots dissatisfaction, strategic voting, pandemic effectsrequires qualitative research.
-
-### Future Research Directions
-
-1. **Qualitative investigation of the March 2020March 2021 disruption:** Interviews with community leaders, analysis of
-rabbinic pronouncements and internal party communications during this period, and retrospective surveys of voters could
-illuminate the mechanisms behind the temporary loyalty collapse.
-
-2. **GIS-based residential analysis:** Obtaining actual residential location data would allow true separation of spatial
-segregation from political loyalty, resolving the confounding identified in this study.
-
-3. **Comparative analysis of other ethnic-religious voting blocs:** Applying similar transition modeling to other
-segmented populations (e.g., Arab-Israeli parties, religious-secular Jewish divisions, ultra-Orthodox vs. modern
-Orthodox) could reveal whether the pattern of high stability with temporary disruption generalizes beyond the Haredi
-case.
-
-4. **Longitudinal survey panel:** Following individual voters across multiple elections while tracking their residential
-location, institutional affiliations, and political attitudes would provide direct evidence of the relationship between
-spatial integration and political permeability.
-
-5. **Agent-based modeling:** Simulating voter behavior under different assumptions about social influence, rabbinic
-authority, and institutional pressure could help identify which mechanisms are necessary and sufficient to generate the
-observed patterns of stability and disruption.
 
 ## Final Reflections
 
