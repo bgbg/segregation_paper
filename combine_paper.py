@@ -345,7 +345,7 @@ def main(
         markdown_path = output_dir_path / f"{base_filename}.md"
         logger.info("Combining markdown files...")
 
-        combine_markdown_files(input_files, markdown_path, output_dir_path, title)
+        combine_markdown_files(input_files, markdown_path, plots_dir, title)
 
         # Generate additional formats based on request
         if output_format in ["pdf", "all"]:
