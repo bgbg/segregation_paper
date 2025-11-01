@@ -25,7 +25,9 @@
       "Bash(done)",
       "Bash(do if [ -f \"$file\" ])",
       "Bash(then echo \"=== $file ===\")",
-      "Bash(fi)"
+      "Bash(fi)",
+      "Bash(git push)",
+      "Bash(awk:*)"
     ],
     "deny": [],
     "ask": []
