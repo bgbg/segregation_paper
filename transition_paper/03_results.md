@@ -27,11 +27,14 @@ The March 2020–March 2021 transition (Knesset 23→24) showed an unusual and d
 particularly among Shas voters. At the country level (Figure 2), Shas-to-Shas loyalty plummeted from 98.9% (in the
 September 2019–March 2020 transition, Knesset 22→23) to just 73.5% in the 23→24 transition. Simultaneously, the
 probability of Shas voters switching to UTJ jumped from near zero to 12.3%. UTJ voters also experienced reduced
-loyalty—dropping from 96.6% to 87.9%, with 4.6% of UTJ voters defecting to Shas. This cross-flow pattern represents an
-unprecedented disruption in the typically stable Haredi voting bloc. Critically, this disruption was observed across
-multiple geographic scales: both at the national level (Figure 2) and across individual cities (Figure 3), indicating a
-system-wide rather than localized phenomenon. Notably, this disruption was temporary: in the subsequent March
-2021–November 2022 transition (Knesset 24→25), loyalty rates recovered substantially (Shas: 96.9%, UTJ: 95.5%).
+loyalty—dropping from 96.6% to 87.9%, with 4.6% of UTJ voters defecting to Shas. The estimated decline in party
+retention corresponds to roughly one parliamentary seat per party, illustrating the political significance of even modest
+swings in Haredi voting patterns. The temporary drop thus had a tangible potential to alter coalition outcomes. This
+cross-flow pattern represents an unprecedented disruption in the typically stable Haredi voting bloc. Critically, this
+disruption was observed across multiple geographic scales: both at the national level (Figure 2) and across individual
+cities (Figure 3), indicating a system-wide rather than localized phenomenon. Notably, this disruption was temporary: in
+the subsequent March 2021–November 2022 transition (Knesset 24→25), loyalty rates recovered substantially (Shas: 96.9%,
+UTJ: 95.5%).
 
 **Important clarification:** This recovery in retention probabilities does not indicate that individual voters who had
 "strayed" from Shas returned to the party. Rather, it reflects that the "leak" of voters from Shas to other parties
@@ -93,9 +96,11 @@ exhibiting the most extreme deviation.*
 
 **Ashdod** exhibited the most dramatic deviation from national patterns. As shown in Figure 4, Shas-to-Shas loyalty
 dropped to just 67.1% (compared to 73.5% nationally), while the Shas-to-UTJ switching rate surged to 19.3%—more than
-50% higher than the national rate of 12.3%. This exceptionally high cross-party flow suggests particularly fluid
-political boundaries between Sephardic and Ashkenazi Haredi communities in this mixed city. In the subsequent 24→25
-transition, Ashdod's Shas loyalty recovered to 96.9%, closely tracking the national pattern.
+50% higher than the national rate of 12.3%. Ashdod's experience can be contextualized through anecdotal accounts of
+community leadership disputes reported during that period, suggesting local religious authority fragmentation may have
+temporarily influenced voting behavior. This exceptionally high cross-party flow suggests particularly fluid political
+boundaries between Sephardic and Ashkenazi Haredi communities in this mixed city. In the subsequent 24→25 transition,
+Ashdod's Shas loyalty recovered to 96.9%, closely tracking the national pattern.
 
 ![ashdod transitions](plots/city_ashdod_transition_matrix_over_elections.png)
 

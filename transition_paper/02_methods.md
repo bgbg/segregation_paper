@@ -55,7 +55,9 @@ ballot boxes ensures that nearly all Shas and UTJ votes in this sample originate
 The estimation framework follows a hierarchical Bayesian ecological inference model, designed to infer unobserved voter
 transition matrices between consecutive elections from aggregate data. This problem is inherently challenging because
 individual ballots are secret and only aggregate counts are available. Thus, we adopt a classic ecological inference
-scenario (Robinson 1950; King 1997).
+scenario (Robinson 1950; King 1997). The hierarchical structure pools information across localities, improving precision
+in small samples while maintaining flexibility across elections. Full model specifications and diagnostics are provided
+in Appendix A.
 
 For each election pair $(t, t+1)$, the model infers the probability that a voter from category i at election t votes for
 category j at election t+1. Individual transitions are unobserved, but aggregate vote counts provide marginal

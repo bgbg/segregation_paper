@@ -4,7 +4,9 @@ Across many democracies, communities exhibit cohesive voting patterns that resem
 strong group identities. Classic cleavage theories and the literature on ethnoreligious mobilization argue that such
 identities can cement stable partisan alignments over long periods (Lipset & Rokkan, 1967). This backdrop raises a
 central question for political behavior: are these loyal voting blocs truly immobile, or can hidden currents of change
-exist beneath an outwardly stable surface?
+exist beneath an outwardly stable surface? This question functions as a stress test of bloc discipline theories,
+exploiting a rare quasi-natural experiment—the 2020–21 electoral upheaval—that allows us to observe how deeply
+internalized political loyalties respond to sudden systemic shocks.
 
 Israel's ultra-Orthodox (*Haredi*, plural *Haredim*) Jews provide a compelling case study. The Haredi sector is widely
 portrayed as one of the most disciplined electoral blocs in Israel, with community members casting ballots in line with
@@ -103,15 +105,18 @@ Reconstructed from data in Gorelik, 2025*
 The present study addresses this puzzle by analyzing voter transition matrices for the Haredi electorate across
 successive national elections. Using pollingstation results and a hierarchical Bayesian ecological inference framework
 (King 1997; Greiner & Quinn 2010), I estimate transition probabilities among four categories of votes: (1) votes for
-Shas, (2) votes for UTJ, (3) votes for all other parties, and (4) abstention (including null/spoiled ballots). To ensure
-the analysis focuses on Haredi behavior (given Shas's mixed electorate discussed above), I restrict the dataset to
-polling stations that are at least 75% Haredi in composition, following the approach of Gorelik (2025). This filtering
-isolates the ballot boxes in Haredi population hubs, so that the transition estimates truly reflect dynamics *within*
-the Haredi sector rather than broader societal trends. I construct transition matrices between every pair of consecutive
-Knesset elections from the January 2013 election (Knesset 19) through the November 2022 election (Knesset 25), both at
-the national level and for key cities with large Haredi populations (Jerusalem, Bnei Brak, Beit Shemesh, Ashdod, etc.).
-The modeling yields estimates of loyalty (the probability of a voter staying with the same party bloc) versus switching
-(probabilities of shifting to a different party or to abstention) from one election to the next.
+Shas, (2) votes for UTJ, (3) votes for all other parties, and (4) abstention (including null/spoiled ballots). More
+broadly, this study contributes to debates on party loyalty and identity voting, showing how social cohesion interacts
+with political volatility. It complements work on partisan stability under social identity pressure and on how temporary
+disruptions can expose underlying fragility in entrenched loyalties. To ensure the analysis focuses on Haredi behavior
+(given Shas's mixed electorate discussed above), I restrict the dataset to polling stations that are at least 75% Haredi
+in composition, following the approach of Gorelik (2025). This filtering isolates the ballot boxes in Haredi population
+hubs, so that the transition estimates truly reflect dynamics *within* the Haredi sector rather than broader societal
+trends. I construct transition matrices between every pair of consecutive Knesset elections from the January 2013
+election (Knesset 19) through the November 2022 election (Knesset 25), both at the national level and for key cities
+with large Haredi populations (Jerusalem, Bnei Brak, Beit Shemesh, Ashdod, etc.). The modeling yields estimates of
+loyalty (the probability of a voter staying with the same party bloc) versus switching (probabilities of shifting to a
+different party or to abstention) from one election to the next.
 
 
 Three empirical findings emerge from the analysis. First, the sharp timing of Ashdod's segregation drop in 2021 (visible
@@ -155,6 +160,10 @@ without any rapid physical relocationthe electoral realignment provided the miss
 dynamics, the study demonstrates that institutional ecology shapes not whether boundaries exist, but when and how they
 become permeable.
 
+
+This study contributes to the literature by: (1) uncovering hidden volatility within a highly disciplined religious
+voting bloc; (2) resolving a methodological inconsistency between voting and segregation indices; and (3) applying
+hierarchical Bayesian ecological inference to improve understanding of voter transitions in cohesive subpopulations.
 
 This study offers two insights for scholars of ethnic voting. First, it demonstrates that even highly cohesive
 electorates harbor hidden volatility: loyalty can weaken quickly under certain conditions, and local context shapes

@@ -22,13 +22,17 @@ surged from near zero to 12.3%.  UTJ voters similarly experienced reduced loyalt
 Critically, this disruption proved temporary. By the subsequent March 2021–November 2022 transition (Knesset 24→25),
 loyalty rates recovered substantially (Shas: 96.9%, UTJ: 95.5%)—meaning that voters who supported these parties in the
 24→25 transition remained loyal, not that 23→24 defectors returned. The recovery indicates that leakage stopped, not
-that voters reversed course. This interpretation is confirmed by the absence of unusual spikes in off-diagonal
-transitions into Shas (UTJ→Shas, Other→Shas, Abstain→Shas) during the 24→25 transition, demonstrating that voters who
-left did not return. Indeed, despite Shas's increased national vote share from 7.17% (Knesset 24) to 8.25% (Knesset 25),
+that voters reversed course. This temporary collapse of loyalty resembles volatility episodes observed in other
+democracies, where cohesive electorates occasionally experience brief but consequential swings—for example, among U.S.
+evangelicals or regional party loyalists in Western Europe. This interpretation is confirmed by the absence of unusual
+spikes in off-diagonal transitions into Shas (UTJ→Shas, Other→Shas, Abstain→Shas) during the 24→25 transition,
+demonstrating that voters who left did not return. Indeed, despite Shas's increased national vote share from 7.17% (Knesset 24) to 8.25% (Knesset 25),
 the growth originated outside the Haredi population hubs analyzed here, suggesting Shas gained new supporters from
 traditional Sephardic voters in peripheral communities while simultaneously losing core ultra-Orthodox voters to UTJ. The
-underlying ethnic-political boundaries remained intact despite the temporary shock. The pattern is one of **rigidity
-with occasional stress fractures**, not fluid or liquid identity.
+underlying ethnic-political boundaries remained intact despite the temporary shock. Although temporary, such disruptions
+can influence coalition dynamics in Israel's fragmented system. A swing of even 2–3 percent within the Haredi bloc could
+shift a parliamentary seat, altering coalition feasibility. The pattern is one of **rigidity with occasional stress
+fractures**, not fluid or liquid identity.
 
 ### Geographic Variation in Disruption Magnitude
 
@@ -212,6 +216,11 @@ allegiances. The framework provides a way to quantify both the degree of separat
 subgroups.
 
 
+
+This study focuses on short-term electoral effects and does not address possible social or attitudinal consequences.
+Future research should examine whether temporary electoral volatility affects long-term communal trust or leadership
+legitimacy. Comparative studies could test whether similar patterns of 'hidden volatility' appear in other religious or
+identity-based voting blocs.
 
 ## Final Reflections
 
