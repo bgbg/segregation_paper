@@ -1,7 +1,9 @@
 # Conclusions
 
 
-The preceding analysis documented six key empirical findings about Haredi voter transitions. This Conclusions section
+The preceding Results section documented six key empirical findings about Haredi voter transitions: high baseline
+stability, a dramatic but temporary 23→24 disruption, full recovery by 24→25, geographic variation in disruption
+magnitude, temporal proximity ruling out demographic explanations, and stable abstention rates. This Conclusions section
 interprets these findings in theoretical and methodological context, exploring what they reveal about ethnic boundary
 maintenance, the conditions under which rigid voting blocs experience disruption, and the implications for measuring
 residential segregation through electoral proxies.
@@ -30,7 +32,7 @@ identity.
 
 ### Geographic Variation in Disruption Magnitude
 
-While the March 2020March 2021 disruption (2324) affected all the Haredi population hubs, its magnitude varied
+While the March 2020–March 2021 disruption (23→24) affected all the Haredi population hubs, its magnitude varied
 substantially across localities. Ashdod exhibited the most extreme deviation, with Shas loyalty dropping to just 67.1%
 and Shas-to-UTJ switching reaching 19.3%, more than 50% higher than the national rate. Bnei Brak and Beit Shemesh showed
 similarly sharp but somewhat more moderate disruptions. Jerusalem and Modi'in Illit demonstrated greater resilience,
@@ -119,7 +121,7 @@ diversity.
 ### Stability, Disruption, and Recovery in Ethnic Voting Blocs
 
 The temporal pattern observedhigh stability, temporary collapse, rapid recoveryoffers insights into the resilience of
-ethnic-political boundaries. The March 2020March 2021 (2324) disruption did not trigger a permanent realignment,
+ethnic-political boundaries. The March 2020–March 2021 (23→24) disruption did not trigger a permanent realignment,
 suggesting that:
 
 1. **Institutional mechanisms for restoring boundaries remain strong.** Rabbinic authority structures, communal
@@ -201,7 +203,7 @@ subsided.
 
 Whether similar disruptions will recur depends on factors beyond this study's scope: the stability of rabbinic authority
 in an era of generational change, the evolution of Haredi engagement with Israeli politics, the durability of separate
-institutional infrastructures, and the broader political environment. The March 2020March 2021 transition may represent
+institutional infrastructures, and the broader political environment. The March 2020–March 2021 transition may represent
 a unique confluence of crises unlikely to repeat, or it may be the first visible sign of gradually weakening
 ethnic-political boundaries that will manifest more frequently in future elections.
 

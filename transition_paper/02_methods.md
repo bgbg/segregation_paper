@@ -116,4 +116,12 @@ observational units, representing small, demographically cohesive neighborhoods.
 clustering, the focus is on temporal electoral dynamics  specifically, the persistence and permeability of Haredi voter
 blocs.
 
+**Note on notation:** Throughout this paper, election transitions are denoted using the arrow notation (→) to indicate
+the direction from one election to the next. For example, "23→24" refers to the transition from the March 2020 election
+(Knesset 23) to the March 2021 election (Knesset 24). This notation emphasizes that we are examining voter flows
+between consecutive elections rather than the elections themselves in isolation.
+
+The following section presents the estimated transition patterns at national and city levels, revealing both the
+dominant pattern of high stability and a dramatic temporary disruption in the March 2020–March 2021 transition.
+
 

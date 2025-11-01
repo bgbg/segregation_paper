@@ -57,9 +57,9 @@ and Sephardi Haredi populations within each city, with higher values indicating 
 Reconstructed from data in Gorelik, 2025*
 
 I address this puzzle by analyzing voter transition matrices across successive elections from January 2013 through
-November 2022 (Knessets 19-25), using hierarchical Bayesian ecological inference applied to polling-station results (King
-1997; Greiner & Quinn 2010). The analysis estimates transition probabilities among four categories: Shas, UTJ, other
-parties, and abstention. To focus specifically on Haredi behavior, I restrict the sample to polling stations at least 75%
+November 2022 (Knessets 19-25), using hierarchical Bayesian ecological inference applied to polling-station results
+(detailed in the Methods section; King 1997; Greiner & Quinn 2010). The analysis estimates transition probabilities
+among four categories: Shas, UTJ, other parties, and abstention. To focus specifically on Haredi behavior, I restrict the sample to polling stations at least 75%
 Haredi in composition, ensuring the transitions reflect dynamics within the ultra-Orthodox sector rather than broader
 trends. The framework provides both national-level estimates and city-specific patterns for major Haredi population
 centers.
@@ -102,4 +102,5 @@ with stress fractures" as an alternative to permanent-stability or gradual-erosi
 confounding between political and residential measures when loyalty fluctuates; and (4) demonstrating hierarchical
 Bayesian ecological inference for analyzing voter transitions in cohesive subpopulations. Understanding the conditions
 under which rigid boundaries temporarily yield, and how quickly they reconstitute, is crucial for anticipating coalition
-dynamics and democratic responsiveness in any polity with identity-based voting.
+dynamics and democratic responsiveness in any polity with identity-based voting. The following section details the data
+sources, model specification, and analytical approach.

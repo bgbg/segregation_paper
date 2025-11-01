@@ -6,11 +6,6 @@ transition (Knesset 23→24) affected all major Haredi cities, followed by compl
 that even highly disciplined voting blocs can experience rapid, system-wide loyalty disruptions that fully reverse when
 triggering conditions resolve. Model diagnostics confirming adequate fit are provided in Appendix B.
 
-**Note on notation:** Throughout this paper, election transitions are denoted using the arrow notation (→) to indicate
-the direction from one election to the next. For example, "23→24" refers to the transition from the March 2020 election
-(Knesset 23) to the March 2021 election (Knesset 24). This notation emphasizes that we are examining voter flows
-between consecutive elections rather than the elections themselves in isolation.
-
 ## Country-Level Transitions
 
 At the national level, the transition matrices reveal strong voter loyalty within both Haredi parties. Shas retained on
@@ -33,7 +28,8 @@ UTJ: 95.5%).
 
 **Important clarification:** This recovery in retention probabilities does not indicate that individual voters who had
 "strayed" from Shas returned to the party. Rather, it reflects that the "leak" of voters from Shas to other parties
-stopped. The actual voter movements are captured by the off-diagonal elements of the transition matrix—the flows between
+stopped (see Methods section on the distinction between voting behavior probabilities and individual voter movements).
+The actual voter movements are captured by the off-diagonal elements of the transition matrix—the flows between
 parties—not by the diagonal retention rates themselves. Critically, none of the off-diagonal transitions into Shas
 (UTJ→Shas, Other→Shas, Abstain→Shas) showed unusual spikes in the March 2021–November 2022 transition (Knesset 24→25),
 confirming that voters who left Shas in the 23→24 disruption did not return.
@@ -59,12 +55,12 @@ segmentation despite broader electoral turbulence.
 
 **Table 1: Election Dates and Intervals**
 
-| Knesset | Election Date | Days Since Previous | Months Since Previous |
-|---------|---------------|---------------------|----------------------|
-| 22 | September 17, 2019 | | |
-| 23 | March 2, 2020 | 167 | 5.5 |
-| 24 | March 23, 2021 | 386 | 12.7 |
-| 25 | November 1, 2022 | 588 | 19.3 |
+| Knesset | Election Date | Months Since Previous |
+|---------|---------------|-----------------------|
+| 22 | September 17, 2019 | 5.3 |
+| 23 | March 2, 2020 | 5.5 |
+| 24 | March 23, 2021 | 12.7 |
+| 25 | November 1, 2022 | 19.3 |
 
 
 ![Country transitions](plots/country_transition_matrix_over_elections.png)
@@ -206,4 +202,6 @@ These findings reveal that even highly cohesive voting blocs can experience rapi
 patterns that fully reverse when triggering conditions resolve—a pattern of rigidity with stress fractures potentially
 observable across identity-based electorates from U.S. evangelicals to European regional parties. The consistency across
 cities points to centralized political dynamics, while the variation in magnitude highlights how local social integration
-modulates the boundaries of permissible switching within otherwise rigid structures.
+modulates the boundaries of permissible switching within otherwise rigid structures. The Conclusions section explores the
+theoretical and methodological implications of these patterns, situating them within broader comparative frameworks and
+discussing their significance for understanding ethnic boundary maintenance in cohesive communities.
