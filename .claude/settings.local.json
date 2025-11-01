@@ -18,7 +18,14 @@
       "mcp__serena__get_symbols_overview",
       "mcp__serena__search_for_pattern",
       "mcp__serena__list_dir",
-      "mcp__serena__find_file"
+      "mcp__serena__find_file",
+      "Bash(for file in 00_abstract.md 01_intro.md 02_methods.md 03_results.md 04_conclusions.md)",
+      "Bash(do echo \"=== $file ===\")",
+      "Bash(cat:*)",
+      "Bash(done)",
+      "Bash(do if [ -f \"$file\" ])",
+      "Bash(then echo \"=== $file ===\")",
+      "Bash(fi)"
     ],
     "deny": [],
     "ask": []

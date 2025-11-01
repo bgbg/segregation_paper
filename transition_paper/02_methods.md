@@ -46,9 +46,19 @@ Ashkenazi ultra-Orthodox party alliance), (3) Other parties (all non-Haredi poli
 our focus is intra-Haredi dynamics; distinguishing among secular/religious-Zionist/Arab parties would add dimensionality
 without illuminating Haredi behavior.
 
+The ultra-Orthodox camp in Israel is internally divided along ethnic lines (Andersen and Yaish 2003). Ashkenazi
+(European-origin) Haredim are represented by UTJ, whose electorate is almost entirely ultra-Orthodox Ashkenazi. In
+contrast, Sephardi/Mizrahi Haredim predominantly vote for Shas, though Shas's voter base extends well beyond the strictly
+ultra-Orthodox community. As Cincotta (2013) observed, "the vast majority of Shas's electoral support has come from
+non-ultra-Orthodox Sephardim and Mizrahim," reflecting the party's broad appeal (see also Keren-Kratz 2025). Leon (2014)
+characterizes Sephardi ultra-Orthodoxy as "strict ideology, liquid identity," suggesting more permeable boundaries than
+Ashkenazi streams. Malach (2025) finds that UTJ behaves as a "sectarian party with dynamic fringes," drawing ~95% of its
+potential core support but subject to modest flows at the edges.
+
 This categorization allows the model to capture both intra-Haredi transitions (between Shas and UTJ) and movements into
-or out of active participation. While the majority of Shas voters are not Haredim, the restriction to homogeneous Haredi
-ballot boxes ensures that nearly all Shas and UTJ votes in this sample originate from Haredi populations.
+or out of active participation. The restriction to homogeneous Haredi ballot boxes (≥75% Shas+UTJ votes) ensures that
+nearly all Shas and UTJ votes in this sample originate from Haredi populations, isolating within-sector dynamics from
+broader societal trends.
 
 ### Model Overview
 
