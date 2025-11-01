@@ -23,11 +23,17 @@ realignment pressures that surface under specific temporal and local conditions?
 
 Crucially, the Haredi sector is internally divided along ethnic lines between Ashkenazi (European-origin) and
 Sephardi/Mizrahi (Middle Eastern/North African-origin) streams, each represented by separate political parties: United
-Torah Judaism (UTJ) and Shas, respectively. This ethnic cleavage within a religiously unified population provides a
-unique opportunity to study how internal boundaries within cohesive blocs respond to electoral shocks. Analyzing
-transitions between these ethnically-aligned parties reveals whether ethnic-political boundaries can temporarily weaken
-during crises without triggering permanent realignment—a pattern with broad implications for understanding identity-based
-voting blocs worldwide.
+Torah Judaism (UTJ) and Shas, respectively. Ashkenazi Haredim are represented by UTJ, whose electorate is almost entirely
+ultra-Orthodox Ashkenazi. In contrast, Sephardi/Mizrahi Haredim predominantly vote for Shas, though Shas's voter base
+extends well beyond the strictly ultra-Orthodox community. As Cincotta (2013) observed, "the vast majority of Shas's
+electoral support has come from non-ultra-Orthodox Sephardim and Mizrahim," reflecting the party's broad appeal (see also
+Keren-Kratz 2025). Leon (2014) characterizes Sephardi ultra-Orthodoxy as "strict ideology, liquid identity," suggesting
+more permeable boundaries than Ashkenazi streams. Malach (2025) finds that UTJ behaves as a "sectarian party with dynamic
+fringes," drawing ~95% of its potential core support but subject to modest flows at the edges. This ethnic cleavage
+within a religiously unified population provides a unique opportunity to study how internal boundaries within cohesive
+blocs respond to electoral shocks. Analyzing transitions between these ethnically-aligned parties reveals whether
+ethnic-political boundaries can temporarily weaken during crises without triggering permanent realignment—a pattern with
+broad implications for understanding identity-based voting blocs worldwide.
 
 This study was sparked by an anomaly discovered in my previous research on Haredi residential segregation (Gorelik 2025).
 That study documented persistent spatial separation between Ashkenazi and Sephardi Haredim across Israel's cities.
