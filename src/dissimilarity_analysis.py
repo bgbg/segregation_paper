@@ -206,7 +206,7 @@ def plot_dissimilarity_latest_point(
 
     # Set up the plotting axis if not provided
     if ax is None:
-        fig, ax = plt.subplots(figsize=(6, 9), dpi=120)
+        fig, ax = plt.subplots(figsize=(6, 9), dpi=300)
 
     # Initialize y-axis ticks and labels
     yticks, y_ticklabels = [], []

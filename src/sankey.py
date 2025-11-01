@@ -67,7 +67,7 @@ def sankey(
     left = df[col_left].values
     right = df[col_right].values
     vote_weights = df[col_vote_count].values
-    
+
     # Filter out zero or very small vote movements for cleaner visualization
     non_zero_mask = vote_weights > 0
     left = left[non_zero_mask]
@@ -291,45 +291,47 @@ def main(
     # Validate input file exists
     if not Path(file_path).exists():
         raise FileNotFoundError(f"Vote movements file not found: {file_path}")
-    
+
     print(f"Loading vote movements data from {file_path}")
-    
+
     # Load CSV data
     try:
         df = pd.read_csv(file_path)
         print(f"Loaded data with shape: {df.shape}")
     except Exception as e:
         raise ValueError(f"Failed to load CSV file: {e}")
-    
+
     # Validate required columns
     required_columns = ["from_category", "to_category", "vote_count"]
     missing_columns = [col for col in required_columns if col not in df.columns]
     if missing_columns:
         raise ValueError(f"Missing required columns: {missing_columns}")
-    
+
     print(f"Found categories: {sorted(df['from_category'].unique())}")
-    
+
     # Show total vote movements
-    total_votes = df['vote_count'].sum()
-    non_zero_movements = (df['vote_count'] > 0).sum()
-    print(f"Total vote movements: {total_votes:,.0f} votes across {non_zero_movements} flows")
-    
+    total_votes = df["vote_count"].sum()
+    non_zero_movements = (df["vote_count"] > 0).sum()
+    print(
+        f"Total vote movements: {total_votes:,.0f} votes across {non_zero_movements} flows"
+    )
+
     # Set default output path if not provided
     if output_path is None:
         output_path = "vote_movements_sankey.png"
-    
+
     print(f"Creating Sankey diagram: '{title}'")
-    
+
     # Create sankey diagram
     ax = sankey(df)
-    
+
     # Add title to the diagram
     ax.set_title(title, fontsize=16, pad=20)
-    
+
     # Save the diagram
     print(f"Saving diagram to {output_path}")
-    ax.figure.savefig(output_path, bbox_inches="tight", dpi=150)
-    
+    ax.figure.savefig(output_path, bbox_inches="tight", dpi=300)
+
     print("✓ Sankey diagram generated successfully!")
 
 

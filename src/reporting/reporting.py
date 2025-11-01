@@ -229,7 +229,7 @@ def _save_diagnostic_plots(trace_path: Path, out_dir: Path, prefix: str) -> List
         else:
             az.plot_rank(idata)
     plt.tight_layout()
-    plt.savefig(p1, dpi=150, bbox_inches="tight")
+    plt.savefig(p1, dpi=300, bbox_inches="tight")
     plt.close()
     paths.append(p1)
 
@@ -239,7 +239,7 @@ def _save_diagnostic_plots(trace_path: Path, out_dir: Path, prefix: str) -> List
         warnings.simplefilter("ignore", UserWarning)
         az.plot_energy(idata)
     plt.tight_layout()
-    plt.savefig(p2, dpi=150, bbox_inches="tight")
+    plt.savefig(p2, dpi=300, bbox_inches="tight")
     plt.close()
     paths.append(p2)
 
@@ -252,7 +252,7 @@ def _save_diagnostic_plots(trace_path: Path, out_dir: Path, prefix: str) -> List
         else:
             az.plot_autocorr(idata, max_lag=50)
     plt.tight_layout()
-    plt.savefig(p3, dpi=150, bbox_inches="tight")
+    plt.savefig(p3, dpi=300, bbox_inches="tight")
     plt.close()
     paths.append(p3)
 
@@ -397,7 +397,7 @@ def _create_mad_table_lens(
 
     # Save plot
     plot_path = plots_dir / "mad_table_lens.png"
-    plt.savefig(plot_path, dpi=150, bbox_inches="tight")
+    plt.savefig(plot_path, dpi=300, bbox_inches="tight")
     plt.close()
 
     return plot_path

@@ -270,7 +270,7 @@ def sankey(
     plt.gca().axis("off")
     plt.gcf().set_size_inches(6, 6)
     if figureName != None:
-        plt.savefig("{}.png".format(figureName), bbox_inches="tight", dpi=150)
+        plt.savefig("{}.png".format(figureName), bbox_inches="tight", dpi=300)
     if closePlot:
         plt.close()
 

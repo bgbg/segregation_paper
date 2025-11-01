@@ -429,7 +429,7 @@ def plot_transition_matrix_over_elections(
 
     # Save if requested
     if save_path:
-        plt.savefig(save_path, dpi=150, bbox_inches="tight")
+        plt.savefig(save_path, dpi=300, bbox_inches="tight")
         print(f"Saved figure to {save_path}")
 
     return fig, axes
@@ -947,7 +947,7 @@ def plot_all_cities_aggregate_deviation_subplots(
 
     # Save if requested
     if save_path:
-        plt.savefig(save_path, dpi=150, bbox_inches="tight")
+        plt.savefig(save_path, dpi=300, bbox_inches="tight")
         print(f"Saved city-by-city deviation plot to {save_path}")
 
     return fig, axes
