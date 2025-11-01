@@ -2,7 +2,7 @@
 
 Across many democracies, communities exhibit cohesive voting patterns that resemble durable "voting blocs" anchored in
 strong group identities. Classic cleavage theories and the literature on ethnoreligious mobilization argue that such
-identities can cement stable partisan alignments over long periods (Lipset & Rokkan, 1967). From U.S. evangelicals to
+identities can cement stable partisan alignments over long periods (Lipset & Rokkan, 1967; Curiel & Zeedan, 2024). From U.S. evangelicals to
 European regional party loyalists to African ethnic voting coalitions, these blocs appear remarkably stable over time.
 Yet a central question for political behavior remains: are these loyal voting blocs truly immobile, or can their rigid
 boundaries temporarily yield under stress? This question functions as a stress test of bloc discipline theories,
@@ -18,8 +18,11 @@ the community is factionalized and not all members obey rabbinic voting directiv
 Jews voted for non-Haredi lists in the 2021 election despite communal pressures. Similar patterns of partial defection
 within cohesive electorates have been documented elsewhere: Simas and Lothamer (2025) find that even strong party
 identifiers may temporarily defect following intraparty conflict, revealing that perceived unity can mask underlying
-volatility. This raises a theoretical puzzle applicable beyond Israel: can highly disciplined voting blocs harbor latent
-realignment pressures that surface under specific temporal and local conditions?
+volatility. This pattern is particularly striking given Israel's electoral history: Andersen and Yaish (2003) found that
+the 1993–1999 electoral reform failed to shift social cleavage voting patterns, suggesting that institutional change
+alone rarely disrupts voting blocs. Yet the 2020–21 shock disrupted even the most disciplined Haredi communities, making
+this episode distinctive. This raises a theoretical puzzle applicable beyond Israel: can highly disciplined voting blocs
+harbor latent realignment pressures that surface under specific temporal and local conditions?
 
 Crucially, the Haredi sector is internally divided along ethnic lines between Ashkenazi (European-origin) and
 Sephardi/Mizrahi (Middle Eastern/North African-origin) streams, each represented by separate political parties: United

@@ -4,8 +4,8 @@ Aha, Katharine, Catherine Hiebel, and Linsey Jensen. 2024. "Turning to the Radic
 Variation in Radical Right Support after Ethnic Minority Success in East Central Europe." *Electoral Studies* 83:
 102828. https://doi.org/10.1016/j.electstud.2024.102828.
 
-Andersen, Jrgen Goul, and Meir Yaish. 2003. "Social Cleavages, Electoral Reform and Party Choice: Israel's 'Natural'
-Experiment." *Electoral Studies* 22 (3): 399423. https://doi.org/10.1016/S0261-3794(02)00006-9.
+Andersen, Jørgen Goul, and Meir Yaish. 2003. "Social Cleavages, Electoral Reform and Party Choice: Israel's 'Natural'
+Experiment." *Electoral Studies* 22 (3): 399–423. https://doi.org/10.1016/S0261-3794(02)00006-9.
 
 Ben Porat, Guy, and Dani Filc. 2022. "Religious Populism in Israel: The Case of Shas." *Politics and Religion* 15 (2):
 289313. https://doi.org/10.1017/S1755048321000158.
@@ -22,6 +22,9 @@ Asher Cohen and Bernard Susser, 211233. London: Routledge.
 
 Clarke, Harold D., David Sanders, Marianne C. Stewart, and Paul Whiteley. 2004. *Political Choice in Britain*. Oxford:
 Oxford University Press.
+
+Curiel, Concha Pérez, and Rami Zeedan. 2024. "Social Identity and Voting Behavior in a Deeply Divided Society: The Case
+of Israel." *Societies* 14 (9): 177. https://doi.org/10.3390/soc14090177.
 
 Forcina, Antonio, and Domenico Pellegrino. 2019. "Estimation of Voter Transitions and the Ecological Fallacy." *Quality
 & Quantity* 53: 18591874.
@@ -61,6 +64,9 @@ Lipset, Seymour Martin, and Stein Rokkan. 1967. *Party Systems and Voter Alignme
 York: Free Press.
 
 Malach. 2025. XXXXXX MISSING REFERENCE XXXX
+
+McCauley, John F. 2014. "The Political Mobilization of Ethnic and Religious Identities in Africa." *American Political
+Science Review* 108 (4): 801–16. https://doi.org/10.1017/S0003055414000410.
 
 Puig, Xavier, and Josep Ginebra. 2015. "Ecological Inference and Spatial Variation of Individual Behavior: National
 Divide and Elections in Catalonia." *Geographical Analysis* 47 (3): 262283.
