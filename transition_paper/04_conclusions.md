@@ -136,14 +136,22 @@ decouple from ethnic identity without permanently weakening either.
 the disruption shows that even highly disciplined communities can experience volatility under sufficient stress.
 Comparable dynamics appear in other identity-based systems: Aha, Hiebel, and Jensen (2024) find that when
 ethnic-minority parties achieve success in Eastern Europe, majority voters may briefly defect to radical-right
-alternatives before returning to mainstream affiliations, illustrating reversible volatility within cohesive blocs.
+alternatives before returning to mainstream affiliations, illustrating reversible volatility within cohesive blocs. These
+reversible volatility patterns are not unique to electoral contexts. McCauley (2014) demonstrates that identity-based
+groups in Africa shift political priorities depending on context and mobilization strategies, revealing that identity
+mobilization is not static but responsive to situational pressures. The Haredi case extends this insight: even in
+contexts of strong institutional discipline, identity-based priorities can temporarily reorder under stress without
+fundamentally dissolving group boundaries.
 
 This pattern contrasts with gradual realignment models common in studies of ethnic and religious voting in less cohesive
 populations. Recent comparative work supports this distinction. Goodwin, Kaufmann, and Larsen (2022) describe how
 identity-driven issues like immigration can trigger gradual partisan realignments in open electorates, whereas tightly
-bounded identity blocs, such as Israel's Haredim, exhibit punctuated rather than continuous change. The Haredi case
-suggests that in communities with strong institutional structures and clear ethnic-political mapping, change occurs
-through punctuated disruption and recovery rather than slow drift.
+bounded identity blocs, such as Israel's Haredim, exhibit punctuated rather than continuous change. The persistence of
+ethnic-political boundaries despite temporary volatility parallels Andersen and Yaish's (2003) finding in Israel that
+electoral reform failed to shift cleavage voting patterns. Both studies suggest that fundamental institutional
+restructuring is required to produce lasting realignment, whereas temporary crises create only transitory disruption. The
+Haredi case suggests that in communities with strong institutional structures and clear ethnic-political mapping, change
+occurs through punctuated disruption and recovery rather than slow drift.
 
 ### The Limited Predictive Power of Structural Integration
 
