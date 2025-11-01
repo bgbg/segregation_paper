@@ -1,15 +1,10 @@
 # Results
 
-The analysis reveals a complex portrait of Haredi electoral behavior that challenges conventional assumptions about bloc
-stability. While the overall pattern confirms high loyalty rates within both Shas and UTJ, the results uncover
-significant
-temporal and geographic variation in voter transitions. Most strikingly, the analysis identifies a dramatic but
-temporary
-disruption in the March 2020–March 2021 transition (Knesset 23→24) that affected all major Haredi cities, followed by a
-complete recovery. These
-findings demonstrate that even the most disciplined voting blocs can experience rapid, system-wide changes in loyalty
-patterns. Model convergence diagnostics and posterior predictive checks confirming adequate model fit are provided in
-Appendix B.
+The analysis confirms high baseline loyalty within both Shas and UTJ, yet reveals significant temporal and geographic
+variation in voter transitions. Most strikingly, a dramatic but temporary disruption in the March 2020–March 2021
+transition (Knesset 23→24) affected all major Haredi cities, followed by complete recovery. These findings demonstrate
+that even highly disciplined voting blocs can experience rapid, system-wide loyalty disruptions that fully reverse when
+triggering conditions resolve. Model diagnostics confirming adequate fit are provided in Appendix B.
 
 **Note on notation:** Throughout this paper, election transitions are denoted using the arrow notation (→) to indicate
 the direction from one election to the next. For example, "23→24" refers to the transition from the March 2020 election
@@ -43,12 +38,11 @@ parties—not by the diagonal retention rates themselves. Critically, none of th
 (UTJ→Shas, Other→Shas, Abstain→Shas) showed unusual spikes in the March 2021–November 2022 transition (Knesset 24→25),
 confirming that voters who left Shas in the 23→24 disruption did not return.
 
-Paradoxically, despite losing voters in the 23→24 transition and not recovering them in 24→25, Shas's overall national
-vote share increased from 7.17% in Knesset 24 to 8.25% in Knesset 25, translating to an increase from 9 to 11 Knesset
-seats. Since the transition matrices in Haredi population hubs show no corresponding influx of new Shas voters, this
-growth must have originated primarily from voters residing outside the major Haredi redidential hubs. This pattern
-demonstrates that aggregate vote-share growth can mask complex internal dynamics: Shas simultaneously lost voters within
-its core Haredi base (who defected to UTJ in 23→24) while gaining new supporters from peripheral populations.
+Paradoxically, despite losing core Haredi voters in 23→24 without recovering them in 24→25, Shas's national vote share
+increased from 7.17% to 8.25% (9 to 11 seats). Since Haredi population hubs show no corresponding Shas influx, this
+growth originated from voters outside major Haredi centers. This demonstrates how aggregate vote-share growth can mask
+internal dynamics: Shas simultaneously lost its core ultra-Orthodox base (to UTJ in 23→24) while gaining peripheral
+traditional Sephardic supporters.
 
 The timing of these elections is crucial for interpretation. As shown in Table 1, this period was marked by political
 instability with elections occurring in rapid succession: only 5.5 months separated the September 2019 (Knesset 22) and
@@ -59,10 +53,9 @@ transitions reflect genuine voter switching rather than demographic change throu
 replacement. The close temporal proximity makes it unlikely that residential mobility or population turnover could
 account for the dramatic shifts in voting patterns.
 
-The aggregated country-level transition matrix (Figure 2) demonstrates that abstention rates remained low and stable
-within the Haredi population, contrasting with fluctuating participation trends among non-Haredi groups. Cross-over
-voting between Haredi and non-Haredi parties remained marginal, indicating persistent political segmentation despite
-broader electoral turbulence.
+Figure 2 shows that Haredi abstention rates remained low and stable, contrasting with fluctuating non-Haredi
+participation. Cross-over voting between Haredi and non-Haredi parties remained marginal, indicating persistent political
+segmentation despite broader electoral turbulence.
 
 **Table 1: Election Dates and Intervals**
 
@@ -133,28 +126,17 @@ closer to the national average, this methodological confound might have remained
 
 ## Connection to Residential Segregation Patterns
 
-The dramatic Shas-to-UTJ switching in Ashdod during the March 2020–March 2021 transition (23→24) provides a compelling
-explanation for an anomaly observed in my previous study (Gorelik 2025). That study documented a sudden, unexplained
-drop in the residential
-segregation index (dissimilarity) between Ashkenazi and Sephardic Haredim in Ashdod around the March 2021 election.
-Since it's unlikely that major demographic relocation or institutional change occurred in this short period, the
-segregation drop appeared puzzling.
+The 19.3% Shas-to-UTJ switching in Ashdod created apparent "integration" in segregation indices without actual
+residential movement. Ballot boxes previously dominated by Shas (Sephardic) suddenly showed substantial UTJ (Ashkenazi)
+support, reducing the spatial correlation between ethnicity and party vote—precisely what the dissimilarity index
+measures. The synchronized recovery of both voter loyalty (to 96.9% in 24→25) and segregation levels confirms this
+electoral mechanism.
 
-The present analysis reveals a possible mechanism: the 19.3% of Shas voters who switched to UTJ in Ashdod during this
-transition might have created a geographic mixing of voting patterns. Ballot boxes that had been predominantly Shas
-(Sephardic) suddenly showed substantial UTJ (Ashkenazi) support, reducing the spatial correlation between ethnicity and
-party
-vote, precisely what the segregation index measures. This occurred without physical residential movement; rather, voters
-crossed ethnic-political boundaries at the ballot box. The subsequent recovery of both Shas loyalty (to 96.9% in the
-March 2021–November 2022 transition, 24→25)
-and the segregation index to previous levels confirms that this was a temporary electoral realignment rather than a
-permanent demographic shift.
-
-This finding demonstrates that electoral transitions can manifest as apparent "integration" in segregation indices even
-when residential patterns remain stable. More fundamentally, it reveals a critical limitation of the methodology
-employed in Gorelik (2025): using party votes as a proxy for ethnicity assumes stable voter loyalty. The present study
-shows that this proxy's validity is temporally contingent—it works well when ethnic-political boundaries are rigid but
-breaks down during periods of voter transition. This insight will be explored further in the Discussion section.
+This reveals a critical methodological limitation: using party votes as proxies for ethnic residential patterns assumes
+stable political loyalty. The proxy works well when ethnic-political boundaries are rigid but fails during loyalty
+disruptions. This temporally contingent validity has implications for any study conflating political and demographic
+boundaries—a pattern potentially observable in other contexts where voting behavior proxies for group membership
+(religious denominations, immigrant origin groups, linguistic communities).
 
 ## Other Notable Disruptions Beyond The March 2020–March 2021 Transition
 
@@ -176,9 +158,8 @@ occur episodically, with certain cities—particularly Ashdod—serving as bellw
 ## Quantifying Permeability
 
 To quantify variation in voter stability, I computed the Mean Absolute Deviation (MAD) between modeled and observed vote
-shares across all city-level election pairs. MAD serves as a synthetic indicator of political permeability and temporal
-volatility. Lower values indicate consistent voting patterns; higher values denote flux between parties or toward
-abstention.
+shares across city-level election pairs. MAD indicates political permeability: lower values signal consistency, higher
+values signal flux between parties or toward abstention.
 
 | City | Mean MAD (pp) | Max MAD (pp) |
 |------|----------------|--------------|
@@ -189,11 +170,9 @@ abstention.
 | Modi'in Illit | 2.2 | 10.6 |
 
 Two clusters emerge: highly stable cities (Jerusalem, Beit Shemesh, Ashdod) and relatively fluid ones (Elad, Modi'in
-Illit), suggesting differing degrees of internal cohesion. These differences likely reflect demographic composition,
-institutional affiliations, and rabbinic leadership structures rather than socioeconomic variation. Figure 8 shows the
-temporal pattern of MAD values across cities and election pairs, highlighting the March 2020–March 2021 (23→24)
-disruption as a clear outlier
-across all locations.
+Illit), likely reflecting differences in demographic composition, institutional affiliations, and rabbinic leadership
+rather than socioeconomic variation. Figure 8 shows MAD patterns across cities and elections, with the 23→24 disruption
+as a clear outlier across all locations.
 
 ![MAD Table Lens](plots/mad_table_lens.png)
 
@@ -224,6 +203,7 @@ indicate genuine voter switching rather than migration or generational turnover.
 with minimal abstention flows contrasting with significant inter-party switching.
 
 These findings reveal that even highly cohesive voting blocs can experience rapid, system-wide disruptions in loyalty
-patterns—but that such disruptions may be reversible when triggering conditions resolve. The consistency across cities
-points to centralized political dynamics, while the variation in magnitude highlights how local social integration
-shapes the boundaries of permissible switching.
+patterns that fully reverse when triggering conditions resolve—a pattern of rigidity with stress fractures potentially
+observable across identity-based electorates from U.S. evangelicals to European regional parties. The consistency across
+cities points to centralized political dynamics, while the variation in magnitude highlights how local social integration
+modulates the boundaries of permissible switching within otherwise rigid structures.
