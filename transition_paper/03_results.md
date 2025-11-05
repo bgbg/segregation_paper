@@ -159,20 +159,16 @@ values signal flux between parties or toward abstention.
 
 | City | Mean MAD (pp) | Max MAD (pp) |
 |------|----------------|--------------|
-| Ashdod | 1.0 | 2.4 | | Beit Shemesh |
-0.6 | 1.5 | | Elad | 2.6 | 8.7 |
+| Ashdod | 1.0 | 2.4 |
+| Beit Shemesh | 0.6 | 1.5 |
+| Elad | 2.6 | 8.7 |
 | Bnei Brak | 1.0 | 3.7 |
 | Jerusalem | 0.6 | 1.0 |
 | Modi'in Illit | 2.2 | 10.6 |
 
 Two clusters emerge: highly stable cities (Jerusalem, Beit Shemesh, Ashdod) and relatively fluid ones (Elad, Modi'in
 Illit), likely reflecting differences in demographic composition, institutional affiliations, and rabbinic leadership
-rather than socioeconomic variation. Figure 8 shows MAD patterns across cities and elections, with the 23→24 disruption
-as a clear outlier across all locations.
-
-![MAD Table Lens](plots/mad_table_lens.png)
-
-*Figure 8: MAD rankings by election pair and city, visualizing temporal patterns of deviation*
+rather than socioeconomic variation. The 23→24 disruption stands out as a clear outlier across all locations.
 
 ## Summary of Findings
 

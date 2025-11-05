@@ -239,8 +239,8 @@ def plot_transition_time_series(
         else:
             color = COLOR_OFF_DIAGONAL
 
-    # Plot line and points
-    ax.plot(df_sel["kn_location"], df_sel["estimate"], "-o", color=color)
+    # Plot line and points with larger line width and markers
+    ax.plot(df_sel["kn_location"], df_sel["estimate"], "-o", color=color, linewidth=2, markersize=6)
 
     # Add credible interval if requested
     if show_ci:
@@ -300,9 +300,8 @@ def plot_transition_time_series(
     # Set x-axis limits to show some padding around the data
     ax.set_xlim(kn_min - 0.5, kn_max + 0.5)
 
-    # Set title
-    title = get_transition_string(from_category, to_category)
-    ax.set_title(title)
+    # Increase tick label font sizes
+    ax.tick_params(axis='both', which='major', labelsize=11)
 
     # Clean up spines (don't set x-label here, let caller control it)
     sns.despine(ax=ax)
@@ -380,51 +379,27 @@ def plot_transition_matrix_over_elections(
                 if i == 3:  # Bottom row
                     set_xlabel(ax)
 
-    # Add Knesset labels above upper row
-    election_dates = load_election_dates()
+    # Display name mapping for labels
+    display_names = {
+        "Shas": "Shas",
+        "Agudat_Israel": "UTJ",
+        "Other": "Other",
+        "Abstained": "Abstained",
+    }
 
-    # Get unique knesset numbers from the data
-    unique_kn_locations = sorted(df_all["kn_location"].unique())
-
+    # Add column labels (from categories) at top
     for j, from_cat in enumerate(CATEGORY_ORDER):
         ax = axes[0, j]  # Top row
+        display_name = display_names.get(from_cat, from_cat)
+        ax.set_title(f"From: {display_name}", fontsize=12, pad=10)
 
-        # Get the x-axis limits of this subplot
-        xlim = ax.get_xlim()
+    # Add row labels (to categories) on left
+    for i, to_cat in enumerate(CATEGORY_ORDER):
+        ax = axes[i, 0]  # Left column
+        display_name = display_names.get(to_cat, to_cat)
+        ax.set_ylabel(f"To:\n{display_name}", fontsize=12, rotation=0, ha="right", va="center", labelpad=20)
 
-        # Add labels for each knesset number in the data range
-        for kn_location in unique_kn_locations:
-            # Convert kn_location back to knesset numbers
-            kn_start = int(np.floor(kn_location))
-            kn_end = int(np.ceil(kn_location))
-
-            # Get dates for both knesset numbers
-            date_start = election_dates.get(kn_start, f"Kn{kn_start}")
-            date_end = election_dates.get(kn_end, f"Kn{kn_end}")
-
-            # Position label at the kn_location
-            x_pos = kn_location
-
-            # Position label above the subplot
-            y_pos = 1.05  # Above the subplot
-
-            # Add the label
-            ax.text(
-                x_pos,
-                y_pos,
-                f"#{kn_start}-{kn_end}\n{date_start}",
-                ha="center",
-                va="bottom",
-                fontsize=10,
-                transform=ax.get_xaxis_transform(),
-                color="black",
-            )
-
-    # Set super title if provided
-    if suptitle:
-        fig.suptitle(suptitle)
-
-    # Adjust layout
+    # Adjust layout with extra padding
     plt.tight_layout()
 
     # Save if requested
@@ -931,17 +906,6 @@ def plot_all_cities_aggregate_deviation_subplots(
     # Add Hebrew x-label only to bottom subplot
     set_xlabel(axes[-1])
 
-    # Set overall title
-    metric_names = {
-        "mean_abs_deviation": "Mean Absolute Deviation from Country",
-        "rms_deviation": "RMS Deviation from Country",
-        "max_abs_deviation": "Maximum Deviation from Country",
-        "std_deviation": "Deviation Variability",
-        "sum_abs_deviation": "Total Deviation from Country",
-    }
-    metric_display = metric_names.get(metric, metric.replace("_", " ").title())
-    fig.suptitle(f"City-by-City: {metric_display}", fontsize=14)
-
     # Adjust layout
     plt.tight_layout()
 
@@ -1171,6 +1135,11 @@ def plot_shas_shas_city_comparison(
         # Use different color for each city
         color = f"C{i}"
 
+        # Match Figure 1 styling: larger sizes for Ashdod
+        lw = 5 if city_name == "Ashdod" else 2
+        ms = 14 if city_name == "Ashdod" else 8
+        label_fontsize = 20 if city_name == "Ashdod" else 16
+
         # Plot line with markers
         ax.plot(
             df_city["kn_location"],
@@ -1178,8 +1147,8 @@ def plot_shas_shas_city_comparison(
             "-o",
             color=color,
             label=city_name,
-            markersize=5,
-            linewidth=1.5,
+            markersize=ms,
+            linewidth=lw,
         )
 
         # Store label info for positioning later
@@ -1192,6 +1161,7 @@ def plot_shas_shas_city_comparison(
                     "x_max": df_city["kn_location"].max(),
                     "color": color,
                     "index": i,
+                    "fontsize": label_fontsize,
                 }
             )
 
@@ -1222,7 +1192,7 @@ def plot_shas_shas_city_comparison(
             color=label_info["color"],
             ha=ha,
             va="center",
-            fontsize=12,
+            fontsize=label_info["fontsize"],
         )
 
     # Add Knesset labels at top
@@ -1252,7 +1222,7 @@ def plot_shas_shas_city_comparison(
                 f"#{kn_start}-{kn_end}\n{date_start}",
                 ha="center",
                 va="bottom",
-                fontsize=12,
+                fontsize=14,
                 color="black",
             )
 
@@ -1268,8 +1238,12 @@ def plot_shas_shas_city_comparison(
         rotation=0,
         y=1,
         va="top",
+        fontsize=16,
     )
     ax.set_xlabel("Knesset Number", ha="right", va="top", x=1)
+
+    # Increase tick label font sizes to match Figure 1
+    ax.tick_params(axis='both', which='major', labelsize=16)
 
     # Set axis limits
     if city_data:
@@ -1289,9 +1263,6 @@ def plot_shas_shas_city_comparison(
         ax.yaxis.set_minor_locator(
             ticker.MultipleLocator(0.05)
         )  # Every 0.05 as minor ticks
-
-    # Set title
-    ax.set_title("Shas→Shas Transition Probabilities by City", fontsize=14, pad=40)
 
     # Adjust layout
     plt.tight_layout()

@@ -342,7 +342,6 @@ def _create_mad_table_lens(
                 va="center",
                 transform=ax.transAxes,
             )
-            ax.set_title(pair, fontsize=10)
             continue
 
         # Create a complete dataset with all cities (fill missing with 0 or NaN)
@@ -378,9 +377,6 @@ def _create_mad_table_lens(
         ax.set_xlim(0, 11)
         ax.set_xticks([0, max_mad])
         ax.set_xticklabels([0, f"{max_mad:.1f}"], fontsize=9)
-
-        # Set title (keep original Knesset pair notation)
-        ax.set_title(pair, fontsize=10, pad=5)
 
         # Clean up appearance
         ax.spines["top"].set_visible(False)
