@@ -185,7 +185,8 @@ boundaries more permeable when system-wide shocks occur—not because integratio
 
 ### Ecological Bayesian Modeling for Electoral Transitions
 
-This study demonstrates the utility of hierarchical Bayesian ecological inference for analyzing voter transitions in
+This natural experiment—the 2020-21 electoral crisis—provided a rare opportunity to observe voter transitions over a short period
+and demonstrates the utility of hierarchical Bayesian ecological inference for analyzing such transitions in
 contexts where individual-level data are unavailable due to ballot secrecy. The framework successfully captures both
 national baseline patterns and city-specific deviations while accounting for the inherent uncertainty in ecological
 inference. The temporal extensionusing posterior distributions from one election pair to inform priors for the
