@@ -13,6 +13,10 @@ Ben Porat, Guy, and Dani Filc. 2022. "Religious Populism in Israel: The Case of 
 Brown, Philip J., and C. Desmond Payne. 1986. "Aggregate Data, Ecological Regression and Voting Transitions." *Journal
 of the American Statistical Association* 81 (394): 453–460. https://doi.org/10.1080/01621459.1986.10478293.
 
+Bullock, Charles S., et al. 2019. "The Rise of the Christian Right in the South and Its Impact on National Politics."
+In *The South and the Transformation of U.S. Politics*. New York: Oxford University Press.
+https://doi.org/10.1093/oso/9780190065911.003.0005.
+
 Campbell, David E., John C. Green, and Geoffrey C. Layman. 2011. "The Party Faithful: Partisan Images, Candidate
 Religion, and the Electoral Impact of Party Identification." *American Journal of Political Science* 55 (1): 42–58.
 https://doi.org/10.1111/j.1540-5907.2010.00474.x.
@@ -83,6 +87,10 @@ Inference: The R×C Case." *Statistica Neerlandica* 55 (2): 134–156. https://d
 Simas, Elizabeth N., and Lucas Lothamer. 2025. "Not Just Who, but How: Further Probing the Connection between Primary
 Election Dissatisfaction and General Election Voting Behavior." *Electoral Studies* 88: 102969.
 https://doi.org/10.1016/j.electstud.2025.102969.
+
+Smith, Amy Erica. 2019. "Church Influence on Voting Behavior." In *Religion and Brazilian Democracy: Mobilizing the
+People of God*, 113–129. Cambridge Studies in Social Theory, Religion, and Politics. Cambridge: Cambridge University
+Press. https://doi.org/10.1017/9781108600521.007.
 
 Wakefield, Jon. 2004. "Ecological Inference for 2×2 Tables (with Discussion)." *Journal of the Royal Statistical Society:
 Series A* 167(3): 385–445. https://doi.org/10.1111/j.1467-985x.2004.02046.x.
