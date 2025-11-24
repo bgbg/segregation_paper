@@ -23,6 +23,7 @@ from .io import (
 )
 from .preprocess import compute_categories, prepare_hierarchical_data
 from .pymc_model import build_hierarchical_model, sample_model
+from . import pymc_model_independent
 
 logger = logging.getLogger(__name__)
 
@@ -260,4 +261,215 @@ def fit_transition_pair(
     save_fit_summary(fit_summary, logs_dir / f"fit_summary_{pair_tag}.json")
 
     logger.info(f"Completed fitting for {pair_tag}")
+    return fit_summary
+
+
+def fit_transition_pair_independent(
+    pair_tag: str,
+    election_t_path: Path,
+    election_t1_path: Path,
+    output_dir: Path,
+    target_cities: List[str],
+    columns_mapping: Dict[str, str],
+    model_params: Optional[Dict] = None,
+    sampling_params: Optional[Dict] = None,
+    config: Optional[Dict] = None,
+    force: bool = False,
+    priors: Optional[Dict] = None,
+    innovation: Optional[Dict[str, float]] = None,
+) -> Dict:
+    """Fit independent city models using country posterior as prior.
+
+    This approach:
+    1. Fits countrywide transition matrix
+    2. Uses country posterior as prior for each city
+    3. Fits each city independently (no hierarchical pooling)
+
+    Args:
+        pair_tag: Transition identifier (e.g., 'kn20_21')
+        election_t_path: Path to election t data
+        election_t1_path: Path to election t+1 data
+        output_dir: Directory for outputs
+        target_cities: Cities to model separately
+        columns_mapping: Column mappings for parties
+        model_params: Model hyperparameters
+        sampling_params: MCMC sampling parameters
+        config: Full configuration dictionary
+        force: Whether to overwrite existing outputs
+        priors: Optional temporal priors from previous election
+        innovation: Optional innovation variances for temporal priors
+
+    Returns:
+        Dictionary with fit summary information
+    """
+    # Set default parameters
+    if model_params is None:
+        model_params = {
+            "diag_bias_mean": 2.0,
+            "diag_bias_sigma": 0.3,
+            "sigma_country": 0.5,
+            "sigma_city": 0.8,  # City deviation from country prior
+        }
+
+    if sampling_params is None:
+        sampling_params = {
+            "draws": 3000,
+            "tune": 3000,
+            "chains": 4,
+            "target_accept": 0.95,
+            "max_treedepth": 12,
+            "init": "adapt_diag",
+        }
+
+    # Create output directory
+    pair_output_dir = output_dir / pair_tag
+    pair_output_dir.mkdir(exist_ok=True)
+
+    # Check if outputs already exist
+    country_trace_path = pair_output_dir / "country_trace.nc"
+    if not force and country_trace_path.exists():
+        logger.info(
+            f"Outputs for {pair_tag} already exist, skipping (use --force to overwrite)"
+        )
+        return {"status": "skipped", "reason": "outputs_exist"}
+
+    logger.info(f"Fitting independent city models for {pair_tag}")
+
+    # Load and preprocess data
+    logger.info("Loading election data...")
+    df_t, df_t1 = load_election_data(election_t_path, election_t1_path, columns_mapping)
+
+    # Prepare hierarchical data
+    logger.info("Preparing hierarchical data tensors...")
+    data = prepare_hierarchical_data(df_t, df_t1, target_cities)
+
+    # Fit independent models
+    logger.info("Fitting independent models (country + cities)...")
+    country_trace, city_traces = pymc_model_independent.fit_independent_models(
+        data,
+        diag_bias_mean=model_params.get("diag_bias_mean", 2.0),
+        diag_bias_sigma=model_params.get("diag_bias_sigma", 0.3),
+        sigma_country=model_params.get("sigma_country", 0.5),
+        sigma_city=model_params.get("sigma_city", 0.8),
+        draws=sampling_params.get("draws", 3000),
+        tune=sampling_params.get("tune", 3000),
+        chains=sampling_params.get("chains", 4),
+        target_accept=sampling_params.get("target_accept", 0.95),
+        max_treedepth=sampling_params.get("max_treedepth", 12),
+        init=sampling_params.get("init", "adapt_diag"),
+        random_seed=sampling_params.get("random_seed"),
+        priors=priors,
+        innovation=innovation,
+    )
+
+    # Run diagnostics on country model
+    logger.info("Computing diagnostics for country model...")
+    country_diagnostics = compute_diagnostics(country_trace, config)
+
+    # Run diagnostics on city models
+    city_diagnostics = {}
+    for city, city_trace in city_traces.items():
+        logger.info(f"Computing diagnostics for {city}...")
+        city_diagnostics[city] = compute_diagnostics(city_trace, config)
+
+    # Save outputs
+    logger.info("Saving outputs...")
+
+    # Save country trace
+    save_inference_data(country_trace, pair_output_dir / "country_trace.nc", scope="country")
+
+    # Save city traces
+    for city in target_cities:
+        if city in city_traces:
+            city_slug = city.lower().replace(" ", "_")
+            city_trace_path = pair_output_dir / f"city_{city_slug}_trace.nc"
+            save_inference_data(city_traces[city], city_trace_path, scope=city)
+
+    # Save point estimates (transition probabilities)
+    save_point_estimates(
+        country_trace, pair_output_dir / "country_map.csv", scope="country", pair_tag=pair_tag
+    )
+
+    # Save country vote movements
+    country_vote_totals = data["country"]["vote_totals"]
+    save_vote_movements(
+        country_trace,
+        pair_output_dir / "country_movements.csv",
+        country_vote_totals,
+        scope="country",
+        pair_tag=pair_tag,
+    )
+
+    # Save city-specific results
+    for city in target_cities:
+        if city in city_traces and city in data:
+            city_slug = city.lower().replace(" ", "_")
+
+            # Save city transition probabilities
+            city_map_path = pair_output_dir / f"city_{city_slug}_map.csv"
+            # For independent models, each city has its own trace
+            # We need to extract the matrix from the city trace directly
+            city_clean = city.replace(" ", "_").replace("'", "")
+
+            # Extract transition matrix from city trace
+            M_city_cols = []
+            for j in range(4):
+                col_samples = city_traces[city].posterior[f"M_{city_clean}_col_{j}"]
+                col_mean = col_samples.mean(dim=["chain", "draw"]).values
+                M_city_cols.append(col_mean)
+
+            # Save as CSV
+            import numpy as np
+            M_city = np.stack(M_city_cols, axis=1)
+            df_map = pd.DataFrame(
+                M_city,
+                index=["shas", "agudat_israel", "other", "abstained"],
+                columns=["shas", "agudat_israel", "other", "abstained"]
+            )
+            df_map["pair"] = pair_tag
+            df_map.to_csv(city_map_path)
+
+            # Save city vote movements
+            city_movements_path = pair_output_dir / f"city_{city_slug}_movements.csv"
+            city_vote_totals = data[city]["vote_totals"]
+
+            # Compute movements from city transition matrix
+            movements = {}
+            for from_cat in ["shas", "agudat_israel", "other", "abstained"]:
+                for to_cat in ["shas", "agudat_israel", "other", "abstained"]:
+                    from_idx = ["shas", "agudat_israel", "other", "abstained"].index(from_cat)
+                    to_idx = ["shas", "agudat_israel", "other", "abstained"].index(to_cat)
+                    prob = M_city[to_idx, from_idx]
+                    movements[f"{from_cat}_to_{to_cat}"] = int(
+                        prob * city_vote_totals.get(from_cat, 0)
+                    )
+
+            df_movements = pd.DataFrame([movements])
+            df_movements["pair"] = pair_tag
+            df_movements.to_csv(city_movements_path, index=False)
+
+    # Save priors for next transition (from country model)
+    priors_output_dir = pair_output_dir
+    priors_output_dir.mkdir(exist_ok=True)
+    priors_payload = build_priors_from_trace(country_trace, {"country": data["country"]})
+    save_priors(priors_payload, priors_output_dir / "priors.json")
+
+    # Save fit summary
+    fit_summary = {
+        "pair_tag": pair_tag,
+        "model_type": "independent",
+        "model_params": model_params,
+        "sampling_params": sampling_params,
+        "country_diagnostics": country_diagnostics,
+        "city_diagnostics": city_diagnostics,
+        "n_stations_country": len(data["country"]["x1"]),
+        "cities_modeled": list(city_traces.keys()),
+        "timestamp": pd.Timestamp.now().isoformat(),
+    }
+
+    logs_dir = output_dir.parent / "logs"
+    logs_dir.mkdir(exist_ok=True)
+    save_fit_summary(fit_summary, logs_dir / f"fit_summary_{pair_tag}.json")
+
+    logger.info(f"Completed independent model fitting for {pair_tag}")
     return fit_summary
