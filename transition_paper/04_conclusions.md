@@ -148,7 +148,7 @@ fundamentally dissolving group boundaries.
 The sharp drops in intra-party loyalty during the 23→24 transition might initially suggest emerging voter independence
 and weakening institutional control. However, the **sudden and synchronized nature** of both disruption and recovery
 across geographically dispersed cities points to the contrary: these patterns demonstrate **extreme institutional
-discipline** rather than independent thinking. If voters were exercising individual judgment, we would expect gradual,
+discipline** rather than independent thinking. If voters were exercising individual judgment, I would expect gradual,
 staggered changes across localities with uncoordinated recovery. Instead, sharp loyalty drops occurred simultaneously
 in Jerusalem, Bnei Brak, Ashdod, Beit Shemesh, and Modi'in Illit, followed by synchronized recovery.
 
@@ -159,6 +159,8 @@ driving the pattern, reveals institutional **capacity to orchestrate rapid, reve
 circumstances demand strategic flexibility. The magnitude of coordinated switching paradoxically demonstrates stronger,
 not weaker, communal discipline: only populations with exceptional cohesion can execute such system-wide electoral
 pivots and reverse them.
+
+**Robustness to Model Specification.** One concern is whether synchronization reflects hierarchical model constraints rather than genuine behavior. To test this, I fitted alternatives with increased flexibility: a relaxed hierarchical model (variability increased 166-267%) and a fully independent model (no pooling, 248% higher variability). Despite cities diverging from national patterns, synchronized drops and recoveries persisted. Correlation remained without structural similarity constraints, confirming synchronization as genuine rather than artifactual, with implementation details available with the code.
 
 This pattern contrasts with gradual realignment models common in studies of ethnic and religious voting in less cohesive
 populations. Recent comparative work supports this distinction. Goodwin, Kaufmann, and Larsen (2022) describe how
@@ -174,7 +176,7 @@ occurs through punctuated disruption and recovery rather than slow drift.
 
 The geographic variation in disruption magnitude might suggest that residential proximity facilitates political
 permeability. However, universal recovery to baseline loyalty argues against a simple integration-drives-switching model.
-If residential proximity weakened political boundaries, we would expect gradual convergence, not temporary spikes
+If residential proximity weakened political boundaries, I would expect gradual convergence, not temporary spikes
 followed by restoration. Instead, demographic integration creates latent potential for cross-party switching that
 activates during crises. Mixed cities like Ashdod serve as bellwethers precisely because their populations make
 boundaries more permeable when system-wide shocks occur—not because integration itself drives ongoing fluidity.

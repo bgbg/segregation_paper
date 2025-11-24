@@ -12,9 +12,9 @@ to qualifying boxes within each city.
 
 
 Voters are assigned to polling stations by residential address. Most ballot boxes contain 536–650 registered voters
-(interquartile range from recent elections). We identify Haredi ballot boxes using a 75% threshold: boxes where combined
+(interquartile range from recent elections). I identify Haredi ballot boxes using a 75% threshold: boxes where combined
 votes for Shas and UTJ exceed three-quarters of all votes cast, maintaining consistency with Gorelik (2025). To ensure
-reliable statistical estimation, we include only cities with at least five qualifying boxes.
+reliable statistical estimation, I include only cities with at least five qualifying boxes.
 
 Data were obtained directly from the Central Elections Committee's official online repository, supplemented by
 previously digitized archives for earlier elections (via Dr. Keren-Kratz, 2024). The resulting dataset includes
@@ -49,7 +49,7 @@ from broader societal trends.
 
 The estimation framework follows a hierarchical Bayesian ecological inference model, designed to infer unobserved voter
 transition matrices between consecutive elections from aggregate data. This problem is inherently challenging because
-individual ballots are secret and only aggregate counts are available. Thus, we adopt a classic ecological inference
+individual ballots are secret and only aggregate counts are available. Thus, I adopt a classic ecological inference
 scenario (Robinson 1950; King 1997). The hierarchical structure pools information across localities, improving precision
 in small samples while maintaining flexibility across elections. Full model specifications and diagnostics are provided
 in Appendix A.
@@ -57,7 +57,7 @@ in Appendix A.
 For each election pair $(t, t+1)$, the model infers the probability that a voter from category i at election t votes for
 category j at election t+1. Individual transitions are unobserved, but aggregate vote counts provide marginal
 constraints. Building on Goodman's (1953) ecological regression framework and subsequent Bayesian extensions (King 1997;
-Rosen et al. 2001), we model voter transitions probabilistically using a hierarchical Bayesian approach that generalizes
+Rosen et al. 2001), I model voter transitions probabilistically using a hierarchical Bayesian approach that generalizes
 the linear model to address several key challenges: unobserved individual transitions, spatial heterogeneity in voting
 patterns, high dimensionality of transition matrices, and overdispersion in vote counts (Wakefield 2004; Forcina and
 Pellegrino 2019).
@@ -73,7 +73,7 @@ capturing how cities collectively deviate from national trends, and (3) City-spe
 variable scaling the deviation pattern for each city.
 
 This hierarchical structure avoids the "uniform swing" assumption of traditional ecological inference while managing
-dimensionality. We impose a rank-1 structure on city-level deviations: each city's deviation is captured by a single
+dimensionality. I impose a rank-1 structure on city-level deviations: each city's deviation is captured by a single
 scalar $\delta_c$ that scales a shared deviation pattern $D$, reflecting that electoral shifts are often driven by one
 dominant cleavage rather than completely unique city-by-city patterns (Brown and Payne 1986; Puig and Ginebra 2015).
 
@@ -89,7 +89,7 @@ and Hill 2007).
 ### Priors and Likelihood
 
 Transition logits are modeled using logistic-normal priors, avoiding the independence assumptions of Dirichlet
-distributions (Wakefield 2004; Glynn and Wakefield 2010). We add a diagonal bias term $B$ to same-party transitions to
+distributions (Wakefield 2004; Glynn and Wakefield 2010). I add a diagonal bias term $B$ to same-party transitions to
 reflect voter inertia—the well-documented tendency to stick with previous choices (Campbell, Green, and Layman 2011;
 Clarke et al. 2004). The unusually short intervals between Israeli elections during this period (5.5 to 19 months)
 further strengthen this inertia prior. Observed vote counts were modeled with a Dirichlet-multinomial likelihood with
@@ -118,7 +118,7 @@ blocs.
 
 **Note on notation:** Throughout this paper, election transitions are denoted using the arrow notation (→) to indicate
 the direction from one election to the next. For example, "23→24" refers to the transition from the March 2020 election
-(Knesset 23) to the March 2021 election (Knesset 24). This notation emphasizes that we are examining voter flows
+(Knesset 23) to the March 2021 election (Knesset 24). This notation emphasizes that I am examining voter flows
 between consecutive elections rather than the elections themselves in isolation.
 
 The following section presents the estimated transition patterns at national and city levels, revealing both the
