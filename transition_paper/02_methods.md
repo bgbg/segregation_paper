@@ -79,7 +79,7 @@ dominant cleavage rather than completely unique city-by-city patterns (Brown and
 
 City-level transition matrices are constructed as:
 
-``` M^{(c)} = \text{softmax}(Z^{country} + \delta_c D) ```
+$$M^{(c)} = \text{softmax}(Z^{country} + \delta_c D)$$
 
 where $Z^{country}$ are national logits transformed via the softmax function. This yields a compact yet flexible
 structure that captures both overall national shifts and localized deviations, while enabling partial pooling: cities
