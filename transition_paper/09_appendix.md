@@ -10,7 +10,7 @@ Variation section.
 
 ![ashdod transitions](plots/city_ashdod_transition_matrix_over_elections.png)
 
-*Ashdod exhibited the most extreme disruption during the March 2020March 2021 transition (2324), with Shas loyalty
+*Ashdod exhibited the most extreme disruption during the March 2020–March 2021 transition (2324), with Shas loyalty
 dropping to 67.1% and 19.3% switching to UTJ.*
 
 ### Beit Shemesh

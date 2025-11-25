@@ -124,13 +124,14 @@ The temporal pattern observedhigh stability, temporary collapse, rapid recoveryo
 ethnic-political boundaries. The March 2020–March 2021 (23→24) disruption did not trigger a permanent realignment,
 suggesting that:
 
-1. **Institutional mechanisms for restoring boundaries remain strong.** Rabbinic authority structures, communal
-institutions, and social networks were able to re-establish traditional voting patterns once the triggering crisis
-subsided.
+1. **Institutional mechanisms for maintaining boundaries remain strong.** Rabbinic authority structures, communal
+institutions, and social networks were able to halt cross-ethnic switching once the triggering crisis
+subsided, restoring high loyalty rates even though the voters who had already switched remained with their new parties.
 
-2. **Temporary cross-party voting does not necessarily erode ethnic identity.** Voters who switched to UTJ or Shas
-during the disruption period returned to their traditional parties, indicating that political behavior can temporarily
-decouple from ethnic identity without permanently weakening either.
+2. **Temporary cross-party voting does not necessarily erode ethnic identity.** While voters who switched during
+the disruption remained with their new parties, the cessation of further switching indicates that boundaries
+restabilized—political behavior temporarily decoupled from ethnic identity without permanently dissolving the
+boundary-maintenance mechanisms.
 
 3. **The boundaries are resilient but not impermeable.** While rapid recovery demonstrates robustness, the magnitude of
 the disruption shows that even highly disciplined communities can experience volatility under sufficient stress.

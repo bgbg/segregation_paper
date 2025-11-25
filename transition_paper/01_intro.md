@@ -53,7 +53,7 @@ highly disciplined voting communities.
 
 ![Dissimilarity Index Dynamics](plots/dissimilarity_dynamics_kn.png)
 
-*Figure 1: Ashdod exhibits a distinctive sharp drop in dissimilarity index between Knesset 2324 (March 2020March 2021),
+*Figure 1: Ashdod exhibits a distinctive sharp drop in dissimilarity index between Knesset 2324 (March 2020–March 2021),
 followed by rapid recovery, while other major Haredi cities show stable segregation patterns. This anomaly coincides
 with the voter transition disruption analyzed in this study. The index measures spatial segregation between Ashkenazi
 and Sephardi Haredi populations within each city, with higher values indicating greater residential separation.

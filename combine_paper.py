@@ -53,8 +53,8 @@ def load_markdown_file(file_path: Path) -> str:
         raise RuntimeError(f"Error reading {file_path}: {e}")
 
 
-def adjust_image_paths(content: str, base_dir: Path) -> str:
-    """Adjust image paths to be relative to the markdown file location."""
+def adjust_image_paths(content: str, base_dir: Path, output_dir: Path) -> str:
+    """Adjust image paths to be relative to the output markdown file location."""
     # Pattern to match markdown image syntax: ![alt](path)
     image_pattern = r"!\[([^\]]*)\]\(([^)]+)\)"
 
@@ -62,21 +62,30 @@ def adjust_image_paths(content: str, base_dir: Path) -> str:
         alt_text = match.group(1)
         image_path = match.group(2)
 
-        # If it's already a relative path from plots/, keep it as is
+        # If it's a relative path from plots/, resolve it relative to base_dir
+        # and then make it relative to output_dir
         if image_path.startswith("plots/"):
-            return f"![{alt_text}]({image_path})"
-
-        # If it's an absolute path, convert to relative from the markdown file location
-        if os.path.isabs(image_path):
+            # The plots are in transition_paper/plots/, resolve to output location
+            full_plot_path = base_dir / image_path
             try:
-                # Make relative to the base_dir (where the markdown file will be)
-                rel_path = os.path.relpath(image_path, base_dir)
+                # Make relative to the output directory where pandoc will run
+                rel_path = os.path.relpath(full_plot_path, output_dir)
                 return f"![{alt_text}]({rel_path})"
             except ValueError:
                 # If we can't make it relative, keep original
                 return match.group(0)
 
-        # For other relative paths, ensure they're relative to the markdown file
+        # If it's an absolute path, convert to relative from the output location
+        if os.path.isabs(image_path):
+            try:
+                # Make relative to the output_dir (where pandoc will run)
+                rel_path = os.path.relpath(image_path, output_dir)
+                return f"![{alt_text}]({rel_path})"
+            except ValueError:
+                # If we can't make it relative, keep original
+                return match.group(0)
+
+        # For other relative paths, ensure they're relative to the output location
         return f"![{alt_text}]({image_path})"
 
     return re.sub(image_pattern, replace_image_path, content)
@@ -169,8 +178,9 @@ def combine_markdown_files(
             title_added = True
             toc_added = True
 
-        # Adjust image paths
-        content = adjust_image_paths(content, base_dir)
+        # Adjust image paths to be relative to output directory
+        output_dir = output_path.parent
+        content = adjust_image_paths(content, base_dir, output_dir)
 
         # Format figure captions for proper Word formatting
         content = format_figure_captions(content)
