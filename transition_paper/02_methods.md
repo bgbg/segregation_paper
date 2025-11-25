@@ -64,7 +64,7 @@ Pellegrino 2019).
 
 **Important conceptual distinction:** The transition probabilities represent the *probability of voting behavior* at each
 election, not the *movement of individual voters* between parties. When a party's retention rate increases, this
-indicates that leakage to other parties stopped—a return to a new steady state—rather than the literal return of specific
+indicates that leakage to other parties stopped, a return to a new steady state, rather than the literal return of specific
 voters who previously defected.
 
 Each election pair is modeled using three levels of hierarchy: (1) National transition matrix ($M^{country}$) represents
@@ -90,7 +90,7 @@ and Hill 2007).
 
 Transition logits are modeled using logistic-normal priors, avoiding the independence assumptions of Dirichlet
 distributions (Wakefield 2004; Glynn and Wakefield 2010). I add a diagonal bias term $B$ to same-party transitions to
-reflect voter inertia—the well-documented tendency to stick with previous choices (Campbell, Green, and Layman 2011;
+reflect voter inertia, the well-documented tendency to stick with previous choices (Campbell, Green, and Layman 2011;
 Clarke et al. 2004). The unusually short intervals between Israeli elections during this period (5.5 to 19 months)
 further strengthen this inertia prior. Observed vote counts were modeled with a Dirichlet-multinomial likelihood with
 overdispersion parameter $\phi = 100$, accounting for correlated behavior due to social networks and demographic

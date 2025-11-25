@@ -12,7 +12,7 @@ residential segregation through electoral proxies.
 
 The dominant pattern across the study period is one of exceptionally high intra-party loyalty. Shas and UTJ voters
 maintained loyalty rates exceeding 90% and 95% respectively in most elections, with cross-party transitions rarely
-exceeding 2-3% in either direction.
+exceeding 2 - 3% in either direction.
 
 However, this rigid structure experienced a dramatic temporary collapse during the March 2020–March 2021 transition
 (Knesset 23→24). Shas-to-Shas loyalty plummeted to 72.8% while Shas-to-UTJ switching surged to 12.3%. UTJ voters
@@ -21,9 +21,9 @@ movement observed across all elections studied.
 
 
 Critically, this disruption proved temporary. By the subsequent March 2021–November 2022 transition (Knesset 24→25),
-loyalty rates recovered substantially (Shas: 96.9%, UTJ: 95.5%). The recovery indicates that leakage stopped—voters who
-supported these parties remained loyal—not that 23→24 defectors returned. This temporary collapse resembles volatility
-episodes in other democracies where cohesive electorates experience brief but consequential swings—for example, among
+loyalty rates recovered substantially (Shas: 96.9%, UTJ: 95.5%). The recovery indicates that leakage stopped, voters who
+supported these parties remained loyal, not that 23→24 defectors returned. This temporary collapse resembles volatility
+episodes in other democracies where cohesive electorates experience brief but consequential swings, for example, among
 U.S. evangelicals or regional party loyalists in Western Europe. Despite Shas's increased vote share from 7.17% to
 8.25%, this growth originated outside Haredi population hubs, suggesting Shas gained peripheral traditional Sephardic
 supporters while losing core ultra-Orthodox voters to UTJ. The underlying ethnic-political boundaries remained intact
@@ -39,8 +39,8 @@ similarly sharp but somewhat more moderate disruptions. Jerusalem and Modi'in Il
 though even these strongholds experienced measurable volatility.
 
 This geographic variation reflects differences in local contexts, though the specific mechanisms require further
-investigation. However, the consistency of the temporal pattern—sharp disruption followed by recovery across all
-cities—points to a centralized or system-wide shock rather than city-specific factors.
+investigation. However, the consistency of the temporal pattern, sharp disruption followed by recovery across all
+cities, points to a centralized or system-wide shock rather than city-specific factors.
 
 ### Temporal Dynamics and Demographic Interpretations
 
@@ -69,19 +69,19 @@ maintain internal differentiation within a religiously unified population.
 The relationship between spatial and political boundaries is more complex than initially hypothesized. Rather than
 operating independently, the two systems appear to reinforce each other under normal conditions: high residential
 segregation co-occurs with high political loyalty, creating layered ethnic segmentation. Both spatial and political
-boundaries responded to stress during the 2020-2021 period, though with different dynamics and recovery patterns.
+boundaries responded to stress during the 2020 - 2021 period, though with different dynamics and recovery patterns.
 
 ### Methodological Revelation: The Confounding of Political and Residential Measures
 
 The dramatic Shas-to-UTJ switching in Ashdod (19.3%) explains the anomalous drop in Ashdod's residential segregation
 index observed in my previous study (Gorelik 2025). When voting patterns changed without residential movement, the
-segregation index—which used party votes as ethnic proxies—falsely registered political switching as residential
+segregation index, which used party votes as ethnic proxies, falsely registered political switching as residential
 integration.
 
 This exposes a fundamental methodological limitation: using voting patterns to proxy residential segregation assumes stable
 political loyalty. The dissimilarity index confounded ethnic residential clustering with political party loyalty. Any
 future voting disruptions will similarly manifest as apparent "integration" in segregation indices, even when residential
-patterns remain unchanged—a critical consideration for studies conflating political and demographic boundaries.
+patterns remain unchanged, a critical consideration for studies conflating political and demographic boundaries.
 
 ### Why Only Ashdod Showed Segregation Index Changes
 
@@ -91,11 +91,11 @@ confounding visible. This fortunate coincidence allowed identification of a meas
 remained hidden, underscoring that confounding visibility depends on both transition magnitude and spatial structure.
 
 
-## What Caused the 23-24 Disruption?
+## What Caused the 23 - 24 Disruption?
 
 The timing coincided with extraordinary political and social stress: unprecedented political instability (three elections
 in 12 months), the COVID-19 pandemic, intense coalition negotiations, and potential Haredi leadership tensions (Gidron,
-Sheffer, and Mor 2022). However, this study cannot definitively identify which factor—or combination—triggered the
+Sheffer, and Mor 2022). However, this study cannot definitively identify which factor, or combination, triggered the
 disruptions. Understanding whether the cause was top-down rabbinic directives, bottom-up dissatisfaction, strategic
 coalition-building, or generational shifts would require qualitative research including community leader interviews,
 rabbinic pronouncement analysis, and voter motivation surveys.
@@ -130,7 +130,7 @@ subsided, restoring high loyalty rates even though the voters who had already sw
 
 2. **Temporary cross-party voting does not necessarily erode ethnic identity.** While voters who switched during
 the disruption remained with their new parties, the cessation of further switching indicates that boundaries
-restabilized—political behavior temporarily decoupled from ethnic identity without permanently dissolving the
+restabilized, political behavior temporarily decoupled from ethnic identity without permanently dissolving the
 boundary-maintenance mechanisms.
 
 3. **The boundaries are resilient but not impermeable.** While rapid recovery demonstrates robustness, the magnitude of
@@ -153,15 +153,15 @@ discipline** rather than independent thinking. If voters were exercising individ
 staggered changes across localities with uncoordinated recovery. Instead, sharp loyalty drops occurred simultaneously
 in Jerusalem, Bnei Brak, Ashdod, Beit Shemesh, and Modi'in Illit, followed by synchronized recovery.
 
-This pattern resembles other identity-based voting blocs with strong institutional structures—from U.S. evangelical
-communities (Bullock et al. 2019) to Catholic voters in Latin America (Smith 2019)—where apparent volatility often
+This pattern resembles other identity-based voting blocs with strong institutional structures, from U.S. evangelical
+communities (Bullock et al. 2019) to Catholic voters in Latin America (Smith 2019), where apparent volatility often
 reflects coordinated elite guidance rather than grassroots defection. The synchronization across geographically distant cities, with no residential mobility
 driving the pattern, reveals institutional **capacity to orchestrate rapid, reversible electoral shifts** when
 circumstances demand strategic flexibility. The magnitude of coordinated switching paradoxically demonstrates stronger,
 not weaker, communal discipline: only populations with exceptional cohesion can execute such system-wide electoral
 pivots and reverse them.
 
-**Robustness to Model Specification.** One concern is whether synchronization reflects hierarchical model constraints rather than genuine behavior. To test this, I fitted alternatives with increased flexibility: a relaxed hierarchical model (variability increased 166-267%) and a fully independent model (no pooling, 248% higher variability). Despite cities diverging from national patterns, synchronized drops and recoveries persisted. Correlation remained without structural similarity constraints, confirming synchronization as genuine rather than artifactual (see Appendix C for detailed comparison).
+**Robustness to Model Specification.** One concern is whether synchronization reflects hierarchical model constraints rather than genuine behavior. To test this, I fitted alternatives with increased flexibility: a relaxed hierarchical model (variability increased 166 - 267%) and a fully independent model (no pooling, 248% higher variability). Despite cities diverging from national patterns, synchronized drops and recoveries persisted. Correlation remained without structural similarity constraints, confirming synchronization as genuine rather than artifactual (see Appendix C for detailed comparison).
 
 This pattern contrasts with gradual realignment models common in studies of ethnic and religious voting in less cohesive
 populations. Recent comparative work supports this distinction. Goodwin, Kaufmann, and Larsen (2022) describe how
@@ -180,7 +180,7 @@ permeability. However, universal recovery to baseline loyalty argues against a s
 If residential proximity weakened political boundaries, I would expect gradual convergence, not temporary spikes
 followed by restoration. Instead, demographic integration creates latent potential for cross-party switching that
 activates during crises. Mixed cities like Ashdod serve as bellwethers precisely because their populations make
-boundaries more permeable when system-wide shocks occur—not because integration itself drives ongoing fluidity.
+boundaries more permeable when system-wide shocks occur, not because integration itself drives ongoing fluidity.
 
 
 
@@ -188,7 +188,7 @@ boundaries more permeable when system-wide shocks occur—not because integratio
 
 ### Ecological Bayesian Modeling for Electoral Transitions
 
-This natural experiment—the 2020-21 electoral crisis—provided a rare opportunity to observe voter transitions over a short period
+This natural experiment, the 2020 - 21 electoral crisis, provided a rare opportunity to observe voter transitions over a short period
 and demonstrates the utility of hierarchical Bayesian ecological inference for analyzing such transitions in
 contexts where individual-level data are unavailable due to ballot secrecy. The framework successfully captures both
 national baseline patterns and city-specific deviations while accounting for the inherent uncertainty in ecological
@@ -236,7 +236,7 @@ institutional infrastructures, and the broader political environment. The March 
 a unique confluence of crises unlikely to repeat, or it may be the first visible sign of gradually weakening
 ethnic-political boundaries that will manifest more frequently in future elections.
 
-What the data clearly show is that assumptions of permanent stability—or conversely, ongoing fluidity—both
+What the data clearly show is that assumptions of permanent stability, or conversely, ongoing fluidity, both
 mischaracterize ethnic voting dynamics in cohesive religious communities. The reality is more complex: deeply entrenched
 boundaries that temporarily yield under extraordinary pressure, then rapidly reconstitute. Understanding this pattern
 requires moving beyond static measures to dynamic analyses of transition, recovery, and resilience.
