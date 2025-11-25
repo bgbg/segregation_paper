@@ -319,6 +319,7 @@ def main(
     # Define input files in order
     reports_dir = Path("transition_paper")
     input_files = [
+        reports_dir / "00_abstract.md",
         reports_dir / "01_intro.md",
         reports_dir / "02_methods.md",
         reports_dir / "03_results.md",
@@ -345,7 +346,7 @@ def main(
         markdown_path = output_dir_path / f"{base_filename}.md"
         logger.info("Combining markdown files...")
 
-        combine_markdown_files(input_files, markdown_path, plots_dir, title)
+        combine_markdown_files(input_files, markdown_path, reports_dir, title)
 
         # Generate additional formats based on request
         if output_format in ["pdf", "all"]:
