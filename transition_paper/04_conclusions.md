@@ -160,7 +160,7 @@ circumstances demand strategic flexibility. The magnitude of coordinated switchi
 not weaker, communal discipline: only populations with exceptional cohesion can execute such system-wide electoral
 pivots and reverse them.
 
-**Robustness to Model Specification.** One concern is whether synchronization reflects hierarchical model constraints rather than genuine behavior. To test this, I fitted alternatives with increased flexibility: a relaxed hierarchical model (variability increased 166-267%) and a fully independent model (no pooling, 248% higher variability). Despite cities diverging from national patterns, synchronized drops and recoveries persisted. Correlation remained without structural similarity constraints, confirming synchronization as genuine rather than artifactual, with implementation details available with the code.
+**Robustness to Model Specification.** One concern is whether synchronization reflects hierarchical model constraints rather than genuine behavior. To test this, I fitted alternatives with increased flexibility: a relaxed hierarchical model (variability increased 166-267%) and a fully independent model (no pooling, 248% higher variability). Despite cities diverging from national patterns, synchronized drops and recoveries persisted. Correlation remained without structural similarity constraints, confirming synchronization as genuine rather than artifactual (see Appendix C for detailed comparison).
 
 This pattern contrasts with gradual realignment models common in studies of ethnic and religious voting in less cohesive
 populations. Recent comparative work supports this distinction. Goodwin, Kaufmann, and Larsen (2022) describe how

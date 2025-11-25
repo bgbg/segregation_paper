@@ -74,3 +74,62 @@ Representative diagnostics are shown below.
 ![diag energy](plots/diag_kn21_22_energy.png)
 
 ![diag autocorr](plots/diag_kn21_22_autocorr.png)
+
+
+## Appendix C  Model Robustness Testing
+
+To verify that the observed synchronization of voter transitions across cities represents genuine coordinated behavior
+rather than an artifact of the hierarchical Bayesian model structure, I tested three alternative model specifications
+with varying levels of flexibility for city-specific patterns.
+
+### Model Specifications
+
+**Original Hierarchical Model** (baseline): The model described in the Methods section uses hierarchical pooling with
+moderately tight priors to stabilize estimates while allowing cities to deviate from national patterns. Key parameters:
+`sigma_D = 0.3`, `delta_scale = 0.5`, `D_sigma = 0.3`.
+
+**Relaxed Hierarchical Model**: Same hierarchical structure but with substantially increased variability parameters to
+allow greater city-specific deviations: `sigma_D = 0.8` (+167%), `delta_scale = 1.5` (+200%), `D_sigma = 0.8` (+167%).
+This specification tests whether tighter priors artificially constrain city-level patterns.
+
+**Independent Model**: Each city is fitted separately without hierarchical pooling. The country-level transition matrix
+is estimated first, then used as a prior mean for independent city-level fits with `sigma_city = 0.8`. This
+specification completely removes structural constraints toward similarity between cities.
+
+### Results
+
+Despite the increased flexibility allowing cities to diverge substantially from national patterns (248% increase in
+inter-city variability for the independent model), the synchronized drops and recoveries in Shas loyalty remained
+evident across all model specifications. Figure C1 shows Shas→Shas retention rates across all three models, revealing
+that the temporal patterns and cross-city synchronization persist regardless of model structure.
+
+![Model comparison by location](plots/shas_shas_city_comparison.png)
+
+*Figure C1: Shas→Shas retention rates across models. Each panel shows one location (country or city) with three lines
+representing the original hierarchical (blue), relaxed hierarchical (orange), and independent (green) models. The
+synchronized drop during the 23→24 transition appears in all models across all cities.*
+
+Figure C2 presents an alternative view with one panel per model, showing all cities together within each specification.
+The inter-city standard deviation (shown in gray shading) increases substantially in the relaxed and independent models,
+confirming that these specifications successfully allow greater divergence. Yet the temporal correlation across cities
+remains evident in all three panels.
+
+![Model comparison by specification](plots/shas_shas_by_model.png)
+
+*Figure C2: Shas→Shas retention rates by model specification. Each panel shows all cities within one model. Country
+estimates shown as thick gray dashed line; individual cities as colored solid lines. Gray shading indicates inter-city
+standard deviation. Despite increased flexibility in relaxed and independent models, synchronized patterns persist.*
+
+### Quantitative Comparison
+
+Mean Absolute Deviation (MAD) from country estimates across all transition pairs and electoral categories:
+
+- Original hierarchical: MAD = 0.0044
+- Relaxed hierarchical: MAD = 0.0116 (+166%)
+- Independent: MAD = 0.0152 (+248%)
+
+The substantial increases in inter-city variability confirm that the alternative specifications successfully relax
+constraints. The persistence of synchronized transitions across all specifications demonstrates that the observed
+coordination reflects genuine features of the electoral data rather than modeling artifacts.
+
+Full implementation details, including model code and configuration files, are available in the GitHub repository.
