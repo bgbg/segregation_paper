@@ -1,5 +1,7 @@
 # Introduction
 
+**WARNING: SEVERAL FIGURES IN THIS PAPER USE CONFUSING DATE LABELS FOR ELECTION TRANSITIONS, SHOWING ONLY THE START DATE OF EACH TRANSITION PAIR. THIS CAN MISLEAD READERS ABOUT THE CAUSAL TIMELINE. SEE [ISSUE #1](https://github.com/bgbg/segregation_paper/issues/1) FOR DETAILS AND PLANNED FIXES.**
+
 Across many democracies, communities exhibit cohesive voting patterns that resemble durable "voting blocs" anchored in
 strong group identities. Classic cleavage theories and the literature on ethnoreligious mobilization argue that such
 identities can cement stable partisan alignments over long periods (Lipset & Rokkan, 1967; Curiel & Zeedan, 2024). From U.S. evangelicals to

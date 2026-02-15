@@ -1,5 +1,7 @@
 # Abstract
 
+**WARNING: SEVERAL FIGURES IN THIS PAPER USE CONFUSING DATE LABELS FOR ELECTION TRANSITIONS, SHOWING ONLY THE START DATE OF EACH TRANSITION PAIR. THIS CAN MISLEAD READERS ABOUT THE CAUSAL TIMELINE. SEE [ISSUE #1](https://github.com/bgbg/segregation_paper/issues/1) FOR DETAILS AND PLANNED FIXES.**
+
 When tightly-knit communities suddenly show electoral volatility, does it signal weakening group identity, or something else entirely? This question matters wherever cohesive groups vote as blocs: evangelical churches, immigrant enclaves, ethnic minorities, religious denominations. Conventional wisdom interprets such shifts as boundary erosion. This paper demonstrates the opposite.
 
 I exploit a natural experiment, Israel's 2020 - 21 electoral crisis, to track voter transitions within ultra-Orthodox communities, where ethnically distinct subgroups (Ashkenazi and Sephardic) maintain near-total political separation despite shared religious practice. Using ecological inference on ballot-box data from five population centers across six elections (2019 - 2022), I document exceptionally high baseline party loyalty (90 - 95%), a dramatic disruption during the March 2020 – March 2021 transition when switching surged to 12 - 19%, and a return to high loyalty within 13 months; though the shifted voters remained with their new parties.
