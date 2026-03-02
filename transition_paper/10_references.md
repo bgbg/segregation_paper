@@ -63,8 +63,9 @@ Keren-Kratz, Menachem. 2025. "The Turnaround in Israel's Haredi Society in the L
 King, Gary. 1997. *A Solution to the Ecological Inference Problem: Reconstructing Individual Behavior from Aggregate
 Data*. Princeton, NJ: Princeton University Press.
 
-Leon, Nissim. 2014. "Ethno-Religious Fundamentalism and Theo-Ethnocratic politics in Israel." *Studies in Ethnicity
-and Nationalism* 14 (1): 20–35. https://doi.org/10.1111/sena.12067.
+Leon, Nissim. 2014. "Mizrachi Ultra-Orthodoxy: Strict Ideology, Liquid Identity." *Journal for the Study of Haredi Society* 1 (June 2014): 1–20. [Hebrew]
+
+Leon, Nissim. 2014. "Ethno-Religious Fundamentalism and Theo-Ethnocratic Politics in Israel." *Studies in Ethnicity and Nationalism* 14 (1): 20–35. https://doi.org/10.1111/sena.12067.
 
 Lipset, Seymour Martin, and Stein Rokkan. 1967. *Party Systems and Voter Alignments: Cross-National Perspectives*. New
 York: Free Press.
