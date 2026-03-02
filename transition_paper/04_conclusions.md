@@ -38,9 +38,12 @@ and Shas-to-UTJ switching reaching 19.3%, more than 50% higher than the national
 similarly sharp but somewhat more moderate disruptions. Jerusalem and Modi'in Illit demonstrated greater resilience,
 though even these strongholds experienced measurable volatility.
 
-This geographic variation reflects differences in local contexts, though the specific mechanisms require further
-investigation. However, the consistency of the temporal pattern, sharp disruption followed by recovery across all
-cities, points to a centralized or system-wide shock rather than city-specific factors.
+This geographic variation likely reflects differences in the local influence of the rabbinic figures who issued
+cross-ethnic voting instructions. Ashdod's extreme disruption is consistent with the strong influence of Rabbi Mazuz
+(Yeshivat Kisse Rahamim) and Rabbi Barda in southern Israel, where their followings are concentrated. However, the
+consistency of the temporal pattern, sharp disruption followed by recovery across all cities, confirms that the
+disruption was system-wide rather than driven by city-specific factors alone.
+
 
 ### Temporal Dynamics and Demographic Interpretations
 
@@ -51,11 +54,11 @@ especially given the subsequent rapid recovery.
 
 This finding has important implications for interpreting electoral volatility in highly cohesive communities. Even
 populations characterized by strong institutional discipline can experience rapid political realignments, yet the equally
-rapid recovery indicates that such disruptions need not signal permanent weakening of ethnic-political boundaries. One
-plausible mechanism is coordinated rabbinic guidance: community leaders may have temporarily signaled flexibility in party
-allegiance during the crisis, permitting cross-ethnic voting as a strategic response. Such directives could produce
-synchronized shifts without grassroots preference changes, with subsequent withdrawal explaining the rapid return to
-baseline loyalty.
+rapid recovery indicates that such disruptions need not signal permanent weakening of ethnic-political boundaries. As
+the corpus analysis suggests (see "What Caused the 23-24 Disruption?" below), the most plausible mechanism was
+coordinated rabbinic guidance: community leaders explicitly directed cross-ethnic voting as a strategic response,
+which is consistent with the synchronized shifts observed across geographically dispersed cities. The partial
+withdrawal of these directives by the subsequent election would account for the rapid return to baseline loyalty.
 
 
 
@@ -91,14 +94,41 @@ confounding visible. This fortunate coincidence allowed identification of a meas
 remained hidden, underscoring that confounding visibility depends on both transition magnitude and spatial structure.
 
 
-## What Caused the 23 - 24 Disruption?
+## What Caused the 23-24 Disruption?
 
 The timing coincided with extraordinary political and social stress: unprecedented political instability (three elections
-in 12 months), the COVID-19 pandemic, intense coalition negotiations, and potential Haredi leadership tensions (Gidron,
-Sheffer, and Mor 2022). However, this study cannot definitively identify which factor, or combination, triggered the
-disruptions. Understanding whether the cause was top-down rabbinic directives, bottom-up dissatisfaction, strategic
-coalition-building, or generational shifts would require qualitative research including community leader interviews,
-rabbinic pronouncement analysis, and voter motivation surveys.
+in 12 months), the COVID-19 pandemic, intense coalition negotiations, and Haredi leadership tensions (Gidron,
+Sheffer, and Mor 2022). A systematic search of approximately 58,000 Haredi news articles and forum posts from this
+period (from Behadrey Haredim and Kikar HaShabbat, March 2020 to March 2021) points to a deliberate, top-down campaign
+by UTJ's political and rabbinic leadership to recruit Sephardi voters as the most plausible primary driver.
+
+The corpus documents a campaign in which political operatives and rabbinic authorities appear to have functioned as
+complementary instruments of a single strategy. On the morning of the Knesset 23 elections (March 2020), UTJ MKs
+Gafni, Asher, and Tesler visited Rabbi Meir Mazuz, a leading Sephardi authority, and secured a ruling instructing his
+followers to vote UTJ rather than Shas. Rabbi Yitzhak Barda, a prominent Sephardi rabbi in southern Israel, issued a
+parallel instruction. MK Gafni then publicly demanded that all Sephardim studying in Ashkenazi institutions vote UTJ,
+and multiple Ashkenazi yeshiva heads instructed their Sephardi students accordingly. The campaign thus operated through
+a chain of authority — from political operatives to senior rabbis to yeshiva heads to individual voters — that spans
+the entire national geography of Haredi settlement. The resulting inter-party clash — Gafni calling Shas "racist," Shas
+accusing UTJ of ethnic interference, Shas's spiritual leader Hakham Shalom Cohen breaking down in tears pleading with
+Sephardim to remain loyal — was not a separate cause but a public manifestation of the same recruitment struggle.
+
+By the Knesset 24 elections (March 2021), this campaign had fragmented. Mazuz retreated from his exclusive UTJ
+endorsement, directing some supporters toward Religious Zionism (Smotrich) instead. The splintering of rabbinic
+instruction is consistent with the partial recovery observed in the transition matrices.
+
+COVID-19 served as an enabling factor rather than a direct cause: a survey of 1,900 Haredi respondents found that
+31.7% said the pandemic would affect their vote, yet Shas's handling was rated significantly better than UTJ's across
+all sub-sectors. COVID created political mobility that could be channeled by rabbinic directives, but did not
+independently drive voters from Shas.
+
+This interpretation is consistent with the synchronized disruption and recovery documented in the quantitative
+analysis: a campaign operating through centralized rabbinic networks with country-wide reach would account for
+simultaneous loyalty drops across dispersed cities, and the withdrawal of those directives would account for the
+equally synchronized recovery. However, the corpus documents public statements and reported events, not the private
+deliberations of individual voters; the causal link between rabbinic instruction and voter behavior, while strongly
+suggested by the convergence of qualitative and quantitative evidence, cannot be established with certainty from these
+sources alone.
 
 ## Theoretical Implications
 
@@ -124,9 +154,10 @@ The temporal pattern observedhigh stability, temporary collapse, rapid recoveryo
 ethnic-political boundaries. The March 2020–March 2021 (23→24) disruption did not trigger a permanent realignment,
 suggesting that:
 
-1. **Institutional mechanisms for maintaining boundaries remain strong.** Rabbinic authority structures, communal
-institutions, and social networks were able to halt cross-ethnic switching once the triggering crisis
-subsided, restoring high loyalty rates even though the voters who had already switched remained with their new parties.
+1. **Institutional mechanisms for maintaining boundaries remain strong.** The same rabbinic authority structures that
+enabled the disruption, through explicit cross-ethnic voting instructions, also restored order when those instructions
+were withdrawn or moderated. High loyalty rates returned even though the voters who had already switched remained
+with their new parties.
 
 2. **Temporary cross-party voting does not necessarily erode ethnic identity.** While voters who switched during
 the disruption remained with their new parties, the cessation of further switching indicates that boundaries
@@ -155,11 +186,16 @@ in Jerusalem, Bnei Brak, Ashdod, Beit Shemesh, and Modi'in Illit, followed by sy
 
 This pattern resembles other identity-based voting blocs with strong institutional structures, from U.S. evangelical
 communities (Bullock et al. 2019) to Catholic voters in Latin America (Smith 2019), where apparent volatility often
-reflects coordinated elite guidance rather than grassroots defection. The synchronization across geographically distant cities, with no residential mobility
-driving the pattern, reveals institutional **capacity to orchestrate rapid, reversible electoral shifts** when
-circumstances demand strategic flexibility. The magnitude of coordinated switching paradoxically demonstrates stronger,
-not weaker, communal discipline: only populations with exceptional cohesion can execute such system-wide electoral
-pivots and reverse them.
+reflects coordinated elite guidance rather than grassroots defection. The corpus evidence strongly supports this
+interpretation: UTJ's political operatives secured a rabbinic ruling from Rabbi Mazuz on election morning, which could
+then be transmitted through yeshiva networks to Sephardi voters in Jerusalem, Bnei Brak, Ashdod, Beit Shemesh, and
+Modi'in Illit simultaneously. The temporal and geographic pattern is consistent with a single rabbinic directive, issued
+through institutional channels that span the entire national geography of Haredi settlement, producing a 12-15% swing
+in voting behavior across all major population centers within the same electoral cycle. The magnitude of coordinated
+switching paradoxically suggests stronger, not weaker, communal discipline: only populations in which spiritual
+authority commands strong electoral influence could plausibly execute such system-wide pivots. That baseline loyalty
+reasserted itself when those directives were withdrawn or moderated further suggests that both the disruption and the
+recovery were expressions of the same underlying discipline, not opposing forces.
 
 **Robustness to Model Specification.** One concern is whether synchronization reflects hierarchical model constraints rather than genuine behavior. To test this, I fitted alternatives with increased flexibility: a relaxed hierarchical model (variability increased 166 - 267%) and a fully independent model (no pooling, 248% higher variability). Despite cities diverging from national patterns, synchronized drops and recoveries persisted. Correlation remained without structural similarity constraints, confirming synchronization as genuine rather than artifactual (see Appendix C for detailed comparison).
 
@@ -214,29 +250,46 @@ subgroups.
 
 
 This study focuses on short-term electoral effects and does not address possible social or attitudinal consequences.
-Future research should examine whether temporary electoral volatility affects long-term communal trust or leadership
-legitimacy. Comparative studies could test whether similar patterns of 'hidden volatility' appear in other religious or
-identity-based voting blocs.
+The corpus analysis of Haredi media provides evidence of causal mechanisms but cannot quantify individual voter
+motivations; future research incorporating voter surveys or interviews could further validate the relative weight of
+rabbinic instruction versus personal dissatisfaction. Comparative studies could test whether similar patterns of
+elite-driven 'hidden volatility' appear in other religious or identity-based voting blocs with strong institutional
+structures.
 
 ## Final Reflections
 
 This study reveals that ethnic-political boundaries within Israel's ultra-Orthodox society are simultaneously rigid and
-vulnerable. Under normal conditions, nearly all Sephardic Haredim vote for Shas and nearly all Ashkenazi Haredim vote
-for UTJ, maintaining clear political expression of ethnic differentiation. These boundaries persist despiteor perhaps
-because ofshared religious observance, communal institutions, and withdrawal from secular society.
+vulnerable — but that both their rigidity and their vulnerability derive from the same source: the extraordinary
+authority of a small number of spiritual leaders over the electoral behavior of hundreds of thousands of voters
+dispersed across the country.
 
-Yet the March 2020–March 2021 disruption demonstrates that even highly disciplined communities can experience rapid
-political realignment under sufficient stress. The equally rapid recovery, however, suggests that temporary shocks need
-not herald permanent change. The underlying ethnic-institutional structures reasserted themselves once the crisis
-subsided.
+Under normal conditions, this authority appears to sustain near-perfect ethnic-party loyalty: nearly all Sephardic
+Haredim vote for Shas and nearly all Ashkenazi Haredim vote for UTJ, maintaining a clear political expression of ethnic
+differentiation across geographically dispersed communities. These boundaries persist despite — or perhaps because of —
+shared religious observance, communal institutions, and withdrawal from secular society. The near-total consistency of
+voting patterns across distant cities suggests that the mechanism is not passive cultural inertia but active alignment
+with rabbinic direction on electoral matters.
 
-Whether similar disruptions will recur depends on factors beyond this study's scope: the stability of rabbinic authority
-in an era of generational change, the evolution of Haredi engagement with Israeli politics, the durability of separate
-institutional infrastructures, and the broader political environment. The March 2020–March 2021 transition may represent
-a unique confluence of crises unlikely to repeat, or it may be the first visible sign of gradually weakening
-ethnic-political boundaries that will manifest more frequently in future elections.
+The March 2020–March 2021 disruption offers a window into what may happen when that same authority is redirected. A
+handful of rabbinic figures — Mazuz, Barda, several Ashkenazi yeshiva heads — acting in coordination with UTJ's
+political leadership, issued directives that coincided with simultaneous shifts in voting behavior in Jerusalem, Bnei
+Brak, Ashdod, Beit Shemesh, and Modi'in Illit. No campaign infrastructure, no media blitz, no months of grassroots
+organizing preceded these shifts: the corpus documents rabbinic rulings transmitted through yeshiva networks, and the
+quantitative data show a country-wide electoral swing within the same cycle. The equally rapid recovery, once these
+directives were withdrawn or fragmented, is consistent with the interpretation that the population's response reflected
+disciplined compliance rather than a spontaneous shift in political preferences.
+
+The implications extend beyond the Haredi case. In any community where spiritual or institutional authority commands
+strong electoral compliance, the same structures that produce remarkable stability also create a latent capacity for
+rapid, coordinated disruption. The vulnerability is not a weakness in the system of authority but a direct consequence
+of its strength. Whether similar disruptions recur depends on the willingness of rabbinic authorities to issue
+cross-ethnic directives, the institutional overlap created by Sephardi students in Ashkenazi yeshivot, and the
+political circumstances that incentivize inter-party recruitment. The March 2020–March 2021 transition may represent a
+unique confluence of crises unlikely to repeat, or it may expose a structural vulnerability inherent in any
+identity-based electoral system where centralized spiritual authority can override ethnic-party boundaries at will.
 
 What the data clearly show is that assumptions of permanent stability, or conversely, ongoing fluidity, both
-mischaracterize ethnic voting dynamics in cohesive religious communities. The reality is more complex: deeply entrenched
-boundaries that temporarily yield under extraordinary pressure, then rapidly reconstitute. Understanding this pattern
-requires moving beyond static measures to dynamic analyses of transition, recovery, and resilience.
+mischaracterize ethnic voting dynamics in cohesive religious communities. The convergence of quantitative and
+qualitative evidence points to a system in which a small number of authoritative figures hold the capacity to redirect
+the electoral behavior of an entire national community — and in which the exercise or restraint of that capacity may
+determine whether ethnic-political boundaries hold firm or temporarily dissolve.
