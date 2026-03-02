@@ -121,6 +121,25 @@ the direction from one election to the next. For example, "23→24" refers to th
 (Knesset 23) to the March 2021 election (Knesset 24). This notation emphasizes that I am examining voter flows
 between consecutive elections rather than the elections themselves in isolation.
 
+### Corpus Analysis of Haredi Media
+
+To investigate the mechanisms behind the observed electoral disruption, I constructed a corpus of Haredi news articles
+and forum discussions from the two dominant ultra-Orthodox news websites in Israel: Behadrey Haredim (bhol.co.il) and
+Kikar HaShabbat (kikar.co.il). The corpus was assembled by systematically scraping all available content published
+between March 2020 and March 2021, yielding approximately 58,000 items: 25,000 news articles from Behadrey Haredim,
+26,000 news articles from Kikar HaShabbat, and 7,000 forum discussion threads from the Behadrey Haredim forums.
+
+Each item was stored as a structured record containing publication date, title, full text, author, and source URL. Forum
+threads additionally preserved individual posts with per-post dates and authors, capturing the temporal development of
+community discussions.
+
+I searched the corpus systematically using Hebrew-language keyword queries organized around the research hypotheses:
+rabbinic voting instructions, intra-Haredi party friction, leadership crises, and COVID-related political upheaval. The
+initial automated filtering reduced the corpus to several hundred candidate articles, which were then read and evaluated
+manually. Each claim presented in the "What Caused the 23-24 Disruption?" section is supported by verbatim citations
+from the original sources, with full source metadata (publication date, outlet, and URL) provided in the supplementary
+materials.
+
 The following section presents the estimated transition patterns at national and city levels, revealing both the
 dominant pattern of high stability and a dramatic temporary disruption in the March 2020–March 2021 transition.
 
