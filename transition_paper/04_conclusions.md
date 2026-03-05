@@ -155,8 +155,6 @@ were expressions of the same underlying discipline. This parallels patterns in o
 strong institutional structures, from U.S. evangelical communities (Bullock et al. 2019) to Catholic voters in Latin
 America (Smith 2019).
 
-**Robustness to Model Specification.** One concern is whether synchronization reflects hierarchical model constraints rather than genuine behavior. To test this, I fitted alternatives with increased flexibility: a relaxed hierarchical model (variability increased 166 - 267%) and a fully independent model (no pooling, 248% higher variability). Despite cities diverging from national patterns, synchronized drops and recoveries persisted. Correlation remained without structural similarity constraints, confirming synchronization as genuine rather than artifactual (see Appendix C for detailed comparison).
-
 The persistence of ethnic-political boundaries despite temporary volatility parallels Andersen and Yaish's (2003)
 finding that Israeli electoral reform failed to shift cleavage voting patterns, and is consistent with Bartolini and
 Mair's (1990) argument that high organizational encapsulation enables temporary disruption without permanent
