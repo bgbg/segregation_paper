@@ -90,7 +90,7 @@ def plot_raw_vote_shares(data: pd.DataFrame, output_path: Path) -> None:
 
             # City label on left column only
             if col_idx == 0:
-                ax.set_ylabel(city, fontsize=8, rotation=0, labelpad=60,
+                ax.set_ylabel(city, fontsize=8, rotation=0, labelpad=5,
                               ha="right", va="center")
 
             # X-axis labels only on bottom row
