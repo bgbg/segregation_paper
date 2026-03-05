@@ -67,31 +67,66 @@ def plot_raw_vote_shares(data: pd.DataFrame, output_path: Path) -> None:
     x_positions = list(range(len(KNESSETS)))
     x_labels = [ELECTION_LABELS[k] for k in KNESSETS]
 
-    fig, axes = plt.subplots(
-        2, 3, figsize=(7, 4), sharex=True, sharey=False,
-    )
+    # Normalize: deviation from each city's Kn 23 value (pre-disruption peak)
+    baseline_kn = 23
+    fig, ax = plt.subplots(figsize=(5, 3.5))
 
-    for idx, city in enumerate(cities_order):
-        row_idx, col_idx = divmod(idx, 3)
+    city_colors = {
+        "Ashdod": "#1f77b4",
+        "Beit Shemesh": "#ff7f0e",
+        "Elad": "#2ca02c",
+        "Bnei Brak": "#d62728",
+        "Jerusalem": "#9467bd",
+        "Modi'in Illit": "#8c564b",
+    }
+
+    for city in cities_order:
         city_data = data[data["city"] == city].sort_values("knesset")
-        ax = axes[row_idx, col_idx]
+        baseline = city_data.loc[city_data["knesset"] == baseline_kn, "shas_pct"].values[0]
+        deviation = city_data["shas_pct"].values - baseline
         ax.plot(
-            x_positions, city_data["shas_pct"].values,
-            color="black", linewidth=1.2,
+            x_positions, deviation,
+            color=city_colors[city], linewidth=1.1,
             marker="o", markersize=3,
         )
-        ax.axvspan(2.5, 3.5, color="#e0e0e0", zorder=0)
-        ax.spines["top"].set_visible(False)
-        ax.spines["right"].set_visible(False)
-        ax.grid(axis="y", alpha=0.2, linewidth=0.4)
-        ax.set_title(city, fontsize=8)
+    # Label at the Kn 24 dip point for each city
+    # Label at the end of each line (Kn 25), stacked to avoid overlap
+    end_vals = {}
+    for city in cities_order:
+        city_data = data[data["city"] == city].sort_values("knesset")
+        baseline = city_data.loc[city_data["knesset"] == baseline_kn, "shas_pct"].values[0]
+        deviation = city_data["shas_pct"].values - baseline
+        end_vals[city] = deviation[-1]
 
-        if row_idx == 1:
-            ax.set_xticks(x_positions)
-            ax.set_xticklabels(x_labels, fontsize=6.5)
+    # Sort by end value and space labels apart
+    sorted_cities = sorted(end_vals.items(), key=lambda x: x[1])
+    min_gap = 0.35
+    label_positions = {}
+    for i, (city, val) in enumerate(sorted_cities):
+        if i > 0:
+            prev_city = sorted_cities[i - 1][0]
+            prev_pos = label_positions[prev_city]
+            label_positions[city] = max(val, prev_pos + min_gap)
+        else:
+            label_positions[city] = val
 
-        if col_idx == 0:
-            ax.set_ylabel("Shas (%)", fontsize=8)
+    for city in cities_order:
+        ax.annotate(
+            city, (x_positions[-1], end_vals[city]),
+            textcoords="offset points",
+            xytext=(5, (label_positions[city] - end_vals[city]) * 15),
+            fontsize=6, va="center", color=city_colors[city],
+        )
+
+    ax.axhline(0, color="gray", linewidth=0.5, linestyle="--")
+    ax.axvspan(2.5, 3.5, color="#e0e0e0", zorder=0)
+    ax.spines["top"].set_visible(False)
+    ax.spines["right"].set_visible(False)
+    ax.grid(axis="y", alpha=0.2, linewidth=0.4)
+    ax.set_xticks(x_positions)
+    ax.set_xticklabels(x_labels, fontsize=7)
+    ax.set_ylabel("Change in Shas vote share (pp)", fontsize=8)
+    ax.set_title("Deviation from Knesset 23 baseline", fontsize=9)
 
     plt.tight_layout()
     plt.savefig(output_path, dpi=300, bbox_inches="tight")
