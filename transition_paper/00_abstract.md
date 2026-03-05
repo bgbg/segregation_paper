@@ -1,0 +1,9 @@
+# Abstract
+
+When tightly-knit communities suddenly show electoral volatility, does it signal weakening group identity, or something else entirely? This question matters wherever centralized authority structures shape bloc voting. Conventional wisdom interprets such shifts as boundary erosion. This paper presents evidence for the opposite.
+
+I exploit a natural experiment, Israel's 2020 - 21 electoral crisis, to track voter transitions within ultra-Orthodox communities, where ethnically distinct subgroups (Ashkenazi and Sephardic) maintain near-total political separation despite shared religious practice. Using ecological inference on ballot-box data from five population centers across six elections (2019 - 2022), I document exceptionally high baseline party loyalty (90 - 95%), a dramatic disruption during the March 2020 – March 2021 transition when switching surged to 12 - 19%, and a return to high loyalty within 13 months; though the shifted voters remained with their new parties.
+
+The synchronized switch of voting loyalty across geographically dispersed cities, occurring without residential mobility, is consistent with coordinated elite guidance rather than emerging voter independence. Paradoxically, the capacity for mass switching may reflect stronger, not weaker, institutional control.
+
+The broader implication challenges how we interpret electoral behavior in cohesive communities worldwide: apparent volatility may reflect disciplined coordination, and what looks like boundary erosion may actually reveal institutional strength operating through collective action. A secondary finding cautions that using party votes as ethnic proxies — common in segregation research — can produce spurious results when elite-driven disruptions decouple voting from demographic patterns.
