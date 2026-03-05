@@ -167,33 +167,9 @@ values signal flux between parties or toward abstention.
 Two clusters emerge: highly stable cities (Jerusalem, Beit Shemesh, Ashdod) and relatively fluid ones (Elad, Modi'in
 Illit), possibly reflecting differences in demographic composition and institutional affiliations. The 23→24 disruption stands out as a clear outlier across all locations.
 
-## Summary of Findings
-
-The analysis yields six key findings about Haredi voter transition patterns:
-
-1. **Dominant pattern of high stability:** Across most election pairs, Shas and UTJ maintained loyalty rates above 95%,
-confirming the general portrait of Haredi voting as highly disciplined and predictable.
-
-2. **Sharp temporary disruption in the March 2020–March 2021 transition (23→24):** Shas loyalty dropped to 73.5%
-nationally (67.1% in Ashdod), with 12.3% switching to UTJ (19.3% in Ashdod). UTJ loyalty also fell to 87.9%, with
-4.6% of UTJ voters switching to Shas.
-
-3. **Full recovery in the March 2021–November 2022 transition (24→25):** Loyalty patterns returned to pre-crisis levels,
-indicating the disruption was temporary rather than a permanent realignment.
-
-4. **Geographic variation in disruption magnitude:** The 23→24 shock affected all cities but varied in intensity. Ashdod
-showed the largest deviations, followed by Bnei Brak and Beit Shemesh, suggesting that local demographic integration
-modulates electoral volatility.
-
-5. **Temporal proximity rules out demographic explanations:** The short intervals between elections (5.5–19 months)
-indicate genuine voter switching rather than migration or generational turnover.
-
-6. **Stable abstention rates:** Haredi participation remained resilient throughout, even during the 23→24 disruption,
-with minimal abstention flows contrasting with significant inter-party switching.
-
-These findings reveal that even highly cohesive voting blocs can experience rapid, system-wide disruptions in loyalty
-patterns that fully reverse when triggering conditions resolve. The consistency across cities points to a common
-underlying cause, while the variation in magnitude highlights how local conditions modulate the intensity of
-disruption within otherwise rigid structures. The Conclusions section explores the theoretical and methodological
-implications of these patterns, situating them within broader comparative frameworks and discussing their significance
-for understanding ethnic boundary maintenance in cohesive communities.
+Taken together, the transition matrices reveal a pattern of high baseline stability punctuated by a single, sharp
+disruption in the 23→24 transition that fully reversed by 24→25. The disruption affected all major Haredi population
+centers but varied in magnitude, with Ashdod showing the most extreme deviations. The short intervals between elections
+make demographic explanations implausible, pointing instead to genuine voter switching. The Conclusions section
+interprets these patterns within the "rigidity with stress fractures" framework and explores their theoretical and
+methodological implications.

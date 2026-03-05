@@ -1,34 +1,11 @@
 # Conclusions
 
 
-The preceding Results section documented six key empirical findings about Haredi voter transitions: high baseline
-stability, a dramatic but temporary 23→24 disruption, full recovery by 24→25, geographic variation in disruption
-magnitude, temporal proximity ruling out demographic explanations, and stable abstention rates. This Conclusions section
-interprets these findings in theoretical and methodological context, exploring what they reveal about ethnic boundary
-maintenance, the conditions under which rigid voting blocs experience disruption, and the implications for measuring
-residential segregation through electoral proxies.
-
-### High Baseline Stability with Rare Disruptions
-
-The dominant pattern across the study period is one of exceptionally high intra-party loyalty. Shas and UTJ voters
-maintained loyalty rates exceeding 90% and 95% respectively in most elections, with cross-party transitions rarely
-exceeding 2 - 3% in either direction.
-
-However, this rigid structure experienced a dramatic temporary collapse during the March 2020–March 2021 transition
-(Knesset 23→24). Shas-to-Shas loyalty plummeted to 72.8% while Shas-to-UTJ switching surged to 12.3%. UTJ voters
-similarly experienced reduced loyalty (87.9%), with cross-flows to Shas. This represents the only substantive cross-party
-movement observed across all elections studied.
-
-
-Critically, this disruption proved temporary. By the subsequent March 2021–November 2022 transition (Knesset 24→25),
-loyalty rates recovered substantially (Shas: 96.9%, UTJ: 95.5%). The recovery indicates that leakage stopped, voters who
-supported these parties remained loyal, not that 23→24 defectors returned. This temporary collapse resembles volatility
-episodes in other democracies where cohesive electorates experience brief but consequential swings, for example, among
-U.S. evangelicals or regional party loyalists in Western Europe. Despite Shas's increased vote share from 7.17% to
-8.25%, this growth originated outside Haredi population hubs, suggesting Shas gained peripheral traditional Sephardic
-supporters while losing core ultra-Orthodox voters to UTJ. The underlying ethnic-political boundaries remained intact
-despite the temporary shock. The pattern is one of **rigidity with occasional stress fractures**, not fluid or liquid
-identity.
+The Results documented a pattern of high baseline stability punctuated by a sharp but temporary disruption in the
+23→24 transition, with geographic variation in magnitude and full recovery by 24→25. This section interprets these
+findings in theoretical and methodological context, exploring what they reveal about ethnic boundary maintenance,
+the conditions under which rigid voting blocs experience disruption, and the implications for measuring residential
+segregation through electoral proxies.
 
 ### Geographic Variation in Disruption Magnitude
 
@@ -259,32 +236,6 @@ This study reveals that ethnic-political boundaries within Israel's ultra-Orthod
 vulnerable — and the evidence presented here is consistent with both their rigidity and their vulnerability deriving
 from the same source: the considerable authority of spiritual leaders over the electoral behavior of hundreds of
 thousands of voters dispersed across the country.
-
-Under normal conditions, this authority appears to sustain near-perfect ethnic-party loyalty: nearly all Sephardic
-Haredim vote for Shas and nearly all Ashkenazi Haredim vote for UTJ, maintaining a clear political expression of ethnic
-differentiation across geographically dispersed communities. These boundaries persist despite — or perhaps because of —
-shared religious observance, communal institutions, and withdrawal from secular society. The near-total consistency of
-voting patterns across distant cities is more consistent with active alignment with rabbinic direction on electoral
-matters than with passive cultural inertia.
-
-The March 2020–March 2021 disruption offers a window into what may happen when that same authority is redirected. A
-handful of rabbinic figures — Mazuz, Barda, several Ashkenazi yeshiva heads — acting in coordination with UTJ's
-political leadership, issued directives that coincided with simultaneous shifts in voting behavior in Jerusalem, Bnei
-Brak, Ashdod, Beit Shemesh, and Modi'in Illit. No campaign infrastructure, no media blitz, no months of grassroots
-organizing preceded these shifts: the corpus documents rabbinic rulings transmitted through yeshiva networks, and the
-quantitative data show a country-wide electoral swing within the same cycle. The equally rapid recovery, once these
-directives were withdrawn or fragmented, is consistent with the interpretation that the population's response reflected
-disciplined compliance with rabbinic authority rather than a spontaneous shift in political preferences — though
-individual voter motivations cannot be observed directly from aggregate data.
-
-The implications extend beyond the Haredi case. In any community where spiritual or institutional authority commands
-strong electoral compliance, the same structures that produce remarkable stability also create a latent capacity for
-rapid, coordinated disruption. The vulnerability is not a weakness in the system of authority but a direct consequence
-of its strength. Whether similar disruptions recur depends on the willingness of rabbinic authorities to issue
-cross-ethnic directives, the institutional overlap created by Sephardi students in Ashkenazi yeshivot, and the
-political circumstances that incentivize inter-party recruitment. The March 2020–March 2021 transition may represent a
-unique confluence of crises unlikely to repeat, or it may expose a structural vulnerability inherent in any
-identity-based electoral system where centralized spiritual authority can override ethnic-party boundaries at will.
 
 What the data clearly show is that assumptions of permanent stability, or conversely, ongoing fluidity, both
 mischaracterize ethnic voting dynamics in cohesive religious communities. The convergence of quantitative and

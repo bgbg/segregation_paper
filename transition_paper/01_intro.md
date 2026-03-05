@@ -93,36 +93,11 @@ trends. The framework provides both national-level estimates and city-specific p
 centers.
 
 
-Three key findings emerge. First, Ashdod's 2021 segregation anomaly coincides precisely with a dramatic but temporary
-disruption in voter loyalty during the March 2020–March 2021 transition. Shas-to-Shas loyalty plummeted from 99% to 74%
-nationally (to 67% in Ashdod), with unprecedented cross-flows to UTJ. Critically, loyalty fully recovered by the next
-election (March 2021–November 2022), confirming that electoral switching, not residential movement, explained Ashdod's
-segregation drop. Second, this pattern of temporary disruption followed by complete recovery characterizes a rigid
-system experiencing stress fractures, not ongoing fluidity. The underlying ethnic-political boundaries remained intact
-despite the shock, challenging narratives of gradual erosion in identity-based voting. Third, geographic variation in
-disruption magnitude reveals how local contexts modulate boundary permeability: ethnically mixed cities like Ashdod
-showed larger temporary swings, while homogeneous strongholds like Bnei Brak remained more stable, yet all recovered
-fully.
-
-
-
-These findings have implications extending far beyond Israel. The pattern of temporary disruption followed by recovery, 
-what I term "rigidity with stress fractures", offers a new framework for understanding cohesive voting blocs globally.
-Rather than assuming either permanent stability or gradual erosion, this framework recognizes that strong institutional
-boundaries can temporarily yield under extraordinary pressure, then rapidly reconstitute. This insight applies to any
-democracy featuring identity-based voting blocs: from U.S. evangelicals to European regional parties to African ethnic
-coalitions. Israel's Haredi sector, as an extreme case of institutional discipline, provides a conservative test: if even
-this highly bounded community experiences measurable temporary volatility, similar dynamics likely operate, perhaps more
-strongly, in less institutionally rigid contexts.
-
-Methodologically, integrating spatial segregation metrics with temporal transition matrices offers a replicable framework
-for studying segmented populations. This pairing applies to immigrant communities divided by origin region, religious
-denominations within shared faith traditions, or linguistic minorities maintaining distinct political allegiances. By
-combining static measures (segregation at a point in time) with dynamic measures (transitions over time), researchers can
-quantify both the degree of separation and the rate of exchange between subgroups. The Ashdod anomaly also reveals a
-critical limitation: using voting patterns as proxies for residential segregation fails when political loyalty becomes
-unstable, with implications for any study conflating political and demographic boundaries.
-
+Three findings emerge: a nationwide collapse in voter loyalty during the March 2020–March 2021 transition, with
+substantial city-level variation in disruption magnitude, followed by rapid recovery that suggests temporary stress
+fractures rather than permanent realignment. This pattern, and its resolution of Ashdod's segregation anomaly through
+electoral switching rather than residential movement, carries implications for any democracy featuring identity-based
+voting blocs.
 
 Specifically, this study contributes by: (1) documenting temporary boundary permeability within an extreme-case
 disciplined bloc, providing a conservative estimate for volatility in identity-based voting; (2) grounding "rigidity
