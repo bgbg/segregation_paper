@@ -86,6 +86,29 @@ def compute_diagnostics(trace: az.InferenceData, config: Dict = None) -> Dict[st
         diagnostics["n_divergent"] = int(n_divergent)
         diagnostics["divergent_good"] = bool(n_divergent == 0)
 
+    # Country-level diagnostics (transition matrix parameters only)
+    country_vars = [
+        var for var in stochastic_vars
+        if var.startswith("M_country_col_") or var in ("Z_country", "diag_bias")
+    ]
+    if country_vars:
+        country_rhat = np.concatenate([
+            rhat[var].values.flatten() for var in country_vars
+            if var in rhat.data_vars
+        ])
+        country_rhat = country_rhat[~np.isnan(country_rhat)]
+        country_ess = np.concatenate([
+            ess[var].values.flatten() for var in country_vars
+            if var in ess.data_vars
+        ])
+        country_ess = country_ess[~np.isnan(country_ess)]
+        diagnostics["country_rhat_max"] = float(np.max(country_rhat)) if len(country_rhat) > 0 else float("nan")
+        diagnostics["country_ess_min"] = float(np.min(country_ess)) if len(country_ess) > 0 else float("nan")
+        diagnostics["country_converged"] = bool(
+            diagnostics["country_rhat_max"] < max_rhat_threshold
+            and diagnostics["country_ess_min"] > min_ess_threshold
+        )
+
     # Overall convergence assessment
     convergence_checks = [
         diagnostics.get("rhat_good", False),
