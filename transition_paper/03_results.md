@@ -71,7 +71,8 @@ segmentation despite broader electoral turbulence.
 Before examining city-level model estimates, it is useful to inspect the raw data. Figure 3 plots the change in Shas
 vote share (in percentage points) relative to Knesset 23 (March 2020) for each city, computed directly from
 Haredi-filtered polling stations (those where Shas + UTJ exceed 75% of legal votes) and requiring no modeling
-assumptions. The key pattern is synchronization: all six cities dip below zero at Knesset 24 (March 2021), then recover.
+assumptions. Prior to Knesset 23, cities show independent, unsynchronized variation — then all six dip below zero
+together at Knesset 24 (March 2021) before recovering.
 The magnitude is modest (1 - 3 percentage points) because raw vote shares compress the underlying signal — a voter
 switching from Shas to UTJ depresses Shas's share while boosting UTJ's, partially canceling in the aggregate. The
 ecological inference model (below) disentangles these cross-flows and reveals a much larger disruption in loyalty
