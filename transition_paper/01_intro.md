@@ -1,7 +1,5 @@
 # Introduction
 
-**WARNING: SEVERAL FIGURES IN THIS PAPER USE CONFUSING DATE LABELS FOR ELECTION TRANSITIONS, SHOWING ONLY THE START DATE OF EACH TRANSITION PAIR. THIS CAN MISLEAD READERS ABOUT THE CAUSAL TIMELINE. SEE [ISSUE #1](https://github.com/bgbg/segregation_paper/issues/1) FOR DETAILS AND PLANNED FIXES.**
-
 Across many democracies, communities exhibit cohesive voting patterns that resemble durable "voting blocs" anchored in
 strong group identities. Classic cleavage theories and the literature on ethnoreligious mobilization argue that such
 identities can cement stable partisan alignments over long periods (Lipset & Rokkan, 1967; Curiel & Zeedan, 2024). From U.S. evangelicals to
@@ -61,6 +59,31 @@ with the voter transition disruption analyzed in this study. The index measures 
 and Sephardi Haredi populations within each city, with higher values indicating greater residential separation.
 Reconstructed from data in Gorelik, 2025*
 
+### Theoretical Framework
+
+Three established literatures each capture part of the pattern observed in this study but none accounts for the
+full trajectory of stability, sudden disruption, and rapid recovery. Classic cleavage theory (Lipset and Rokkan 1967;
+Bartolini and Mair 1990) predicts that identity-based voting blocs remain durable so long as the social networks and
+organizational structures that encapsulate them persist. This explains the Haredi sector's high baseline loyalty but
+cannot account for the sudden disruption: if encapsulation is intact, why do loyalty rates plummet? Electoral
+volatility typologies (Pedersen 1979; Mainwaring and Zoco 2007) distinguish within-bloc from between-bloc volatility
+and recognize that elite-driven supply-side changes can produce temporary swings, but they do not specify the
+conditions under which such swings will reverse rather than crystallize into permanent realignment. Punctuated
+equilibrium models (Baumgartner and Jones 1993) capture the rhythm of long stasis interrupted by sudden change, yet
+they originated in policy studies and do not address the institutional mechanisms, specifically centralized spiritual
+authority, that can both trigger and terminate electoral disruptions in identity-based blocs.
+
+This paper proposes a synthesizing framework, "rigidity with stress fractures," that integrates these perspectives.
+The framework predicts that identity-based voting blocs will exhibit high stability punctuated by sudden, reversible
+disruptions when three scope conditions are met: (i) a centralized institutional authority, such as rabbinic
+leadership, exercises strong influence over electoral behavior; (ii) that authority operates through organizational
+networks, such as yeshiva systems, with sufficient reach to produce geographically synchronized shifts; and (iii) the
+triggering crisis is exogenous and temporary rather than structural, so that withdrawal of the disrupting directive
+restores the prior equilibrium. When these conditions hold, observed volatility reflects coordinated elite action
+within an intact institutional framework rather than genuine erosion of group boundaries. The framework thus
+distinguishes temporary stress fractures, reversible disruptions driven by elite coordination, from both the permanent
+stability predicted by frozen-cleavage models and the gradual erosion assumed by dealignment theories.
+
 I address this puzzle by analyzing voter transition matrices across successive elections from January 2013 through
 November 2022 (Knessets 19 - 25), using hierarchical Bayesian ecological inference applied to polling-station results
 (detailed in the Methods section; King 1997; Greiner & Quinn 2010). The analysis estimates transition probabilities
@@ -102,10 +125,12 @@ unstable, with implications for any study conflating political and demographic b
 
 
 Specifically, this study contributes by: (1) documenting temporary boundary permeability within an extreme-case
-disciplined bloc, providing a conservative estimate for volatility in identity-based voting; (2) introducing "rigidity
-with stress fractures" as an alternative to permanent-stability or gradual-erosion models; (3) revealing methodological
-confounding between political and residential measures when loyalty fluctuates; and (4) demonstrating hierarchical
-Bayesian ecological inference for analyzing voter transitions in cohesive subpopulations. Understanding the conditions
+disciplined bloc, providing a conservative estimate for volatility in identity-based voting; (2) grounding "rigidity
+with stress fractures" as an analytical framework that synthesizes cleavage theory, volatility typologies, and
+punctuated equilibrium models, specifying the scope conditions under which identity-based blocs experience reversible
+disruption rather than permanent realignment; (3) revealing methodological confounding between political and
+residential measures when loyalty fluctuates; and (4) applying hierarchical Bayesian ecological inference for
+analyzing voter transitions in cohesive subpopulations. Understanding the conditions
 under which rigid boundaries temporarily yield, and how quickly they reconstitute, is crucial for anticipating coalition
 dynamics and democratic responsiveness in any polity with identity-based voting. The following section details the data
 sources, model specification, and analytical approach.

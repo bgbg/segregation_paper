@@ -4,6 +4,12 @@ Aha, Katharine, Catherine Hiebel, and Linsey Jensen. 2024. "Turning to the Radic
 Variation in Radical Right Support after Ethnic Minority Success in East Central Europe." *Electoral Studies* 83:
 102828. https://doi.org/10.1016/j.electstud.2024.102828.
 
+Bartolini, Stefano, and Peter Mair. 1990. *Identity, Competition, and Electoral Availability: The Stabilisation of
+European Electorates 1885–1985.* Cambridge: Cambridge University Press.
+
+Baumgartner, Frank R., and Bryan D. Jones. 1993. *Agendas and Instability in American Politics.* Chicago: University
+of Chicago Press.
+
 Andersen, Jørgen Goul, and Meir Yaish. 2003. "Social Cleavages, Electoral Reform and Party Choice: Israel's 'Natural'
 Experiment." *Electoral Studies* 22 (3): 399–423. https://doi.org/10.1016/S0261-3794(02)00006-9.
 
@@ -53,6 +59,8 @@ Voting." *Electoral Studies* 80: 102551. https://doi.org/10.1016/j.electstud.202
 Gorelik, Boris. 2025. "Ethnic Divisions Within Unity: Insights into Intra-Group Segregation from Israel's Ultra-Orthodox
 Society." *Social Sciences* 14 (3): 169. https://doi.org/10.3390/socsci14030169.
 
+Horowitz, Donald L. 1985. *Ethnic Groups in Conflict.* Berkeley: University of California Press.
+
 Greiner, James, and Kevin Quinn. 2010. "RC Ecological Inference: Bounds, Correlations, Flexibility and Transparency of
 Assumptions." *Journal of the Royal Statistical Society: Series A (Statistics in Society)* 173 (1): 5581.
 https://doi.org/10.1111/j.1467-985X.2009.00606.x.
@@ -67,11 +75,18 @@ Leon, Nissim. 2014. "Mizrachi Ultra-Orthodoxy: Strict Ideology, Liquid Identity.
 
 Leon, Nissim. 2014. "Ethno-Religious Fundamentalism and Theo-Ethnocratic Politics in Israel." *Studies in Ethnicity and Nationalism* 14 (1): 20–35. https://doi.org/10.1111/sena.12067.
 
+Mainwaring, Scott, and Edurne Zoco. 2007. "Political Sequences and the Stabilization of Interparty Competition:
+Electoral Volatility in Old and New Democracies." *Party Politics* 13 (2): 155–178.
+https://doi.org/10.1177/1354068807073852.
+
 Lipset, Seymour Martin, and Stein Rokkan. 1967. *Party Systems and Voter Alignments: Cross-National Perspectives*. New
 York: Free Press.
 
 Malach, Gilad, and Lee Cahaner. 2025. *Statistical Report on Ultra-Orthodox Society in Israel 2024.* Jerusalem:
 Israel Democracy Institute.
+
+Pedersen, Mogens N. 1979. "The Dynamics of European Party Systems: Changing Patterns of Electoral Volatility."
+*European Journal of Political Research* 7 (1): 1–26. https://doi.org/10.1111/j.1475-6765.1979.tb01267.x.
 
 McCauley, John F. 2014. "The Political Mobilization of Ethnic and Religious Identities in Africa." *American Political
 Science Review* 108 (4): 801–16. https://doi.org/10.1017/S0003055414000410.
