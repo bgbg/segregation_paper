@@ -18,3 +18,5 @@ tmp*.ipynb
 .cursor/*
 !.cursor/commands
 *.pdf
+transition_paper/paper.md
+transition_paper/combined_paper.md

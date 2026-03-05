@@ -309,7 +309,7 @@ def convert_to_word(markdown_path: Path, output_path: Path) -> None:
 def main(
     *,
     output_format: Literal["markdown", "pdf", "word", "all"] = "all",
-    output_dir: str = "data/processed/reports",
+    output_dir: str = "transition_paper",
     title: str = "From Separation to Transition: Tracking Electoral Flows in Israel's Ultra-Orthodox Sector",
     verbose: bool = False,
 ) -> int:
@@ -350,7 +350,7 @@ def main(
     output_dir_path.mkdir(parents=True, exist_ok=True)
 
     # Generate base filename
-    base_filename = "haredi_voter_transitions_paper"
+    base_filename = "paper"
 
     try:
         # Always generate markdown first
