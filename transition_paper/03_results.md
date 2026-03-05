@@ -44,10 +44,8 @@ The timing of these elections is crucial for interpretation. As shown in Table 1
 instability with elections occurring in rapid succession: only 5.5 months separated the September 2019 (Knesset 22) and
 March 2020 (Knesset 23) elections, followed by a 13-month interval to the March 2021 election (Knesset 24), and a
 longer 19-month gap to the November 2022 election (Knesset 25). These short intervals, particularly the 5.5 and
-13-month gaps, make it very unlikely that the observed
-transitions reflect demographic change rather than genuine voter switching rather than demographic change through migration or generational
-replacement. The close temporal proximity makes it unlikely that residential mobility or population turnover could
-account for the dramatic shifts in voting patterns.
+13-month gaps, make it very unlikely that the observed transitions reflect demographic change through migration or
+generational replacement rather than genuine voter switching.
 
 Figure 2 shows that Haredi abstention rates remained low and stable, contrasting with fluctuating non-Haredi
 participation. Cross-over voting between Haredi and non-Haredi parties remained marginal, indicating persistent political

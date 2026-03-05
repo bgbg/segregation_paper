@@ -48,8 +48,8 @@ disruption was system-wide rather than driven by city-specific factors alone.
 ### Temporal Dynamics and Demographic Interpretations
 
 The short intervals between elections (5.5 and 13 months separating Knessets 22→23→24) make it very unlikely that
-observed transitions reflect demographic change rather than genuine voter switching rather than demographic change through migration or generational replacement,
-especially given the subsequent rapid recovery.
+observed transitions reflect demographic change through migration or generational replacement rather than genuine
+voter switching, especially given the subsequent rapid recovery.
 
 
 This finding has important implications for interpreting electoral volatility in highly cohesive communities. Even
