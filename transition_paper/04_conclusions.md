@@ -153,82 +153,58 @@ and quantitative evidence, cannot be established with certainty from these sourc
 
 ## Theoretical Implications
 
-### Ethnic Boundaries Within Religious Unity
+### Mapping Findings onto the Framework
 
-The persistence of ethnic-political boundaries within the Haredi sector, despite shared religious practice and
-lifestyle, contributes to broader theoretical debates about the nature of group identity and cohesion, particularly in
-contexts where religious populism reinforces boundaries between 'us' and 'them' (Ben Porat and Filc 2022). The Haredi
-case demonstrates that religious uniformity does not necessarily produce political unity when overlaid with ethnic
-differentiation. The boundaries between Ashkenazi and Sephardic Haredimexpressed through separate educational
-institutions, rabbinic authorities, liturgical practices, and political representationremain salient even as both groups
-maintain strict Orthodox observance.
+The empirical findings map directly onto the "rigidity with stress fractures" framework introduced above. Existing
+theories each capture part of the observed pattern: cleavage theory (Lipset and Rokkan 1967; Bartolini and Mair 1990)
+accounts for the high baseline stability, as the Haredi sector's dense organizational encapsulation — yeshivot,
+synagogues, rabbinic courts — creates the socio-organizational bonds that freeze electoral alignments. Electoral
+volatility typologies (Pedersen 1979; Mainwaring and Zoco 2007) distinguish within-bloc from between-bloc volatility
+and recognize elite-driven disruptions, but do not specify when such disruptions reverse. Punctuated equilibrium
+(Baumgartner and Jones 1993) captures the rhythm of stasis-punctuation-recovery but does not address the specific
+institutional mechanisms that trigger and terminate disruptions in identity-based blocs.
 
-This finding aligns with theories of segmented assimilation and intra-group differentiation, which emphasize how
-sub-ethnic identities can persist and structure social behavior within broader cultural or religious communities. The
-Haredi case extends this literature by showing that such differentiation operates not only in immigrant communities
-navigating between heritage and host cultures, but also in indigenous religious populations managing internal ethnic
-diversity.
+The Haredi case extends these literatures by showing how all three scope conditions operated simultaneously. First,
+**centralized institutional authority**: rabbinic leaders exercised direct electoral influence through binding rulings,
+consistent with Horowitz's (1985) framework of elite-orchestrated ethnic voting and Freedman's (2020) documentation
+of rabbinic electoral effects in Israel. Second, **organizational network reach**: the yeshiva system provided
+channels for transmitting directives across geographically dispersed cities within a single electoral cycle, producing
+the synchronized disruption observed in Jerusalem, Bnei Brak, Ashdod, Beit Shemesh, and Modi'in Illit. Third, **an
+exogenous, temporary crisis**: the triggering conditions — COVID-19, coalition instability, inter-party recruitment
+campaigns — were circumstantial rather than structural, so the withdrawal of rabbinic directives restored the prior
+equilibrium.
 
-### Stability, Disruption, and Recovery in Ethnic Voting Blocs
+This framework distinguishes the Haredi pattern from two alternatives. Unlike the gradual realignment described by
+Goodwin, Kaufmann, and Larsen (2022), where identity-driven issues produce lasting partisan shifts in open
+electorates, the Haredi disruption was sudden and fully reversible. And unlike the cleavage erosion implied by
+dealignment theories, the underlying ethnic-political boundaries remained intact: the same institutional structures
+that enabled the disruption also terminated it. Comparable reversible volatility episodes appear in other
+identity-based systems — Aha, Hiebel, and Jensen (2024) document brief defections among Eastern European majority
+voters that revert to prior affiliations, and McCauley (2014) shows how identity-based groups shift priorities under
+mobilization pressures without dissolving group boundaries — but the Haredi case is distinctive in the degree of
+coordination and the speed of recovery, which the scope conditions help explain.
 
-The temporal pattern observedhigh stability, temporary collapse, rapid recoveryoffers insights into the resilience of
-ethnic-political boundaries. The March 2020–March 2021 (23→24) disruption did not trigger a permanent realignment,
-suggesting that:
+### Synchronized Disruption as Evidence of Discipline
 
-1. **Institutional mechanisms for maintaining boundaries remain strong.** The same rabbinic authority structures that
-enabled the disruption, through explicit cross-ethnic voting instructions, also restored order when those instructions
-were withdrawn or moderated. High loyalty rates returned even though the voters who had already switched remained
-with their new parties.
-
-2. **Temporary cross-party voting does not necessarily erode ethnic identity.** While voters who switched during
-the disruption remained with their new parties, the cessation of further switching indicates that boundaries
-restabilized, political behavior temporarily decoupled from ethnic identity without permanently dissolving the
-boundary-maintenance mechanisms.
-
-3. **The boundaries are resilient but not impermeable.** While rapid recovery demonstrates robustness, the magnitude of
-the disruption shows that even highly disciplined communities can experience volatility under sufficient stress.
-Comparable dynamics appear in other identity-based systems: Aha, Hiebel, and Jensen (2024) find that when
-ethnic-minority parties achieve success in Eastern Europe, majority voters may briefly defect to radical-right
-alternatives before returning to mainstream affiliations, illustrating reversible volatility within cohesive blocs. These
-reversible volatility patterns are not unique to electoral contexts. McCauley (2014) demonstrates that identity-based
-groups in Africa shift political priorities depending on context and mobilization strategies, revealing that identity
-mobilization is not static but responsive to situational pressures. The Haredi case extends this insight: even in
-contexts of strong institutional discipline, identity-based priorities can temporarily reorder under stress without
-fundamentally dissolving group boundaries.
-
-### The Paradox of Synchronized Disruption: Discipline, Not Fluidity
-
-The sharp drops in intra-party loyalty during the 23→24 transition might initially suggest emerging voter independence
-and weakening institutional control. However, the **sudden and synchronized nature** of both disruption and recovery
-across geographically dispersed cities points to the contrary: these patterns are consistent with **institutional
-discipline** rather than independent thinking. If voters were exercising individual judgment, I would expect gradual,
-staggered changes across localities with uncoordinated recovery. Instead, sharp loyalty drops occurred simultaneously
-in Jerusalem, Bnei Brak, Ashdod, Beit Shemesh, and Modi'in Illit, followed by synchronized recovery.
-
-This pattern resembles other identity-based voting blocs with strong institutional structures, from U.S. evangelical
-communities (Bullock et al. 2019) to Catholic voters in Latin America (Smith 2019), where apparent volatility often
-reflects coordinated elite guidance rather than grassroots defection. The corpus evidence is consistent with this
-interpretation: UTJ's political operatives secured a rabbinic ruling from Rabbi Mazuz on election morning, which could
-then be transmitted through yeshiva networks to Sephardi voters in Jerusalem, Bnei Brak, Ashdod, Beit Shemesh, and
-Modi'in Illit simultaneously. The temporal and geographic pattern is consistent with a single rabbinic directive, issued
-through institutional channels that span the entire national geography of Haredi settlement, producing a 12-15% swing
-in voting behavior across all major population centers within the same electoral cycle. The magnitude of coordinated
-switching is consistent with strong communal discipline: only populations in which spiritual authority commands
-substantial electoral influence could plausibly execute such system-wide pivots. That baseline loyalty reasserted
-itself when those directives were withdrawn or moderated is consistent with the interpretation that both the
-disruption and the recovery were expressions of the same underlying discipline, not opposing forces.
+The sharp drops in intra-party loyalty during the 23→24 transition might initially suggest emerging voter independence.
+However, the **sudden and synchronized nature** of both disruption and recovery across geographically dispersed cities
+is consistent with **institutional discipline** rather than independent thinking. If voters were exercising individual
+judgment, I would expect gradual, staggered changes across localities with uncoordinated recovery. Instead,
+simultaneous loyalty drops followed by synchronized recovery are consistent with a single rabbinic directive
+transmitted through institutional channels spanning the national geography of Haredi settlement, producing a 12-15%
+swing across all major population centers within the same electoral cycle. That baseline loyalty reasserted itself
+when those directives were withdrawn is consistent with the interpretation that both the disruption and the recovery
+were expressions of the same underlying discipline. This parallels patterns in other identity-based voting blocs with
+strong institutional structures, from U.S. evangelical communities (Bullock et al. 2019) to Catholic voters in Latin
+America (Smith 2019).
 
 **Robustness to Model Specification.** One concern is whether synchronization reflects hierarchical model constraints rather than genuine behavior. To test this, I fitted alternatives with increased flexibility: a relaxed hierarchical model (variability increased 166 - 267%) and a fully independent model (no pooling, 248% higher variability). Despite cities diverging from national patterns, synchronized drops and recoveries persisted. Correlation remained without structural similarity constraints, confirming synchronization as genuine rather than artifactual (see Appendix C for detailed comparison).
 
-This pattern contrasts with gradual realignment models common in studies of ethnic and religious voting in less cohesive
-populations. Recent comparative work supports this distinction. Goodwin, Kaufmann, and Larsen (2022) describe how
-identity-driven issues like immigration can trigger gradual partisan realignments in open electorates, whereas tightly
-bounded identity blocs, such as Israel's Haredim, exhibit punctuated rather than continuous change. The persistence of
-ethnic-political boundaries despite temporary volatility parallels Andersen and Yaish's (2003) finding in Israel that
-electoral reform failed to shift cleavage voting patterns. Both studies suggest that fundamental institutional
-restructuring is required to produce lasting realignment, whereas temporary crises create only transitory disruption. The
-Haredi case suggests that in communities with strong institutional structures and clear ethnic-political mapping, change
-occurs through punctuated disruption and recovery rather than slow drift.
+The persistence of ethnic-political boundaries despite temporary volatility parallels Andersen and Yaish's (2003)
+finding that Israeli electoral reform failed to shift cleavage voting patterns, and is consistent with Bartolini and
+Mair's (1990) argument that high organizational encapsulation enables temporary disruption without permanent
+realignment. The Haredi case suggests that in communities meeting the three scope conditions, change occurs through
+punctuated disruption and recovery rather than slow drift.
 
 ### The Limited Predictive Power of Structural Integration
 
