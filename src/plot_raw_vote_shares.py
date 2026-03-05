@@ -68,12 +68,13 @@ def plot_raw_vote_shares(data: pd.DataFrame, output_path: Path) -> None:
     x_labels = [ELECTION_LABELS[k] for k in KNESSETS]
 
     fig, axes = plt.subplots(
-        6, 1, figsize=(3.5, 8), sharex=True, sharey=False,
+        2, 3, figsize=(7, 4), sharex=True, sharey=False,
     )
 
-    for row_idx, city in enumerate(cities_order):
+    for idx, city in enumerate(cities_order):
+        row_idx, col_idx = divmod(idx, 3)
         city_data = data[data["city"] == city].sort_values("knesset")
-        ax = axes[row_idx]
+        ax = axes[row_idx, col_idx]
         ax.plot(
             x_positions, city_data["shas_pct"].values,
             color="black", linewidth=1.2,
@@ -83,15 +84,14 @@ def plot_raw_vote_shares(data: pd.DataFrame, output_path: Path) -> None:
         ax.spines["top"].set_visible(False)
         ax.spines["right"].set_visible(False)
         ax.grid(axis="y", alpha=0.2, linewidth=0.4)
-        ax.set_ylabel(city, fontsize=8, rotation=0, labelpad=5,
-                      ha="right", va="center")
+        ax.set_title(city, fontsize=8)
 
-        if row_idx == 5:
+        if row_idx == 1:
             ax.set_xticks(x_positions)
-            ax.set_xticklabels(x_labels, fontsize=7)
+            ax.set_xticklabels(x_labels, fontsize=6.5)
 
-        if row_idx == 0:
-            ax.set_title("Shas vote share (%)", fontsize=9)
+        if col_idx == 0:
+            ax.set_ylabel("Shas (%)", fontsize=8)
 
     plt.tight_layout()
     plt.savefig(output_path, dpi=300, bbox_inches="tight")
