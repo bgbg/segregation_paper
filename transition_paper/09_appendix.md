@@ -60,9 +60,14 @@ Knesset 1920) were resolved by increasing the number of draws and adopting non-c
 
 ### Convergence Diagnostics
 
-| Transition | R-hat max | ESS min | |------|------------|----------| | Kn 1920 (Jan 2013Mar 2015) | 1.530 | 7 | | Kn
-2021 (Mar 2015Apr 2019) | 1.529 | 7 | | Kn 2122 (Apr 2019Sep 2019) | 1.465 | 7 | | Kn 2223 (Sep 2019Mar 2020) | 1.134 |
-19 | | Kn 2324 (Mar 2020Mar 2021) | 1.477 | 7 | | Kn 2425 (Mar 2021Nov 2022) | 1.737 | 6 |
+| Transition | R-hat max | ESS min |
+|------|------------|----------|
+| Kn 19-20 (Jan 2013 - Mar 2015) | 1.530 | 7 |
+| Kn 20-21 (Mar 2015 - Apr 2019) | 1.529 | 7 |
+| Kn 21-22 (Apr 2019 - Sep 2019) | 1.465 | 7 |
+| Kn 22-23 (Sep 2019 - Mar 2020) | 1.134 | 19 |
+| Kn 23-24 (Mar 2020 - Mar 2021) | 1.477 | 7 |
+| Kn 24-25 (Mar 2021 - Nov 2022) | 1.737 | 6 |
 
 While some early models show high R-hat and low ESS, these issues were largely addressed through increased sampling and
 refined priors. The final models show stable posteriors without divergences.
