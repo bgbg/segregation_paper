@@ -9,5 +9,5 @@ notebooks/*.png
 notebooks/tmp*.ipynb
 .serena/
 .trees/
-.claude/settings.local.json
+.claude/
 .cursor/
