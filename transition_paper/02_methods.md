@@ -17,7 +17,7 @@ votes for Shas and UTJ exceed three-quarters of all votes cast, maintaining cons
 reliable statistical estimation, I include only cities with at least five qualifying boxes.
 
 Data were obtained directly from the Central Elections Committee's official online repository, supplemented by
-previously digitized archives for earlier elections (via Dr. Keren-Kratz, 2024). The resulting dataset includes
+previously digitized archives for earlier elections (via Dr. Keren-Kratz, personal communication, 2024). The resulting dataset includes
 polling-stationlevel results for all eligible cities, with a focus on those exhibiting consistent Haredi voting
 patterns.
 

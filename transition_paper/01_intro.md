@@ -9,7 +9,11 @@ boundaries temporarily yield under stress? This question functions as a stress t
 exploiting a rare quasi-natural experiment, the 2020–21 electoral upheaval in Israel, that allows us to observe how deeply
 internalized political loyalties respond to sudden systemic shocks.
 
-Israel's ultra-Orthodox (*Haredi*, plural *Haredim*) Jews provide an extreme-case test of this question. The Haredi sector is widely
+Israel's ultra-Orthodox (*Haredi*, plural *Haredim*) Jews provide an extreme-case test of this question
+(Seawright and Gerring 2008). Their combination of centralized rabbinic authority, dense organizational networks,
+and the availability of ballot-box data from repeated elections over a compressed period makes the Haredi sector
+uniquely suited to reveal mechanisms of elite-coordinated volatility that are theorized across many settings but
+rarely directly observable. The Haredi sector is widely
 portrayed as one of the most disciplined electoral blocs in Israel, with high turnout rates and reliably pro-clerical
 voting reinforced by dense institutional networks of yeshivas and synagogues (Freedman 2020; Leon 2014; Malach 2025).
 Haredi political culture traditionally frames voting not as an individual right but as a collective religious duty
@@ -32,7 +36,7 @@ Torah Judaism (UTJ) and Shas, respectively. Ashkenazi Haredim are represented by
 ultra-Orthodox Ashkenazi. In contrast, Sephardi/Mizrahi Haredim predominantly vote for Shas, though Shas's voter base
 extends well beyond the strictly ultra-Orthodox community. As Cincotta (2013) observed, "the vast majority of Shas's
 electoral support has come from non-ultra-Orthodox Sephardim and Mizrahim," reflecting the party's broad appeal (see also
-Keren-Kratz 2025). Leon (2014a) characterizes Sephardi ultra-Orthodoxy as "strict ideology, liquid identity," suggesting
+Keren-Kratz 2025). Leon (2014) characterizes Sephardi ultra-Orthodoxy as "strict ideology, liquid identity," suggesting
 more permeable boundaries than Ashkenazi streams. Malach (2025) finds that UTJ behaves as a "sectarian party with dynamic
 fringes," drawing ~95% of its potential core support but subject to modest flows at the edges. This ethnic cleavage
 within a religiously unified population provides a unique opportunity to study how internal boundaries within cohesive
