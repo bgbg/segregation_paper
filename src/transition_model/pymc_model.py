@@ -196,25 +196,6 @@ def sample_model(
         ArviZ InferenceData object with posterior samples
     """
     with model:
-        # Progressive sampling strategy for difficult posteriors
-        print("Starting progressive sampling strategy...")
-
-        # Stage 1: Initial burn-in with conservative settings
-        print("Stage 1: Initial adaptation...")
-        trace_stage1 = pm.sample(
-            draws=500,
-            tune=2000,  # Longer tuning for initial adaptation
-            chains=chains,
-            target_accept=0.90,  # Lower acceptance for initial exploration
-            max_treedepth=10,
-            init="jitter+adapt_diag",
-            random_seed=random_seed,
-            return_inferencedata=True,
-            discard_tuned_samples=False,
-        )
-
-        # Stage 2: Main sampling with better initialization
-        print("Stage 2: Main sampling with adapted parameters...")
         trace = pm.sample(
             draws=draws,
             tune=tune,

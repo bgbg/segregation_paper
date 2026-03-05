@@ -34,18 +34,32 @@ def compute_diagnostics(trace: az.InferenceData, config: Dict = None) -> Dict[st
 
     diagnostics = {}
 
-    # R-hat statistics
+    # Identify stochastic variables (exclude deterministic constants like phi)
+    stochastic_vars = [
+        var for var in trace.posterior.data_vars
+        if trace.posterior[var].values.std() > 0
+    ]
+
+    # R-hat statistics (stochastic variables only)
     rhat = az.rhat(trace)
-    rhat_values = np.concatenate([rhat[var].values.flatten() for var in rhat.data_vars])
-    diagnostics["rhat_max"] = float(np.max(rhat_values))
-    diagnostics["rhat_mean"] = float(np.mean(rhat_values))
+    rhat_values = np.concatenate([
+        rhat[var].values.flatten() for var in stochastic_vars
+        if var in rhat.data_vars
+    ])
+    rhat_values = rhat_values[~np.isnan(rhat_values)]
+    diagnostics["rhat_max"] = float(np.max(rhat_values)) if len(rhat_values) > 0 else float("nan")
+    diagnostics["rhat_mean"] = float(np.mean(rhat_values)) if len(rhat_values) > 0 else float("nan")
     diagnostics["rhat_good"] = bool(diagnostics["rhat_max"] < max_rhat_threshold)
 
-    # Effective sample size
+    # Effective sample size (stochastic variables only)
     ess = az.ess(trace)
-    ess_values = np.concatenate([ess[var].values.flatten() for var in ess.data_vars])
-    diagnostics["ess_min"] = float(np.min(ess_values))
-    diagnostics["ess_mean"] = float(np.mean(ess_values))
+    ess_values = np.concatenate([
+        ess[var].values.flatten() for var in stochastic_vars
+        if var in ess.data_vars
+    ])
+    ess_values = ess_values[~np.isnan(ess_values)]
+    diagnostics["ess_min"] = float(np.min(ess_values)) if len(ess_values) > 0 else float("nan")
+    diagnostics["ess_mean"] = float(np.mean(ess_values)) if len(ess_values) > 0 else float("nan")
     diagnostics["ess_good"] = bool(diagnostics["ess_min"] > min_ess_threshold)
 
     # Monte Carlo standard error
