@@ -334,6 +334,7 @@ def main(
         reports_dir / "02_methods.md",
         reports_dir / "03_results.md",
         reports_dir / "04_conclusions.md",
+        reports_dir / "05_endmatter.md",
         reports_dir / "10_references.md",
         reports_dir / "09_appendix.md",
     ]
