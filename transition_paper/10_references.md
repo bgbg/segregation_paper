@@ -4,6 +4,8 @@ Aha, Katharine, Catherine Hiebel, and Linsey Jensen. 2024. "Turning to the Radic
 Variation in Radical Right Support after Ethnic Minority Success in East Central Europe." *Electoral Studies* 83:
 102828. https://doi.org/10.1016/j.electstud.2024.102828.
 
+Blum, Avi. 2007. "Rubinstein's Mistake" [הטעות של רובינשטיין]. *Behadrey Haredim*, November 9. https://www.bhol.co.il/news/66534. Accessed March 5, 2026. [Hebrew]
+
 Bartolini, Stefano, and Peter Mair. 1990. *Identity, Competition, and Electoral Availability: The Stabilisation of
 European Electorates 1885–1985.* Cambridge: Cambridge University Press.
 
