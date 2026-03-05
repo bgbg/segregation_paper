@@ -54,23 +54,30 @@ and reproducibility.
 ### Model Validation
 
 Posterior predictive checks confirm that the model adequately reproduces empirical vote counts across all elections.
-Most chains converged successfully, with effective sample sizes (ESS) exceeding 400 for key parameters and R-hat values
-approaching 1.01 in later runs. Minor convergence issues in earlier election pairs (January 2013March 2015 transition,
-Knesset 1920) were resolved by increasing the number of draws and adopting non-centered parameterization.
+All models were sampled with 4 chains, 3,000 draws and 5,000 tuning steps per chain, target acceptance rate 0.99,
+and random seed 42 for reproducibility.
 
 ### Convergence Diagnostics
 
-| Transition | R-hat max | ESS min |
-|------|------------|----------|
-| Kn 19-20 (Jan 2013 - Mar 2015) | 1.530 | 7 |
-| Kn 20-21 (Mar 2015 - Apr 2019) | 1.529 | 7 |
-| Kn 21-22 (Apr 2019 - Sep 2019) | 1.465 | 7 |
-| Kn 22-23 (Sep 2019 - Mar 2020) | 1.134 | 19 |
-| Kn 23-24 (Mar 2020 - Mar 2021) | 1.477 | 7 |
-| Kn 24-25 (Mar 2021 - Nov 2022) | 1.737 | 6 |
+Country-level transition matrix parameters (Z_country, diag_bias) converge well across all election pairs, with
+R-hat < 1.01 and ESS > 6,500 for all parameters. City-deviation parameters (D, delta) show non-convergence in
+some pairs due to the multiplicative structure of the city-deviation model (delta * D), which creates a
+scaling non-identifiability between the deviation pattern and its city-specific scaling factors. This does not
+affect country-level transition estimates, which are the primary quantities of interest.
 
-While some early models show high R-hat and low ESS, these issues were largely addressed through increased sampling and
-refined priors. The final models show stable posteriors without divergences.
+| Transition | Country R-hat max | Country ESS min | Overall R-hat max | Overall ESS min | Divergences |
+|------|-------------------|-----------------|-------------------|-----------------|-------------|
+| Kn 18-19 (Feb 2009 - Jan 2013) | 1.001 | 9,816 | 1.528 | 7 | 0 |
+| Kn 19-20 (Jan 2013 - Mar 2015) | 1.001 | 6,584 | 1.529 | 7 | 0 |
+| Kn 20-21 (Mar 2015 - Apr 2019) | 1.001 | 11,096 | 1.061 | 47 | 0 |
+| Kn 21-22 (Apr 2019 - Sep 2019) | 1.001 | 8,017 | 1.001 | 7,350 | 0 |
+| Kn 22-23 (Sep 2019 - Mar 2020) | 1.001 | 10,430 | 1.002 | 5,719 | 0 |
+| Kn 23-24 (Mar 2020 - Mar 2021) | 1.001 | 8,154 | 1.733 | 6 | 0 |
+| Kn 24-25 (Mar 2021 - Nov 2022) | 1.001 | 12,487 | 1.002 | 7,578 | 0 |
+
+No divergent transitions were observed in any model. The overall R-hat and ESS columns reflect
+the city-deviation parameters (D, delta_city), which exhibit poor mixing in transitions 18-19, 19-20, 20-21,
+and 23-24. City-level transition estimates for these pairs should be interpreted with caution.
 
 Representative diagnostics are shown below.
 

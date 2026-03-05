@@ -66,14 +66,14 @@ model:
     plotting_rows: to                         # when plotting heatmaps, rows=to, cols=from
     plotting_cols: from
 
-  # MCMC sampling parameters (improved for convergence)
+  # MCMC sampling parameters
   sampling:
-    draws: 3000                 # Posterior samples per chain (increased)
-    tune: 3000                  # Tuning samples per chain (increased)
+    draws: 3000                 # Posterior samples per chain
+    tune: 5000                  # Tuning samples per chain (extended for city-deviation convergence)
     chains: 4                   # Number of parallel chains
-    target_accept: 0.95         # Target acceptance rate for NUTS (slightly lower)
-    max_treedepth: 12           # Reduced for stability
-    init: "adapt_diag"          # Simplified initialization
+    target_accept: 0.99         # Target acceptance rate for NUTS (high to avoid divergences)
+    max_treedepth: 12           # Maximum tree depth for NUTS
+    init: "adapt_diag"          # Initialization method
 
   # Convergence diagnostics thresholds
   diagnostics:

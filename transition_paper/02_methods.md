@@ -104,9 +104,13 @@ prior means for the next, allowing gradual temporal evolution while maintaining 
 
 ### Model Validation and Implementation
 
-All chains converged successfully (Gelman-Rubin $\hat{R} < 1.01$, effective sample sizes exceeding 400 for key
-parameters, no divergent transitions). Posterior predictive checks confirmed good fit. Models were implemented in PyMC
-5.0 using four chains (seed 42). Full diagnostics and code are available at https://github.com/bgbg/segregation_paper.
+Country-level transition matrix parameters converged well across all election pairs (Gelman-Rubin $\hat{R} < 1.01$,
+effective sample sizes exceeding 6,500 for all country-level parameters, no divergent transitions). City-deviation
+parameters exhibited non-convergence in some pairs due to the multiplicative non-identifiability inherent in the
+$\delta \cdot D$ interaction structure; city-level estimates for affected transitions should be interpreted with
+caution (see Appendix B for full diagnostics). Posterior predictive checks confirmed good fit. Models were implemented
+in PyMC 5.0 using four chains with 3,000 draws and 5,000 tuning steps per chain (target acceptance 0.99, seed 42).
+Full diagnostics and code are available at https://github.com/bgbg/segregation_paper.
 
 ### Relation to Previous Study
 
