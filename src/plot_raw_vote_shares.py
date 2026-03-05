@@ -11,11 +11,11 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 ELECTION_LABELS = {
-    21: "Apr 2019\n(Kn 21)",
-    22: "Sep 2019\n(Kn 22)",
-    23: "Mar 2020\n(Kn 23)",
-    24: "Mar 2021\n(Kn 24)",
-    25: "Nov 2022\n(Kn 25)",
+    21: "Apr '19\n(21)",
+    22: "Sep '19\n(22)",
+    23: "Mar '20\n(23)",
+    24: "Mar '21\n(24)",
+    25: "Nov '22\n(25)",
 }
 
 CITY_NAMES_EN = {
@@ -60,61 +60,48 @@ def load_and_aggregate(knessets: list[int], data_dir: Path) -> pd.DataFrame:
 
 
 def plot_raw_vote_shares(data: pd.DataFrame, output_path: Path) -> None:
-    """Create a two-panel line chart: Shas% and UTJ% by city over elections."""
-    fig, (ax_shas, ax_utj) = plt.subplots(
-        1, 2, figsize=(10, 4.5), sharey=False
-    )
-
+    """Create a 6x2 grid: one row per city, columns for Shas% and UTJ%."""
     cities_order = ["Ashdod", "Beit Shemesh", "Elad", "Bnei Brak",
                     "Jerusalem", "Modi'in Illit"]
 
     x_positions = list(range(len(KNESSETS)))
     x_labels = [ELECTION_LABELS[k] for k in KNESSETS]
 
-    # Muted palette
-    city_colors = {
-        "Ashdod": "#1f77b4",
-        "Beit Shemesh": "#ff7f0e",
-        "Elad": "#2ca02c",
-        "Bnei Brak": "#d62728",
-        "Jerusalem": "#9467bd",
-        "Modi'in Illit": "#8c564b",
-    }
+    fig, axes = plt.subplots(
+        6, 2, figsize=(6, 8), sharex=True, sharey=False,
+    )
 
-    for ax, metric, title in [
-        (ax_shas, "shas_pct", "Shas vote share (%)"),
-        (ax_utj, "utj_pct", "UTJ vote share (%)"),
-    ]:
-        # Plot aggregate as thick gray dashed line
-        agg = data[data["city"] == "All cities"].sort_values("knesset")
-        ax.plot(
-            x_positions, agg[metric].values,
-            color="gray", linewidth=2.5, linestyle="--",
-            label="All cities", zorder=1,
-        )
+    for row_idx, city in enumerate(cities_order):
+        city_data = data[data["city"] == city].sort_values("knesset")
 
-        # Plot individual cities
-        for city in cities_order:
-            city_data = data[data["city"] == city].sort_values("knesset")
+        for col_idx, metric in enumerate(["shas_pct", "utj_pct"]):
+            ax = axes[row_idx, col_idx]
             ax.plot(
                 x_positions, city_data[metric].values,
-                color=city_colors[city], linewidth=1.3,
-                marker="o", markersize=4,
-                label=city, zorder=2,
+                color="black", linewidth=1.2,
+                marker="o", markersize=3,
             )
+            # Shade the 23->24 dip region
+            ax.axvspan(2.5, 3.5, color="#e0e0e0", zorder=0)
 
-        ax.set_xticks(x_positions)
-        ax.set_xticklabels(x_labels, fontsize=8)
-        ax.set_title(title, fontsize=11)
-        ax.spines["top"].set_visible(False)
-        ax.spines["right"].set_visible(False)
-        ax.grid(axis="y", alpha=0.3, linewidth=0.5)
+            ax.spines["top"].set_visible(False)
+            ax.spines["right"].set_visible(False)
+            ax.grid(axis="y", alpha=0.2, linewidth=0.4)
 
-    ax_shas.set_ylabel("Vote share (%)", fontsize=10)
-    ax_shas.legend(
-        fontsize=7, loc="lower left", framealpha=0.8,
-        ncol=2, handlelength=1.5,
-    )
+            # City label on left column only
+            if col_idx == 0:
+                ax.set_ylabel(city, fontsize=8, rotation=0, labelpad=60,
+                              ha="right", va="center")
+
+            # X-axis labels only on bottom row
+            if row_idx == 5:
+                ax.set_xticks(x_positions)
+                ax.set_xticklabels(x_labels, fontsize=6.5)
+
+            # Column titles on top row only
+            if row_idx == 0:
+                title = "Shas (%)" if col_idx == 0 else "UTJ (%)"
+                ax.set_title(title, fontsize=9)
 
     plt.tight_layout()
     plt.savefig(output_path, dpi=300, bbox_inches="tight")
