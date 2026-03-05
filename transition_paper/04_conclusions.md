@@ -17,10 +17,25 @@ though even these strongholds experienced measurable volatility.
 
 This geographic variation may reflect differences in the local influence of the rabbinic figures who issued
 cross-ethnic voting instructions. Ashdod's extreme disruption is consistent with the strong influence of Rabbi Mazuz
-(Yeshivat Kisse Rahamim) and Rabbi Barda in southern Israel, where their followings are concentrated. However, the
-consistency of the temporal pattern, sharp disruption followed by recovery across all cities, confirms that the
-disruption was system-wide rather than driven by city-specific factors alone.
+(Yeshivat Kisse Rahamim) and Rabbi Barda in southern Israel, where their followings are concentrated. Anecdotal
+accounts of community leadership disputes in Ashdod during this period further suggest that local religious authority
+fragmentation contributed to the particularly pronounced disruption. More broadly, Ashdod's exceptionally high
+cross-party flow (19.3% Shas-to-UTJ) points to particularly fluid political boundaries between Sephardic and Ashkenazi
+Haredi communities in this demographically mixed city. However, the consistency of the temporal pattern, sharp
+disruption followed by recovery across all cities, confirms that the disruption was system-wide rather than driven by
+city-specific factors alone.
 
+Notably, Ashdod exhibited early signs of instability in the transitions immediately preceding the 23→24 collapse:
+Shas loyalty declined from 91.8% (21→22) to 83.6% (22→23), well before the system-wide shock. This suggests that
+Ashdod's Sephardic Haredi population was already experiencing political flux, making the city particularly vulnerable
+to the subsequent disruption. More generally, episodic deviations from baseline loyalty — including the 19→20
+transition, when 13.8% of Shas voters defected to non-Haredi parties — indicate that certain cities, particularly
+Ashdod, may serve as bellwethers of broader instability in the Haredi voting bloc.
+
+
+Despite its magnitude, this disruption appears to have received limited attention in contemporary political discourse.
+Both parties maintained their coalition positions despite the internal reshuffling, illustrating how substantial voter
+transitions within the Haredi sector can remain largely hidden beneath the surface of stable electoral outcomes.
 
 ### Temporal Dynamics and Demographic Interpretations
 
@@ -51,6 +66,12 @@ The relationship between spatial and political boundaries is more complex than i
 operating independently, the two systems appear to reinforce each other under normal conditions: high residential
 segregation co-occurs with high political loyalty, creating layered ethnic segmentation. Both spatial and political
 boundaries responded to stress during the 2020 - 2021 period, though with different dynamics and recovery patterns.
+
+Notably, while the voter transition disruption was universal across all major Haredi cities, only Ashdod exhibited a
+dramatic drop in residential segregation indices in Gorelik (2025). Ashdod's exceptionally high switching rate (19.3%)
+apparently crossed a threshold that made the confounding between voting patterns and residential segregation visible in
+the dissimilarity index, confirming that the anomaly documented in Gorelik (2025) was electoral rather than demographic
+in origin.
 
 ## What Caused the 23-24 Disruption?
 

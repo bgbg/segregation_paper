@@ -2,9 +2,8 @@
 
 The analysis confirms high baseline loyalty within both Shas and UTJ, yet reveals significant temporal and geographic
 variation in voter transitions. Most strikingly, a dramatic but temporary disruption in the March 2020–March 2021
-transition (Knesset 23→24) affected all major Haredi cities, followed by complete recovery. These findings indicate
-that even highly disciplined voting blocs can experience rapid, system-wide loyalty disruptions that fully reverse when
-triggering conditions resolve. Model diagnostics confirming adequate fit are provided in Appendix B.
+transition (Knesset 23→24) affected all major Haredi cities, followed by complete recovery.
+Model diagnostics confirming adequate fit are provided in Appendix B.
 
 ## Country-Level Transitions
 
@@ -104,11 +103,8 @@ exhibiting the most extreme deviation.*
 
 **Ashdod** exhibited the most dramatic deviation from national patterns. As shown in Figure 5, Shas-to-Shas loyalty
 dropped to just 67.1% (compared to 73.5% nationally), while the Shas-to-UTJ switching rate surged to 19.3%, more than
-50% higher than the national rate of 12.3%. Ashdod's experience can be contextualized through anecdotal accounts of
-community leadership disputes reported during that period, which may have contributed to the particularly pronounced
-disruption in this city. This exceptionally high cross-party flow suggests particularly fluid political
-boundaries between Sephardic and Ashkenazi Haredi communities in this mixed city. In the subsequent 24→25 transition,
-Ashdod's Shas loyalty recovered to 96.9%, closely tracking the national pattern.
+50% higher than the national rate of 12.3%. In the subsequent 24→25 transition, Ashdod's Shas loyalty recovered to
+96.9%, closely tracking the national pattern.
 
 ![ashdod transitions](plots/city_ashdod_transition_matrix_over_elections.png)
 
@@ -121,19 +117,9 @@ fall to 70.9% (with 15.8% switching to UTJ). Both cities fully recovered by the 
 matrices for these cities are provided in Appendix A.
 
 The consistency of this temporal pattern across cities, sharp disruption followed by full recovery, is consistent with
-a system-wide shock rather than city-specific factors. However, the variation in magnitude indicates that
-local socio-political contexts modulated the intensity: cities with more integrated Sephardic-Ashkenazi populations
-(Ashdod, Bnei Brak) showed larger cross-flows than more homogeneous communities. Notably, while this disruption is
-dramatic in the quantitative data, it appears to have received limited attention in contemporary political discourse,
-suggesting that even substantial voter transitions within the Haredi sector can remain largely hidden beneath the
-surface of stable electoral outcomes (both parties maintained their coalition positions despite the internal
-reshuffling).
-
-Notably, while the voter transition disruption was universal across all major Haredi cities, only Ashdod exhibited a
-dramatic drop in residential segregation indices in my previous study (Gorelik, 2025). Ashdod's exceptionally high
-switching rate (19.3%) apparently crossed a threshold that made the confounding between voting patterns and residential
-segregation visible in the dissimilarity index, confirming that the anomaly documented in Gorelik (2025) was electoral
-rather than demographic in origin.
+a system-wide rather than city-specific phenomenon. The variation in magnitude correlates with demographic composition:
+cities with more integrated Sephardic-Ashkenazi populations (Ashdod, Bnei Brak) showed larger cross-flows than more
+homogeneous communities. Both parties maintained their coalition positions despite the internal reshuffling.
 
 A key concern is whether the hierarchical model structure mechanically produces the observed inter-city synchronization.
 To test this, I fitted two alternative specifications: a relaxed hierarchical model allowing substantially greater
@@ -146,17 +132,14 @@ recoveries in Shas loyalty persisted across all specifications (see Appendix C f
 While the March 2020–March 2021 transition (23→24) represents the most dramatic disruption, the data reveal episodic
 deviations from typical loyalty patterns. At the national level, the January 2013–March 2015 transition (19→20) showed
 Shas-to-Shas loyalty dropping to 85.0%, with 13.8% defecting to the "Other" category (comprising numerous non-Haredi
-parties), an early instance of Shas voters exploring options outside the Haredi sectoral bloc, possibly reflecting
-dissatisfaction with party leadership during that period.
+parties), the highest rate of defection to non-Haredi parties observed in the dataset.
 
 More significantly, Ashdod exhibited early signs of instability in the transitions immediately preceding the 23→24
 collapse. Shas loyalty in Ashdod declined from 91.8% in the April 2019–September 2019 transition (21→22) to 83.6% in the
-September 2019–March 2020 transition (22→23), well before the system-wide shock. This suggests that Ashdod's Sephardic
-Haredi population was already experiencing political flux, making the city particularly vulnerable to the subsequent
-disruption.
+September 2019–March 2020 transition (22→23), well before the system-wide shock.
 
-These patterns indicate that voter transitions in the Haredi sector are not confined to singular crisis moments but
-occur episodically, with certain cities, particularly Ashdod, serving as bellwethers of broader instability.
+These data show that deviations from baseline loyalty, while rare, occurred in multiple transition periods and were not
+confined to the 23→24 disruption.
 
 ## Quantifying Permeability
 
