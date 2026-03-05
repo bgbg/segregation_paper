@@ -108,29 +108,11 @@ suggesting that even substantial voter transitions within the Haredi sector can 
 surface of stable electoral outcomes (both parties maintained their coalition positions despite the internal
 reshuffling).
 
-Importantly, while the voter transition disruption was universal across all major Haredi cities, only Ashdod exhibited
-a dramatic drop in residential segregation indices in my previous study (Gorelik, 2025). This city-specific segregation
-response, despite the system-wide voting disruption, proved methodologically revealing. Ashdod's exceptionally high
-switching rate (19.3% compared to 12.3% nationally) apparently crossed a threshold that made the confounding between
-voting patterns and residential segregation visible in the dissimilarity index. This fortunate coincidence, that the city
-with the most extreme switching happened to be the same city where segregation indices were carefully tracked, allowed
-identification of a fundamental measurement issue: using party votes as proxies for ethnic residential patterns can be
-compromised when voter loyalty fluctuates. Had the switching been more uniform across cities, or had Ashdod's rate been
-closer to the national average, this methodological confound might have remained undetected.
-
-## Connection to Residential Segregation Patterns
-
-The 19.3% Shas-to-UTJ switching in Ashdod created apparent "integration" in segregation indices without actual
-residential movement. Ballot boxes previously dominated by Shas (Sephardic) suddenly showed substantial UTJ (Ashkenazi)
-support, reducing the spatial correlation between ethnicity and party vote, precisely what the dissimilarity index
-measures. The synchronized recovery of both voter loyalty (to 96.9% in 24→25) and segregation levels confirms this
-electoral mechanism.
-
-This reveals a critical methodological limitation: using party votes as proxies for ethnic residential patterns assumes
-stable political loyalty. The proxy works well when ethnic-political boundaries are rigid but fails during loyalty
-disruptions. This temporally contingent validity has implications for any study conflating political and demographic
-boundaries, a pattern potentially observable in other contexts where voting behavior proxies for group membership
-(religious denominations, immigrant origin groups, linguistic communities).
+Notably, while the voter transition disruption was universal across all major Haredi cities, only Ashdod exhibited a
+dramatic drop in residential segregation indices in my previous study (Gorelik, 2025). Ashdod's exceptionally high
+switching rate (19.3%) apparently crossed a threshold that made the confounding between voting patterns and residential
+segregation visible in the dissimilarity index, confirming that the anomaly documented in Gorelik (2025) was electoral
+rather than demographic in origin.
 
 ## Other Notable Disruptions Beyond The March 2020–March 2021 Transition
 

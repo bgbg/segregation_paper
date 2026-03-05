@@ -52,26 +52,6 @@ operating independently, the two systems appear to reinforce each other under no
 segregation co-occurs with high political loyalty, creating layered ethnic segmentation. Both spatial and political
 boundaries responded to stress during the 2020 - 2021 period, though with different dynamics and recovery patterns.
 
-### Methodological Revelation: The Confounding of Political and Residential Measures
-
-The dramatic Shas-to-UTJ switching in Ashdod (19.3%) explains the anomalous drop in Ashdod's residential segregation
-index observed in my previous study (Gorelik 2025). When voting patterns changed without residential movement, the
-segregation index, which used party votes as ethnic proxies, falsely registered political switching as residential
-integration.
-
-This exposes a fundamental methodological limitation: using voting patterns to proxy residential segregation assumes stable
-political loyalty. The dissimilarity index confounded ethnic residential clustering with political party loyalty. Any
-future voting disruptions will similarly manifest as apparent "integration" in segregation indices, even when residential
-patterns remain unchanged, a critical consideration for studies conflating political and demographic boundaries.
-
-### Why Only Ashdod Showed Segregation Index Changes
-
-While voter transitions occurred universally across Haredi cities, only Ashdod exhibited detectable segregation index
-changes. Ashdod's combination of extreme switching rates (19.3%) and spatially compact residential segregation made the
-confounding visible. This fortunate coincidence allowed identification of a measurement issue that might otherwise have
-remained hidden, underscoring that confounding visibility depends on both transition magnitude and spatial structure.
-
-
 ## What Caused the 23-24 Disruption?
 
 The timing coincided with extraordinary political and social stress: unprecedented political instability (three elections
@@ -209,26 +189,15 @@ The approach is replicable across other contexts where: - Aggregate data (ballot
 Individual voting patterns are unobserved - Both national trends and local variation are of interest - Multiple time
 periods permit temporal modeling
 
-### Extending Static Segregation Measures to Dynamic Frameworks
-
-By connecting static dissimilarity indices (measuring separation at a point in time) with transition matrices (measuring
-movement over time), this research offers a richer portrait of intra-group segmentation. The combination reveals not
-only that ethnic subgroups maintain distinct residential and political spaces, but also how permeable the boundaries
-between those spaces areand under what conditions permeability increases.
-
-This methodological pairing could be applied to other segmented populations: immigrant communities divided by origin
-region, religious denominations within a shared faith tradition, or linguistic minorities maintaining distinct political
-allegiances. The framework provides a way to quantify both the degree of separation and the rate of exchange between
-subgroups.
-
-
-
 This study focuses on short-term electoral effects and does not address possible social or attitudinal consequences.
 The corpus analysis of Haredi media provides evidence consistent with the elite coordination mechanism but cannot
 quantify individual voter motivations; future research incorporating voter surveys or interviews could further validate the relative weight of
 rabbinic instruction versus personal dissatisfaction. Comparative studies could test whether similar patterns of
 elite-driven 'hidden volatility' appear in other religious or identity-based voting blocs with strong institutional
-structures.
+structures. More broadly, the Ashdod case demonstrates that studies using party votes as proxies for ethnic composition
+should account for the fragility of this assumption in disciplined populations, where elite directives can rapidly
+redirect voting behavior and produce apparent demographic shifts that are purely electoral artifacts (see Gorelik 2025
+for the segregation analysis that first relied on this proxy).
 
 ## Final Reflections
 

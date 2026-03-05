@@ -46,6 +46,8 @@ institutional change occurring during this brief period, the anomaly was puzzlin
 what changed? One plausible answer: politics. Residential segregation changes slowly, but voting behavior can shift
 rapidly. If Sephardi voters temporarily switched from Shas to UTJ (or vice versa), this would create apparent
 "integration" in segregation indices, which rely on party votes as proxies for ethnicity, without any residential movement.
+While this proxy is theoretically grounded and performs well under stable conditions, the Ashdod episode suggests it
+is particularly fragile in highly disciplined populations where centralized authority can rapidly redirect voting behavior.
 This possibility motivated the present study: Was Ashdod's anomaly evidence of a broader, under-the-radar pattern of
 voter transitions within this ostensibly rigid bloc? The period's exceptional political volatility, with four national
 elections between April 2019 and March 2021, provides a natural experiment for testing how electoral shocks affect even
@@ -103,8 +105,7 @@ Specifically, this study contributes by: (1) documenting temporary boundary perm
 disciplined bloc, providing a conservative estimate for volatility in identity-based voting; (2) grounding "rigidity
 with stress fractures" as an analytical framework that synthesizes cleavage theory, volatility typologies, and
 punctuated equilibrium models, specifying the scope conditions under which identity-based blocs experience reversible
-disruption rather than permanent realignment; (3) revealing methodological confounding between political and
-residential measures when loyalty fluctuates; and (4) applying hierarchical Bayesian ecological inference for
+disruption rather than permanent realignment; and (3) applying hierarchical Bayesian ecological inference for
 analyzing voter transitions in cohesive subpopulations. Understanding the conditions
 under which rigid boundaries temporarily yield, and how quickly they reconstitute, is crucial for anticipating coalition
 dynamics and democratic responsiveness in any polity with identity-based voting. The following section details the data

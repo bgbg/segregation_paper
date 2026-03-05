@@ -6,6 +6,4 @@ I exploit a natural experiment, Israel's 2020 - 21 electoral crisis, to track vo
 
 The synchronized switch of voting loyalty across geographically dispersed cities, occurring without residential mobility, is consistent with coordinated elite guidance rather than emerging voter independence. Paradoxically, the capacity for mass switching may reflect stronger, not weaker, institutional control.
 
-This finding exposes a methodological trap. Researchers routinely use voting patterns to measure residential segregation. When voters switched parties without moving, standard indices falsely registered political shifts as spatial integration, a confound that threatens any study conflating demographic and political boundaries.
-
-The broader implication challenges how we interpret electoral behavior in cohesive communities worldwide: apparent volatility may reflect disciplined coordination, and what looks like boundary erosion may actually reveal institutional strength operating through collective action.
+The broader implication challenges how we interpret electoral behavior in cohesive communities worldwide: apparent volatility may reflect disciplined coordination, and what looks like boundary erosion may actually reveal institutional strength operating through collective action. A secondary finding cautions that using party votes as ethnic proxies — common in segregation research — can produce spurious results when elite-driven disruptions decouple voting from demographic patterns.
