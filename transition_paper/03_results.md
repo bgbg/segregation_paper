@@ -114,6 +114,12 @@ switching rate (19.3%) apparently crossed a threshold that made the confounding 
 segregation visible in the dissimilarity index, confirming that the anomaly documented in Gorelik (2025) was electoral
 rather than demographic in origin.
 
+A key concern is whether the hierarchical model structure mechanically produces the observed inter-city synchronization.
+To test this, I fitted two alternative specifications: a relaxed hierarchical model allowing substantially greater
+city-specific deviations (+166% variability) and a fully independent model with no hierarchical pooling (+248%
+variability). Despite cities diverging more from national patterns under both alternatives, the synchronized drops and
+recoveries in Shas loyalty persisted across all specifications (see Appendix C for full details and figures).
+
 ## Other Notable Disruptions Beyond The March 2020–March 2021 Transition
 
 While the March 2020–March 2021 transition (23→24) represents the most dramatic disruption, the data reveal episodic

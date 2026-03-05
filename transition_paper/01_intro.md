@@ -13,7 +13,9 @@ Israel's ultra-Orthodox (*Haredi*, plural *Haredim*) Jews provide an extreme-cas
 portrayed as one of the most disciplined electoral blocs in Israel, with high turnout rates and reliably pro-clerical
 voting reinforced by dense institutional networks of yeshivas and synagogues (Freedman 2020; Leon 2014; Malach 2025).
 Haredi political culture traditionally frames voting not as an individual right but as a collective religious duty
-dictated by spiritual authorities. Yet recent research challenges this monolithic portrayal. Zalcberg (2023) notes that
+dictated by spiritual authorities. As Haredi politician Tzuriel Krispel reflected after losing his reelection bid as mayor:
+"The Haredi public does not have the right to choose, only the right to vote" (Blum 2007) — alluding to the
+expectation that voters follow rabbinic directives rather than evaluate candidates independently. Yet recent research challenges this monolithic portrayal. Zalcberg (2023) notes that
 the community is factionalized and not all members obey rabbinic voting directives; roughly 11% of self-identified Haredi
 Jews voted for non-Haredi lists in the 2021 election despite communal pressures. Similar patterns of partial defection
 within cohesive electorates have been documented elsewhere: Simas and Lothamer (2025) find that even strong party
