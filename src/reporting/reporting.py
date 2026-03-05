@@ -23,6 +23,7 @@ from src.visualize_transitions import (
     collect_transition_estimates,
     compute_city_deviations,
     compute_city_aggregate_deviation,
+    load_election_dates,
     plot_all_cities_aggregate_deviation_subplots,
     plot_transition_matrix_over_elections,
 )
@@ -287,6 +288,8 @@ def _create_mad_table_lens(
     if per_pair_mad.empty:
         return None
 
+    election_dates = load_election_dates()
+
     # Get all cities from the data
     all_cities = per_pair_mad["city"].unique().tolist()
 
@@ -329,6 +332,13 @@ def _create_mad_table_lens(
 
     for i, pair in enumerate(transition_pairs):
         ax = axes[i]
+
+        # Parse pair tag (e.g., "kn19_20") to extract Knesset numbers
+        parts = pair.replace("kn", "").split("_")
+        kn_start, kn_end = int(parts[0]), int(parts[1])
+        date_start = election_dates.get(kn_start, f"Kn{kn_start}")
+        date_end = election_dates.get(kn_end, f"Kn{kn_end}")
+        ax.set_title(f"{kn_start}\u2192{kn_end}\n({date_start}\u2013{date_end})", fontsize=10)
 
         # Filter data for this pair
         pair_data = per_pair_mad[per_pair_mad["pair_tag"] == pair].copy()

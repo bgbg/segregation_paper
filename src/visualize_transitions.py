@@ -180,6 +180,32 @@ def set_xlabel(ax: plt.Axes, label: str = None) -> None:
     ax.set_xlabel(label, rotation=0, ha="right", va="top", x=1)
 
 
+def add_date_secondary_axis(ax: plt.Axes, election_dates: Dict[int, str], fontsize: int = 8) -> plt.Axes:
+    """Add a secondary x-axis at the top showing date ranges for transitions.
+
+    Places date-range labels at midpoints between integer Knesset ticks.
+    """
+    ax2 = ax.twiny()
+    ax2.set_xlim(ax.get_xlim())
+
+    kn_ticks = [int(t) for t in ax.get_xticks() if t == int(t)]
+    if len(kn_ticks) < 2:
+        return ax2
+
+    mid_positions = []
+    mid_labels = []
+    for kn_start, kn_end in zip(kn_ticks[:-1], kn_ticks[1:]):
+        mid_positions.append((kn_start + kn_end) / 2)
+        d_start = election_dates.get(kn_start, "")
+        d_end = election_dates.get(kn_end, "")
+        mid_labels.append(f"{d_start}\u2013{d_end}")
+
+    ax2.set_xticks(mid_positions)
+    ax2.set_xticklabels(mid_labels, fontsize=fontsize, rotation=45, ha="left")
+    ax2.tick_params(axis="x", length=0)
+    return ax2
+
+
 def plot_transition_time_series(
     df_all: pd.DataFrame,
     from_category: str,
@@ -387,11 +413,13 @@ def plot_transition_matrix_over_elections(
         "Abstained": "Abstained",
     }
 
-    # Add column labels (from categories) at top
+    # Add column labels (from categories) at top, with secondary date axis
+    election_dates = load_election_dates()
     for j, from_cat in enumerate(CATEGORY_ORDER):
         ax = axes[0, j]  # Top row
         display_name = display_names.get(from_cat, from_cat)
-        ax.set_title(f"From: {display_name}", fontsize=12, pad=10)
+        ax.set_title(f"From: {display_name}", fontsize=12, pad=35)
+        add_date_secondary_axis(ax, election_dates, fontsize=7)
 
     # Add row labels (to categories) on left
     for i, to_cat in enumerate(CATEGORY_ORDER):
@@ -903,6 +931,10 @@ def plot_all_cities_aggregate_deviation_subplots(
             ax.set_xticks(np.arange(kn_min, kn_max + 1))
             ax.set_xlim(kn_min - 0.5, kn_max + 0.5)
 
+    # Add secondary date axis to top subplot
+    election_dates = load_election_dates()
+    add_date_secondary_axis(axes[0], election_dates, fontsize=8)
+
     # Add Hebrew x-label only to bottom subplot
     set_xlabel(axes[-1])
 
@@ -1209,17 +1241,18 @@ def plot_shas_shas_city_comparison(
             kn_start = int(np.floor(kn_location))
             kn_end = int(np.ceil(kn_location))
 
-            # Get date for the start knesset
+            # Get dates for both knesset numbers
             date_start = election_dates.get(kn_start, f"Kn{kn_start}")
+            date_end = election_dates.get(kn_end, f"Kn{kn_end}")
 
             # Position label at the kn_location
             x_pos = kn_location
 
-            # Add the label
+            # Add the label with both dates
             ax.text(
                 x_pos,
                 y_max,
-                f"#{kn_start}-{kn_end}\n{date_start}",
+                f"#{kn_start}\u2192{kn_end}\n{date_start}\u2013{date_end}",
                 ha="center",
                 va="bottom",
                 fontsize=14,
