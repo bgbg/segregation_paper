@@ -75,8 +75,6 @@ Data*. Princeton, NJ: Princeton University Press.
 
 Leon, Nissim. 2014. "Mizrachi Ultra-Orthodoxy: Strict Ideology, Liquid Identity." *Journal for the Study of Haredi Society* 1 (June 2014): 1–20. [Hebrew]
 
-Leon, Nissim. 2014. "Ethno-Religious Fundamentalism and Theo-Ethnocratic Politics in Israel." *Studies in Ethnicity and Nationalism* 14 (1): 20–35. https://doi.org/10.1111/sena.12067.
-
 Mainwaring, Scott, and Edurne Zoco. 2007. "Political Sequences and the Stabilization of Interparty Competition:
 Electoral Volatility in Old and New Democracies." *Party Politics* 13 (2): 155–178.
 https://doi.org/10.1177/1354068807073852.
