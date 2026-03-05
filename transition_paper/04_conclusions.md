@@ -59,7 +59,7 @@ baseline loyalty.
 
 This study was sparked by my previous analysis of residential segregation within Haredi communities (Gorelik, 2025),
 which documented persistent spatial clustering of Ashkenazi and Sephardic Haredim within the same cities. Together,
-these studies reveal how ethnic boundaries operate across multiple domainsresidential, institutional, and political, to
+these studies reveal how ethnic boundaries operate across multiple domains — residential, institutional, and political — to
 maintain internal differentiation within a religiously unified population.
 
 The relationship between spatial and political boundaries is more complex than initially hypothesized. Rather than
@@ -201,8 +201,8 @@ This natural experiment, the 2020 - 21 electoral crisis, provided a rare opportu
 and demonstrates the utility of hierarchical Bayesian ecological inference for analyzing such transitions in
 contexts where individual-level data are unavailable due to ballot secrecy. The framework successfully captures both
 national baseline patterns and city-specific deviations while accounting for the inherent uncertainty in ecological
-inference. The temporal extensionusing posterior distributions from one election pair to inform priors for the
-nextallows the model to trace gradual evolution while remaining flexible enough to detect sharp disruptions.
+inference. The temporal extension — using posterior distributions from one election pair to inform priors for the
+next — allows the model to trace gradual evolution while remaining flexible enough to detect sharp disruptions.
 
 The approach is replicable across other contexts where: - Aggregate data (ballot-box or precinct-level) are available -
 Individual voting patterns are unobserved - Both national trends and local variation are of interest - Multiple time

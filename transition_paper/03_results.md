@@ -106,7 +106,7 @@ dropped to just 67.1% (compared to 73.5% nationally), while the Shas-to-UTJ swit
 50% higher than the national rate of 12.3%. In the subsequent 24→25 transition, Ashdod's Shas loyalty recovered to
 96.9%, closely tracking the national pattern.
 
-![ashdod transitions](plots/city_ashdod_transition_matrix_over_elections.png)
+![Ashdod Transition Matrices](plots/city_ashdod_transition_matrix_over_elections.png)
 
 *Figure 5: Ashdod transition matrices showing pronounced Shas-to-UTJ switching in the March 2020–March 2021 transition
 (23→24)*

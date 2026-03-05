@@ -8,39 +8,39 @@ Variation section.
 
 ### Ashdod
 
-![ashdod transitions](plots/city_ashdod_transition_matrix_over_elections.png)
+![Ashdod Transition Matrices](plots/city_ashdod_transition_matrix_over_elections.png)
 
 *Figure A1: Ashdod exhibited the most extreme disruption during the March 2020–March 2021 transition (2324), with Shas loyalty
 dropping to 67.1% and 19.3% switching to UTJ.*
 
 ### Beit Shemesh
 
-![beit shemesh transitions](plots/city_beit_shemesh_transition_matrix_over_elections.png)
+![Beit Shemesh Transition Matrices](plots/city_beit_shemesh_transition_matrix_over_elections.png)
 
 *Figure A2: Beit Shemesh showed moderate disruption with Shas loyalty falling to 75.4% during the 2324 transition.*
 
 ### Elad
 
-![elad transitions](plots/city_elad_transition_matrix_over_elections.png)
+![Elad Transition Matrices](plots/city_elad_transition_matrix_over_elections.png)
 
 *Figure A3: Elad transition patterns across all election pairs.*
 
 ### Bnei Brak
 
-![bnei brak transitions](plots/city_bnei_brak_transition_matrix_over_elections.png)
+![Bnei Brak Transition Matrices](plots/city_bnei_brak_transition_matrix_over_elections.png)
 
 *Figure A4: Bnei Brak, despite being predominantly Ashkenazi, experienced a sharp Shas loyalty drop to 70.9% during the 2324
 transition.*
 
 ### Jerusalem
 
-![jerusalem transitions](plots/city_jerusalem_transition_matrix_over_elections.png)
+![Jerusalem Transition Matrices](plots/city_jerusalem_transition_matrix_over_elections.png)
 
 *Figure A5: Jerusalem transition patterns across all election pairs.*
 
 ### Modi'in Illit
 
-![modi'in illit transitions](plots/city_modiin_illit_transition_matrix_over_elections.png)
+![Modi'in Illit Transition Matrices](plots/city_modiin_illit_transition_matrix_over_elections.png)
 
 *Figure A6: Modi'in Illit transition patterns across all election pairs.*
 
@@ -81,15 +81,15 @@ and 23-24. City-level transition estimates for these pairs should be interpreted
 
 Representative diagnostics are shown below.
 
-![diag rank](plots/diag_kn21_22_rank.png)
+![Rank Diagnostic Plot](plots/diag_kn21_22_rank.png)
 
 *Figure B1: Rank plots for the Kn 2122 (April 2019–September 2019) transition showing uniform distributions across chains, indicating good mixing.*
 
-![diag energy](plots/diag_kn21_22_energy.png)
+![Energy Diagnostic Plot](plots/diag_kn21_22_energy.png)
 
 *Figure B2: Energy plots showing no evidence of divergent transitions or geometric pathologies in the posterior.*
 
-![diag autocorr](plots/diag_kn21_22_autocorr.png)
+![Autocorrelation Diagnostic Plot](plots/diag_kn21_22_autocorr.png)
 
 *Figure B3: Autocorrelation plots demonstrating rapid decorrelation of MCMC samples for key model parameters.*
 
