@@ -2,7 +2,7 @@
 
 Across many democracies, communities exhibit cohesive voting patterns that resemble durable "voting blocs" anchored in
 strong group identities. Classic cleavage theories and the literature on ethnoreligious mobilization argue that such
-identities can cement stable partisan alignments over long periods (Lipset & Rokkan, 1967; Curiel & Zeedan, 2024).
+identities can cement stable partisan alignments over long periods (Lipset and Rokkan, 1967; Curiel and Zeedan, 2024).
 Such blocs appear remarkably stable over time.
 Yet a central question for political behavior remains: are these loyal voting blocs truly immobile, or can their rigid
 boundaries temporarily yield under stress? This question functions as a stress test of bloc discipline theories,
@@ -10,18 +10,18 @@ exploiting a rare quasi-natural experiment, the 2020–21 electoral upheaval in 
 internalized political loyalties respond to sudden systemic shocks.
 
 Israel's ultra-Orthodox (*Haredi*, plural *Haredim*) Jews provide an extreme-case test of this question
-(Seawright and Gerring 2008). Their combination of centralized rabbinic authority, dense organizational networks,
+(Seawright and Gerring, 2008). Their combination of centralized rabbinic authority, dense organizational networks,
 and the availability of ballot-box data from repeated elections over a compressed period makes the Haredi sector
 uniquely suited to reveal mechanisms of elite-coordinated volatility that are theorized across many settings but
 rarely directly observable. The Haredi sector is widely
 portrayed as one of the most disciplined electoral blocs in Israel, with high turnout rates and reliably pro-clerical
-voting reinforced by dense institutional networks of yeshivas and synagogues (Freedman 2020; Leon 2014; Malach 2025).
+voting reinforced by dense institutional networks of yeshivas and synagogues (Freedman, 2020; Leon, 2014b; Malach and Cahaner, 2025).
 Haredi political culture traditionally frames voting not as an individual right but as a collective religious duty
 dictated by spiritual authorities. As Haredi politician Tzuriel Krispel reflected after losing his reelection bid as mayor:
-"The Haredi public does not have the right to choose, only the right to vote" (Blum 2007) — alluding to the
-expectation that voters follow rabbinic directives rather than evaluate candidates independently. Yet recent research challenges this monolithic portrayal. Zalcberg (2023) notes that
+"The Haredi public does not have the right to choose, only the right to vote" (Blum, 2007) — alluding to the
+expectation that voters follow rabbinic directives rather than evaluate candidates independently. Yet this monolithic portrayal is incomplete:
 the community is factionalized and not all members obey rabbinic voting directives; roughly 11% of self-identified Haredi
-Jews voted for non-Haredi lists in the 2021 election despite communal pressures. Similar patterns of partial defection
+Jews voted for non-Haredi lists in the 2021 election despite communal pressures (Finkelstein, 2022). Similar patterns of partial defection
 within cohesive electorates have been documented elsewhere: Simas and Lothamer (2025) find that even strong party
 identifiers may temporarily defect following intraparty conflict, revealing that perceived unity can mask underlying
 volatility. This pattern is particularly striking given Israel's electoral history: Andersen and Yaish (2003) found that
@@ -34,17 +34,17 @@ Crucially, the Haredi sector is internally divided along ethnic lines between As
 Sephardi/Mizrahi (Middle Eastern/North African-origin) streams, each represented by separate political parties: United
 Torah Judaism (UTJ) and Shas, respectively. Ashkenazi Haredim are represented by UTJ, whose electorate is almost entirely
 ultra-Orthodox Ashkenazi. In contrast, Sephardi/Mizrahi Haredim predominantly vote for Shas, though Shas's voter base
-extends well beyond the strictly ultra-Orthodox community. As Cincotta (2013) observed, "the vast majority of Shas's
-electoral support has come from non-ultra-Orthodox Sephardim and Mizrahim," reflecting the party's broad appeal (see also
-Keren-Kratz 2025). Leon (2014) characterizes Sephardi ultra-Orthodoxy as "strict ideology, liquid identity," suggesting
-more permeable boundaries than Ashkenazi streams. Malach (2025) finds that UTJ behaves as a "sectarian party with dynamic
+extends well beyond the strictly ultra-Orthodox community. The vast majority of Shas's
+electoral support has come from non-ultra-Orthodox Sephardim and Mizrahim, reflecting the party's broad appeal
+(Keren-Kratz, 2025). Leon (2014b) characterizes Sephardi ultra-Orthodoxy as "strict ideology, liquid identity," suggesting
+more permeable boundaries than Ashkenazi streams. Malach and Cahaner (2025) find that UTJ behaves as a "sectarian party with dynamic
 fringes," drawing ~95% of its potential core support but subject to modest flows at the edges. This ethnic cleavage
 within a religiously unified population provides a unique opportunity to study how internal boundaries within cohesive
 blocs respond to electoral shocks. Analyzing transitions between these ethnically-aligned parties reveals whether
 ethnic-political boundaries can temporarily weaken during crises without triggering permanent realignment, a pattern with
 broad implications for understanding identity-based voting blocs worldwide.
 
-This study was sparked by an anomaly discovered in my previous research on Haredi residential segregation (Gorelik 2025).
+This study was sparked by an anomaly discovered in my previous research on Haredi residential segregation (Gorelik, 2025).
 That study documented persistent spatial separation between Ashkenazi and Sephardi Haredim across Israel's cities.
 However, Ashdod, a southern coastal city, exhibited a sudden, unexplained drop in residential segregation between the March
 2020 and March 2021 elections, followed by rapid recovery (Figure 1). With no major demographic relocation or
@@ -70,14 +70,14 @@ Reconstructed from data in Gorelik, 2025*
 ### Theoretical Framework
 
 Three established literatures each capture part of the pattern observed in this study but none accounts for the
-full trajectory of stability, sudden disruption, and rapid recovery. Classic cleavage theory (Lipset and Rokkan 1967;
-Bartolini and Mair 1990) predicts that identity-based voting blocs remain durable so long as the social networks and
+full trajectory of stability, sudden disruption, and rapid recovery. Classic cleavage theory (Lipset and Rokkan, 1967;
+Bartolini and Mair, 1990) predicts that identity-based voting blocs remain durable so long as the social networks and
 organizational structures that encapsulate them persist. This explains the Haredi sector's high baseline loyalty but
 cannot account for the sudden disruption: if encapsulation is intact, why do loyalty rates plummet? Electoral
-volatility typologies (Pedersen 1979; Mainwaring and Zoco 2007) distinguish within-bloc from between-bloc volatility
+volatility typologies (Pedersen, 1979; Mainwaring and Zoco, 2007) distinguish within-bloc from between-bloc volatility
 and recognize that elite-driven supply-side changes can produce temporary swings, but they do not specify the
 conditions under which such swings will reverse rather than crystallize into permanent realignment. Punctuated
-equilibrium models (Baumgartner and Jones 1993) capture the rhythm of long stasis interrupted by sudden change, yet
+equilibrium models (Baumgartner and Jones, 1993) capture the rhythm of long stasis interrupted by sudden change, yet
 they originated in policy studies and do not address the institutional mechanisms, specifically centralized spiritual
 authority, that can both trigger and terminate electoral disruptions in identity-based blocs.
 
@@ -94,7 +94,7 @@ stability predicted by frozen-cleavage models and the gradual erosion assumed by
 
 I address this puzzle by analyzing voter transition matrices across successive elections from January 2013 through
 November 2022 (Knessets 19 - 25), using hierarchical Bayesian ecological inference applied to polling-station results
-(detailed in the Methods section; King 1997; Greiner & Quinn 2010). The analysis estimates transition probabilities
+(detailed in the Methods section; King, 1997; Greiner and Quinn, 2010). The analysis estimates transition probabilities
 among four categories: Shas, UTJ, other parties, and abstention. To focus specifically on Haredi behavior, I restrict the sample to polling stations at least 75%
 Haredi in composition, ensuring the transitions reflect dynamics within the ultra-Orthodox sector rather than broader
 trends. The framework provides both national-level estimates and city-specific patterns for major Haredi population

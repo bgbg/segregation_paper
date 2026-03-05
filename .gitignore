@@ -1,1 +1,13 @@
 *.pkl
+todo__*.md
+todo.md
+data/interim/
+data/processed/
+transition_paper/plots/
+transition_paper/paper.pdf
+notebooks/*.png
+notebooks/tmp*.ipynb
+.serena/
+.trees/
+.claude/
+.cursor/

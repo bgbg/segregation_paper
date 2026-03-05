@@ -1,111 +1,69 @@
 # References
 
-Blum, Avi. 2007. "Rubinstein's Mistake" [הטעות של רובינשטיין]. *Behadrey Haredim*, November 9. https://www.bhol.co.il/news/66534. Accessed March 5, 2026. [Hebrew]
+Andersen JG and Yaish M (2003) Social cleavages, electoral reform and party choice: Israel's 'natural' experiment. *Electoral Studies* 22(3): 399–423. https://doi.org/10.1016/S0261-3794(02)00006-9.
 
-Bartolini, Stefano, and Peter Mair. 1990. *Identity, Competition, and Electoral Availability: The Stabilisation of
-European Electorates 1885–1985.* Cambridge: Cambridge University Press.
+Bartolini S and Mair P (1990) *Identity, Competition, and Electoral Availability: The Stabilisation of European Electorates 1885–1985.* Cambridge: Cambridge University Press.
 
-Baumgartner, Frank R., and Bryan D. Jones. 1993. *Agendas and Instability in American Politics.* Chicago: University
-of Chicago Press.
+Baumgartner FR and Jones BD (1993) *Agendas and Instability in American Politics.* Chicago: University of Chicago Press.
 
-Andersen, Jørgen Goul, and Meir Yaish. 2003. "Social Cleavages, Electoral Reform and Party Choice: Israel's 'Natural'
-Experiment." *Electoral Studies* 22 (3): 399–423. https://doi.org/10.1016/S0261-3794(02)00006-9.
+Blum A (2007) Rubinstein's mistake [הטעות של רובינשטיין]. *Behadrey Haredim*, 9 November. Available at: https://www.bhol.co.il/news/66534 (accessed 5 March 2026). [Hebrew]
 
-Ben Porat, Guy, and Dani Filc. 2022. "Religious Populism in Israel: The Case of Shas." *Politics and Religion* 15 (2):
-289313. https://doi.org/10.1017/S1755048321000158.
+Brown PJ and Payne CD (1986) Aggregate data, ecological regression and voting transitions. *Journal of the American Statistical Association* 81(394): 453–460. https://doi.org/10.1080/01621459.1986.10478293.
 
-Brown, Philip J., and C. Desmond Payne. 1986. "Aggregate Data, Ecological Regression and Voting Transitions." *Journal
-of the American Statistical Association* 81 (394): 453–460. https://doi.org/10.1080/01621459.1986.10478293.
+Campbell DE, Green JC and Layman GC (2011) The party faithful: Partisan images, candidate religion, and the electoral impact of party identification. *American Journal of Political Science* 55(1): 42–58. https://doi.org/10.1111/j.1540-5907.2010.00474.x.
 
-Campbell, David E., John C. Green, and Geoffrey C. Layman. 2011. "The Party Faithful: Partisan Images, Candidate
-Religion, and the Electoral Impact of Party Identification." *American Journal of Political Science* 55 (1): 42–58.
-https://doi.org/10.1111/j.1540-5907.2010.00474.x.
+Clarke HD, Sanders D, Stewart MC et al. (2004) *Political Choice in Britain.* Oxford: Oxford University Press.
 
-Cincotta, Richard. 2013. "Government Without the Ultra-Orthodox?" *Demography and the Future of Israeli Politics*.
-FPRI eNotes, December. Philadelphia: Foreign Policy Research Institute.
+Curiel CP and Zeedan R (2024) Social identity and voting behavior in a deeply divided society: The case of Israel. *Societies* 14(9): 177. https://doi.org/10.3390/soc14090177.
 
-Clarke, Harold D., David Sanders, Marianne C. Stewart, and Paul Whiteley. 2004. *Political Choice in Britain*. Oxford:
-Oxford University Press.
+Finkelstein A (2022) Voting patterns of Jewish Israelis in the March 2021 elections by religious affiliation. Israel Democracy Institute, 4 August. Available at: https://en.idi.org.il/articles/39417 (accessed 5 March 2026).
 
-Curiel, Concha Pérez, and Rami Zeedan. 2024. "Social Identity and Voting Behavior in a Deeply Divided Society: The Case
-of Israel." *Societies* 14 (9): 177. https://doi.org/10.3390/soc14090177.
+Forcina A and Pellegrino D (2019) Estimation of voter transitions and the ecological fallacy. *Quality & Quantity* 53: 1859–1874. https://doi.org/10.1007/s11135-019-00845-1.
 
-Forcina, Antonio, and Domenico Pellegrino. 2019. "Estimation of Voter Transitions and the Ecological Fallacy." *Quality
-& Quantity* 53: 1859–1874. https://doi.org/10.1007/s11135-019-00845-1.
+Freedman M (2020) Vote with your rabbi: The electoral effects of religious institutions in Israel. *Electoral Studies* 67: 102241. https://doi.org/10.1016/j.electstud.2020.102241.
 
-Freedman, Michael. 2020. "Vote with Your Rabbi: The Electoral Effects of Religious Institutions in Israel." *Electoral
-Studies* 67: 102241. https://doi.org/10.1016/j.electstud.2020.102241.
+Gelman A and Hill J (2007) *Data Analysis Using Regression and Multilevel/Hierarchical Models.* Cambridge: Cambridge University Press.
 
-Gelman, Andrew, and Jennifer Hill. 2007. *Data Analysis Using Regression and Multilevel/Hierarchical Models.*
-Cambridge: Cambridge University Press.
+Gidron N, Sheffer L and Mor G (2022) Validating the feeling thermometer as a measure of partisan affect in multi-party systems. *Electoral Studies* 80: 102542. https://doi.org/10.1016/j.electstud.2022.102542.
 
-Gidron, Noam, Lior Sheffer, and Guy Mor. 2022. "Validating the Feeling Thermometer as a Measure of Partisan Affect in
-Multi-Party Systems." *Electoral Studies* 80: 102542. https://doi.org/10.1016/j.electstud.2022.102542.
+Glynn AN and Wakefield J (2010) Ecological inference in the social sciences. *Statistical Methodology* 7(3): 307–322. https://doi.org/10.1016/j.stamet.2009.09.003.
 
-Glynn, Adam N., and Jon Wakefield. 2010. "Ecological Inference in the Social Sciences." *Statistical Methodology* 7 (3):
-307–322. https://doi.org/10.1016/j.stamet.2009.09.003.
+Goodman LA (1953) Ecological regressions and the behavior of individuals. *American Sociological Review* 18(6): 663–664. https://doi.org/10.2307/2088111.
 
-Goodman, Leo A. 1953. "Ecological Regressions and the Behavior of Individuals." *American Sociological Review* 18, no. 6 (December): 663–664. https://doi.org/10.2307/2088111.
+Goodwin MJ, Kaufmann E and Larsen EG (2022) Asymmetric realignment: Immigration and right party voting. *Electoral Studies* 80: 102551. https://doi.org/10.1016/j.electstud.2022.102551.
 
-Goodwin, Matthew J., Eric Kaufmann, and Erik G. Larsen. 2022. "Asymmetric Realignment: Immigration and Right Party
-Voting." *Electoral Studies* 80: 102551. https://doi.org/10.1016/j.electstud.2022.102551.
+Gorelik B (2025) Ethnic divisions within unity: Insights into intra-group segregation from Israel's ultra-Orthodox society. *Social Sciences* 14(3): 169. https://doi.org/10.3390/socsci14030169.
 
-Gorelik, Boris. 2025. "Ethnic Divisions Within Unity: Insights into Intra-Group Segregation from Israel's Ultra-Orthodox
-Society." *Social Sciences* 14 (3): 169. https://doi.org/10.3390/socsci14030169.
+Greiner J and Quinn K (2010) R×C ecological inference: Bounds, correlations, flexibility and transparency of assumptions. *Journal of the Royal Statistical Society: Series A (Statistics in Society)* 173(1): 55–81. https://doi.org/10.1111/j.1467-985X.2009.00606.x.
 
-Horowitz, Donald L. 1985. *Ethnic Groups in Conflict.* Berkeley: University of California Press.
+Horowitz DL (1985) *Ethnic Groups in Conflict.* Berkeley: University of California Press.
 
-Greiner, James, and Kevin Quinn. 2010. "RC Ecological Inference: Bounds, Correlations, Flexibility and Transparency of
-Assumptions." *Journal of the Royal Statistical Society: Series A (Statistics in Society)* 173 (1): 5581.
-https://doi.org/10.1111/j.1467-985X.2009.00606.x.
+Keren-Kratz M (2025) The turnaround in Israel's Haredi society in the late 20th century: A data-based analysis. *Religions* 16(2): 145. https://doi.org/10.3390/rel16020145.
 
-Keren-Kratz, Menachem. 2025. "The Turnaround in Israel's Haredi Society in the Late 20th Century: A DataBased Analysis."
-*Religions* 16 (2): 145. https://doi.org/10.3390/rel16020145.
+King G (1997) *A Solution to the Ecological Inference Problem: Reconstructing Individual Behavior from Aggregate Data.* Princeton, NJ: Princeton University Press.
 
-King, Gary. 1997. *A Solution to the Ecological Inference Problem: Reconstructing Individual Behavior from Aggregate
-Data*. Princeton, NJ: Princeton University Press.
+Lanzara G, Lazzaroni S, Masella P et al. (2024) Do bishops matter for politics? Evidence from Italy. *Journal of Public Economics* 238: 105177. https://doi.org/10.1016/j.jpubeco.2024.105177.
 
-Leon, Nissim. 2014. "Mizrachi Ultra-Orthodoxy: Strict Ideology, Liquid Identity." *Journal for the Study of Haredi Society* 1 (June 2014): 1–20. [Hebrew]
+Leon N (2014a) Ethno-religious fundamentalism and theo-ethnocratic politics in Israel. *Studies in Ethnicity and Nationalism* 14(1): 20–35. https://doi.org/10.1111/sena.12067.
 
-Leon, Nissim. 2014. "Ethno-Religious Fundamentalism and Theo-Ethnocratic Politics in Israel." *Studies in Ethnicity and Nationalism* 14 (1): 20–35. https://doi.org/10.1111/sena.12067.
+Leon N (2014b) Mizrachi ultra-Orthodoxy: Strict ideology, liquid identity. *Journal for the Study of Haredi Society* 1: 1–20. [Hebrew]
 
-Lanzara, Gianandrea, Sara Lazzaroni, Paolo Masella, and Mara P. Squicciarini. 2024. "Do Bishops Matter for
-Politics? Evidence from Italy." *Journal of Public Economics* 238: 105177.
-https://doi.org/10.1016/j.jpubeco.2024.105177.
+Lipset SM and Rokkan S (1967) *Party Systems and Voter Alignments: Cross-National Perspectives.* New York: Free Press.
 
-Mainwaring, Scott, and Edurne Zoco. 2007. "Political Sequences and the Stabilization of Interparty Competition:
-Electoral Volatility in Old and New Democracies." *Party Politics* 13 (2): 155–178.
-https://doi.org/10.1177/1354068807073852.
+Mainwaring S and Zoco E (2007) Political sequences and the stabilization of interparty competition: Electoral volatility in old and new democracies. *Party Politics* 13(2): 155–178. https://doi.org/10.1177/1354068807073852.
 
-Lipset, Seymour Martin, and Stein Rokkan. 1967. *Party Systems and Voter Alignments: Cross-National Perspectives*. New
-York: Free Press.
+Malach G and Cahaner L (2025) *Statistical Report on Ultra-Orthodox Society in Israel 2024.* Jerusalem: Israel Democracy Institute.
 
-Malach, Gilad, and Lee Cahaner. 2025. *Statistical Report on Ultra-Orthodox Society in Israel 2024.* Jerusalem:
-Israel Democracy Institute.
+Pedersen MN (1979) The dynamics of European party systems: Changing patterns of electoral volatility. *European Journal of Political Research* 7(1): 1–26. https://doi.org/10.1111/j.1475-6765.1979.tb01267.x.
 
-Pedersen, Mogens N. 1979. "The Dynamics of European Party Systems: Changing Patterns of Electoral Volatility."
-*European Journal of Political Research* 7 (1): 1–26. https://doi.org/10.1111/j.1475-6765.1979.tb01267.x.
+Puig X and Ginebra J (2015) Ecological inference and spatial variation of individual behavior: National divide and elections in Catalonia. *Geographical Analysis* 47(3): 262–283. https://doi.org/10.1111/gean.12056.
 
-Puig, Xavier, and Josep Ginebra. 2015. "Ecological Inference and Spatial Variation of Individual Behavior: National
-Divide and Elections in Catalonia." *Geographical Analysis* 47 (3): 262–283. https://doi.org/10.1111/gean.12056.
+Robinson WS (1950) Ecological correlations and the behavior of individuals. *American Sociological Review* 15(3): 351–357. https://doi.org/10.2307/2087176.
 
-Robinson, William S. 1950. "Ecological Correlations and the Behavior of Individuals." *American Sociological Review* 15
-(3): 351–357. https://doi.org/10.2307/2087176.
+Rosen O, Jiang W, King G et al. (2001) Bayesian and frequentist inference for ecological inference: The R×C case. *Statistica Neerlandica* 55(2): 134–156. https://doi.org/10.1111/1467-9574.00162.
 
-Rosen, Ori, Wenxin Jiang, Gary King, and Martin A. Tanner. 2001. "Bayesian and Frequentist Inference for Ecological
-Inference: The R×C Case." *Statistica Neerlandica* 55 (2): 134–156. https://doi.org/10.1111/1467-9574.00162.
+Seawright J and Gerring J (2008) Case selection techniques in case study research: A menu of qualitative and quantitative options. *Political Research Quarterly* 61(2): 294–308. https://doi.org/10.1177/1065912907313077.
 
-Seawright, Jason, and John Gerring. 2008. "Case Selection Techniques in Case Study Research: A Menu of Qualitative
-and Quantitative Options." *Political Research Quarterly* 61 (2): 294–308.
-https://doi.org/10.1177/1065912907313077.
+Simas EN and Lothamer L (2025) Not just who, but how: Further probing the connection between primary election dissatisfaction and general election voting behavior. *Electoral Studies* 88: 102969. https://doi.org/10.1016/j.electstud.2025.102969.
 
-Simas, Elizabeth N., and Lucas Lothamer. 2025. "Not Just Who, but How: Further Probing the Connection between Primary
-Election Dissatisfaction and General Election Voting Behavior." *Electoral Studies* 88: 102969.
-https://doi.org/10.1016/j.electstud.2025.102969.
-
-Wakefield, Jon. 2004. "Ecological Inference for 2×2 Tables (with Discussion)." *Journal of the Royal Statistical Society:
-Series A* 167(3): 385–445. https://doi.org/10.1111/j.1467-985x.2004.02046.x.
-
-Zalcberg, Sara. 2023. "The Ultra-Orthodox in Israel: Who they are, where they are headed." *Center of Jadaic and
-Inter-religious Studies of Shandong University* 21.
-
+Wakefield J (2004) Ecological inference for 2×2 tables (with discussion). *Journal of the Royal Statistical Society: Series A* 167(3): 385–445. https://doi.org/10.1111/j.1467-985x.2004.02046.x.

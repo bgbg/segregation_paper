@@ -55,8 +55,7 @@ boundaries responded to stress during the 2020 - 2021 period, though with differ
 ## What Caused the 23-24 Disruption?
 
 The timing coincided with extraordinary political and social stress: unprecedented political instability (three elections
-in 12 months), the COVID-19 pandemic, intense coalition negotiations, and Haredi leadership tensions (Gidron,
-Sheffer, and Mor 2022). Several mechanisms could plausibly account for the observed disruption:
+in 12 months), the COVID-19 pandemic, intense coalition negotiations, and Haredi leadership tensions (Gidron et al., 2022). Several mechanisms could plausibly account for the observed disruption:
 
 - **Strategic voting:** Voters may have anticipated coalition outcomes and switched parties to maximize Haredi
 representation. However, strategic voting would not explain why switching was specifically cross-ethnic
@@ -113,12 +112,12 @@ and quantitative evidence, cannot be established with certainty from these sourc
 ### Mapping Findings onto the Framework
 
 The empirical findings map directly onto the "rigidity with stress fractures" framework introduced above. Existing
-theories each capture part of the observed pattern: cleavage theory (Lipset and Rokkan 1967; Bartolini and Mair 1990)
+theories each capture part of the observed pattern: cleavage theory (Lipset and Rokkan, 1967; Bartolini and Mair, 1990)
 accounts for the high baseline stability, as the Haredi sector's dense organizational encapsulation — yeshivot,
 synagogues, rabbinic courts — creates the socio-organizational bonds that freeze electoral alignments. Electoral
-volatility typologies (Pedersen 1979; Mainwaring and Zoco 2007) distinguish within-bloc from between-bloc volatility
+volatility typologies (Pedersen, 1979; Mainwaring and Zoco, 2007) distinguish within-bloc from between-bloc volatility
 and recognize elite-driven disruptions, but do not specify when such disruptions reverse. Punctuated equilibrium
-(Baumgartner and Jones 1993) captures the rhythm of stasis-punctuation-recovery but does not address the specific
+(Baumgartner and Jones, 1993) captures the rhythm of stasis-punctuation-recovery but does not address the specific
 institutional mechanisms that trigger and terminate disruptions in identity-based blocs.
 
 The Haredi case extends these literatures by showing how all three scope conditions operated simultaneously. First,
@@ -132,7 +131,7 @@ campaigns — were circumstantial rather than structural, so the withdrawal of r
 equilibrium.
 
 This framework distinguishes the Haredi pattern from two alternatives. Unlike the gradual realignment described by
-Goodwin, Kaufmann, and Larsen (2022), where identity-driven issues produce lasting partisan shifts in open
+Goodwin et al. (2022), where identity-driven issues produce lasting partisan shifts in open
 electorates, the Haredi disruption was sudden and fully reversible. And unlike the cleavage erosion implied by
 dealignment theories, the underlying ethnic-political boundaries remained intact: the same institutional structures
 that enabled the disruption also terminated it. The closest documented parallel comes from Italy's Christian
@@ -198,7 +197,7 @@ identified here — centralized authority, organizational network reach, and exo
 similar patterns of elite-coordinated reversible volatility in other settings, such as evangelical communities,
 ethnic party systems in sub-Saharan Africa, or Catholic electorates in southern Europe. More broadly, the Ashdod case demonstrates that studies using party votes as proxies for ethnic composition
 should account for the fragility of this assumption in disciplined populations, where elite directives can rapidly
-redirect voting behavior and produce apparent demographic shifts that are purely electoral artifacts (see Gorelik 2025
+redirect voting behavior and produce apparent demographic shifts that are purely electoral artifacts (see Gorelik, 2025
 for the segregation analysis that first relied on this proxy).
 
 ## Final Reflections
