@@ -22,7 +22,7 @@ retention corresponds to roughly one parliamentary seat per party, illustrating 
 swings in Haredi voting patterns. The temporary drop thus had a tangible potential to alter coalition outcomes. This
 cross-flow pattern represents an unprecedented disruption in the typically stable Haredi voting bloc. Critically, this
 disruption was observed across multiple geographic scales: both at the national level (Figure 2) and across individual
-cities (Figure 3), indicating a system-wide rather than localized phenomenon. Notably, this disruption was temporary: in
+cities (Figure 4), indicating a system-wide rather than localized phenomenon. Notably, this disruption was temporary: in
 the subsequent March 2021–November 2022 transition (Knesset 24→25), loyalty rates recovered substantially (Shas: 96.9%,
 UTJ: 95.5%).
 
@@ -66,10 +66,31 @@ segmentation despite broader electoral turbulence.
 *Figure 2: Country-level transition matrices across election pairs*
 
 
+## Raw Vote Shares Across Haredi Hubs
+
+Before examining city-level model estimates, it is useful to inspect the raw data. Figure 3 plots the change in Shas
+vote share (in percentage points) relative to Knesset 23 (March 2020) for each city, computed directly from
+Haredi-filtered polling stations (those where Shas + UTJ exceed 75% of legal votes) and requiring no modeling
+assumptions. Prior to Knesset 23, cities show independent, unsynchronized variation — then all six dip below zero
+together at Knesset 24 (March 2021) before recovering.
+The magnitude is modest (1 - 3 percentage points) because raw vote shares compress the underlying signal — a voter
+switching from Shas to UTJ depresses Shas's share while boosting UTJ's, partially canceling in the aggregate. The
+ecological inference model (below) disentangles these cross-flows and reveals a much larger disruption in loyalty
+probabilities. But the raw data already establish, without any model, that something happened simultaneously across
+geographically dispersed cities during the March 2020 - March 2021 period. For evidence that these patterns are robust
+to model specification, see Appendix C.
+
+![Raw vote shares](plots/raw_vote_shares.png)
+
+*Figure 3: Change in Shas vote share (percentage points) relative to Knesset 23 in Haredi-filtered polling stations.
+Each line represents one city. The gray band marks Knesset 24 (March 2021); the synchronized dip below zero is visible
+without modeling.*
+
+
 ## City-Level Variation
 
 While the national patterns indicate high stability, city-level analysis reveals substantial variation in the magnitude
-of the March 2020–March 2021 (23→24) loyalty disruption across Haredi strongholds. Figure 3 shows that the
+of the March 2020–March 2021 (23→24) loyalty disruption across Haredi strongholds. Figure 4 shows that the
 disruption was universal, every city experienced reduced Shas loyalty in the 23→24 transition, but the magnitude varied
 substantially. Ashdod (blue line) shows the steepest drop to approximately 65%, while other cities cluster between
 70–78%. The recovery in the March 2021–November 2022 transition (24→25) was equally universal and nearly complete, with
@@ -77,11 +98,11 @@ all cities returning to loyalty rates above 95%.
 
 ![Shas to Shas City Comparison](plots/shas_shas_city_comparison.png)
 
-*Figure 3: Shas-to-Shas transition probabilities across cities and election pairs. All cities show the characteristic
+*Figure 4: Shas-to-Shas transition probabilities across cities and election pairs. All cities show the characteristic
 March 2020–March 2021 (23→24) loyalty drop followed by March 2021–November 2022 (24→25) recovery, with Ashdod (blue)
 exhibiting the most extreme deviation.*
 
-**Ashdod** exhibited the most dramatic deviation from national patterns. As shown in Figure 4, Shas-to-Shas loyalty
+**Ashdod** exhibited the most dramatic deviation from national patterns. As shown in Figure 5, Shas-to-Shas loyalty
 dropped to just 67.1% (compared to 73.5% nationally), while the Shas-to-UTJ switching rate surged to 19.3%, more than
 50% higher than the national rate of 12.3%. Ashdod's experience can be contextualized through anecdotal accounts of
 community leadership disputes reported during that period, which may have contributed to the particularly pronounced
@@ -91,7 +112,7 @@ Ashdod's Shas loyalty recovered to 96.9%, closely tracking the national pattern.
 
 ![ashdod transitions](plots/city_ashdod_transition_matrix_over_elections.png)
 
-*Figure 4: Ashdod transition matrices showing pronounced Shas-to-UTJ switching in the March 2020–March 2021 transition
+*Figure 5: Ashdod transition matrices showing pronounced Shas-to-UTJ switching in the March 2020–March 2021 transition
 (23→24)*
 
 Other major Haredi cities showed similar but more moderate disruptions. Beit Shemesh experienced a Shas loyalty drop to
