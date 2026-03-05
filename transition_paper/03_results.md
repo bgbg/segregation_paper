@@ -68,21 +68,20 @@ segmentation despite broader electoral turbulence.
 
 ## Raw Vote Shares Across Haredi Hubs
 
-Before examining city-level model estimates, it is useful to inspect the raw data. Figure 3 shows Shas and UTJ vote
-shares computed directly from Haredi-filtered polling stations (those where Shas + UTJ exceed 75% of legal votes) across
-Knessets 21 - 25, requiring no modeling assumptions. The Shas column reveals a synchronized dip in Knesset 24 (March
-2021) across all six cities, with shares dropping 1 - 3 percentage points before recovering in Knesset 25. The UTJ
-column shows a corresponding but less uniform pattern. These aggregate shifts are modest in absolute terms, because raw vote shares
-cannot decompose voter flows: a voter switching from Shas to UTJ depresses Shas's share while boosting UTJ's, partially
-canceling out in the aggregate. The ecological inference model (below) disentangles these cross-flows, but the raw data
-already establish that the March 2020 - March 2021 disruption is visible without any model, and that it occurred
-simultaneously across geographically dispersed cities. For evidence that these patterns are robust to model specification,
-see Appendix C.
+Before examining city-level model estimates, it is useful to inspect the raw data. Figure 3 shows Shas vote shares
+computed directly from Haredi-filtered polling stations (those where Shas + UTJ exceed 75% of legal votes) across
+Knessets 21 - 25, requiring no modeling assumptions. The key pattern is synchronization: all six cities show a dip at
+Knesset 24 (March 2021), followed by recovery. The magnitude is modest (1 - 3 percentage points) because raw vote shares
+compress the underlying signal — a voter switching from Shas to UTJ depresses Shas's share while boosting UTJ's,
+partially canceling in the aggregate. The ecological inference model (below) disentangles these cross-flows and reveals
+a much larger disruption in loyalty probabilities. But the raw data already establish, without any model, that something
+happened simultaneously across geographically dispersed cities during the March 2020 - March 2021 period. For evidence
+that these patterns are robust to model specification, see Appendix C.
 
 ![Raw vote shares](plots/raw_vote_shares.png)
 
-*Figure 3: Raw Shas and UTJ vote shares (%) in Haredi-filtered polling stations, Knessets 21 - 25. Each row represents
-one city; the gray band marks Knesset 24 (March 2021). The synchronized Shas dip is visible without modeling.*
+*Figure 3: Raw Shas vote share (%) in Haredi-filtered polling stations, Knessets 21 - 25. Each row represents one city;
+the gray band marks Knesset 24 (March 2021). The synchronized dip is visible without modeling.*
 
 
 ## City-Level Variation

@@ -68,40 +68,30 @@ def plot_raw_vote_shares(data: pd.DataFrame, output_path: Path) -> None:
     x_labels = [ELECTION_LABELS[k] for k in KNESSETS]
 
     fig, axes = plt.subplots(
-        6, 2, figsize=(6, 8), sharex=True, sharey=False,
+        6, 1, figsize=(3.5, 8), sharex=True, sharey=False,
     )
 
     for row_idx, city in enumerate(cities_order):
         city_data = data[data["city"] == city].sort_values("knesset")
+        ax = axes[row_idx]
+        ax.plot(
+            x_positions, city_data["shas_pct"].values,
+            color="black", linewidth=1.2,
+            marker="o", markersize=3,
+        )
+        ax.axvspan(2.5, 3.5, color="#e0e0e0", zorder=0)
+        ax.spines["top"].set_visible(False)
+        ax.spines["right"].set_visible(False)
+        ax.grid(axis="y", alpha=0.2, linewidth=0.4)
+        ax.set_ylabel(city, fontsize=8, rotation=0, labelpad=5,
+                      ha="right", va="center")
 
-        for col_idx, metric in enumerate(["shas_pct", "utj_pct"]):
-            ax = axes[row_idx, col_idx]
-            ax.plot(
-                x_positions, city_data[metric].values,
-                color="black", linewidth=1.2,
-                marker="o", markersize=3,
-            )
-            # Shade the 23->24 dip region
-            ax.axvspan(2.5, 3.5, color="#e0e0e0", zorder=0)
+        if row_idx == 5:
+            ax.set_xticks(x_positions)
+            ax.set_xticklabels(x_labels, fontsize=7)
 
-            ax.spines["top"].set_visible(False)
-            ax.spines["right"].set_visible(False)
-            ax.grid(axis="y", alpha=0.2, linewidth=0.4)
-
-            # City label on left column only
-            if col_idx == 0:
-                ax.set_ylabel(city, fontsize=8, rotation=0, labelpad=5,
-                              ha="right", va="center")
-
-            # X-axis labels only on bottom row
-            if row_idx == 5:
-                ax.set_xticks(x_positions)
-                ax.set_xticklabels(x_labels, fontsize=6.5)
-
-            # Column titles on top row only
-            if row_idx == 0:
-                title = "Shas (%)" if col_idx == 0 else "UTJ (%)"
-                ax.set_title(title, fontsize=9)
+        if row_idx == 0:
+            ax.set_title("Shas vote share (%)", fontsize=9)
 
     plt.tight_layout()
     plt.savefig(output_path, dpi=300, bbox_inches="tight")
