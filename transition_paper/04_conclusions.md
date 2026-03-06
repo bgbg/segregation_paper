@@ -133,7 +133,7 @@ and quantitative evidence, cannot be established with certainty from these sourc
 
 ### Mapping Findings onto the Framework
 
-The empirical findings map directly onto the "rigidity with stress fractures" framework introduced above. Existing
+The empirical findings are consistent with the "rigidity with stress fractures" framework introduced above. Existing
 theories each capture part of the observed pattern: cleavage theory (Lipset and Rokkan 1967; Bartolini and Mair 1990)
 accounts for the high baseline stability, as the Haredi sector's dense organizational encapsulation — yeshivot,
 synagogues, rabbinic courts — creates the socio-organizational bonds that freeze electoral alignments. Electoral
@@ -142,7 +142,7 @@ and recognize elite-driven disruptions, but do not specify when such disruptions
 (Baumgartner and Jones 1993) captures the rhythm of stasis-punctuation-recovery but does not address the specific
 institutional mechanisms that trigger and terminate disruptions in identity-based blocs.
 
-The Haredi case extends these literatures by showing how all three scope conditions operated simultaneously. First,
+The Haredi case illustrates how all three scope conditions can operate simultaneously. First,
 **centralized institutional authority**: rabbinic leaders exercised direct electoral influence through binding rulings,
 consistent with Horowitz's (1985) framework of elite-orchestrated ethnic voting and Freedman's (2020) documentation
 of rabbinic electoral effects in Israel. Second, **organizational network reach**: the yeshiva system provided
@@ -152,7 +152,7 @@ exogenous, temporary crisis**: the triggering conditions — COVID-19, coalition
 campaigns — were circumstantial rather than structural, so the withdrawal of rabbinic directives restored the prior
 equilibrium.
 
-This framework distinguishes the Haredi pattern from two alternatives. Unlike the gradual realignment described by
+This framework helps distinguish the Haredi pattern from two alternatives. Unlike the gradual realignment described by
 Goodwin, Kaufmann, and Larsen (2022), where identity-driven issues produce lasting partisan shifts in open
 electorates, the Haredi disruption was sudden and fully reversible. And unlike the cleavage erosion implied by
 dealignment theories, the underlying ethnic-political boundaries remained intact: the same institutional structures
@@ -165,16 +165,16 @@ captures cross-sectional variation in bishop influence, not a sudden synchronize
 recovery — underscoring why the Haredi case, with its repeated elections over a compressed period, provides a
 uniquely informative window into the dynamics of elite-coordinated volatility.
 
-### Synchronized Disruption as Evidence of Discipline
+### Synchronized Disruption as an Indicator of Discipline
 
 The sharp drops in intra-party loyalty during the 23→24 transition might initially suggest emerging voter independence.
 However, the **sudden and synchronized nature** of both disruption and recovery across geographically dispersed cities
-is consistent with **institutional discipline** rather than independent thinking. If voters were exercising individual
-judgment, I would expect gradual, staggered changes across localities with uncoordinated recovery. Instead,
+is more consistent with **institutional discipline** than with independent thinking. If voters were exercising individual
+judgment, one would expect gradual, staggered changes across localities with uncoordinated recovery. Instead,
 simultaneous loyalty drops followed by synchronized recovery are consistent with a single rabbinic directive
 transmitted through institutional channels spanning the national geography of Haredi settlement, producing a 12-15%
 swing across all major population centers within the same electoral cycle. That baseline loyalty reasserted itself
-when those directives were withdrawn is consistent with the interpretation that both the disruption and the recovery
+when those directives were withdrawn supports the interpretation that both the disruption and the recovery
 were expressions of the same underlying discipline. This parallels theoretical expectations for other identity-based
 voting blocs with centralized institutional authority, though comparable micro-level evidence of synchronized
 reversible switching has not been documented elsewhere.
@@ -182,7 +182,7 @@ reversible switching has not been documented elsewhere.
 The persistence of ethnic-political boundaries despite temporary volatility parallels Andersen and Yaish's (2003)
 finding that Israeli electoral reform failed to shift cleavage voting patterns, and is consistent with Bartolini and
 Mair's (1990) argument that high organizational encapsulation enables temporary disruption without permanent
-realignment. The Haredi case suggests that in communities meeting the three scope conditions, change occurs through
+realignment. The Haredi case suggests that in communities meeting the three scope conditions, change may occur through
 punctuated disruption and recovery rather than slow drift.
 
 ### The Limited Predictive Power of Structural Integration

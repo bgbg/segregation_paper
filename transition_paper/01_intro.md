@@ -46,7 +46,7 @@ broad implications for understanding identity-based voting blocs worldwide.
 This study was sparked by an anomaly discovered in my previous research on Haredi residential segregation (Gorelik 2025).
 That study documented persistent spatial separation between Ashkenazi and Sephardi Haredim across Israel's cities.
 However, Ashdod, a southern coastal city, exhibited a sudden, unexplained drop in residential segregation between the March
-2020 and March 2021 elections, followed by rapid recovery (Figure 1). With no major demographic relocation or
+2020 and March 2021 elections, followed by a plateau (Figure 1). With no major demographic relocation or
 institutional change occurring during this brief period, the anomaly was puzzling. If people did not physically move,
 what changed? One plausible answer: politics. Residential segregation changes slowly, but voting behavior can shift
 rapidly. If Sephardi voters temporarily switched from Shas to UTJ (or vice versa), this would create apparent
@@ -80,15 +80,16 @@ equilibrium models (Baumgartner and Jones 1993) capture the rhythm of long stasi
 they originated in policy studies and do not address the institutional mechanisms, specifically centralized spiritual
 authority, that can both trigger and terminate electoral disruptions in identity-based blocs.
 
-This paper proposes a synthesizing framework, "rigidity with stress fractures," that integrates these perspectives.
-The framework predicts that identity-based voting blocs will exhibit high stability punctuated by sudden, reversible
+This paper develops an interpretive framework, "rigidity with stress fractures," that draws on these perspectives to
+specify the conditions under which identity-based voting blocs experience reversible disruption rather than permanent
+realignment. The framework proposes that such blocs will exhibit high stability punctuated by sudden, reversible
 disruptions when three scope conditions are met: (i) a centralized institutional authority, such as rabbinic
 leadership, exercises strong influence over electoral behavior; (ii) that authority operates through organizational
 networks, such as yeshiva systems, with sufficient reach to produce geographically synchronized shifts; and (iii) the
 triggering crisis is exogenous and temporary rather than structural, so that withdrawal of the disrupting directive
 restores the prior equilibrium. When these conditions hold, observed volatility reflects coordinated elite action
-within an intact institutional framework rather than genuine erosion of group boundaries. The framework thus
-distinguishes temporary stress fractures, reversible disruptions driven by elite coordination, from both the permanent
+within an intact institutional framework rather than genuine erosion of group boundaries. The framework thus aims to
+distinguish temporary stress fractures — reversible disruptions driven by elite coordination — from both the permanent
 stability predicted by frozen-cleavage models and the gradual erosion assumed by dealignment theories.
 
 I address this puzzle by analyzing voter transition matrices across successive elections from January 2013 through
@@ -100,16 +101,16 @@ trends. The framework provides both national-level estimates and city-specific p
 centers.
 
 
-Three findings emerge: a nationwide collapse in voter loyalty during the March 2020–March 2021 transition, with
+Three findings emerge: a nationwide collapse in voter loyalty to Shas party during the March 2020–March 2021 transition, with
 substantial city-level variation in disruption magnitude, followed by rapid recovery that suggests temporary stress
 fractures rather than permanent realignment. This pattern, and its resolution of Ashdod's segregation anomaly through
 electoral switching rather than residential movement, carries implications for any democracy featuring identity-based
 voting blocs.
 
 Specifically, this study contributes by: (1) documenting temporary boundary permeability within an extreme-case
-disciplined bloc, providing a conservative estimate for volatility in identity-based voting; (2) grounding "rigidity
-with stress fractures" as an analytical framework that synthesizes cleavage theory, volatility typologies, and
-punctuated equilibrium models, specifying the scope conditions under which identity-based blocs experience reversible
+disciplined bloc, providing a conservative estimate for volatility in identity-based voting; (2) developing "rigidity
+with stress fractures" as an interpretive framework that draws on cleavage theory, volatility typologies, and
+punctuated equilibrium models to specify scope conditions under which identity-based blocs may experience reversible
 disruption rather than permanent realignment; and (3) applying hierarchical Bayesian ecological inference for
 analyzing voter transitions in cohesive subpopulations. Understanding the conditions
 under which rigid boundaries temporarily yield, and how quickly they reconstitute, is crucial for anticipating coalition
