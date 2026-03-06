@@ -156,11 +156,14 @@ This framework distinguishes the Haredi pattern from two alternatives. Unlike th
 Goodwin, Kaufmann, and Larsen (2022), where identity-driven issues produce lasting partisan shifts in open
 electorates, the Haredi disruption was sudden and fully reversible. And unlike the cleavage erosion implied by
 dealignment theories, the underlying ethnic-political boundaries remained intact: the same institutional structures
-that enabled the disruption also terminated it. Comparable reversible volatility episodes appear in other
-identity-based systems — Aha, Hiebel, and Jensen (2024) document brief defections among Eastern European majority
-voters that revert to prior affiliations, and McCauley (2014) shows how identity-based groups shift priorities under
-mobilization pressures without dissolving group boundaries — but the Haredi case is distinctive in the degree of
-coordination and the speed of recovery, which the scope conditions help explain.
+that enabled the disruption also terminated it. The closest documented parallel comes from Italy's Christian
+Democracy, where Lanzara et al. (2024) show that the identity of the bishop in office explained significant
+variation in party vote share across Italian dioceses from 1948 to 1992, with bishop replacements producing swings
+of up to three percentage points. As in the Haredi case, a centralized religious authority operating through
+organizational networks shaped electoral outcomes across dispersed communities. However, the Italian evidence
+captures cross-sectional variation in bishop influence, not a sudden synchronized temporal disruption followed by
+recovery — underscoring why the Haredi case, with its repeated elections over a compressed period, provides a
+uniquely informative window into the dynamics of elite-coordinated volatility.
 
 ### Synchronized Disruption as Evidence of Discipline
 
@@ -172,9 +175,9 @@ simultaneous loyalty drops followed by synchronized recovery are consistent with
 transmitted through institutional channels spanning the national geography of Haredi settlement, producing a 12-15%
 swing across all major population centers within the same electoral cycle. That baseline loyalty reasserted itself
 when those directives were withdrawn is consistent with the interpretation that both the disruption and the recovery
-were expressions of the same underlying discipline. This parallels patterns in other identity-based voting blocs with
-strong institutional structures, from U.S. evangelical communities (Bullock et al. 2019) to Catholic voters in Latin
-America (Smith 2019).
+were expressions of the same underlying discipline. This parallels theoretical expectations for other identity-based
+voting blocs with centralized institutional authority, though comparable micro-level evidence of synchronized
+reversible switching has not been documented elsewhere.
 
 The persistence of ethnic-political boundaries despite temporary volatility parallels Andersen and Yaish's (2003)
 finding that Israeli electoral reform failed to shift cleavage voting patterns, and is consistent with Bartolini and
@@ -211,9 +214,10 @@ periods permit temporal modeling
 This study focuses on short-term electoral effects and does not address possible social or attitudinal consequences.
 The corpus analysis of Haredi media provides evidence consistent with the elite coordination mechanism but cannot
 quantify individual voter motivations; future research incorporating voter surveys or interviews could further validate the relative weight of
-rabbinic instruction versus personal dissatisfaction. Comparative studies could test whether similar patterns of
-elite-driven 'hidden volatility' appear in other religious or identity-based voting blocs with strong institutional
-structures. More broadly, the Ashdod case demonstrates that studies using party votes as proxies for ethnic composition
+rabbinic instruction versus personal dissatisfaction. Comparative studies could test whether the scope conditions
+identified here — centralized authority, organizational network reach, and exogenous temporary crisis — produce
+similar patterns of elite-coordinated reversible volatility in other settings, such as evangelical communities,
+ethnic party systems in sub-Saharan Africa, or Catholic electorates in southern Europe. More broadly, the Ashdod case demonstrates that studies using party votes as proxies for ethnic composition
 should account for the fragility of this assumption in disciplined populations, where elite directives can rapidly
 redirect voting behavior and produce apparent demographic shifts that are purely electoral artifacts (see Gorelik 2025
 for the segregation analysis that first relied on this proxy).
