@@ -7,8 +7,8 @@ through 25, spanning from the January 2013 election (Knesset 19) through the Nov
 datasets provide polling-station-level counts of registered voters, valid votes, and votes for each political party. The
 analysis focuses on cities and towns with a significant ultra-Orthodox (Haredi) presence, following the same selection
 framework as in my previous study on intra-Haredi ethnic segregation (Gorelik, 2025). Throughout this paper,
-"country-level" refers to aggregated estimates across all qualifying ballot boxes nationwide, while "city-level" refers
-to qualifying boxes within each city.
+"country-level" refers to aggregated estimates across all ballot boxes that meet the inclusion criteria (defined below) nationwide, while "city-level" refers
+to included boxes within each city.
 
 
 Voters are assigned to polling stations by residential address. Most ballot boxes contain 536–650 registered voters

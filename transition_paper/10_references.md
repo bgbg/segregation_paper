@@ -18,6 +18,8 @@ Clarke HD, Sanders D, Stewart MC et al. (2004) *Political Choice in Britain.* Ox
 
 Curiel CP and Zeedan R (2024) Social identity and voting behavior in a deeply divided society: The case of Israel. *Societies* 14(9): 177. https://doi.org/10.3390/soc14090177.
 
+Dödtmann A (2022) Haredi fundamentalism in the State of Israel. *Religions* 13(12): 1149. https://doi.org/10.3390/rel13121149.
+
 Forcina A and Pellegrino D (2019) Estimation of voter transitions and the ecological fallacy. *Quality & Quantity* 53: 1859–1874. https://doi.org/10.1007/s11135-019-00845-1.
 
 Freedman M (2020) Vote with your rabbi: The electoral effects of religious institutions in Israel. *Electoral Studies* 67: 102241. https://doi.org/10.1016/j.electstud.2020.102241.
@@ -66,4 +68,3 @@ Simas EN and Lothamer L (2025) Not just who, but how: Further probing the connec
 
 Wakefield J (2004) Ecological inference for 2×2 tables (with discussion). *Journal of the Royal Statistical Society: Series A* 167(3): 385–445. https://doi.org/10.1111/j.1467-985x.2004.02046.x.
 
-Zalcberg S (2023) The ultra-Orthodox in Israel: Who they are, where they are headed. *Center of Judaic and Inter-religious Studies of Shandong University* 21.
