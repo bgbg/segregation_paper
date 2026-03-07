@@ -310,7 +310,7 @@ def main(
     *,
     output_format: Literal["markdown", "pdf", "word", "all"] = "all",
     output_dir: str = "transition_paper",
-    title: str = "From Separation to Transition: Tracking Electoral Flows in Israel's Ultra-Orthodox Sector",
+    title: str = "When Rigid Blocs Crack: Elite-Coordinated Voter Switching in an Identity-Based Voting Bloc",
     verbose: bool = False,
 ) -> int:
     """Combine markdown files into a single academic paper.
