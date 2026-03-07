@@ -4,7 +4,7 @@ The author thanks Menachem Keren-Kratz, an independent researcher, for his very 
 
 # Funding
 
-This study was partially funded by the Azrieli College of Engineering-Jerusalem Research Fund.
+This study was partially funded by the Azrieli College of Engineering - Jerusalem Research Fund.
 
 # Declaration of conflicting interests
 
@@ -26,4 +26,4 @@ The author affirms that all AI-generated content was reviewed and edited by the 
 
 # Data availability statement
 
-The electoral data analyzed in this study are publicly available from the Israeli Central Elections Committee (https://votes25.bechirot.gov.il/). The datasets and analysis code used in this study are available from the author upon reasonable request.
+The electoral data analyzed in this study are publicly available from the Israeli Central Elections Committee (https://bechirot.gov.il/). The datasets and analysis code used in this study are available on GitHub at https://github.com/bgbg/segregation 

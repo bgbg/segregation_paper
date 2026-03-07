@@ -102,10 +102,12 @@ all cities returning to loyalty rates above 95%.
 March 2020–March 2021 (23→24) loyalty drop followed by March 2021–November 2022 (24→25) recovery, with Ashdod (blue)
 exhibiting the most extreme deviation.*
 
-**Ashdod** exhibited the most dramatic deviation from national patterns. As shown in Figure 5, Shas-to-Shas loyalty
-dropped to just 67.1% (compared to 73.5% nationally), while the Shas-to-UTJ switching rate surged to 19.3%, more than
-50% higher than the national rate of 12.3%. In the subsequent 24→25 transition, Ashdod's Shas loyalty recovered to
-96.9%, closely tracking the national pattern.
+**Ashdod** exhibited the most dramatic deviation from national patterns. Notably, Ashdod already showed early signs of
+instability before the system-wide shock: Shas loyalty declined from 91.8% in the 21→22 transition to 83.6% in
+22→23. In the 23→24 disruption itself, as shown in Figure 5, Shas-to-Shas loyalty dropped to just 67.1% (compared to
+73.5% nationally), while the Shas-to-UTJ switching rate surged to 19.3%, more than 50% higher than the national rate
+of 12.3%. In the subsequent 24→25 transition, Ashdod's Shas loyalty recovered to 96.9%, closely tracking the national
+pattern.
 
 ![Ashdod Transition Matrices](plots/city_ashdod_transition_matrix_over_elections.png)
 
@@ -128,22 +130,10 @@ city-specific deviations (+166% variability) and a fully independent model with 
 variability). Despite cities diverging more from national patterns under both alternatives, the synchronized drops and
 recoveries in Shas loyalty persisted across all specifications (see Appendix C for full details and figures).
 
-## Other Notable Disruptions Beyond The March 2020–March 2021 Transition
-
-While the March 2020–March 2021 transition (23→24) represents the most dramatic disruption, the data reveal episodic
-deviations from typical loyalty patterns. At the national level, the January 2013–March 2015 transition (19→20) showed
-Shas-to-Shas loyalty dropping to 85.0%, with 13.8% defecting to the "Other" category (comprising numerous non-Haredi
-parties), the highest rate of defection to non-Haredi parties observed in the dataset.
-
-More significantly, Ashdod exhibited early signs of instability in the transitions immediately preceding the 23→24
-collapse. Shas loyalty in Ashdod declined from 91.8% in the April 2019–September 2019 transition (21→22) to 83.6% in the
-September 2019–March 2020 transition (22→23), well before the system-wide shock.
-
-These data show that deviations from baseline loyalty, while rare, occurred in multiple transition periods and were not
-confined to the 23→24 disruption.
-
-Taken together, the transition matrices reveal a pattern of high baseline stability punctuated by a single, sharp
-disruption in the 23→24 transition that fully reversed by 24→25. The disruption affected all major Haredi population
+Taken together, the transition matrices reveal a pattern of high baseline stability punctuated by a sharp
+disruption in the 23→24 transition that fully reversed by 24→25 (smaller episodic deviations occurred in other
+transitions — notably a Shas loyalty drop to 85.0% with 13.8% defecting to non-Haredi parties in the 19→20
+transition — but none approached the 23→24 magnitude or geographic synchronization). The disruption affected all major Haredi population
 centers but varied in magnitude, with Ashdod showing the most extreme deviations. The short intervals between elections
 make demographic explanations implausible, pointing instead to genuine voter switching. The Conclusions section
 interprets these patterns within the "rigidity with stress fractures" framework and explores their theoretical and

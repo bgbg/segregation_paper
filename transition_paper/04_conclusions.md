@@ -1,6 +1,5 @@
 # Conclusions
 
-
 The Results documented a pattern of high baseline stability punctuated by a sharp but temporary disruption in the
 23→24 transition, with geographic variation in magnitude and full recovery by 24→25. This section interprets these
 findings in theoretical and methodological context, exploring what they reveal about ethnic boundary maintenance,
@@ -17,11 +16,8 @@ though even these strongholds experienced measurable volatility.
 
 This geographic variation may reflect differences in the local influence of the rabbinic figures who issued
 cross-ethnic voting instructions. Ashdod's extreme disruption is consistent with the strong influence of Rabbi Mazuz
-(Yeshivat Kisse Rahamim) and Rabbi Barda in southern Israel, where their followings are concentrated. Anecdotal
-accounts of community leadership disputes in Ashdod during this period further suggest that local religious authority
-fragmentation contributed to the particularly pronounced disruption. More broadly, Ashdod's exceptionally high
-cross-party flow (19.3% Shas-to-UTJ) points to particularly fluid political boundaries between Sephardic and Ashkenazi
-Haredi communities in this demographically mixed city. However, the consistency of the temporal pattern, sharp
+(head of Kisse Rahamim, a major Sephardi yeshiva) and Rabbi Barda in southern Israel, where their followings are
+concentrated. However, the consistency of the temporal pattern, sharp
 disruption followed by recovery across all cities, confirms that the disruption was system-wide rather than driven by
 city-specific factors alone.
 
@@ -32,17 +28,15 @@ to the subsequent disruption. More generally, episodic deviations from baseline 
 transition, when 13.8% of Shas voters defected to non-Haredi parties — indicate that certain cities, particularly
 Ashdod, may serve as bellwethers of broader instability in the Haredi voting bloc.
 
-
 Despite its magnitude, this disruption appears to have received limited attention in contemporary political discourse.
 Both parties maintained their coalition positions despite the internal reshuffling, illustrating how substantial voter
 transitions within the Haredi sector can remain largely hidden beneath the surface of stable electoral outcomes.
 
 ### Temporal Dynamics and Demographic Interpretations
 
-The short intervals between elections (5.5 and 13 months separating Knessets 22→23→24) make it very unlikely that
-observed transitions reflect demographic change through migration or generational replacement rather than genuine
-voter switching, especially given the subsequent rapid recovery.
-
+With five national elections held over just three and a half years (April 2019 to November 2022), the compressed
+electoral calendar makes it very unlikely that observed transitions reflect demographic change through migration or
+generational replacement rather than genuine voter switching, especially given the subsequent rapid recovery.
 
 This finding has important implications for interpreting electoral volatility in highly cohesive communities. Even
 populations characterized by strong institutional discipline can experience rapid political realignments, yet the equally
@@ -52,8 +46,6 @@ coordinated rabbinic guidance as the primary mechanism: community leaders explic
 strategic response, which would account for the synchronized shifts observed across geographically dispersed cities.
 The partial withdrawal of these directives by the subsequent election would similarly account for the rapid return to
 baseline loyalty.
-
-
 
 ## Connecting Spatial and Political Boundaries
 
@@ -70,8 +62,9 @@ boundaries responded to stress during the 2020 - 2021 period, though with differ
 Notably, while the voter transition disruption was universal across all major Haredi cities, only Ashdod exhibited a
 dramatic drop in residential segregation indices in Gorelik (2025). Ashdod's exceptionally high switching rate (19.3%)
 apparently crossed a threshold that made the confounding between voting patterns and residential segregation visible in
-the dissimilarity index, confirming that the anomaly documented in Gorelik (2025) was electoral rather than demographic
-in origin.
+the dissimilarity index, though the specific spatial arrangement of ballot boxes in Ashdod may also have amplified
+the effect's visibility. Together, this confirms that the anomaly documented in Gorelik (2025) was electoral rather
+than demographic in origin.
 
 ## What Caused the 23-24 Disruption?
 
@@ -87,9 +80,9 @@ geographically dispersed cities.
 voting typically produces gradual, staggered changes across localities with idiosyncratic timing, not the synchronized
 drops observed simultaneously in Jerusalem, Bnei Brak, Ashdod, Beit Shemesh, and Modi'in Illit.
 - **COVID-19 backlash:** The pandemic created widespread political grievances within Haredi communities. However, a
-survey of 1,900 Haredi respondents found that Shas's handling of the pandemic was rated significantly better than
-UTJ's across all sub-sectors, so COVID-related dissatisfaction alone would predict movement *away from* UTJ, not
-toward it.
+survey of Haredi respondents conducted by Kikar HaShabbat (see Appendix D, items D14–D15) found that Shas's handling
+of the pandemic was rated significantly better than UTJ's across all sub-sectors, so COVID-related dissatisfaction
+alone would predict movement *away from* UTJ, not toward it.
 - **Coalition expectation effects:** Voters may have shifted based on predictions about government formation. This
 does not account for the specifically cross-ethnic direction of switching (Sephardic voters moving to an Ashkenazi
 party) or the rapid, synchronized recovery.
@@ -100,22 +93,23 @@ consistent with the observed patterns — specifically, a top-down campaign by U
 to recruit Sephardi voters.
 
 The corpus documents a campaign in which political operatives and rabbinic authorities appear to have functioned as
-complementary instruments of a single strategy. On the morning of the Knesset 23 elections (March 2020), UTJ MKs
-Gafni, Asher, and Tesler visited Rabbi Meir Mazuz, a leading Sephardi authority, and secured a ruling instructing his
+complementary instruments of a single strategy (see Appendix D for verbatim sources and full citations). On the morning of the Knesset 23 elections (March 2020), senior UTJ Members of Knesset (MKs)
+visited Rabbi Meir Mazuz, a leading Sephardi authority, and persuaded him to issue a ruling instructing his
 followers to vote UTJ rather than Shas. Rabbi Yitzhak Barda, a prominent Sephardi rabbi in southern Israel, issued a
-parallel instruction. MK Gafni then publicly demanded that all Sephardim studying in Ashkenazi institutions vote UTJ,
+parallel instruction. UTJ leadership then publicly demanded that all Sephardim studying in Ashkenazi institutions vote UTJ,
 and multiple Ashkenazi yeshiva heads instructed their Sephardi students accordingly. The campaign thus operated through
 a chain of authority — from political operatives to senior rabbis to yeshiva heads to individual voters — that spans
-the entire national geography of Haredi settlement. The resulting inter-party clash — Gafni calling Shas "racist," Shas
-accusing UTJ of ethnic interference, Shas's spiritual leader Hakham Shalom Cohen breaking down in tears pleading with
+the entire national geography of Haredi settlement. The resulting inter-party clash — UTJ leaders calling Shas "racist," Shas
+accusing UTJ of ethnic interference, Shas's spiritual leader pleading with
 Sephardim to remain loyal — was not a separate cause but a public manifestation of the same recruitment struggle.
 
 By the Knesset 24 elections (March 2021), this campaign had fragmented. Mazuz retreated from his exclusive UTJ
-endorsement, directing some supporters toward Religious Zionism (Smotrich) instead. The splintering of rabbinic
+endorsement, directing some supporters toward Religious Zionism Party instead. The splintering of rabbinic
 instruction is consistent with the partial recovery observed in the transition matrices.
 
 COVID-19 likely served as an enabling factor rather than a direct cause: while 31.7% of surveyed Haredi respondents
-said the pandemic would affect their vote, the direction of COVID-related dissatisfaction (favoring Shas over UTJ)
+said the pandemic would affect their vote (Appendix D, item D14), the direction of COVID-related dissatisfaction
+(favoring Shas over UTJ)
 is inconsistent with the observed Shas-to-UTJ switching. COVID may have created political mobility that could be
 channeled by rabbinic directives, but does not appear to have independently driven voters from Shas.
 
@@ -154,7 +148,8 @@ equilibrium.
 
 This framework helps distinguish the Haredi pattern from two alternatives. Unlike the gradual realignment described by
 Goodwin, Kaufmann, and Larsen (2022), where identity-driven issues produce lasting partisan shifts in open
-electorates, the Haredi disruption was sudden and fully reversible. And unlike the cleavage erosion implied by
+electorates, the Haredi disruption started and stopped suddenly and synchronously across cities — the leak halted, even though
+individual voters did not switch back. And unlike the cleavage erosion implied by
 dealignment theories, the underlying ethnic-political boundaries remained intact: the same institutional structures
 that enabled the disruption also terminated it. The closest documented parallel comes from Italy's Christian
 Democracy, where Lanzara et al. (2024) show that the identity of the bishop in office explained significant
@@ -189,18 +184,14 @@ punctuated disruption and recovery rather than slow drift.
 
 The geographic variation in disruption magnitude might suggest that residential proximity facilitates political
 permeability. However, universal recovery to baseline loyalty argues against a simple integration-drives-switching model.
-If residential proximity weakened political boundaries, I would expect gradual convergence, not temporary spikes
-followed by restoration. Instead, demographic integration creates latent potential for cross-party switching that
+If residential proximity weakened political boundaries, I would expect gradual convergence, not a temporary surge of switching
+followed by an abrupt halt. Instead, demographic integration creates latent potential for cross-party switching that
 activates during crises. Mixed cities like Ashdod serve as bellwethers precisely because their populations make
 boundaries more permeable when system-wide shocks occur, not because integration itself drives ongoing fluidity.
 
-
-
 ## Methodological Contributions
 
-### Ecological Bayesian Modeling for Electoral Transitions
-
-This natural experiment, the 2020 - 21 electoral crisis, provided a rare opportunity to observe voter transitions over a short period
+This natural experiment, Israel's 2019–2022 political deadlock, provided a rare opportunity to observe voter transitions over a short period
 and demonstrates the utility of hierarchical Bayesian ecological inference for analyzing such transitions in
 contexts where individual-level data are unavailable due to ballot secrecy. The framework successfully captures both
 national baseline patterns and city-specific deviations while accounting for the inherent uncertainty in ecological
@@ -211,13 +202,7 @@ The approach is replicable across other contexts where: - Aggregate data (ballot
 Individual voting patterns are unobserved - Both national trends and local variation are of interest - Multiple time
 periods permit temporal modeling
 
-This study focuses on short-term electoral effects and does not address possible social or attitudinal consequences.
-The corpus analysis of Haredi media provides evidence consistent with the elite coordination mechanism but cannot
-quantify individual voter motivations; future research incorporating voter surveys or interviews could further validate the relative weight of
-rabbinic instruction versus personal dissatisfaction. Comparative studies could test whether the scope conditions
-identified here — centralized authority, organizational network reach, and exogenous temporary crisis — produce
-similar patterns of elite-coordinated reversible volatility in other settings, such as evangelical communities,
-ethnic party systems in sub-Saharan Africa, or Catholic electorates in southern Europe. More broadly, the Ashdod case demonstrates that studies using party votes as proxies for ethnic composition
+More broadly, the Ashdod case demonstrates that studies using party votes as proxies for ethnic composition
 should account for the fragility of this assumption in disciplined populations, where elite directives can rapidly
 redirect voting behavior and produce apparent demographic shifts that are purely electoral artifacts (see Gorelik 2025
 for the segregation analysis that first relied on this proxy).
@@ -227,7 +212,9 @@ for the segregation analysis that first relied on this proxy).
 This study reveals that ethnic-political boundaries within Israel's ultra-Orthodox society are simultaneously rigid and
 vulnerable — and the evidence presented here is consistent with both their rigidity and their vulnerability deriving
 from the same source: the considerable authority of spiritual leaders over the electoral behavior of hundreds of
-thousands of voters dispersed across the country.
+thousands of voters dispersed across the country. The "rigidity with stress fractures" framework proposed here captures
+this duality: high baseline stability punctuated by sudden, elite-coordinated disruptions that cease as abruptly as
+they begin, leaving the underlying institutional structure intact.
 
 What the data clearly show is that assumptions of permanent stability, or conversely, ongoing fluidity, both
 mischaracterize ethnic voting dynamics in cohesive religious communities. The convergence of quantitative and
