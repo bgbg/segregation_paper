@@ -118,23 +118,16 @@ specification completely removes structural constraints toward similarity betwee
 
 Despite the increased flexibility allowing cities to diverge substantially from national patterns (248% increase in
 inter-city variability for the independent model), the synchronized drops and recoveries in Shas loyalty remained
-evident across all model specifications. Figure C1 shows Shas→Shas retention rates across all three models, revealing
-that the temporal patterns and cross-city synchronization persist regardless of model structure.
+evident across all model specifications.
 
-![Model comparison by location](plots/shas_shas_city_comparison.png)
-
-*Figure C1: Shas→Shas retention rates across models. Each panel shows one location (country or city) with three lines
-representing the original hierarchical (blue), relaxed hierarchical (orange), and independent (green) models. The
-synchronized drop during the 23→24 transition appears in all models across all cities.*
-
-Figure C2 presents an alternative view with one panel per model, showing all cities together within each specification.
+Figure C1 presents one panel per model, showing all cities together within each specification.
 The inter-city standard deviation (shown in gray shading) increases substantially in the relaxed and independent models,
 confirming that these specifications successfully allow greater divergence. Yet the temporal correlation across cities
 remains evident in all three panels.
 
 ![Model comparison by specification](plots/shas_shas_by_model.png)
 
-*Figure C2: Shas→Shas retention rates by model specification. Each panel shows all cities within one model. Country
+*Figure C1: Shas→Shas retention rates by model specification. Each panel shows all cities within one model. Country
 estimates shown as thick gray dashed line; individual cities as colored solid lines. Gray shading indicates inter-city
 standard deviation. Despite increased flexibility in relaxed and independent models, synchronized patterns persist.*
 
