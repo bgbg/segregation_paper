@@ -131,7 +131,7 @@ The empirical findings are consistent with the "rigidity with stress fractures" 
 theories each capture part of the observed pattern: cleavage theory (Lipset and Rokkan 1967; Bartolini and Mair 1990)
 accounts for the high baseline stability, as the Haredi sector's dense organizational encapsulation — yeshivot,
 synagogues, rabbinic courts — creates the socio-organizational bonds that freeze electoral alignments. Electoral
-volatility typologies (Pedersen 1979; Mainwaring and Zoco 2007) distinguish within-bloc from between-bloc volatility
+volatility typologies (Pedersen 1979; Mainwaring and Zoco 2007; Mainwaring, Gervasoni, and España-Najera 2017) distinguish within-system from extra-system volatility
 and recognize elite-driven disruptions, but do not specify when such disruptions reverse. Punctuated equilibrium
 (Baumgartner and Jones 1993) captures the rhythm of stasis-punctuation-recovery but does not address the specific
 institutional mechanisms that trigger and terminate disruptions in identity-based blocs.
@@ -172,12 +172,12 @@ swing across all major population centers within the same electoral cycle. That 
 when those directives were withdrawn supports the interpretation that both the disruption and the recovery
 were expressions of the same underlying discipline. This parallels theoretical expectations for other identity-based
 voting blocs with centralized institutional authority, though comparable micro-level evidence of synchronized
-reversible switching has not been documented elsewhere.
+reversible switching has not been documented elsewhere. A useful contrast comes from Ward and Denney's (2025) study of South Korea, where party organizations are constantly renamed and reformed yet voters maintain stable partisan preferences anchored in programmatic divides. The Haredi case inverts this pattern: organizational structures are exceptionally stable, but voter loyalty can be temporarily redirected through those very structures. Together, the two cases suggest that voter loyalty and organizational stability are partially independent — and that the institutional channels connecting leaders to voters, not organizational permanence per se, determine the capacity for coordinated electoral shifts.
 
 The persistence of ethnic-political boundaries despite temporary volatility parallels Andersen and Yaish's (2003)
 finding that Israeli electoral reform failed to shift cleavage voting patterns, and is consistent with Bartolini and
 Mair's (1990) argument that high organizational encapsulation enables temporary disruption without permanent
-realignment. The Haredi case suggests that in communities meeting the three scope conditions, change may occur through
+realignment — an argument that Martin, de Lange, and van der Brug (2022) have shown still holds in contemporary Western Europe, where parties with stronger civil-society linkages maintain more stable electorates even in an era of rising volatility. The Haredi case suggests that in communities meeting the three scope conditions, change may occur through
 punctuated disruption and recovery rather than slow drift.
 
 ### The Limited Predictive Power of Structural Integration

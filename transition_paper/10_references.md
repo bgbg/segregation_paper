@@ -38,6 +38,8 @@ Gorelik B (2025) Ethnic divisions within unity: Insights into intra-group segreg
 
 Greiner J and Quinn K (2010) R×C ecological inference: Bounds, correlations, flexibility and transparency of assumptions. *Journal of the Royal Statistical Society: Series A (Statistics in Society)* 173(1): 55–81. https://doi.org/10.1111/j.1467-985X.2009.00606.x.
 
+Hamza A and Maeda K (2025) Beyond binary: A new measure of party ethnicization. *Party Politics*. Epub ahead of print. https://doi.org/10.1177/13540688251376485.
+
 Horowitz DL (1985) *Ethnic Groups in Conflict.* Berkeley: University of California Press.
 
 Keren-Kratz M (2025) The turnaround in Israel's Haredi society in the late 20th century: A data-based analysis. *Religions* 16(2): 145. https://doi.org/10.3390/rel16020145.
@@ -50,7 +52,11 @@ Leon N (2014) Mizrachi ultra-Orthodoxy: Strict ideology, liquid identity. *Journ
 
 Lipset SM and Rokkan S (1967) *Party Systems and Voter Alignments: Cross-National Perspectives.* New York: Free Press.
 
+Mainwaring S, Gervasoni C and España-Najera A (2017) Extra- and within-system electoral volatility. *Party Politics* 23(6): 623–635. https://doi.org/10.1177/1354068815625229.
+
 Mainwaring S and Zoco E (2007) Political sequences and the stabilization of interparty competition: Electoral volatility in old and new democracies. *Party Politics* 13(2): 155–178. https://doi.org/10.1177/1354068807073852.
+
+Martin N, de Lange SL and van der Brug W (2022) Holding on to voters in volatile times: Bonding voters through party links with civil society. *Party Politics* 28(2): 354–364. https://doi.org/10.1177/1354068820980304.
 
 Malach G and Cahaner L (2025) *Statistical Report on Ultra-Orthodox Society in Israel 2024.* Jerusalem: Israel Democracy Institute.
 
@@ -67,4 +73,8 @@ Seawright J and Gerring J (2008) Case selection techniques in case study researc
 Simas EN and Lothamer L (2025) Not just who, but how: Further probing the connection between primary election dissatisfaction and general election voting behavior. *Electoral Studies* 88: 102969. https://doi.org/10.1016/j.electstud.2025.102969.
 
 Wakefield J (2004) Ecological inference for 2×2 tables (with discussion). *Journal of the Royal Statistical Society: Series A* 167(3): 385–445. https://doi.org/10.1111/j.1467-985x.2004.02046.x.
+
+Ward P and Denney S (2025) Partisan voters in party systems with ephemeral parties: Evidence from South Korea. *Party Politics*. Epub ahead of print. https://doi.org/10.1177/13540688251339976.
+
+Zur R and Bakker R (2025) The Israeli parties' positions in comparative perspective. *Party Politics* 31(2): 323–334. https://doi.org/10.1177/13540688231218917.
 

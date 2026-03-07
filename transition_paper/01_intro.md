@@ -5,7 +5,7 @@
 
 Across many democracies, communities exhibit cohesive voting patterns that resemble durable "voting blocs" anchored in
 strong group identities. Classic cleavage theories and the literature on ethnoreligious mobilization argue that such
-identities can cement stable partisan alignments over long periods (Lipset & Rokkan, 1967; Curiel & Zeedan, 2024). From U.S. evangelicals (Campbell et al., 2011) to European regional party loyalists to African ethnic voting coalitions (Horowitz, 1985), these blocs appear remarkably stable over time.
+identities can cement stable partisan alignments over long periods (Lipset & Rokkan, 1967; Curiel & Zeedan, 2024), particularly when parties maintain strong organizational linkages to civil society that constrain voter availability to competitors (Martin, de Lange, and van der Brug 2022). From U.S. evangelicals (Campbell et al., 2011) to European regional party loyalists to African ethnic voting coalitions (Horowitz, 1985), these blocs appear remarkably stable over time.
 Yet a central question for political behavior remains: are these loyal voting blocs truly immobile, or can their rigid
 boundaries temporarily yield under stress? This question functions as a stress test of bloc discipline theories,
 exploiting a rare quasi-natural experiment in Israel that allows us to observe how deeply
@@ -33,11 +33,11 @@ The Haredi sector is also internally divided along broad ethnic lines. Ashkenazi
 Sephardi/Mizrahi (Middle Eastern/North African-origin) streams, though internally diverse, are each primarily
 represented by separate political parties: United Torah Judaism (UTJ) and Shas, respectively. Ashkenazi Haredim are represented by UTJ, whose electorate is almost entirely
 ultra-Orthodox Ashkenazi. In contrast, Sephardi/Mizrahi Haredim predominantly vote for Shas, though Shas's voter base
-extends well beyond the strictly ultra-Orthodox community. The vast majority of Shas's
+extends well beyond the strictly ultra-Orthodox community. Both parties occupy a distinctive niche in Israel's multidimensional party space, combining right-wing positions on the Israeli–Palestinian conflict with left-wing economics (Zur and Bakker 2025). The vast majority of Shas's
 electoral support has come from non-ultra-Orthodox Sephardim and Mizrahim, reflecting the party's broad appeal (Keren-Kratz 2025). Leon (2014) characterizes Sephardi ultra-Orthodoxy as "strict ideology, liquid identity," suggesting
 more permeable boundaries than Ashkenazi streams. Malach and Cahaner (2025) find that UTJ behaves as a "sectarian party with dynamic
 fringes," drawing ~95% of its potential core support but subject to modest flows at the edges. This ethnic cleavage
-within a religiously unified population provides a unique opportunity to study how internal boundaries within cohesive
+within a religiously unified population — which resists binary classification, as both parties fall on a continuum of ethnicization rather than being purely "ethnic" or "non-ethnic" (Hamza and Maeda 2025) — provides a unique opportunity to study how internal boundaries within cohesive
 blocs respond to electoral shocks. Analyzing transitions between these ethnically-aligned parties reveals whether
 ethnic-political boundaries can temporarily weaken during crises without triggering permanent realignment, a pattern with
 broad implications for understanding identity-based voting blocs worldwide.
@@ -68,7 +68,7 @@ Bartolini and Mair 1990) predicts that identity-based voting blocs remain durabl
 organizational structures that encapsulate them persist. This explains the Haredi sector's high baseline loyalty but
 cannot account for the sudden disruption: if encapsulation is intact, why do loyalty rates plummet? Electoral
 volatility typologies (Pedersen 1979; Mainwaring and Zoco 2007) distinguish within-bloc from between-bloc volatility
-and recognize that elite-driven supply-side changes can produce temporary swings, but they do not specify the
+and recognize that elite-driven supply-side changes can produce temporary swings. Mainwaring, Gervasoni, and España-Najera (2017) further refine this distinction by separating within-system volatility (shifts among existing parties) from extra-system volatility (shifts to new parties), showing that the two types have different causes and consequences. Yet neither typology specifies the
 conditions under which such swings will reverse rather than crystallize into permanent realignment. Punctuated
 equilibrium models (Baumgartner and Jones 1993) capture the rhythm of long stasis interrupted by sudden change, yet
 they originated in policy studies and do not address the institutional mechanisms, specifically centralized spiritual
