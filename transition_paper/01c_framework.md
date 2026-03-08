@@ -23,3 +23,12 @@ can restore the prior equilibrium. When these conditions hold, observed volatili
 within an intact institutional framework rather than genuine erosion of group boundaries. The framework thus aims to
 distinguish temporary stress fractures — reversible disruptions driven by elite coordination — from both the permanent
 stability predicted by frozen-cleavage models and the gradual erosion assumed by dealignment theories.
+
+If the framework applies, four observable patterns should distinguish elite-coordinated disruption from ordinary electoral volatility:
+
+1. **Geographic synchronization.** Switching should appear simultaneously across geographically dispersed cities within the same electoral cycle, rather than emerging at different times in different localities — because the coordinating authority operates through national institutional networks.
+2. **Within-bloc direction.** Switching should occur between parties within the identity bloc (Shas ↔ UTJ) rather than toward external parties — because elite directives channel voters through intra-communal networks, not toward outsiders.
+3. **Rapid, synchronized recovery.** Once the coordinating directive is withdrawn, retention rates should return to baseline within one electoral cycle — the leak stops, even if individual voters who already switched do not return.
+4. **Magnitude correlated with institutional reach.** Cities where the directing authority has stronger institutional presence should show larger disruptions.
+
+The Results section evaluates these expectations against the estimated transition matrices.

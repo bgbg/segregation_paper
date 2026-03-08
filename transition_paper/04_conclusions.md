@@ -127,7 +127,7 @@ and quantitative evidence, cannot be established with certainty from these sourc
 
 ### Mapping Findings onto the Framework
 
-The empirical findings are consistent with the "rigidity with stress fractures" framework introduced above. Existing
+The empirical findings are consistent with the "rigidity with stress fractures" framework: all four observable expectations — geographic synchronization, within-bloc direction, rapid recovery, and magnitude correlated with institutional reach — are confirmed by the transition matrices. Existing
 theories each capture part of the observed pattern: cleavage theory (Lipset and Rokkan 1967; Bartolini and Mair 1990)
 accounts for the high baseline stability, as the Haredi sector's dense organizational encapsulation — yeshivot,
 synagogues, rabbinic courts — creates the socio-organizational bonds that freeze electoral alignments. Electoral
