@@ -42,6 +42,8 @@ blocs respond to electoral shocks. Analyzing transitions between these ethnicall
 ethnic-political boundaries can temporarily weaken during crises without triggering permanent realignment, a pattern with
 broad implications for understanding identity-based voting blocs worldwide.
 
+The mechanism at work — centralized institutional authority channeling bloc votes through organizational networks — is not unique to the Haredi case. In Italy, Lanzara et al. (2024) show that the identity of the bishop in office explained significant variation in Christian Democracy vote share across dioceses, with episcopal replacements producing swings of up to three percentage points through parish-level networks. In the United States, pastoral endorsements and voter guides distributed through evangelical church networks shape electoral behavior in ways that parallel rabbinic directives (Campbell, Green, and Layman 2011). In sub-Saharan Africa, ethnic brokers and traditional chiefs coordinate bloc voting through patronage networks that span dispersed communities (Horowitz 1985). The Haredi case provides an unusually clean empirical window into this mechanism because repeated elections over a compressed period allow tracking of both disruption and recovery — a temporal resolution rarely available in other settings.
+
 An unexpected anomaly in residential segregation patterns first drew attention to the possibility that such a disruption
 had occurred — a clue that pointed toward politics rather than demography as the underlying driver. The next section
 presents this empirical puzzle in detail.
