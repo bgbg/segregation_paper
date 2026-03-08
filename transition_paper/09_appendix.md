@@ -65,19 +65,19 @@ some pairs due to the multiplicative structure of the city-deviation model (delt
 scaling non-identifiability between the deviation pattern and its city-specific scaling factors. This does not
 affect country-level transition estimates, which are the primary quantities of interest.
 
-| Transition | Country R-hat max | Country ESS min | Overall R-hat max | Overall ESS min | Divergences |
-|------|-------------------|-----------------|-------------------|-----------------|-------------|
-| Kn 18-19 (Feb 2009 - Jan 2013) | 1.001 | 9,816 | 1.528 | 7 | 0 |
-| Kn 19-20 (Jan 2013 - Mar 2015) | 1.001 | 6,584 | 1.529 | 7 | 0 |
-| Kn 20-21 (Mar 2015 - Apr 2019) | 1.001 | 11,096 | 1.061 | 47 | 0 |
-| Kn 21-22 (Apr 2019 - Sep 2019) | 1.001 | 8,017 | 1.001 | 7,350 | 0 |
-| Kn 22-23 (Sep 2019 - Mar 2020) | 1.001 | 10,430 | 1.002 | 5,719 | 0 |
-| Kn 23-24 (Mar 2020 - Mar 2021) | 1.001 | 8,154 | 1.733 | 6 | 0 |
-| Kn 24-25 (Mar 2021 - Nov 2022) | 1.001 | 12,487 | 1.002 | 7,578 | 0 |
+| Transition | Country R-hat max | Country ESS min | Divergences |
+|------|-------------------|-----------------|-------------|
+| Kn 18-19 (Feb 2009 - Jan 2013) | 1.001 | 9,816 | 0 |
+| Kn 19-20 (Jan 2013 - Mar 2015) | 1.001 | 6,584 | 0 |
+| Kn 20-21 (Mar 2015 - Apr 2019) | 1.001 | 11,096 | 0 |
+| Kn 21-22 (Apr 2019 - Sep 2019) | 1.001 | 8,017 | 0 |
+| Kn 22-23 (Sep 2019 - Mar 2020) | 1.001 | 10,430 | 0 |
+| Kn 23-24 (Mar 2020 - Mar 2021) | 1.001 | 8,154 | 0 |
+| Kn 24-25 (Mar 2021 - Nov 2022) | 1.001 | 12,487 | 0 |
 
-No divergent transitions were observed in any model. The overall R-hat and ESS columns reflect
-the city-deviation parameters (D, delta_city), which exhibit poor mixing in transitions 18-19, 19-20, 20-21,
-and 23-24. City-level transition estimates for these pairs should be interpreted with caution.
+No divergent transitions were observed in any model. City-deviation parameters (D, delta_city) exhibit
+poor mixing in transitions 18-19, 19-20, 20-21, and 23-24 due to the multiplicative non-identifiability
+described above; city-level transition estimates for these pairs should be interpreted with caution.
 
 Representative diagnostics are shown below.
 

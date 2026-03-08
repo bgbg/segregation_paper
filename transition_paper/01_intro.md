@@ -58,7 +58,7 @@ for testing precisely this question.
 
 ![Dissimilarity Index Dynamics](plots/dissimilarity_dynamics_kn.png)
 
-*Figure 1: Ashdod's segregation index dropped sharply during the 23→24 transition while other Haredi cities remained stable, pointing to an electoral rather than demographic origin. The dissimilarity index measures spatial segregation between Ashkenazi and Sephardi Haredi populations within each city, with higher values indicating greater residential separation. Ashdod's anomalous dip between Knesset 23–24 (March 2020–March 2021) coincides with the voter transition disruption analyzed in this study. Reconstructed from data in Gorelik, 2025.*
+*Figure 1: Ashdod's segregation anomaly was electoral, not demographic. The dissimilarity index measures spatial segregation between Ashkenazi and Sephardi Haredi populations within each city, with higher values indicating greater residential separation. Ashdod's sharp dip between Knesset 23–24 (March 2020–March 2021) coincides with the voter transition disruption analyzed in this study, while other cities remained stable. Reconstructed from data in Gorelik, 2025.*
 
 ### Theoretical Framework
 
