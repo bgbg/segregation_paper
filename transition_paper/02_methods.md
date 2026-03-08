@@ -87,9 +87,7 @@ Transition logits are modeled using logistic-normal priors, avoiding the indepen
 distributions (Wakefield 2004; Glynn and Wakefield 2010). I add a diagonal bias term $B$ to same-party transitions to
 reflect voter inertia, the well-documented tendency to stick with previous choices (Campbell, Green, and Layman 2011;
 Clarke et al. 2004). The unusually short intervals between Israeli elections during this period (5.3 to 19 months)
-further strengthen this inertia prior. Observed vote counts were modeled with a Dirichlet-multinomial likelihood with
-overdispersion parameter $\phi = 100$, accounting for correlated behavior due to social networks and demographic
-clustering. Full prior specifications are detailed in Appendix A.
+further strengthen this inertia prior. Full prior specifications, likelihood details, and overdispersion handling are provided in Appendix A.
 
 ### Temporal Extension, Validation, and Implementation
 
@@ -101,11 +99,7 @@ Country-level transition matrix parameters converged well across all election pa
 effective sample sizes exceeding 6,500, no divergent transitions). Posterior predictive checks confirmed good fit;
 full convergence diagnostics, including city-deviation parameters, are reported in Appendix B. Models were implemented
 in PyMC 5.0 using four chains with 3,000 draws and 5,000 tuning steps per chain (target acceptance 0.99, seed 42).
-Full diagnostics and code are available at https://github.com/bgbg/segregation_paper. While this analysis
-differs conceptually and methodologically from my earlier paper on spatial ethnic segregation (Gorelik, 2025), both
-studies share the same data-selection logic, using ballot boxes as the atomic observational units representing small,
-demographically cohesive neighborhoods. Here, rather than studying residential clustering, the focus is on temporal
-electoral dynamics — specifically, the persistence and permeability of Haredi voter blocs.
+Full diagnostics and code are available at https://github.com/bgbg/segregation_paper.
 
 ### Corpus Analysis of Haredi Media
 
