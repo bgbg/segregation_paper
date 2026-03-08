@@ -47,7 +47,7 @@ transition matrices between consecutive elections from aggregate data. This prob
 individual ballots are secret and only aggregate counts are available. Thus, I adopt a classic ecological inference
 scenario (Robinson 1950; King 1997). The hierarchical structure pools information across localities, improving precision
 in small samples while maintaining flexibility across elections. Full model specifications and diagnostics are provided
-in Appendix A.
+in Appendix B.
 
 For each election pair $(t, t+1)$, the model infers the probability that a voter from category i at election t votes for
 category j at election t+1. Individual transitions are unobserved, but aggregate vote counts provide marginal

@@ -11,7 +11,7 @@ Table 1 presents the election dates and inter-election intervals for all Knesset
 
 | Knesset | Election Date | Months Since Previous |
 |---------|---------------|-----------------------|
-| 18 | February 10, 2009 | — |
+| 18 | February 10, 2009 | — (baseline) |
 | 19 | January 22, 2013 | 47.4 |
 | 20 | March 17, 2015 | 25.8 |
 | 21 | April 9, 2019 | 48.8 |
@@ -19,6 +19,8 @@ Table 1 presents the election dates and inter-election intervals for all Knesset
 | 23 | March 2, 2020 | 5.5 |
 | 24 | March 23, 2021 | 12.7 |
 | 25 | November 1, 2022 | 19.3 |
+
+*Note: Knesset 18 serves as the baseline for computing the first transition (18→19) but is not itself analyzed independently. The transition analysis covers Knessets 19–25 as described in Methods.*
 
 ## Country-Level Transitions
 
@@ -110,7 +112,7 @@ pattern.
 *Figure 5: Ashdod showed the largest cross-ethnic switching. Full transition matrices for Ashdod across all election pairs. Shas-to-UTJ switching reached 19.3% in the 23→24 transition, more than 50% above the national rate.*
 
 Other major Haredi cities showed similar but more moderate disruptions. Beit Shemesh experienced a Shas loyalty drop to
-75.2% (with 9.5% switching to UTJ), while Bnei Brak, despite being a predominantly Ashkenazi stronghold, saw Shas loyalty
+75.4% (with 9.5% switching to UTJ), while Bnei Brak, despite being a predominantly Ashkenazi stronghold, saw Shas loyalty
 fall to 70.9% (with 15.8% switching to UTJ). Both cities fully recovered by the 24→25 transition. Detailed transition
 matrices for these cities are provided in Appendix A.
 

@@ -17,9 +17,9 @@ is particularly fragile in highly disciplined populations where centralized auth
 
 The puzzle deepens when we examine Shas voter loyalty across the full sequence of elections. Shas retained its voters at
 remarkably high rates — 98%, 99%, 98% — across successive election pairs during 2019–2020. Then, in the March 2020 to
-March 2021 transition (Knesset 23→24), loyalty collapsed to approximately 73% at the national level, with even steeper
+March 2021 transition (Knesset 23→24), loyalty collapsed to approximately 74% at the national level, with even steeper
 drops in some cities (Ashdod fell to roughly 65%). Yet by the following transition (Knesset 24→25, March 2021 to
-November 2022), Shas loyalty rebounded to 97%. This dramatic 98→99→98→73→97 trajectory — a sudden crack in an
+November 2022), Shas loyalty rebounded to 97%. This dramatic 98→99→98→74→97 trajectory — a sudden crack in an
 otherwise rigid pattern, followed by swift recovery — is not easily explained by gradual dealignment, demographic
 change, or shifting policy preferences. The synchronized timing across geographically dispersed cities further suggests
 a coordinated mechanism rather than independent local dynamics.

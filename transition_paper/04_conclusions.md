@@ -6,7 +6,7 @@ findings in theoretical and methodological context, exploring what they reveal a
 the conditions under which rigid voting blocs experience disruption, and the implications for measuring residential
 segregation through electoral proxies.
 
-### Geographic Variation in Disruption Magnitude
+## Geographic Variation in Disruption Magnitude
 
 While the March 2020–March 2021 disruption (23→24) affected all the Haredi population hubs, its magnitude varied
 substantially across localities. Ashdod exhibited the most extreme deviation, with Shas loyalty dropping to just 67.1%
@@ -32,7 +32,7 @@ Despite its magnitude, this disruption appears to have received limited attentio
 Both parties maintained their coalition positions despite the internal reshuffling, illustrating how substantial voter
 transitions within the Haredi sector can remain largely hidden beneath the surface of stable electoral outcomes.
 
-### Temporal Dynamics and Demographic Interpretations
+## Temporal Dynamics and Demographic Interpretations
 
 With five national elections held over just three and a half years (April 2019 to November 2022), the compressed
 electoral calendar makes it very unlikely that observed transitions reflect demographic change through migration or
@@ -128,7 +128,7 @@ and recognize elite-driven disruptions, but do not specify when such disruptions
 institutional mechanisms that trigger and terminate disruptions in identity-based blocs.
 
 The Haredi case illustrates how all three scope conditions can operate simultaneously. First,
-**centralized institutional authority**: rabbinic leaders exercised direct electoral influence through binding rulings,
+**centralized institutional authority**: rabbinic leaders appear to have exercised direct electoral influence through binding rulings,
 consistent with Horowitz's (1985) framework of elite-orchestrated ethnic voting and Freedman's (2020) documentation
 of rabbinic electoral effects in Israel. Second, **organizational network reach**: the yeshiva system provided
 channels for transmitting directives across geographically dispersed cities within a single electoral cycle, producing
