@@ -92,63 +92,31 @@ def adjust_image_paths(content: str, base_dir: Path, output_dir: Path) -> str:
 
 
 def format_figure_captions(content: str) -> str:
-    """Convert figure captions to proper format for Word documents.
+    """Move italic figure captions into the image alt text.
 
     Converts:
-    ![alt](path) *Figure X: description*
+    ![old alt](path)
+
+    *Figure X: description*
 
     To:
-    ![alt](path){#fig:label}
+    ![Figure X: description](path)
 
-    Figure X: description
+    Pandoc uses alt text as the figure caption in both Word and PDF,
+    so this avoids duplicate rendering of alt text + separate caption.
     """
-    # Pattern to match image followed by italic figure caption
-    # This handles multi-line captions that start with *Figure and end with *
-    fig_pattern = r"(!\[[^\]]*\]\([^)]+\))\s*\*((?:Figure\s+\d+:[^*]*(?:\n[^*]*)*?))\*"
+    # Pattern: ![alt](path) followed by optional blank line then *Figure ...*
+    # Handles multi-line captions that start with *Figure and end with *
+    fig_pattern = r"!\[[^\]]*\]\(([^)]+)\)\s*\n\s*\n\*((?:Figure\s+[A-Z0-9]+[^*]*(?:\n[^*\n]*)*?))\*"
 
     def replace_figure(match):
-        image_markdown = match.group(1)
-        caption_text = match.group(2)
-
-        # Extract figure number for label
-        fig_match = re.search(r"Figure\s+(\d+)", caption_text)
-        if fig_match:
-            fig_num = fig_match.group(1)
-            fig_label = fig_num
-        else:
-            fig_label = "figure"
-
-        # Clean up caption text (remove the * markers)
-        clean_caption = caption_text.strip()
-
-        # Format as proper figure with caption
-        return f"{image_markdown}{{#fig:{fig_label}}}\n\n{clean_caption}\n"
+        image_path = match.group(1)
+        caption_text = match.group(2).strip()
+        # Collapse any internal newlines in the caption to spaces
+        caption_text = re.sub(r"\s*\n\s*", " ", caption_text)
+        return f"![{caption_text}]({image_path})"
 
     return re.sub(fig_pattern, replace_figure, content, flags=re.MULTILINE | re.DOTALL)
-
-
-def generate_table_of_contents(content: str) -> str:
-    """Generate a table of contents from markdown headers."""
-    lines = content.split("\n")
-    toc_lines = ["# Table of Contents", ""]
-
-    for line in lines:
-        # Match headers (##, ###, etc.)
-        header_match = re.match(r"^(#{1,6})\s+(.+)$", line)
-        if header_match:
-            level = len(header_match.group(1))
-            title = header_match.group(2)
-
-            # Create anchor link
-            anchor = re.sub(r"[^\w\s-]", "", title.lower())
-            anchor = re.sub(r"[-\s]+", "-", anchor)
-
-            # Indent based on header level
-            indent = "  " * (level - 1)
-            toc_lines.append(f"{indent}- [{title}](#{anchor})")
-
-    toc_lines.append("")
-    return "\n".join(toc_lines)
 
 
 def combine_markdown_files(
@@ -158,25 +126,17 @@ def combine_markdown_files(
     logger = logging.getLogger(__name__)
 
     combined_content = []
-    title_added = False
-    toc_added = False
+
+    # Add YAML metadata block for proper title styling in Word/PDF
+    combined_content.append("---")
+    combined_content.append(f"title: \"{title}\"")
+    combined_content.append("---")
+    combined_content.append("")
 
     for file_path in input_files:
         logger.info(f"Processing {file_path.name}")
 
         content = load_markdown_file(file_path)
-
-        # Add title and table of contents after the first file (Introduction)
-        if not title_added and file_path.name.startswith("01_"):
-            # Add the title at the beginning
-            combined_content.append(f"# {title}")
-            combined_content.append("")
-
-            # Generate and add table of contents
-            toc = generate_table_of_contents(content)
-            combined_content.append(toc)
-            title_added = True
-            toc_added = True
 
         # Adjust image paths to be relative to output directory
         output_dir = output_path.parent
@@ -236,8 +196,6 @@ def convert_to_pdf(markdown_path: Path, output_path: Path) -> None:
         "fontsize=11pt",
         "-V",
         "documentclass=article",
-        "--toc",  # Generate table of contents
-        "--toc-depth=3",  # Include up to level 3 headers
         "--citeproc",  # Process citations
     ]
 
@@ -265,6 +223,58 @@ def convert_to_pdf(markdown_path: Path, output_path: Path) -> None:
         raise RuntimeError(f"PDF conversion failed: {e.stderr}")
 
 
+def _create_word_reference(output_dir: Path) -> Optional[Path]:
+    """Create a reference Word document with page numbers and current date in footer."""
+    logger = logging.getLogger(__name__)
+    try:
+        from datetime import datetime
+
+        from docx import Document
+        from docx.oxml import OxmlElement
+        from docx.oxml.ns import qn
+
+        doc = Document()
+
+        # Add footer with page number and date to all sections
+        for section in doc.sections:
+            footer = section.footer
+            footer.is_linked_to_previous = False
+            paragraph = footer.paragraphs[0] if footer.paragraphs else footer.add_paragraph()
+            paragraph.alignment = 1  # Center alignment
+
+            # Add current date
+            current_date = datetime.now().strftime("%B %d, %Y")
+            run = paragraph.add_run(f"{current_date}    |    Page ")
+
+            # Add auto-updating page number field
+            fld_char_begin = OxmlElement("w:fldChar")
+            fld_char_begin.set(qn("w:fldCharType"), "begin")
+            run2 = paragraph.add_run()
+            run2._element.append(fld_char_begin)
+
+            instr_text = OxmlElement("w:instrText")
+            instr_text.text = "PAGE"
+            run3 = paragraph.add_run()
+            run3._element.append(instr_text)
+
+            fld_char_end = OxmlElement("w:fldChar")
+            fld_char_end.set(qn("w:fldCharType"), "end")
+            run4 = paragraph.add_run()
+            run4._element.append(fld_char_end)
+
+        ref_path = output_dir / "_reference.docx"
+        doc.save(str(ref_path))
+        logger.info(f"Created Word reference template: {ref_path}")
+        return ref_path
+
+    except ImportError:
+        logger.warning("python-docx not available, skipping Word footer customization")
+        return None
+    except Exception as e:
+        logger.warning(f"Failed to create Word reference template: {e}")
+        return None
+
+
 def convert_to_word(markdown_path: Path, output_path: Path) -> None:
     """Convert markdown to Word document using pandoc."""
     logger = logging.getLogger(__name__)
@@ -280,15 +290,21 @@ def convert_to_word(markdown_path: Path, output_path: Path) -> None:
     markdown_rel = markdown_path.name
     output_rel = output_path.relative_to(markdown_path.parent)
 
+    # Create a reference docx with page numbers and date in footer
+    reference_docx = _create_word_reference(markdown_path.parent)
+
     cmd = [
         "pandoc",
         markdown_rel,
         "-o",
         str(output_rel),
-        "--toc",  # Generate table of contents
-        "--toc-depth=3",  # Include up to level 3 headers
         "--citeproc",  # Process citations
     ]
+
+    if reference_docx:
+        # Path must be relative to markdown_path.parent since pandoc runs from there
+        ref_rel = reference_docx.relative_to(markdown_path.parent)
+        cmd.extend(["--reference-doc", str(ref_rel)])
 
     try:
         logger.info("Converting to Word document...")
@@ -302,6 +318,10 @@ def convert_to_word(markdown_path: Path, output_path: Path) -> None:
         logger.error(f"Word conversion failed: {e}")
         logger.error(f"Pandoc stderr: {e.stderr}")
         raise RuntimeError(f"Word conversion failed: {e.stderr}")
+    finally:
+        # Clean up temporary reference document
+        if reference_docx and reference_docx.exists():
+            reference_docx.unlink()
 
 
 def main(

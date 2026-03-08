@@ -41,8 +41,7 @@ cities (Figure 4), indicating a system-wide rather than localized phenomenon —
 the subsequent March 2021–November 2022 transition (Knesset 24→25), loyalty rates recovered substantially (Shas: 96.9%,
 UTJ: 95.5%), consistent with the rapid, synchronized recovery expected once a coordinating directive is withdrawn.
 
-**Important clarification:** All transition estimates reported here are based exclusively on Haredi-filtered ballot
-boxes (≥75% Shas+UTJ). This recovery in retention probabilities does not indicate that individual voters who had
+**Important clarification:** This recovery in retention probabilities does not indicate that individual voters who had
 "strayed" from Shas returned to the party. Rather, it reflects that the "leak" from Shas to other parties
 stopped (see Methods section on the distinction between voting behavior probabilities and individual voter movements).
 The actual voter movements are captured by the off-diagonal elements of the transition matrix, the flows between
@@ -51,7 +50,7 @@ parties, not by the diagonal retention rates themselves. Critically, none of the
 confirming that the Shas-to-UTJ transitions from the 23→24 disruption were not reversed.
 
 Paradoxically, despite losing core Haredi vote share in 23→24 without recovering it in 24→25, Shas's national vote share
-increased from 7.17% to 8.25% (9 to 11 seats). Since Haredi population hubs show no corresponding Shas influx, this
+increased from 7.17% to 8.25% (9 to 11 seats in the Knesset). Since Haredi population hubs show no corresponding Shas influx, this
 growth originated from voters outside major Haredi centers. This illustrates how aggregate vote-share growth can mask
 internal dynamics: Shas simultaneously lost votes in its core ultra-Orthodox base (to UTJ in 23→24) while gaining peripheral
 traditional Sephardic supporters.
@@ -119,7 +118,7 @@ matrices for these cities are provided in Appendix A.
 The consistency of this temporal pattern across cities, sharp disruption followed by full recovery, is consistent with
 a system-wide rather than city-specific phenomenon. The variation in magnitude of the estimated transitions correlates with demographic composition:
 cities with more integrated Sephardic-Ashkenazi populations (Ashdod, Bnei Brak) showed larger cross-flows than more
-homogeneous communities, consistent with the expectation that disruption magnitude reflects institutional reach. Both parties maintained their coalition positions despite the internal reshuffling.
+homogeneous communities, suggesting that disruption magnitude may reflect local demographic conditions. Both parties maintained their coalition positions despite the internal reshuffling.
 
 A key concern is whether the hierarchical model structure mechanically produces the observed inter-city synchronization.
 To test this, I fitted two alternative specifications: a relaxed hierarchical model allowing substantially greater

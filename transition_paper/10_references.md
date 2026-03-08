@@ -66,6 +66,8 @@ Puig X and Ginebra J (2015) Ecological inference and spatial variation of indivi
 
 Robinson WS (1950) Ecological correlations and the behavior of individuals. *American Sociological Review* 15(3): 351–357. https://doi.org/10.2307/2087176.
 
+Romero R, Pavía JM, Martín J et al. (2020) Assessing uncertainty of voter transitions estimated from aggregated data. Application to the 2017 French presidential election. *Journal of Applied Statistics* 47(13-15): 2711–2736. https://doi.org/10.1080/02664763.2020.1804842.
+
 Rosen O, Jiang W, King G et al. (2001) Bayesian and frequentist inference for ecological inference: The R×C case. *Statistica Neerlandica* 55(2): 134–156. https://doi.org/10.1111/1467-9574.00162.
 
 Seawright J and Gerring J (2008) Case selection techniques in case study research: A menu of qualitative and quantitative options. *Political Research Quarterly* 61(2): 294–308. https://doi.org/10.1177/1065912907313077.

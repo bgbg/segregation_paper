@@ -10,7 +10,7 @@ framework as in my previous study on intra-Haredi ethnic segregation (Gorelik, 2
 "country-level" refers to aggregated estimates across all ballot boxes that meet the inclusion criteria (defined below) nationwide, while "city-level" refers
 to included boxes within each city. All data and replication code are available at https://github.com/bgbg/segregation_paper.
 
-In Israel, voters are assigned to polling stations by residential address. Most ballot boxes contain 536–650 registered voters
+In Israel, voters are assigned to polling stations by residential address. Typical ballot boxes contain 536–650 registered voters
 (interquartile range from recent elections). I identify Haredi ballot boxes using a 75% threshold: boxes where combined
 votes for Shas and UTJ exceed three-quarters of all votes cast, maintaining consistency with Gorelik (2025). To ensure
 reliable statistical estimation, I include only cities with at least five qualifying boxes.
@@ -30,12 +30,12 @@ geographical and demographic units across each election pair while maximizing da
 
 Abstention was defined as the difference between the number of registered voters in a ballot box and the number of valid
 votes cast. This captures both non-voters and those who submitted invalid or blank ballots, following common practice in
-aggregate electoral analysis.
+aggregate electoral analysis (Romero et al. 2020; King 1997).
 
 Four electoral categories were modeled: (1) Shas (Sephardic ultra-Orthodox party), (2) UTJ (United Torah Judaism, the
 Ashkenazi ultra-Orthodox party alliance), (3) Other parties (all non-Haredi political lists), and (4) Abstention
 (registered but did not cast a valid vote). All non-Haredi parties are combined into a single "Other" category because
-our focus is intra-Haredi dynamics; distinguishing among secular/religious-Zionist/Arab parties would add dimensionality
+our focus is intra-Haredi dynamics; distinguishing among individual parties would add dimensionality
 without illuminating Haredi behavior. The restriction to homogeneous Haredi ballot boxes (≥75% Shas+UTJ votes) ensures
 that nearly all Shas and UTJ votes in this sample originate from Haredi populations, isolating within-sector dynamics
 from broader societal trends.

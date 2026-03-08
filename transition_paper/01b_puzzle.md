@@ -3,8 +3,7 @@
 This study was sparked by an anomaly discovered in my previous research on Haredi residential segregation (Gorelik 2025).
 That study documented persistent spatial separation between Ashkenazi and Sephardi Haredim across Israel's cities.
 However, Ashdod, a southern coastal city, exhibited a sudden, unexplained drop in residential segregation between the March
-2020 and March 2021 elections, followed by a plateau (Figure 1). With no major demographic relocation or
-institutional change occurring during this brief period, the anomaly was puzzling. If people did not physically move,
+2020 and March 2021 elections, followed by a plateau (Figure 1). The short period between these elections excluded major demographic shifts or new housing developments as explanations. The anomaly was puzzling: if people did not physically move,
 what changed? One plausible answer: politics. Residential segregation changes slowly, but voting behavior can shift
 rapidly. If Sephardi voters temporarily switched from Shas to UTJ (or vice versa), this would create apparent
 "integration" in segregation indices, which rely on party votes as proxies for ethnicity, without any residential movement.
@@ -15,7 +14,7 @@ is particularly fragile in highly disciplined populations where centralized auth
 
 *Figure 1: Ashdod's segregation anomaly was electoral, not demographic. The dissimilarity index tracks spatial segregation between Ashkenazi and Sephardi Haredim within each city. Ashdod's sharp dip between Knesset 23–24 (March 2020–March 2021) coincides with the voter transition disruption analyzed in this study. Reconstructed from Gorelik, 2025.*
 
-The puzzle deepens when we examine Shas voter loyalty across the full sequence of elections. Shas retained its voters at
+The puzzle deepens when we examine Shas voter loyalty across the full sequence of elections. As I will show later in this paper, Shas retained its voters at
 remarkably high rates — 98%, 99%, 98% — across successive election pairs during 2019–2020. Then, in the March 2020 to
 March 2021 transition (Knesset 23→24), loyalty collapsed to approximately 74% at the national level, with even steeper
 drops in some cities (Ashdod fell to roughly 65%). Yet by the following transition (Knesset 24→25, March 2021 to
