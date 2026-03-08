@@ -49,22 +49,11 @@ baseline loyalty.
 
 ## Connecting Spatial and Political Boundaries
 
-This study was sparked by my previous analysis of residential segregation within Haredi communities (Gorelik, 2025),
-which documented persistent spatial clustering of Ashkenazi and Sephardic Haredim within the same cities. Together,
-these studies reveal how ethnic boundaries operate across multiple domains — residential, institutional, and political — to
-maintain internal differentiation within a religiously unified population.
-
-The relationship between spatial and political boundaries is more complex than initially hypothesized. Rather than
-operating independently, the two systems appear to reinforce each other under normal conditions: high residential
-segregation co-occurs with high political loyalty, creating layered ethnic segmentation. Both spatial and political
-boundaries responded to stress during the 2020 - 2021 period, though with different dynamics and recovery patterns.
-
-Notably, while the voter transition disruption was universal across all major Haredi cities, only Ashdod exhibited a
-dramatic drop in residential segregation indices in Gorelik (2025). Ashdod's exceptionally high switching rate (19.3%)
-apparently crossed a threshold that made the confounding between voting patterns and residential segregation visible in
-the dissimilarity index, though the specific spatial arrangement of ballot boxes in Ashdod may also have amplified
-the effect's visibility. Together, this confirms that the anomaly documented in Gorelik (2025) was electoral rather
-than demographic in origin.
+This study was motivated by an anomaly in residential segregation indices documented in Gorelik (2025): Ashdod's
+dissimilarity index dropped sharply between the March 2020 and March 2021 elections despite no demographic change.
+The transition matrices confirm that this anomaly was electoral rather than demographic — Ashdod's exceptionally high
+Shas-to-UTJ switching rate (19.3%) altered the party-vote proxies used to measure ethnic segregation, creating the
+appearance of residential integration without actual movement.
 
 ## What Caused the 23-24 Disruption?
 

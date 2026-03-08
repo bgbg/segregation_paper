@@ -44,9 +44,8 @@ broad implications for understanding identity-based voting blocs worldwide.
 
 The mechanism at work — centralized institutional authority channeling bloc votes through organizational networks — is not unique to the Haredi case. In Italy, Lanzara et al. (2024) show that the identity of the bishop in office explained significant variation in Christian Democracy vote share across dioceses, with episcopal replacements producing swings of up to three percentage points through parish-level networks. In the United States, pastoral endorsements and voter guides distributed through evangelical church networks shape electoral behavior in ways that parallel rabbinic directives (Campbell, Green, and Layman 2011). In sub-Saharan Africa, ethnic brokers and traditional chiefs coordinate bloc voting through patronage networks that span dispersed communities (Horowitz 1985). The Haredi case provides an unusually clean empirical window into this mechanism because repeated elections over a compressed period allow tracking of both disruption and recovery — a temporal resolution rarely available in other settings.
 
-An unexpected anomaly in residential segregation patterns first drew attention to the possibility that such a disruption
-had occurred — a clue that pointed toward politics rather than demography as the underlying driver. The next section
-presents this empirical puzzle in detail.
+An anomaly in residential segregation data (Gorelik 2025) first suggested that such a disruption had occurred. The next
+section presents this empirical puzzle.
 
 I address this puzzle by analyzing voter transition matrices across successive elections from January 2013 through
 November 2022 (Knessets 19 - 25), using hierarchical Bayesian ecological inference applied to polling-station results
@@ -54,16 +53,13 @@ November 2022 (Knessets 19 - 25), using hierarchical Bayesian ecological inferen
 among four categories: Shas, UTJ, other parties, and abstention. To focus specifically on Haredi behavior, I restrict the sample to polling stations at least 75%
 Haredi in composition, ensuring the transitions reflect dynamics within the ultra-Orthodox sector rather than broader
 trends. The framework provides both national-level estimates and city-specific patterns for major Haredi population
-centers, and is aligned with my previous work (Gorelik, 2025) on residential segregation patterns in these cities,
-which showed a similar anomaly in Ashdod during the same period that this paper explains through electoral switching
-rather than residential movement.
+centers.
 
 Three findings emerge: a nationwide collapse in voter loyalty to Shas during the March 2020–March 2021 transition, with
 substantial city-level variation in disruption magnitude, followed by rapid recovery that suggests temporary stress
 fractures rather than permanent realignment.
 
-This pattern, and its explanation for the previously documented anomaly in residential segregation patterns during the
-same period (Gorelik, 2025), carries implications for any democracy featuring identity-based voting blocs.
+This pattern carries implications for any democracy featuring identity-based voting blocs.
 
 The remainder of the paper proceeds as follows. The Empirical Puzzle section presents the anomaly that motivated this
 study. The Theoretical Framework section develops the interpretive lens. The Methods section describes the data,

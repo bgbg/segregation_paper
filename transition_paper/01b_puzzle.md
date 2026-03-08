@@ -13,7 +13,7 @@ is particularly fragile in highly disciplined populations where centralized auth
 
 ![Dissimilarity Index Dynamics](plots/dissimilarity_dynamics_kn.png)
 
-*Figure 1: Ashdod's segregation anomaly was electoral, not demographic. The dissimilarity index measures spatial segregation between Ashkenazi and Sephardi Haredi populations within each city, with higher values indicating greater residential separation. Ashdod's sharp dip between Knesset 23–24 (March 2020–March 2021) coincides with the voter transition disruption analyzed in this study, while other cities remained stable. Reconstructed from data in Gorelik, 2025.*
+*Figure 1: Ashdod's segregation anomaly was electoral, not demographic. The dissimilarity index tracks spatial segregation between Ashkenazi and Sephardi Haredim within each city. Ashdod's sharp dip between Knesset 23–24 (March 2020–March 2021) coincides with the voter transition disruption analyzed in this study. Reconstructed from Gorelik, 2025.*
 
 The puzzle deepens when we examine Shas voter loyalty across the full sequence of elections. Shas retained its voters at
 remarkably high rates — 98%, 99%, 98% — across successive election pairs during 2019–2020. Then, in the March 2020 to
@@ -24,6 +24,6 @@ otherwise rigid pattern, followed by swift recovery — is not easily explained 
 change, or shifting policy preferences. The synchronized timing across geographically dispersed cities further suggests
 a coordinated mechanism rather than independent local dynamics.
 
-Was Ashdod's segregation anomaly evidence of a broader, under-the-radar pattern of voter transitions within this
-ostensibly rigid bloc? The political deadlock of 2019–2022, in which four national elections were held amid repeated
-failures to form a governing coalition, provides a natural experiment for testing precisely this question.
+Was the dramatic loyalty collapse evidence of a broader, under-the-radar pattern of elite-coordinated voter transitions
+within this ostensibly rigid bloc? The political deadlock of 2019–2022, in which four national elections were held amid
+repeated failures to form a governing coalition, provides a natural experiment for testing precisely this question.
