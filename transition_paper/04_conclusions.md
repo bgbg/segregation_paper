@@ -25,7 +25,7 @@ Notably, Ashdod exhibited early signs of instability in the transitions immediat
 Shas loyalty declined from 91.8% (21→22) to 83.6% (22→23), well before the system-wide shock. This suggests that
 Ashdod's Sephardic Haredi population was already experiencing political flux, making the city particularly vulnerable
 to the subsequent disruption. More generally, episodic deviations from baseline loyalty — including the 19→20
-transition, when 13.8% of Shas voters defected to non-Haredi parties — indicate that certain cities, particularly
+transition, when an estimated 13.8% of Shas votes transitioned to non-Haredi parties — indicate that certain cities, particularly
 Ashdod, may serve as bellwethers of broader instability in the Haredi voting bloc.
 
 Despite its magnitude, this disruption appears to have received limited attention in contemporary political discourse.
@@ -121,7 +121,9 @@ alternative mechanisms cannot individually account for: the synchronized timing 
 cross-ethnic direction of switching, and the rapid recovery coinciding with the withdrawal of rabbinic directives.
 However, the corpus documents public statements and reported events, not the private deliberations of individual
 voters; the link between rabbinic instruction and voter behavior, while supported by the convergence of qualitative
-and quantitative evidence, cannot be established with certainty from these sources alone.
+and quantitative evidence, cannot be established with certainty from these sources alone. While the qualitative
+evidence strongly suggests that rabbinic directives played an important role, the analysis cannot establish a direct
+causal link between elite statements and individual voting behavior.
 
 ## Theoretical Implications
 
@@ -172,7 +174,7 @@ swing across all major population centers within the same electoral cycle. That 
 when those directives were withdrawn supports the interpretation that both the disruption and the recovery
 were expressions of the same underlying discipline. This parallels theoretical expectations for other identity-based
 voting blocs with centralized institutional authority, though comparable micro-level evidence of synchronized
-reversible switching has not been documented elsewhere. A useful contrast comes from Ward and Denney's (2025) study of South Korea, where party organizations are constantly renamed and reformed yet voters maintain stable partisan preferences anchored in programmatic divides. The Haredi case inverts this pattern: organizational structures are exceptionally stable, but voter loyalty can be temporarily redirected through those very structures. Together, the two cases suggest that voter loyalty and organizational stability are partially independent — and that the institutional channels connecting leaders to voters, not organizational permanence per se, determine the capacity for coordinated electoral shifts.
+reversible switching has not been documented elsewhere. A useful contrast comes from Ward and Denney's (2025) study of South Korea, where party organizations are constantly renamed and reformed yet voters maintain stable partisan preferences anchored in programmatic divides. The Haredi case inverts this pattern: organizational structures are exceptionally stable, but voter loyalty can be temporarily channeled through those very structures. Together, the two cases suggest that voter loyalty and organizational stability are partially independent — and that the institutional channels connecting leaders to voters, not organizational permanence per se, determine the capacity for coordinated electoral shifts.
 
 The persistence of ethnic-political boundaries despite temporary volatility parallels Andersen and Yaish's (2003)
 finding that Israeli electoral reform failed to shift cleavage voting patterns, and is consistent with Bartolini and
@@ -203,7 +205,7 @@ Individual voting patterns are unobserved - Both national trends and local varia
 periods permit temporal modeling
 
 More broadly, the Ashdod case demonstrates that studies using party votes as proxies for ethnic composition
-should account for the fragility of this assumption in disciplined populations, where elite directives can rapidly
+should account for the fragility of this assumption in disciplined populations, where elite directives may rapidly
 redirect voting behavior and produce apparent demographic shifts that are purely electoral artifacts (see Gorelik 2025
 for the segregation analysis that first relied on this proxy).
 
@@ -218,6 +220,9 @@ they begin, leaving the underlying institutional structure intact.
 
 What the data clearly show is that assumptions of permanent stability, or conversely, ongoing fluidity, both
 mischaracterize ethnic voting dynamics in cohesive religious communities. The convergence of quantitative and
-qualitative evidence points to a system in which a small number of authoritative figures may hold the capacity to
-redirect the electoral behavior of an entire national community — and in which the exercise or restraint of that
-capacity may determine whether ethnic-political boundaries hold firm or temporarily dissolve.
+qualitative evidence suggests that centralized religious authority may play a powerful coordinating role in Haredi
+electoral behavior. The synchronized switching patterns observed here are consistent with the possibility that
+directives from a small number of influential rabbis can temporarily redirect voting behavior across geographically
+dispersed communities. While the available data cannot directly link individual voters to specific instructions, the
+temporal alignment between elite appeals and the aggregate transition patterns points to elite coordination as a
+plausible — and, given the evidence, the most parsimonious — mechanism.
