@@ -42,49 +42,9 @@ blocs respond to electoral shocks. Analyzing transitions between these ethnicall
 ethnic-political boundaries can temporarily weaken during crises without triggering permanent realignment, a pattern with
 broad implications for understanding identity-based voting blocs worldwide.
 
-This study was sparked by an anomaly discovered in my previous research on Haredi residential segregation (Gorelik 2025).
-That study documented persistent spatial separation between Ashkenazi and Sephardi Haredim across Israel's cities.
-However, Ashdod, a southern coastal city, exhibited a sudden, unexplained drop in residential segregation between the March
-2020 and March 2021 elections, followed by a plateau (Figure 1). With no major demographic relocation or
-institutional change occurring during this brief period, the anomaly was puzzling. If people did not physically move,
-what changed? One plausible answer: politics. Residential segregation changes slowly, but voting behavior can shift
-rapidly. If Sephardi voters temporarily switched from Shas to UTJ (or vice versa), this would create apparent
-"integration" in segregation indices, which rely on party votes as proxies for ethnicity, without any residential movement.
-While this proxy is theoretically grounded and performs well under stable conditions, the Ashdod episode suggests it
-is particularly fragile in highly disciplined populations where centralized authority can rapidly redirect voting behavior.
-This possibility motivated the present study: Was Ashdod's anomaly evidence of a broader, under-the-radar pattern of
-voter transitions within this ostensibly rigid bloc? The political deadlock described above provides a natural experiment
-for testing precisely this question.
-
-![Dissimilarity Index Dynamics](plots/dissimilarity_dynamics_kn.png)
-
-*Figure 1: Ashdod's segregation anomaly was electoral, not demographic. The dissimilarity index measures spatial segregation between Ashkenazi and Sephardi Haredi populations within each city, with higher values indicating greater residential separation. Ashdod's sharp dip between Knesset 23–24 (March 2020–March 2021) coincides with the voter transition disruption analyzed in this study, while other cities remained stable. Reconstructed from data in Gorelik, 2025.*
-
-### Theoretical Framework
-
-Three strands of research each capture part of the pattern observed in this study but none accounts for the
-full trajectory of stability, sudden disruption, and rapid recovery. Classic cleavage theory (Lipset and Rokkan 1967;
-Bartolini and Mair 1990) predicts that identity-based voting blocs remain durable so long as the social networks and
-organizational structures that encapsulate them persist. This explains the Haredi sector's high baseline loyalty but
-cannot account for the sudden disruption: if encapsulation is intact, why do loyalty rates plummet? Electoral
-volatility typologies (Pedersen 1979; Mainwaring and Zoco 2007) distinguish within-bloc from between-bloc volatility
-and recognize that elite-driven supply-side changes can produce temporary swings. Mainwaring, Gervasoni, and España-Najera (2017) further refine this distinction by separating within-system volatility (shifts among existing parties) from extra-system volatility (shifts to new parties), showing that the two types have different causes and consequences. Yet neither typology specifies the
-conditions under which such swings will reverse rather than crystallize into permanent realignment. Punctuated
-equilibrium models (Baumgartner and Jones 1993) capture the rhythm of long stasis interrupted by sudden change, yet
-they originated in policy studies and do not address the institutional mechanisms, specifically centralized spiritual
-authority, that can both trigger and terminate electoral disruptions in identity-based blocs.
-
-This paper develops an interpretive framework, "rigidity with stress fractures," that draws on these perspectives to
-specify the conditions under which identity-based voting blocs experience reversible disruption rather than permanent
-realignment. The framework proposes that such blocs will exhibit high stability punctuated by sudden, reversible
-disruptions when three scope conditions are met: (i) a centralized institutional authority, such as rabbinic
-leadership, exercises strong influence over electoral behavior; (ii) that authority operates through organizational
-networks, such as yeshiva systems, with sufficient reach to produce geographically synchronized shifts; and (iii) the
-triggering crisis is exogenous and temporary rather than structural, so that withdrawal of the disrupting directive
-can restore the prior equilibrium. When these conditions hold, observed volatility reflects coordinated elite action
-within an intact institutional framework rather than genuine erosion of group boundaries. The framework thus aims to
-distinguish temporary stress fractures — reversible disruptions driven by elite coordination — from both the permanent
-stability predicted by frozen-cleavage models and the gradual erosion assumed by dealignment theories.
+An unexpected anomaly in residential segregation patterns first drew attention to the possibility that such a disruption
+had occurred — a clue that pointed toward politics rather than demography as the underlying driver. The next section
+presents this empirical puzzle in detail.
 
 I address this puzzle by analyzing voter transition matrices across successive elections from January 2013 through
 November 2022 (Knessets 19 - 25), using hierarchical Bayesian ecological inference applied to polling-station results
@@ -103,7 +63,8 @@ fractures rather than permanent realignment.
 This pattern, and its explanation for the previously documented anomaly in residential segregation patterns during the
 same period (Gorelik, 2025), carries implications for any democracy featuring identity-based voting blocs.
 
-The remainder of the paper proceeds as follows. The Methods section describes the data, ecological inference model,
-and sample restrictions. The Results section presents transition estimates at the national and city levels. The
-Conclusions section develops the implications and situates the findings within the broader study of identity-based
-voting.
+The remainder of the paper proceeds as follows. The Empirical Puzzle section presents the anomaly that motivated this
+study. The Theoretical Framework section develops the interpretive lens. The Methods section describes the data,
+ecological inference model, and sample restrictions. The Results section presents transition estimates at the national
+and city levels. The Conclusions section develops the implications and situates the findings within the broader study
+of identity-based voting.

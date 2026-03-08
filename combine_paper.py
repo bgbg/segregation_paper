@@ -329,6 +329,8 @@ def main(
     input_files = [
         reports_dir / "00_abstract.md",
         reports_dir / "01_intro.md",
+        reports_dir / "01b_puzzle.md",
+        reports_dir / "01c_framework.md",
         reports_dir / "02_methods.md",
         reports_dir / "03_results.md",
         reports_dir / "04_conclusions.md",
