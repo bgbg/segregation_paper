@@ -238,7 +238,6 @@ def convert_to_pdf(markdown_path: Path, output_path: Path) -> None:
         "documentclass=article",
         "--toc",  # Generate table of contents
         "--toc-depth=3",  # Include up to level 3 headers
-        "--number-sections",  # Number sections
         "--citeproc",  # Process citations
     ]
 
@@ -288,7 +287,6 @@ def convert_to_word(markdown_path: Path, output_path: Path) -> None:
         str(output_rel),
         "--toc",  # Generate table of contents
         "--toc-depth=3",  # Include up to level 3 headers
-        "--number-sections",  # Number sections
         "--citeproc",  # Process citations
     ]
 
@@ -310,7 +308,7 @@ def main(
     *,
     output_format: Literal["markdown", "pdf", "word", "all"] = "all",
     output_dir: str = "transition_paper",
-    title: str = "When Rigid Blocs Crack: Elite-Coordinated Voter Switching in an Identity-Based Voting Bloc",
+    title: str = "When Rigid Blocs Crack: Elite-Coordinated Voter Switching in an Identity-Based Party System",
     verbose: bool = False,
 ) -> int:
     """Combine markdown files into a single academic paper.
