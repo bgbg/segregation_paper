@@ -19,8 +19,7 @@ disruptions when three scope conditions are met: (i) a centralized institutional
 leadership, exercises strong influence over electoral behavior; (ii) that authority operates through organizational
 networks, such as yeshiva systems, with sufficient reach to produce geographically synchronized shifts; and (iii) the
 triggering crisis is exogenous and temporary rather than structural, so that withdrawal of the disrupting directive
-can restore the prior equilibrium. When these conditions hold, observed volatility reflects coordinated elite action
-within an intact institutional framework rather than genuine erosion of group boundaries. The framework thus aims to
+can restore the prior equilibrium. Under such conditions, synchronized volatility across geographically dispersed communities is consistent with coordinated elite action operating within an otherwise stable institutional framework, rather than indicating genuine erosion of group boundaries. The framework thus aims to
 distinguish temporary stress fractures — reversible disruptions driven by elite coordination — from both the permanent
 stability predicted by frozen-cleavage models and the gradual erosion assumed by dealignment theories.
 

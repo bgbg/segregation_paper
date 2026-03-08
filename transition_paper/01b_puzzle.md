@@ -21,7 +21,7 @@ drops in some cities (Ashdod fell to roughly 65%). Yet by the following transiti
 November 2022), Shas loyalty rebounded to 97%. This dramatic 98→99→98→74→97 trajectory — a sudden crack in an
 otherwise rigid pattern, followed by swift recovery — is not easily explained by gradual dealignment, demographic
 change, or shifting policy preferences. The synchronized timing across geographically dispersed cities further suggests
-a coordinated mechanism rather than independent local dynamics.
+a coordinated mechanism more than independent local dynamics.
 
 Was the dramatic loyalty collapse evidence of a broader, under-the-radar pattern of elite-coordinated voter transitions
 within this ostensibly rigid bloc? The political deadlock of 2019–2022, in which four national elections were held amid
