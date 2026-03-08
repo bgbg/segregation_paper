@@ -48,7 +48,7 @@ parties, not by the diagonal retention rates themselves. Critically, none of the
 (UTJ→Shas, Other→Shas, Abstain→Shas) showed unusual spikes in the March 2021–November 2022 transition (Knesset 24→25),
 confirming that the Shas-to-UTJ transitions from the 23→24 disruption were not reversed.
 
-Paradoxically, despite losing core Haredi vote share in 23→24 without recovering them in 24→25, Shas's national vote share
+Paradoxically, despite losing core Haredi vote share in 23→24 without recovering it in 24→25, Shas's national vote share
 increased from 7.17% to 8.25% (9 to 11 seats). Since Haredi population hubs show no corresponding Shas influx, this
 growth originated from voters outside major Haredi centers. This illustrates how aggregate vote-share growth can mask
 internal dynamics: Shas simultaneously lost votes in its core ultra-Orthodox base (to UTJ in 23→24) while gaining peripheral
